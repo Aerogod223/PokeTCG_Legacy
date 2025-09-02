@@ -3004,3 +3004,6 @@ TextOffsets::
 	textpointer ChooseTrainerCardText                              ; 0x0bb8
 	textpointer ChooseTrainerCardFromDeckText                      ; 0x0bb9
 	textpointer Draw2CardsText                                     ; 0x0bba
+	textpointer GrowthName
+	textpointer MysticFireName
+

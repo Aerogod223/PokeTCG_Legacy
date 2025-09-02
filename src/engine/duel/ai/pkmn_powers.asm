@@ -189,7 +189,7 @@ HandleAIHeal:
 	ld d, a
 	ld a, DUELVARS_ARENA_CARD_HP
 	get_turn_duelist_var
-	add 10 - 1 ; amount of HP that would be healed minus 1 (so carry will be set if final HP = 0)
+	add 20 - 1 ; amount of HP that would be healed minus 1 (so carry will be set if final HP = 0)
 	sub d ; subtract damage of the opponent's strongest attack
 	jr c, .check_bench
 

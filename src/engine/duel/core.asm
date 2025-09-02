@@ -9143,7 +9143,7 @@ HandleStrikesBack_AgainstNormalAttack:
 	call CheckIsIncapableOfUsingPkmnPower_ArenaCard
 	rst SwapTurn
 	ret c  ; return if Pokemon Power can't be used because of status or Toxic Gas
-	ld hl, 10 ; amount of damage to give the Attacking Pokemon
+	ld hl, 20 ; amount of damage to give the Attacking Pokemon
 	push hl
 	call LoadTxRam3
 	ld a, [wTempTurnDuelistCardID]

@@ -463,8 +463,8 @@ VenomPowderName:
 
 VenomPowderDescription:
 	text "Flip a coin. If heads, the"
-	line "Defending Pokémon is now Confused"
-	line "and Poisoned."
+	line "Defending Pokémon is now Poisoned;"
+	line "if tails, it is now Confused."
 	done
 
 PoisonmothName:

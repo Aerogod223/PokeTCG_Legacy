@@ -1236,7 +1236,7 @@ ImposterProfessorOakDescription:
 	line ""
 	line "  her hand into his or her deck,"
 	line ""
-	line "  then draws 7 cards."
+	line "  then draws 5 cards."
 	done
 
 BillName:

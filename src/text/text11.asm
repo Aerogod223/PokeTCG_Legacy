@@ -611,6 +611,14 @@ EnergySpikeDescription:
 	line "afterward."
 	done
 
+GrowthName:
+	text "Growth"
+	done
+
+MysticFireName:
+	text "Mystic Fire"
+	done
+
 ElectrodeLv35Description:
 	text "Stores electrical energy inside its"
 	line "body. Even the slightest shock could"

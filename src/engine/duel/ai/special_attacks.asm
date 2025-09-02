@@ -16,7 +16,9 @@ HandleSpecialAIAttacks:
 	ld a, e
 
 	cp NINETALES_LV35
-	jp z, .MixUp
+	jp z, .MysticFire
+	cp TANGELA_LV12
+	jp z, .Growth
 	cp MOLTRES_LV35
 	jp z, .Wildfire
 	cp ELECTRODE_LV35
@@ -33,6 +35,8 @@ HandleSpecialAIAttacks:
 	jp z, .EnergyConversion
 	cp MEWTWO_LV60
 	jp z, .EnergyAbsorption
+	cp MAGMAR_LV24
+	jp z, .EnergyAbsorption	
 	cp MEWTWO_ALT_LV60
 	jp z, .EnergyAbsorption
 	cp MEW_LV23
@@ -44,6 +48,8 @@ HandleSpecialAIAttacks:
 	cp GOLDUCK
 	jp z, .HyperBeam
 	cp DRAGONAIR
+	jp z, .HyperBeam
+	cp DRAGONITE_LV41
 	jp z, .HyperBeam
 	cp ODDISH
 	jr z, .CallForFamily
@@ -294,7 +300,6 @@ HandleSpecialAIAttacks:
 	ld a, $82
 	ret
 
-
 ; if the Player has cards in their hand, AI calls Random:
 ; - 1/3 chance to encourage the attack regardless
 ; - 1/3 chance to dismiss the attack regardless
@@ -440,6 +445,30 @@ HandleSpecialAIAttacks:
 	ld a, $83
 	ret
 
+	; if there are any Fire Energy cards in the deck,
+; return a score of $80 + 3. otherwise, dismiss the attack.
+.MysticFire:
+	ld a, CARD_LOCATION_DECK
+	ld e, FIRE_ENERGY
+	call LookForCardIDInLocation_Bank5
+	jr nc, .zero_score2
+	call AIProcessButDontPlayEnergy_SkipEvolution
+	jr nc, .zero_score2
+	ld a, $83
+	ret
+
+		; if there are any Lightning Energy cards in the deck,
+; return a score of $80 + 3. otherwise, dismiss the attack.
+.Growth:
+	ld a, CARD_LOCATION_DECK
+	ld e, GRASS_ENERGY
+	call LookForCardIDInLocation_Bank5
+	jr nc, .zero_score2
+	call AIProcessButDontPlayEnergy_SkipEvolution
+	jr nc, .zero_score2
+	ld a, $83
+	ret
+
 
 ; only incentivize the attack if the Player's Active Pokémon,
 ; has any attached Energy cards, and if so,
@@ -508,14 +537,20 @@ AISelectSpecialAttackParameters:
 	jr z, .DevolutionBeam
 	cp MEWTWO_ALT_LV60
 	jr z, .EnergyAbsorption
+	cp MAGMAR_LV24
+	jp z, .EnergyAbsorption	
 	cp MEWTWO_LV60
 	jr z, .EnergyAbsorption
 	cp EXEGGUTOR
 	jr z, .Teleport
 	cp ELECTRODE_LV35
 	jr z, .EnergySpike
+	cp NINETALES_LV35
+	jr z, .MysticFire
+	cp TANGELA_LV12
+	jp z, .Growth
 	cp MOLTRES_LV35
-	jr z, .Wildfire
+	jP z, .Wildfire
 	or a
 	ret
 
@@ -603,6 +638,54 @@ AISelectSpecialAttackParameters:
 	ld e, LIGHTNING_ENERGY
 	call LookForCardIDInLocation_Bank5
 	ret nc ; return no carry if there are no Lightning Energy in the deck
+	ldh [hTemp_ffa0], a
+
+; find a suitable play area Pokémon to attach the Energy card to.
+	call AIProcessButDontPlayEnergy_SkipEvolution
+	ret nc ; return no carry if none of the AI's Pokémon need more Energy
+	ldh a, [hTempPlayAreaLocation_ff9d]
+	ldh [hTempPlayAreaLocation_ffa1], a
+	ret ; carry set
+
+
+	; if the selected attack is Mystic Fire, choose a Basic Energy card
+; to fetch from the deck and the Pokémon to attach it to.
+; carry is only set if there's a Fire Energy card to target in the deck
+; and a Pokémon in the AI's play area that would benefit from more Energy.
+.MysticFire
+	ld a, [wSelectedAttack]
+	or a ; cp FIRST_ATTACK_OR_PKMN_POWER
+	ret z ; return no carry if the Active Pokémon is using its first attack
+
+; try to target a Fire Energy in the deck.
+	ld a, CARD_LOCATION_DECK
+	ld e, FIRE_ENERGY
+	call LookForCardIDInLocation_Bank5
+	ret nc ; return no carry if there are no Fire Energy in the deck
+	ldh [hTemp_ffa0], a
+
+; find a suitable play area Pokémon to attach the Energy card to.
+	call AIProcessButDontPlayEnergy_SkipEvolution
+	ret nc ; return no carry if none of the AI's Pokémon need more Energy
+	ldh a, [hTempPlayAreaLocation_ff9d]
+	ldh [hTempPlayAreaLocation_ffa1], a
+	ret ; carry set
+
+
+	; if the selected attack is Growth, choose a Basic Energy card
+; to fetch from the deck and the Pokémon to attach it to.
+; carry is only set if there's a Grass Energy card to target in the deck
+; and a Pokémon in the AI's play area that would benefit from more Energy.
+.Growth
+	ld a, [wSelectedAttack]
+	or a ; cp FIRST_ATTACK_OR_PKMN_POWER
+	ret z ; return no carry if the Active Pokémon is using its first attack
+
+; try to target a Grass Energy in the deck.
+	ld a, CARD_LOCATION_DECK
+	ld e, GRASS_ENERGY
+	call LookForCardIDInLocation_Bank5
+	ret nc ; return no carry if there are no Grass Energy in the deck
 	ldh [hTemp_ffa0], a
 
 ; find a suitable play area Pokémon to attach the Energy card to.

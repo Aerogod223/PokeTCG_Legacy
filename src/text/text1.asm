@@ -1061,8 +1061,9 @@ ConfusionCheckText:
 	done
 
 VenomPowderCheckText:
-	text "If heads, the Defending Pokémon"
-	line "is now Confused and Poisoned."
+	text "Flip a coin. If heads, the"
+	line "Defending Pokémon is now Poisoned;"
+	line "if tails, it is now Confused."
 	done
 
 IfTailsYourPokemonBecomesConfusedText:

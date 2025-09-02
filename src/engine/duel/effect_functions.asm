@@ -4846,9 +4846,9 @@ Explosion80DamageEffect:
 	jr DamageBothBenches_20DamageEffect
 
 
-; user does 100 damage to itself and 20 damage to each Benched Pokemon
-Explosion100DamageEffect:
-	ld a, 100
+; user does 110 damage to itself and 20 damage to each Benched Pokemon
+Explosion110DamageEffect:
+	ld a, 110
 	call DealRecoilDamageToSelf
 ;	fallthrough
 
@@ -5136,9 +5136,9 @@ AlsoDamageTo3Benched_10DamageEffect:
 	jr .loop_selection
 
 
-; does 10 damage to each Benched Pokemon that shares a type with the opponent's Active Pokemon
-Also10DamageToSameColorOnBenchEffect:
-	ld a, 10
+; does 20 damage to each Benched Pokemon that shares a type with the opponent's Active Pokemon
+Also20DamageToSameColorOnBenchEffect:
+	ld a, 20
 	call SetDefiniteDamage
 	rst SwapTurn
 	call GetArenaCardColor
@@ -5407,7 +5407,7 @@ RandomlyDamagePlayAreaPokemon:
 ; output:
 ;	[hTemp_ffa0] = which effect was chosen for Mystery Attack (0-7)
 MysteryAttack_RandomEffect:
-	ld a, 10 ; base damage
+	ld a, 20 ; base damage
 	call SetDefiniteDamage
 
 	call UpdateRNGSources
@@ -5430,7 +5430,7 @@ MysteryAttack_RandomEffect:
 	ret
 
 .more_damage
-	ld a, 20
+	ld a, 30
 	jp SetDefiniteDamage
 
 .no_damage
@@ -6340,7 +6340,7 @@ Heal_RemoveDamageEffect:
 	ldh a, [hPlayAreaEffectTarget]
 	add DUELVARS_ARENA_CARD_HP
 	get_turn_duelist_var
-	add 10 ; remove 1 damage counter
+	add 20 ; remove 2 damage counter
 	ld [hl], a
 	ldh a, [hPlayAreaEffectTarget]
 	call DrawPlayAreaScreenToShowChanges
@@ -7556,6 +7556,8 @@ DevolutionSpray_DevolutionEffect:
 	pop hl
 	ld a, [hli]
 	call PutCardInDiscardPile
+	call MoveDiscardPileCardToHand
+	call AddCardToHand
 	jr .loop_devolutions
 
 .check_ko
@@ -8083,10 +8085,10 @@ ImposterProfessorOakEffect:
 	call ReturnCardToDeck
 	jr .loop_return_deck
 
-; then draw 7 cards from the deck.
+; then draw 5 cards from the deck.
 .done_return
 	call ShuffleCardsInDeck
-	ld a, 7
+	ld a, 5
 	call DrawNCards_NoCardDetails
 	jp SwapTurn
 

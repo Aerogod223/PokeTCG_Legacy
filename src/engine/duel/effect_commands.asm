@@ -689,8 +689,8 @@ Selfdestruct80And20EffectCommands:
 	dbw EFFECTCMDTYPE_AFTER_DAMAGE, Explosion80DamageEffect
 	db  $00
 
-Selfdestruct100And20EffectCommands:
-	dbw EFFECTCMDTYPE_AFTER_DAMAGE, Explosion100DamageEffect
+Selfdestruct110And20EffectCommands:
+	dbw EFFECTCMDTYPE_AFTER_DAMAGE, Explosion110DamageEffect
 	db  $00
 
 Also10DamageTo1BenchedEffectCommands:
@@ -706,7 +706,7 @@ Also10DamageTo3BenchedEffectCommands:
 	db  $00
 
 ChainLightningEffectCommands:
-	dbw EFFECTCMDTYPE_AFTER_DAMAGE, Also10DamageToSameColorOnBenchEffect
+	dbw EFFECTCMDTYPE_AFTER_DAMAGE, Also20DamageToSameColorOnBenchEffect
 	db  $00
 
 ThunderstormEffectCommands:
