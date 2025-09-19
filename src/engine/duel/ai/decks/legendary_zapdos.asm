@@ -17,35 +17,35 @@ AIActionTable_LegendaryZapdos:
 .list_arena
 	db ELECTABUZZ_LV35
 	db VOLTORB
-	db EEVEE
 	db ZAPDOS_LV40
-	db ZAPDOS_LV64
+	db TAUROS
 	db ZAPDOS_LV68
 	db $00
 
 .list_bench
 	db ZAPDOS_LV64
 	db ZAPDOS_LV40
-	db EEVEE
+	db CHANSEY
 	db VOLTORB
+	db TAUROS
 	db ELECTABUZZ_LV35
 	db $00
 
 .list_retreat
-	ai_retreat EEVEE,           -5
+	ai_retreat CHANSEY,         -5
 	ai_retreat VOLTORB,         -5
 	ai_retreat ELECTABUZZ_LV35, -5
 	db $00
 
 .list_energy
 	ai_energy VOLTORB,         1, -1
-	ai_energy ELECTRODE_LV35,  3, +0
+	ai_energy ELECTRODE_LV35,  2, +2
+	ai_energy ELECTRODE_LV42,  3, +0
 	ai_energy ELECTABUZZ_LV35, 2, -1
 	ai_energy JOLTEON_LV29,    3, +1
-	ai_energy ZAPDOS_LV40,     4, +2
-	ai_energy ZAPDOS_LV64,     4, +2
-	ai_energy ZAPDOS_LV68,     3, +1
-	ai_energy EEVEE,           3, +0
+	ai_energy ZAPDOS_LV40,     4, +1
+	ai_energy TAUROS,          3, +2
+	ai_energy ZAPDOS_LV68,     3, +0
 	db $00
 
 .list_prize

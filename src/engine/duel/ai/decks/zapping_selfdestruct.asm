@@ -15,37 +15,47 @@ AIActionTable_ZappingSelfdestruct:
 	jp AIPlayInitialBasicCards
 
 .list_arena
-	db KANGASKHAN
+	db LICKITUNG
 	db ELECTABUZZ_LV35
-	db TAUROS
-	db MAGNEMITE_LV13
 	db VOLTORB
+	db ELECTABUZZ_LV20
+	db FLYING_PIKACHU
+	db ZAPDOS_LV40
+	db ZAPDOS_LV64
+	db DITTO
 	db $00
 
 .list_bench
-	db MAGNEMITE_LV13
-	db VOLTORB
+	db LICKITUNG
 	db ELECTABUZZ_LV35
-	db TAUROS
-	db KANGASKHAN
+	db VOLTORB
+	db ELECTABUZZ_LV20
+	db FLYING_PIKACHU
+	db ZAPDOS_LV40
+	db ZAPDOS_LV64
+	db DITTO
 	db $00
 
 .list_retreat
 	ai_retreat VOLTORB, -1
+	ai_retreat ELECTABUZZ_LV35, -1
+	ai_retreat LICKITUNG, -1
 	db $00
 
 .list_energy
-	ai_energy MAGNEMITE_LV13,  3, +1
-	ai_energy MAGNETON_LV28,   4, +0
+	ai_energy LICKITUNG,       2, +1
+	ai_energy ELECTABUZZ_LV20, 2, +0
 	ai_energy VOLTORB,         3, +1
-	ai_energy ELECTRODE_LV35,  3, +0
-	ai_energy ELECTABUZZ_LV35, 1, +0
-	ai_energy KANGASKHAN,      2, -2
-	ai_energy TAUROS,          3, +0
+	ai_energy ELECTRODE_LV35,  2, +1
+	ai_energy ELECTABUZZ_LV35, 2, +2
+	ai_energy FLYING_PIKACHU,  2, +0
+	ai_energy ZAPDOS_LV40,     3, +0
+	ai_energy ZAPDOS_LV64,     4, +1
+	ai_energy DITTO,           3, -1
 	db $00
 
 .list_prize
-	db KANGASKHAN
+	db LICKITUNG
 	db $00
 
 .store_list_pointers

@@ -4846,9 +4846,9 @@ Explosion80DamageEffect:
 	jr DamageBothBenches_20DamageEffect
 
 
-; user does 110 damage to itself and 20 damage to each Benched Pokemon
+; user does 100 damage to itself and 20 damage to each Benched Pokemon
 Explosion110DamageEffect:
-	ld a, 110
+	ld a, 100
 	call DealRecoilDamageToSelf
 ;	fallthrough
 

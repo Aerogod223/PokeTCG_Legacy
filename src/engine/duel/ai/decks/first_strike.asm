@@ -16,36 +16,34 @@ AIActionTable_FirstStrike:
 
 .list_arena
 	db HITMONCHAN
+	db ELECTABUZZ_LV35
+	db SCYTHER
 	db MACHOP
-	db HITMONLEE
-	db MANKEY
+	db FARFETCHD
 	db $00
 
 .list_bench
 	db MACHOP
-	db HITMONLEE
+	db ELECTABUZZ_LV35
 	db HITMONCHAN
-	db MANKEY
+	db SCYTHER
+	db FARFETCHD
 	db $00
 
 .list_retreat
-	ai_retreat MACHOP,  -1
-	ai_retreat MACHOKE, -1
-	ai_retreat MANKEY,  -2
+	ai_retreat HITMONCHAN,  -1
 	db $00
 
 .list_energy
-	ai_energy MACHOP,     3, +0
-	ai_energy MACHOKE,    4, +0
-	ai_energy MACHAMP,    4, -1
-	ai_energy HITMONCHAN, 3, +0
-	ai_energy HITMONLEE,  3, +0
-	ai_energy MANKEY,     2, -1
-	ai_energy PRIMEAPE,   3, -1
+	ai_energy MACHOP,     1, +0
+	ai_energy SCYTHER,    3, +0
+	ai_energy ELECTABUZZ_LV35,    3, +2
+	ai_energy HITMONCHAN, 3, +2
+	ai_energy FARFETCHD,  3, +0
 	db $00
 
 .list_prize
-	db HITMONLEE
+	db ELECTABUZZ_LV35
 	db HITMONCHAN
 	db $00
 

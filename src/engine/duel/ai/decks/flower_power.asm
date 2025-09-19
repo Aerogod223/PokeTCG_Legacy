@@ -15,20 +15,22 @@ AIActionTable_FlowerPower:
 	jp AIPlayInitialBasicCards
 
 .list_arena
-	db ODDISH
+	db TANGELA_LV12
 	db EXEGGCUTE
+	db DODUO
 	db BULBASAUR
 	db $00
 
 .list_bench
 	db BULBASAUR
 	db EXEGGCUTE
-	db ODDISH
+	db DODUO
+	db TANGELA_LV12
 	db $00
 
 .list_retreat
-	ai_retreat GLOOM,     -2
-	ai_retreat VILEPLUME, -2
+	ai_retreat DODUO,     -2
+	ai_retreat DODRIO, -2
 	ai_retreat BULBASAUR, -2
 	ai_retreat IVYSAUR,   -2
 	db $00
@@ -37,11 +39,11 @@ AIActionTable_FlowerPower:
 	ai_energy BULBASAUR,      3, +0
 	ai_energy IVYSAUR,        4, +0
 	ai_energy VENUSAUR_LV67,  4, +0
-	ai_energy ODDISH,         2, +0
-	ai_energy GLOOM,          3, -1
-	ai_energy VILEPLUME,      3, -1
+	ai_energy DODUO,          2, -1
+	ai_energy DODRIO,         3, -1
+	ai_energy TANGELA_LV12,   2, +1
 	ai_energy EXEGGCUTE,      3, +0
-	ai_energy EXEGGUTOR,     22, +0
+	ai_energy EXEGGUTOR,     22, +1
 	db $00
 
 .list_prize

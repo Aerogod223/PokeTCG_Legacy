@@ -18,31 +18,36 @@ AIActionTable_WondersOfScience:
 	db MEWTWO_LV53
 	db MEWTWO_ALT_LV60
 	db MEWTWO_LV60
+	db SCYTHER
+	db PINSIR
+	db MR_MIME
 	db GRIMER
-	db KOFFING
 	db PORYGON
 	db $00
 
 .list_bench
 	db GRIMER
-	db KOFFING
+	db PORYGON
+	db SCYTHER
+	db PINSIR
 	db MEWTWO_ALT_LV60
 	db MEWTWO_LV60
 	db MEWTWO_LV53
-	db PORYGON
+	db MR_MIME
 	db $00
 
 .list_retreat
 	db $00
 
 .list_energy
-	ai_energy GRIMER,          3, +0
-	ai_energy MUK,             4, +0
-	ai_energy KOFFING,         2, +0
-	ai_energy WEEZING,         3, +0
-	ai_energy MEWTWO_LV53,     2, -1
-	ai_energy MEWTWO_ALT_LV60, 2, -1
-	ai_energy MEWTWO_LV60,     2, -1
+	ai_energy GRIMER,          2, +0
+	ai_energy MUK,             2, +0
+	ai_energy SCYTHER,         3, +0
+	ai_energy PINSIR,          4, +0
+	ai_energy MR_MIME,         2, +1
+	ai_energy MEWTWO_LV53,     2, +1
+	ai_energy MEWTWO_ALT_LV60, 3, +0
+	ai_energy MEWTWO_LV60,     3, +0
 	ai_energy PORYGON,         2, -1
 	db $00
 

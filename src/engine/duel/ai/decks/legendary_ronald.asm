@@ -16,8 +16,11 @@ AIActionTable_LegendaryRonald:
 
 .list_arena
 	db KANGASKHAN
+	db ELECTABUZZ_LV35
+	db MAGMAR_LV31
+	db LAPRAS
+	db SCYTHER
 	db DRATINI
-	db EEVEE
 	db ZAPDOS_LV68
 	db ARTICUNO_LV37
 	db MOLTRES_LV37
@@ -26,7 +29,10 @@ AIActionTable_LegendaryRonald:
 .list_bench
 	db KANGASKHAN
 	db DRATINI
-	db EEVEE
+	db ELECTABUZZ_LV35
+	db LAPRAS
+	db MAGMAR_LV31
+	db ELECTABUZZ_LV35
 	db $00
 
 .list_play_hand
@@ -39,21 +45,21 @@ AIActionTable_LegendaryRonald:
 	db $00
 
 .list_retreat
-	ai_retreat EEVEE, -2
+	ai_retreat SCYTHER, -2
 	db $00
 
 .list_energy
-	ai_energy FLAREON_LV22,   3, +0
-	ai_energy MOLTRES_LV37,   3, +0
-	ai_energy VAPOREON_LV29,  3, +0
-	ai_energy ARTICUNO_LV37,  0, -8
-	ai_energy JOLTEON_LV24,   4, +0
-	ai_energy ZAPDOS_LV68,    0, -8
-	ai_energy KANGASKHAN,     4, -1
-	ai_energy EEVEE,          3, +0
-	ai_energy DRATINI,        3, +0
-	ai_energy DRAGONAIR,      4, +0
-	ai_energy DRAGONITE_LV41, 3, +0
+	ai_energy SCYTHER,          3, -1
+	ai_energy MOLTRES_LV37,     3, +0
+	ai_energy LAPRAS,           3, +0
+	ai_energy ARTICUNO_LV37,    0, -8
+	ai_energy ELECTABUZZ_LV35,  2, +1
+	ai_energy ZAPDOS_LV68,      0, -8
+	ai_energy KANGASKHAN,       4, -1
+	ai_energy MAGMAR_LV31,      2, +1
+	ai_energy DRATINI,          2, +0
+	ai_energy DRAGONAIR,        4, +0
+	ai_energy DRAGONITE_LV41,   4, +0
 	db $00
 
 .list_prize

@@ -16,8 +16,8 @@ AIActionTable_LegendaryMoltres:
 
 .list_arena
 	db MAGMAR_LV31
-	db GROWLITHE
 	db VULPIX
+	db JIGGLYPUFF_LV14
 	db MAGMAR_LV24
 	db MOLTRES_LV35
 	db MOLTRES_LV37
@@ -29,13 +29,14 @@ AIActionTable_LegendaryMoltres:
 	db GROWLITHE
 	db MAGMAR_LV31
 	db MAGMAR_LV24
+	db JIGGLYPUFF_LV14
 	db $00
 
 .list_play_hand
 	db MOLTRES_LV37
 	db MOLTRES_LV35
 	db VULPIX
-	db GROWLITHE
+	db JIGGLYPUFF_LV14
 	db MAGMAR_LV31
 	db MAGMAR_LV24
 	db $00
@@ -48,12 +49,12 @@ AIActionTable_LegendaryMoltres:
 .list_energy
 	ai_energy VULPIX,         3, +0
 	ai_energy NINETALES_LV35, 3, +1
-	ai_energy GROWLITHE,      3, +1
-	ai_energy ARCANINE_LV45,  4, +1
-	ai_energy MAGMAR_LV24,    4, -1
-	ai_energy MAGMAR_LV31,    1, -1
+	ai_energy JIGGLYPUFF_LV14,  3, +0
+	ai_energy WIGGLYTUFF,  3, +2
+	ai_energy MAGMAR_LV24,    3, +0
+	ai_energy MAGMAR_LV31,    1, +0
 	ai_energy MOLTRES_LV37,   3, +2
-	ai_energy MOLTRES_LV35,   4, +2
+	ai_energy MOLTRES_LV35,   3, +1
 	db $00
 
 .list_prize

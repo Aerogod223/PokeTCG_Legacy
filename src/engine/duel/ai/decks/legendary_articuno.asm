@@ -15,35 +15,33 @@ AIActionTable_LegendaryArticuno:
 	jp AIPlayInitialBasicCards
 
 .list_arena
-	db CHANSEY
+	db LICKITUNG
 	db LAPRAS
-	db DITTO
-	db SEEL
+	db CLEFAIRY
 	db ARTICUNO_LV35
 	db ARTICUNO_LV37
 	db $00
 
 .list_bench
 	db ARTICUNO_LV35
-	db SEEL
+	db ARTICUNO_LV37
+	db CLEFAIRY
+	db LICKITUNG
 	db LAPRAS
-	db CHANSEY
-	db DITTO
 	db $00
 
 .list_retreat
-	ai_retreat SEEL,  -3
-	ai_retreat DITTO, -3
+	ai_retreat LICKITUNG,  -3
+	ai_retreat LAPRAS, -3
 	db $00
 
 .list_energy
-	ai_energy SEEL,          3, +1
-	ai_energy DEWGONG,       4, +0
+	ai_energy CLEFAIRY,      3, +0
+	ai_energy CLEFABLE,      2, +1
 	ai_energy LAPRAS,        3, +0
 	ai_energy ARTICUNO_LV35, 4, +1
 	ai_energy ARTICUNO_LV37, 3, +0
-	ai_energy CHANSEY,       0, -8
-	ai_energy DITTO,         3, +0
+	ai_energy LICKITUNG,     2, +2
 	db $00
 
 .list_prize
@@ -85,7 +83,7 @@ ScoreLegendaryArticunoCards:
 	ld a, ARTICUNO_LV35
 	call CheckForSetUpBenchPokemonWithThisID
 	jr c, .lapras
-	ld a, DEWGONG
+	ld a, CLEFABLE
 	call CheckForSetUpBenchPokemonWithThisID
 	jr c, .lapras
 	jr .articuno
@@ -111,24 +109,24 @@ ScoreLegendaryArticunoCards:
 	ld a, ARTICUNO_LV35
 	ld b, PLAY_AREA_BENCH_1
 	call LookForCardIDInPlayArea_Bank5
-	jr nc, .dewgong
+	jr nc, .clefable
 	ld a, ARTICUNO_LV35
 	jp RaiseAIScoreToAllMatchingIDsInBench
 
-.dewgong
-	ld a, DEWGONG
+.clefable
+	ld a, CLEFABLE
 	ld b, PLAY_AREA_BENCH_1
 	call LookForCardIDInPlayArea_Bank5
-	jr nc, .seel
-	ld a, DEWGONG
+	jr nc, .clefairy
+	ld a, CLEFABLE
 	jp RaiseAIScoreToAllMatchingIDsInBench
 
-.seel
-	ld a, SEEL
+.clefairy
+	ld a, CLEFAIRY
 	ld b, PLAY_AREA_BENCH_1
 	call LookForCardIDInPlayArea_Bank5
 	ret nc
-	ld a, SEEL
+	ld a, CLEFAIRY
 	jp RaiseAIScoreToAllMatchingIDsInBench
 
 

@@ -815,7 +815,7 @@ ArbokCard:
 	tx ToxicName ; name
 	tx ToxicDescription ; description
 	dw NONE ; description (cont)
-	db 20 ; damage
+	db 10 ; damage
 	db DAMAGE_NORMAL ; category
 	dw ToxicEffectCommands ; effect commands
 	db INFLICT_POISON ; flags 1
@@ -1811,7 +1811,7 @@ MukCard:
 	db ATK_ANIM_PKMN_POWER_1 ; animation
 
 	; attack 2
-	energy GRASS, 3 ; energies
+	energy GRASS, 2 ; energies
 	tx SludgeName ; name
 	tx MayInflictPoisonDescription ; description
 	dw NONE ; description (cont)
@@ -2492,7 +2492,7 @@ NinetalesLv35Card:
 	db STAR ; rarity
 	db LABORATORY | GB ; sets
 	db NINETALES_LV35
-	db 80 ; hp
+	db 70 ; hp
 	db STAGE1 ; stage
 	tx VulpixName ; pre-evo name
 
@@ -2515,7 +2515,7 @@ NinetalesLv35Card:
 	tx MysticFireName ; name
 	tx EnergySpikeDescription ; description
 	dw NONE ; description (cont)
-	db 10 ; damage
+	db 0 ; damage
 	db RESIDUAL ; category
 	dw EnergySpikeEffectCommands ; effect commands
 	db NONE ; flags 1
@@ -2524,7 +2524,7 @@ NinetalesLv35Card:
 	db 0
 	db ATK_ANIM_GLOW_EFFECT ; animation
 
-	db 1 ; retreat cost
+	db 2 ; retreat cost
 	db WR_WATER ; weakness
 	db NONE ; resistance
 	tx FoxName ; category
@@ -5271,7 +5271,7 @@ MagnetonLv35Card:
 	db HIGH_RECOIL ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
-	db 110 ; amount of recoil damage (used to determine the HIGH_RECOIL attack score penalty)
+	db 100 ; amount of recoil damage (used to determine the HIGH_RECOIL attack score penalty)
 	db ATK_ANIM_BIG_SELFDESTRUCTION ; animation
 
 	db 2 ; retreat cost
@@ -5374,7 +5374,7 @@ ElectrodeLv35Card:
 	db 0
 	db ATK_ANIM_GLOW_EFFECT ; animation
 
-	db 1 ; retreat cost
+	db 2 ; retreat cost
 	db WR_FIGHTING ; weakness
 	db NONE ; resistance
 	tx BallName ; category
@@ -6342,7 +6342,7 @@ GolemCard:
 	db DIAMOND ; rarity
 	db EVOLUTION | FOSSIL ; sets
 	db GOLEM
-	db 110 ; hp
+	db 100 ; hp
 	db STAGE2 ; stage
 	tx GravelerName ; pre-evo name
 
@@ -6365,13 +6365,13 @@ GolemCard:
 	tx SelfdestructName ; name
 	tx GolemsSelfdestructDescription ; description
 	dw NONE ; description (cont)
-	db 110 ; damage
+	db 100 ; damage
 	db DAMAGE_NORMAL ; category
 	dw Selfdestruct110And20EffectCommands ; effect commands
 	db HIGH_RECOIL ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
-	db 110 ; amount of recoil damage (used to determine the HIGH_RECOIL attack score penalty)
+	db 100 ; amount of recoil damage (used to determine the HIGH_RECOIL attack score penalty)
 	db ATK_ANIM_BIG_SELFDESTRUCTION ; animation
 
 	db 4 ; retreat cost
@@ -7474,7 +7474,7 @@ GengarCard:
 	db 1 ; attack score bonus for ENCOURAGE_THIS_ATTACK
 	db ATK_ANIM_DARK_MIND ; animation
 
-	db 1 ; retreat cost
+	db 3 ; retreat cost
 	db NONE ; weakness
 	db WR_COLORLESS ; resistance
 	tx ShadowName ; category
@@ -9092,7 +9092,7 @@ KangaskhanCard:
 	db STAR ; rarity
 	db COLOSSEUM | JUNGLE ; sets
 	db KANGASKHAN
-	db 90 ; hp
+	db 80 ; hp
 	db BASIC ; stage
 	dw NONE ; pre-evo name
 
@@ -9342,7 +9342,7 @@ SnorlaxCard:
 	db STAR ; rarity
 	db COLOSSEUM | JUNGLE ; sets
 	db SNORLAX
-	db 100 ; hp
+	db 90 ; hp
 	db BASIC ; stage
 	dw NONE ; pre-evo name
 
@@ -9365,7 +9365,7 @@ SnorlaxCard:
 	tx BodySlamName ; name
 	tx MayInflictParalysisDescription ; description
 	dw NONE ; description (cont)
-	db 40 ; damage
+	db 30 ; damage
 	db DAMAGE_NORMAL ; category
 	dw MayInflictParalysisEffectCommands ; effect commands
 	db INFLICT_PARALYSIS ; flags 1
@@ -9561,11 +9561,11 @@ DragoniteLv45Card:
 	db ATK_ANIM_GLOW_EFFECT ; animation
 
 	; attack 2
-	energy COLORLESS, 4 ; energies
+	energy COLORLESS, 3 ; energies
 	tx SlamName ; name
 	tx DoubleAttackX40Description ; description
 	dw NONE ; description (cont)
-	db 60 ; damage
+	db 50 ; damage
 	db DAMAGE_X ; category
 	dw Flip2For40EffectCommands ; effect commands
 	db NONE ; flags 1

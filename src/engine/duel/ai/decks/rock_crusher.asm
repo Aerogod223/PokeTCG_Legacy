@@ -15,31 +15,35 @@ AIActionTable_RockCrusher:
 	jp AIPlayInitialBasicCards
 
 .list_arena
-	db RHYHORN
+	db LICKITUNG
 	db ONIX
-	db GEODUDE
-	db DIGLETT
+	db TAUROS
+	db SNORLAX
+	db RHYHORN
+	db CUBONE
 	db $00
 
 .list_bench
-	db DIGLETT
-	db GEODUDE
 	db RHYHORN
+	db SNORLAX
+	db TAUROS
 	db ONIX
+	db LICKITUNG
+	db CUBONE
 	db $00
 
 .list_retreat
-	ai_retreat DIGLETT, -1
+	ai_retreat CUBONE, -1
 	db $00
 
 .list_energy
-	ai_energy DIGLETT,  3, +1
-	ai_energy DUGTRIO,  4, +0
-	ai_energy GEODUDE,  2, +1
-	ai_energy GRAVELER, 3, +0
-	ai_energy GOLEM,    4, +0
-	ai_energy ONIX,     2, -1
-	ai_energy RHYHORN,  3, +0
+	ai_energy SNORLAX,  3, +0
+	ai_energy ONIX,     2, +2
+	ai_energy TAUROS,   3, +0
+	ai_energy AERODACTYL, 3, -1
+	ai_energy LICKITUNG,    2, +1
+	ai_energy RHYHORN,     2, +0
+	ai_energy CUBONE,      3, -1
 	db $00
 
 .list_prize
