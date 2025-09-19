@@ -212,10 +212,6 @@ UsedText:
 	text " Used <RAMTEXT>."
 	done
 
-UnusedText0034: ; Unused
-	text "Received damage"
-	done
-
 PokemonsAttackText:
 	text "<RAMTEXT>'s"
 	line ""
@@ -230,10 +226,6 @@ ResistanceLessDamageText:
 WeaknessMoreDamageText:
 	text "<RAMTEXT> took <RAMNUM> damage"
 	line "because of its Weakness!"
-	done
-
-UnusedText0038: ; Unused
-	text "????"
 	done
 
 ResistanceNoDamageText:
@@ -582,26 +574,15 @@ HavePokemonPowerText:
 	line "a Pokémon Power."
 	done
 
-UnusedText0083: ; Unused
-	text "????"
-	done
-
 PlayCheckText:
 	text "  Play"
 	line "  Check"
 	done
 
-UnusedText0085: ; Unused
-	text "????"
-	done
 
 SelectCheckText:
 	text "  Select"
 	line "  Check"
-	done
-
-UnusedText0087: ; Unused
-	textfw "B<RAMNUM>S<RAMNUM>"
 	done
 
 DuelistIsThinkingText:
@@ -620,140 +601,13 @@ NumberOfPrizesText:
 	text "Number of Prizes"
 	done
 
-UnusedText008c: ; Unused
-	text "Random 1"
-	done
-
-UnusedText008d: ; Unused
-	text "Random 2"
-	done
-
-UnusedText008e: ; Unused
-	text "Random 3"
-	done
-
-UnusedText008f: ; Unused
-	text "Random 4"
-	done
-
-UnusedText0090: ; Unused
-	text "Training COM"
-	done
-
-UnusedText0091: ; Unused
-	text "Player 1"
-	done
 
 Player2Text:
 	text "Player 2"
 	done
 
-UnusedText0093: ; Unused
-	text "Left to Right"
-	done
 
-UnusedText0094: ; Unused
-	text "Right to Left"
-	done
 
-UnusedText0095: ; Unused
-	text "START: Change"
-	line "    A: Execute"
-	line "    B: End"
-	done
-
-UnusedText0096: ; Unused
-	text "Other"
-	line "Poison"
-	line "Sleep"
-	line "Payalysis"
-	line "Confusion"
-	line "Double Poison"
-	line "Clear"
-	line "Foul Gas"
-	line "Opponent's Hand"
-	line "Discard from Hand"
-	line "Select Deck"
-	line "Select Discard"
-	line "From Hand to Deck"
-	line "Take Prize"
-	line "Change Player"
-	line "Shuffle Deck"
-	line "Discard Bench"
-	line "Change Card"
-	done
-
-UnusedText0097: ; Unused
-	text "WIN GAME"
-	line "LOSE GAME"
-	line "DRAW GAME"
-	line "CHANGE CASE"
-	line "PAUSE MODE"
-	line "CHANGE COMPUTER OPPONENT"
-	line "CHANGE PLAYER 2 TO COM"
-	line "FLIP 20"
-	line "SAVE NOW"
-	line "LOAD FILE"
-	done
-
-UnusedText0098: ; Unused
-	text "Save File"
-	done
-
-UnusedText0099: ; Unused
-	text "Load File"
-	line "  "
-	half2full
-	textfw "0"
-	text "  Last Saved File"
-	done
-
-UnusedText009a: ; Unused
-	text "Pause Mode is ON"
-	line "Press SELECT to Pause"
-	done
-
-UnusedText009b: ; Unused
-	text "Pause Mode is OFF"
-	done
-
-UnusedText009c: ; Unused
-	text "Computer Mode is OFF"
-	done
-
-UnusedText009d: ; Unused
-	text "Computer Mode is ON"
-	done
-
-UnusedText009e: ; Unused
-	text "<GRASS> Pokémon"
-	line ""
-	text "<FIRE> Pokémon"
-	line ""
-	text "<WATER> Pokémon"
-	line ""
-	text "<LIGHTNING> Pokémon"
-	line ""
-	text "<FIGHTING> Pokémon"
-	line ""
-	text "<PSYCHIC> Pokémon"
-	line ""
-	text "<COLORLESS> Pokémon"
-	line "Trainer Card"
-	line "Energy Card"
-	done
-
-UnusedText009f: ; Unused
-	text "Card List"
-	done
-
-UnusedText00a0: ; Unused
-	text "Test Coin Flip"
-	done
-
-UnusedText00a1: ; Unused
-	text "End without Prizes?"
-	done
 
 ResetBackUpRamText:
 	text "Reset Back Up RAM?"
@@ -909,6 +763,14 @@ NotEnoughFireEnergyText:
 
 NotEnoughPsychicEnergyText:
 	text " Not enough <PSYCHIC> Energy."
+	done
+
+NotEnoughFightingEnergyText:
+	text " Not enough <FIGHTING> Energy."
+	done
+
+NotEnoughLightningEnergyText:
+	text " Not enough <LIGHTNING> Energy."
 	done
 
 NotEnoughWaterEnergyText:
@@ -1351,6 +1213,10 @@ UnusedText011e: ; Unused
 
 ChooseAndDiscard2FireEnergyCardsText:
 	text "Discard 2 <FIRE> Energy."
+	done
+
+ChooseAndDiscard2FightingEnergyCardsText:
+	text "Discard 2 <FIGHTING> Energy."
 	done
 
 DiscardOppDeckAsManyFireEnergyCardsText:
@@ -1883,6 +1749,48 @@ ThereWasNoEffectFromPoisonConfusionText:
 
 RearrangedCardsInDuelistsDeckText:
 	text "<RAMNAME>'s deck was rearranged."
+	done
+
+GrowingPainsName:
+AmnesiaBlastName:
+SinisterShadowName:
+CreepyCorridorName:
+SuperConductorName:
+MagnetBombName:
+BlazingSpeedName:
+FlameChargeName:
+WorkUpName:
+RageFistName:
+PrimalPresenceName:
+RockSlideName:
+CrystalTypeName:
+StarBlastName:
+AftermathName:
+RevoltingGasName:
+NailFlickName:
+CharizardFireBlastName:
+BlastoiseBubblebeamName:
+HydroCannonName:
+GrowingPainsDescription:
+AmnesiaBlastDescription:
+SinisterShadowDescription:
+CreepyCorridorDescription:
+SuperConductorDescription:
+MagnetBombDescription:
+BlazingSpeedDescription:
+FlameChargeDescription:
+WorkUpDescription:
+RageFistDescription:
+PrimalPresenceDescription:
+RockSlideDescription:
+CrystalTypeDescription:
+StarBlastDescription:
+AftermathDescription:
+RevoltingGasDescription:
+CharizardFireBlastDescription:
+BubblebeamDescription:
+HydroCannonDescription:
+	text "Test Text."
 	done
 
 ;	ds $d

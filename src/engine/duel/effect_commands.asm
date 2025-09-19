@@ -1159,3 +1159,116 @@ PsychicEnergyEffectCommands:
 
 DoubleColorlessEnergyEffectCommands:
 	db  $00
+
+;--------------------------------------------------------------------------------------------------------------
+; NEW CARD EFFECT COMMANDS START HERE.
+;--------------------------------------------------------------------------------------------------------------
+
+GrowingPainsEffectCommands:
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_2, OncePerTurnPokePowerCheck
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, DamageSwapCheck
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, AddCardFromDeckToHandEffect
+	dbw EFFECTCMDTYPE_AFTER_DAMAGE, Recoil20Effect
+	db  $00
+
+AmnesiaBlastEffectCommands:
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, AmnesiaBlastEffect
+	dbw EFFECTCMDTYPE_AI, AmnesiaBlastEffect
+	db  $00
+
+SinisterShadowEffectCommands:
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, SetCarryEF ; passive pokemon power
+	db  $00
+
+CreepyCorridorEffectCommands:
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, PoisonEffect
+	dbw EFFECTCMDTYPE_AI, InflictPoison_AIEffect
+	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, AlsoDamageTo1Benched_PlayerSelection
+	dbw EFFECTCMDTYPE_AI_SELECTION, AlsoChooseWeakestBenchedPokemon_AISelection
+	dbw EFFECTCMDTYPE_AFTER_DAMAGE, Also10DamageTo1Benched_DamageEffect
+	db  $00
+
+SuperConductorEffectCommands:
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, SuperConductor_DiscardPileAndEnergyCheck
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_2, DiscardAttachedLightningEnergy_PlayerSelection
+	dbw EFFECTCMDTYPE_DISCARD_ENERGY, CardDiscardEffect
+	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, SuperConductor_TrainerPlayerSelection
+	dbw EFFECTCMDTYPE_AI_SELECTION, SuperConductor_AISelection
+	dbw EFFECTCMDTYPE_AFTER_DAMAGE, SuperConductor_MoveToHandEffect
+	db  $00
+
+MagnetBombEffectCommands:
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, DiscardAttachedLightningEnergy_AISelection
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_2, DiscardAttachedLightningEnergy_PlayerSelection
+	dbw EFFECTCMDTYPE_DISCARD_ENERGY, CardDiscardEffect
+	db  $00
+
+BlazingSpeedEffectCommands:
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_2, StepInCheck
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, StepIn_SwitchEffect
+	dbw EFFECTCMDTYPE_AFTER_DAMAGE, Recoil20Effect
+	db  $00
+
+WorkUpEffectCommands:
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, DeckCheck
+	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, TrainerSearch_PlayerSelection
+	dbw EFFECTCMDTYPE_AI_SELECTION, TrainerSearch_AISelection
+	dbw EFFECTCMDTYPE_AFTER_DAMAGE, AddCardFromDeckToHandEffect
+	dbw EFFECTCMDTYPE_AFTER_DAMAGE, Recoil20Effect
+	db  $00
+
+RageFistEffectCommands:
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, ActivePokemon_DoubleFightingEnergyCheck
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_2, Discard2AttachedFightingEnergy_PlayerSelection
+	dbw EFFECTCMDTYPE_AI_SELECTION, Discard2AttachedFightingEnergy_AISelection
+	dbw EFFECTCMDTYPE_DISCARD_ENERGY, Discard2AttachedEnergyCards_DiscardEffect
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, Rage_DamageBoostEffect
+	dbw EFFECTCMDTYPE_AI, Rage_DamageBoostEffect
+	db  $00
+
+PrimalPresenceEffectCommands:
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, SetCarryEF ; passive pokemon power
+	db  $00
+
+RockSlideEffectCommands:
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, RockSlideEffect
+	dbw EFFECTCMDTYPE_AI, RockSlide_AIEffect
+	db  $00
+
+CrystalTypeEffectCommands:
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_2, OncePerTurnPokePowerCheck
+	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, Shift_PlayerSelection
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, Shift_ChangeColorEffect
+	db  $00
+
+StarBlastEffectCommands:
+	dbw EFFECTCMDTYPE_PKMN_POWER_TRIGGER, StarBlast_Paralysis50PercentEffect
+	db  $00
+
+AftermathEffectCommands:
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, ActivePokemon_PsychicEnergyCheck
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_2, DiscardAttachedPsychicEnergy_PlayerSelection
+	dbw EFFECTCMDTYPE_AI_SELECTION, DiscardAttachedPsychicEnergy_AISelection
+	dbw EFFECTCMDTYPE_DISCARD_ENERGY, CardDiscardEffect
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, DestinyBondEffect
+	db  $00
+
+RevoltingGasEffectCommands:
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, PoisonOrConfusionEffect
+	dbw EFFECTCMDTYPE_AI, InflictPoison_AIEffect
+	db  $00
+
+FireBlastEffectCommands:
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, FireBlastDamageEffect
+	dbw EFFECTCMDTYPE_AI, FireBlastDamageEffect
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_2, DiscardAllAttachedFireEnergyEffect
+	db  $00
+
+BubblebeamEffectCommands:
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, Paralysis50PercentEffect
+	db  $00
+
+HydroCannonEffectCommands:
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, Flip4For20_MultiplierEffect
+	dbw EFFECTCMDTYPE_AI, FlipFor80_AIEffect
+	db  $00

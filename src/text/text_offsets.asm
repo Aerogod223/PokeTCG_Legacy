@@ -53,11 +53,9 @@ TextOffsets::
 	textpointer DiscardName                                        ; 0x0031
 	textpointer NumberSymbolText                                   ; 0x0032
 	textpointer UsedText                                           ; 0x0033
-	textpointer UnusedText0034                                     ; 0x0034
 	textpointer PokemonsAttackText                                 ; 0x0035
 	textpointer ResistanceLessDamageText                           ; 0x0036
 	textpointer WeaknessMoreDamageText                             ; 0x0037
-	textpointer UnusedText0038                                     ; 0x0038
 	textpointer ResistanceNoDamageText                             ; 0x0039
 	textpointer AttackDamageText                                   ; 0x003a
 	textpointer NoDamageText                                       ; 0x003b
@@ -132,37 +130,13 @@ TextOffsets::
 	textpointer ThereAreNoPokemonInPlayAreaText                    ; 0x0080
 	textpointer WasKnockedOutText                                  ; 0x0081
 	textpointer HavePokemonPowerText                               ; 0x0082
-	textpointer UnusedText0083                                     ; 0x0083
 	textpointer PlayCheckText                                      ; 0x0084
-	textpointer UnusedText0085                                     ; 0x0085
 	textpointer SelectCheckText                                    ; 0x0086
-	textpointer UnusedText0087                                     ; 0x0087
 	textpointer DuelistIsThinkingText                              ; 0x0088
 	textpointer ClearOpponentNameText                              ; 0x0089
 	textpointer SelectComputerOpponentText                         ; 0x008a
 	textpointer NumberOfPrizesText                                 ; 0x008b
-	textpointer UnusedText008c                                     ; 0x008c
-	textpointer UnusedText008d                                     ; 0x008d
-	textpointer UnusedText008e                                     ; 0x008e
-	textpointer UnusedText008f                                     ; 0x008f
-	textpointer UnusedText0090                                     ; 0x0090
-	textpointer UnusedText0091                                     ; 0x0091
 	textpointer Player2Text                                        ; 0x0092
-	textpointer UnusedText0093                                     ; 0x0093
-	textpointer UnusedText0094                                     ; 0x0094
-	textpointer UnusedText0095                                     ; 0x0095
-	textpointer UnusedText0096                                     ; 0x0096
-	textpointer UnusedText0097                                     ; 0x0097
-	textpointer UnusedText0098                                     ; 0x0098
-	textpointer UnusedText0099                                     ; 0x0099
-	textpointer UnusedText009a                                     ; 0x009a
-	textpointer UnusedText009b                                     ; 0x009b
-	textpointer UnusedText009c                                     ; 0x009c
-	textpointer UnusedText009d                                     ; 0x009d
-	textpointer UnusedText009e                                     ; 0x009e
-	textpointer UnusedText009f                                     ; 0x009f
-	textpointer UnusedText00a0                                     ; 0x00a0
-	textpointer UnusedText00a1                                     ; 0x00a1
 	textpointer ResetBackUpRamText                                 ; 0x00a2
 	textpointer YourDataWasDestroyedSomehowText                    ; 0x00a3
 	textpointer NoCardsInHandText                                  ; 0x00a4
@@ -3006,4 +2980,45 @@ TextOffsets::
 	textpointer Draw2CardsText                                     ; 0x0bba
 	textpointer GrowthName
 	textpointer MysticFireName
-
+	textpointer GrowingPainsName
+	textpointer AmnesiaBlastName
+	textpointer SinisterShadowName
+	textpointer CreepyCorridorName
+	textpointer SuperConductorName
+	textpointer MagnetBombName
+	textpointer BlazingSpeedName
+	textpointer FlameChargeName
+	textpointer WorkUpName
+	textpointer RageFistName
+	textpointer PrimalPresenceName
+	textpointer RockSlideName
+	textpointer CrystalTypeName
+	textpointer StarBlastName
+	textpointer AftermathName
+	textpointer RevoltingGasName
+	textpointer NailFlickName
+	textpointer CharizardFireBlastName
+	textpointer BlastoiseBubblebeamName
+	textpointer HydroCannonName
+	textpointer GrowingPainsDescription
+	textpointer AmnesiaBlastDescription
+	textpointer SinisterShadowDescription
+	textpointer CreepyCorridorDescription
+	textpointer SuperConductorDescription
+	textpointer MagnetBombDescription
+	textpointer BlazingSpeedDescription
+	textpointer FlameChargeDescription
+	textpointer WorkUpDescription
+	textpointer RageFistDescription
+	textpointer PrimalPresenceDescription
+	textpointer RockSlideDescription
+	textpointer CrystalTypeDescription
+	textpointer StarBlastDescription
+	textpointer AftermathDescription
+	textpointer RevoltingGasDescription
+	textpointer CharizardFireBlastDescription
+	textpointer BubblebeamDescription
+	textpointer HydroCannonDescription
+	textpointer ChooseAndDiscard2FightingEnergyCardsText
+	textpointer NotEnoughLightningEnergyText
+	textpointer NotEnoughFightingEnergyText

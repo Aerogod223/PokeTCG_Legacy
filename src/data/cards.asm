@@ -10059,34 +10059,34 @@ NickExeggutorCard:
 	tx ExeggcuteName ; pre-evo name
 
 	; attack 1
-	energy PSYCHIC, 1 ; energies
-	tx TeleportName ; name
-	tx TeleportDescription ; description
+	energy 0 ; energies
+	tx GrowingPainsName ; name
+	tx GrowingPainsDescription ; description
 	dw NONE ; description (cont)
 	db 0 ; damage
-	db RESIDUAL ; category
-	dw SwitchAfterAttackEffectCommands ; effect commands
+	db POKEMON_POWER ; category
+	dw GrowingPainsEffectCommands ; effect commands
 	db NONE ; flags 1
 	db NONE ; flags 2
-	db SPECIAL_AI_HANDLING ; flags 3
+	db NONE ; flags 3
 	db 0
 	db ATK_ANIM_GLOW_EFFECT ; animation
 
 	; attack 2
-	energy COLORLESS, 1 ; energies
-	tx BigEggsplosionName ; name
-	tx BigEggsplosionDescription ; description
+	energy GRASS, 2, COLORLESS, 1 ; energies
+	tx AmnesiaBlastName ; name
+	tx AmnesiaBlastDescription ; description
 	dw NONE ; description (cont)
 	db 20 ; damage
-	db DAMAGE_X ; category
-	dw BigEggsplosionEffectCommands ; effect commands
+	db DAMAGE_NORMAL ; category
+	dw AmnesiaBlastEffectCommands ; effect commands
 	db NONE ; flags 1
-	db ATTACHED_ENERGY_BOOST ; flags 2
+	db NONE ; flags 2
 	db NONE ; flags 3
-	db MAX_ENERGY_BOOST_IS_NOT_LIMITED
+	db 0
 	db ATK_ANIM_BIG_HIT ; animation
 
-	db 3 ; retreat cost
+	db 1 ; retreat cost
 	db WR_FIRE ; weakness
 	db WR_FIGHTING ; resistance
 	tx CoconutName ; category
@@ -10110,12 +10110,12 @@ RickGengarCard:
 
 	; attack 1
 	energy 0 ; energies
-	tx CurseName ; name
-	tx CurseDescription ; description
+	tx SinisterShadowName ; name
+	tx SinisterShadowDescription ; description
 	dw NONE ; description (cont)
 	db 0 ; damage
 	db POKEMON_POWER ; category
-	dw GengarCurseEffectCommands ; effect commands
+	dw SinisterShadowEffectCommands ; effect commands
 	db NONE ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
@@ -10123,17 +10123,17 @@ RickGengarCard:
 	db ATK_ANIM_PKMN_POWER_1 ; animation
 
 	; attack 2
-	energy PSYCHIC, 2 ; energies
+	energy GRASS, 2 ; energies
 	tx DarkMindName ; name
 	tx DarkMindDescription ; description
 	dw NONE ; description (cont)
 	db 30 ; damage
 	db DAMAGE_NORMAL ; category
-	dw Also10DamageTo1BenchedEffectCommands ; effect commands
-	db DAMAGE_TO_OPPONENT_BENCH ; flags 1
-	db ENCOURAGE_THIS_ATTACK ; flags 2
+	dw CreepyCorridorEffectCommands ; effect commands
+	db NONE ; flags 1
+	db NONE ; flags 2
 	db NONE ; flags 3
-	db 1 ; attack score bonus for ENCOURAGE_THIS_ATTACK
+	db 0
 	db ATK_ANIM_DARK_MIND ; animation
 
 	db 1 ; retreat cost
@@ -10159,13 +10159,13 @@ IssacMagnetonCard:
 	tx MagnemiteName ; pre-evo name
 
 	; attack 1
-	energy LIGHTNING, 1, COLORLESS, 1 ; energies
-	tx SonicboomName ; name
-	tx SonicboomDescription ; description
+	energy 0; energies
+	tx SuperConductorName ; name
+	tx SuperConductorDescription ; description
 	dw NONE ; description (cont)
-	db 20 ; damage
-	db DAMAGE_NORMAL ; category
-	dw DamageUnaffectedByColorEffectCommands ; effect commands
+	db 0 ; damage
+	db POKEMON_POWER ; category
+	dw SuperConductorEffectCommands ; effect commands
 	db NONE ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
@@ -10173,17 +10173,17 @@ IssacMagnetonCard:
 	db ATK_ANIM_SONICBOOM ; animation
 
 	; attack 2
-	energy LIGHTNING, 3 ; energies
-	tx SelfdestructName ; name
-	tx MagnetonLv35sSelfdestructDescription ; description
+	energy LIGHTNING, 2 ; energies
+	tx MagnetBombName ; name
+	tx MagnetBombDescription ; description
 	dw NONE ; description (cont)
-	db 100 ; damage
+	db 40 ; damage
 	db DAMAGE_NORMAL ; category
-	dw Selfdestruct110And20EffectCommands ; effect commands
-	db HIGH_RECOIL ; flags 1
+	dw MagnetBombEffectCommands ; effect commands
+	db NONE ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
-	db 110 ; amount of recoil damage (used to determine the HIGH_RECOIL attack score penalty)
+	db 0
 	db ATK_ANIM_BIG_SELFDESTRUCTION ; animation
 
 	db 2 ; retreat cost
@@ -10209,13 +10209,13 @@ KenRapidashCard:
 	tx PonytaName ; pre-evo name
 
 	; attack 1
-	energy COLORLESS, 2 ; energies
-	tx StompName ; name
-	tx StompDescription ; description
+	energy 0 ; energies
+	tx BlazingSpeedName ; name
+	tx BlazingSpeedDescription ; description
 	dw NONE ; description (cont)
 	db 20 ; damage
-	db DAMAGE_PLUS ; category
-	dw FlipForPlus10Base20EffectCommands ; effect commands
+	db POKEMON_POWER ; category
+	dw BlazingSpeedEffectCommands ; effect commands
 	db NONE ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
@@ -10223,15 +10223,15 @@ KenRapidashCard:
 	db ATK_ANIM_HIT ; animation
 
 	; attack 2
-	energy FIRE, 2, COLORLESS, 1 ; energies
-	tx AgilityName ; name
-	tx RapidashsAgilityDescription ; description
+	energy FIRE, 2 ; energies
+	tx FlameChargeName ; name
+	tx FlameChargeDescription ; description
 	dw NONE ; description (cont)
 	db 30 ; damage
 	db DAMAGE_NORMAL ; category
-	dw AgilityEffectCommands ; effect commands
+	dw Recoil20EffectCommands ; effect commands
 	db NONE ; flags 1
-	db NULLIFY_OR_WEAKEN_ATTACK ; flags 2
+	db NONE ; flags 2
 	db NONE ; flags 3
 	db 0
 	db ATK_ANIM_QUICK_ATTACK ; animation
@@ -10259,13 +10259,13 @@ MitchPrimeapeCard:
 	tx MankeyName ; pre-evo name
 
 	; attack 1
-	energy COLORLESS, 2 ; energies
-	tx FurySwipesName ; name
-	tx TripleAttackX20Description ; description
+	energy 0 ; energies
+	tx WorkUpName ; name
+	tx WorkUpDescription ; description
 	dw NONE ; description (cont)
-	db 20 ; damage
-	db DAMAGE_X ; category
-	dw Flip3For20EffectCommands ; effect commands
+	db 0 ; damage
+	db POKEMON_POWER ; category
+	dw WorkUpEffectCommands ; effect commands
 	db NONE ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
@@ -10274,16 +10274,16 @@ MitchPrimeapeCard:
 
 	; attack 2
 	energy FIGHTING, 2, ; energies
-	tx TantrumName ; name
-	tx TantrumDescription ; description
+	tx RageFistName ; name
+	tx RageFistDescription ; description
 	dw NONE ; description (cont)
-	db 50 ; damage
-	db DAMAGE_NORMAL ; category
-	dw MayConfuseSelfEffectCommands ; effect commands
+	db 40 ; damage
+	db DAMAGE_PLUS ; category
+	dw RageFistEffectCommands ; effect commands
 	db NONE ; flags 1
-	db DISCOURAGE_THIS_ATTACK ; flags 2
-	db NONE ; flags 3
-	db 1 ; attack score penalty for DISCOURAGE_THIS_ATTACK
+	db DISCARD_ENERGY ; flags 2
+	db BOOST_IF_TAKEN_DAMAGE ; flags 3
+	db 6 ; attack score penalty for DISCARD_ENERGY
 	db ATK_ANIM_RAMPAGE ; animation
 
 	db 2 ; retreat cost
@@ -10310,12 +10310,12 @@ GeneAerodactylCard:
 
 	; attack 1
 	energy 0 ; energies
-	tx PrehistoricPowerName ; name
-	tx PrehistoricPowerDescription ; description
+	tx PrimalPresenceName ; name
+	tx PrimalPresenceDescription ; description
 	dw NONE ; description (cont)
 	db 0 ; damage
 	db POKEMON_POWER ; category
-	dw AerodactylPrehistoricPowerEffectCommands ; effect commands
+	dw PrimalPresenceEffectCommands ; effect commands
 	db NONE ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
@@ -10323,13 +10323,13 @@ GeneAerodactylCard:
 	db ATK_ANIM_PKMN_POWER_1 ; animation
 
 	; attack 2
-	energy COLORLESS, 3 ; energies
-	tx WingAttackName ; name
-	dw NONE ; description
+	energy FIGHTING, 1, COLORLESS, 2 ; energies
+	tx RockSlideName ; name
+	tx RockSlideDescription ; description
 	dw NONE ; description (cont)
 	db 40 ; damage
 	db DAMAGE_NORMAL ; category
-	dw NONE ; effect commands
+	dw RockSlideEffectCommands ; effect commands
 	db NONE ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
@@ -10359,28 +10359,28 @@ AmyStarmieCard:
 	tx StaryuName ; pre-evo name
 
 	; attack 1
-	energy WATER, 2 ; energies
-	tx RecoverName ; name
-	tx StarmiesRecoverDescription ; description
+	energy 0 ; energies
+	tx CrystalTypeName ; name
+	tx CrystalTypeDescription ; description
 	dw NONE ; description (cont)
 	db 0 ; damage
-	db RESIDUAL ; category
-	dw WaterRecoverEffectCommands ; effect commands
+	db POKEMON_POWER ; category
+	dw CrystalTypeEffectCommands ; effect commands
 	db NONE ; flags 1
-	db DISCARD_ENERGY ; flags 2
+	db NONE ; flags 2
 	db NONE ; flags 3
-	db 3 ; attack score penalty for DISCARD_ENERGY
-	db ATK_ANIM_RECOVER ; animation
+	db 0
+	db ATK_ANIM_PKMN_POWER_1 ; animation
 
 	; attack 2
-	energy WATER, 1, COLORLESS, 2 ; energies
-	tx StarFreezeName ; name
-	tx MayInflictParalysisDescription ; description
+	energy WATER, 2, PSYCHIC, 2 ; energies
+	tx StarBlastName ; name
+	tx StarBlastDescription ; description
 	dw NONE ; description (cont)
 	db 30 ; damage
 	db DAMAGE_NORMAL ; category
-	dw MayInflictParalysisEffectCommands ; effect commands
-	db INFLICT_PARALYSIS ; flags 1
+	dw StarBlastEffectCommands ; effect commands
+	db NONE ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
 	db 0
@@ -10409,32 +10409,32 @@ MurrayWeezingCard:
 	tx KoffingName ; pre-evo name
 
 	; attack 1
-	energy GRASS, 2 ; energies
-	tx SmogName ; name
-	tx MayInflictPoisonDescription ; description
+	energy 0 ; energies
+	tx AftermathName ; name
+	tx AftermathDescription ; description
 	dw NONE ; description (cont)
-	db 20 ; damage
+	db 0 ; damage
+	db POKEMON_POWER ; category
+	dw AftermathEffectCommands ; effect commands
+	db NONE ; flags 1
+	db NONE ; flags 2
+	db NONE ; flags 3
+	db 0
+	db ATK_ANIM_PKMN_POWER_1 ; animation
+
+	; attack 2
+	energy GRASS, 1, COLORLESS, 1 ; energies
+	tx RevoltingGasName ; name
+	tx RevoltingGasDescription ; description
+	dw NONE ; description (cont)
+	db 10 ; damage
 	db DAMAGE_NORMAL ; category
-	dw MayInflictPoisonEffectCommands ; effect commands
-	db INFLICT_POISON ; flags 1
+	dw RevoltingGasEffectCommands ; effect commands
+	db NONE ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
 	db 0
 	db ATK_ANIM_SMOG ; animation
-
-	; attack 2
-	energy GRASS, 2, COLORLESS, 1 ; energies
-	tx SelfdestructName ; name
-	tx WeezingsSelfdestructDescription ; description
-	dw NONE ; description (cont)
-	db 60 ; damage
-	db DAMAGE_NORMAL ; category
-	dw Selfdestruct60And10EffectCommands ; effect commands
-	db HIGH_RECOIL ; flags 1
-	db NONE ; flags 2
-	db NONE ; flags 3
-	db 60 ; amount of recoil damage (used to determine the HIGH_RECOIL attack score penalty)
-	db ATK_ANIM_SELFDESTRUCT ; animation
 
 	db 1 ; retreat cost
 	db WR_PSYCHIC ; weakness
@@ -10459,13 +10459,13 @@ BossCharizardCard:
 	tx CharmeleonName ; pre-evo name
 
 	; attack 1
-	energy 0 ; energies
-	tx EnergyBurnName ; name
-	tx EnergyBurnDescription ; description
+	energy COLORLESS, 1 ; energies
+	tx NailFlickName ; name
+	dw NONE ; description
 	dw NONE ; description (cont)
-	db 0 ; damage
-	db POKEMON_POWER ; category
-	dw CharizardEnergyBurnEffectCommands ; effect commands
+	db 20 ; damage
+	db DAMAGE_NORMAL ; category
+	dw NONE ; effect commands
 	db NONE ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
@@ -10474,16 +10474,16 @@ BossCharizardCard:
 
 	; attack 2
 	energy FIRE, 3 ; energies
-	tx FireSpinName ; name
-	tx FireSpinDescription ; description
+	tx CharizardFireBlastName ; name
+	tx CharizardFireBlastDescription ; description
 	dw NONE ; description (cont)
-	db 100 ; damage
-	db DAMAGE_NORMAL ; category
-	dw Discard2AttachedEnergyCardsEffectCommands ; effect commands
+	db 30 ; damage
+	db DAMAGE_X ; category
+	dw FireBlastEffectCommands ; effect commands
 	db NONE ; flags 1
-	db DISCARD_ENERGY ; flags 2
+	db NONE ; flags 2
 	db NONE ; flags 3
-	db 6 ; attack score penalty for DISCARD_ENERGY
+	db 0 ; attack score penalty for DISCARD_ENERGY
 	db ATK_ANIM_FIRE_SPIN ; animation
 
 	db 2 ; retreat cost
@@ -10509,13 +10509,13 @@ BossBlastoiseCard:
 	tx WartortleName ; pre-evo name
 
 	; attack 1
-	energy 0 ; energies
-	tx RainDanceName ; name
-	tx RainDanceDescription ; description
-	tx RainDanceDescriptionCont ; description (cont)
-	db 0 ; damage
-	db POKEMON_POWER ; category
-	dw BlastoiseRainDanceEffectCommands ; effect commands
+	energy WATER, 2, COLORLESS, 1 ; energies
+	tx BlastoiseBubblebeamName ; name
+	tx BubblebeamDescription ; description
+	dw NONE ; description (cont)
+	db 30 ; damage
+	db DAMAGE_NORMAL ; category
+	dw BubblebeamEffectCommands ; effect commands
 	db NONE ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
@@ -10524,16 +10524,16 @@ BossBlastoiseCard:
 
 	; attack 2
 	energy WATER, 3 ; energies
-	tx HydroPumpName ; name
-	tx HydroPumpDescription ; description
+	tx HydroCannonName ; name
+	tx HydroCannonDescription ; description
 	dw NONE ; description (cont)
-	db 40 ; damage
-	db DAMAGE_PLUS ; category
-	dw WWWHydroPumpEffectCommands ; effect commands
+	db 20 ; damage
+	db DAMAGE_X ; category
+	dw HydroCannonEffectCommands ; effect commands
 	db NONE ; flags 1
-	db ATTACHED_ENERGY_BOOST ; flags 2
+	db NONE ; flags 2
 	db NONE ; flags 3
-	db MAX_ENERGY_BOOST_IS_LIMITED
+	db 0
 	db ATK_ANIM_HYDRO_PUMP ; animation
 
 	db 2 ; retreat cost

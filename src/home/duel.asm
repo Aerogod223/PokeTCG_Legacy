@@ -947,8 +947,29 @@ EvolvePokemonCard::
 	ld a, [wLoadedCard1Stage]
 	ld [hl], a
 	or a
+	call _GetCardIDFromDeckIndex
+	cp RICK_GENGAR
+	jr nz, .gengar_evolve_bench_damage
 	ret
 
+.gengar_evolve_bench_damage
+	ld a, 10
+	call DealRecoilDamageToSelf
+	rst SwapTurn
+	xor a ; FALSE
+	ld [wIsDamageToSelf], a
+	ld de, 20
+	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
+	get_turn_duelist_var
+	ld c, a
+	ld b, PLAY_AREA_ARENA
+.loop
+	inc b
+	dec c
+	ret z
+	call DealDamageToPlayAreaPokemon_RegularAnim
+	jr .loop
+	jp SwapTurn
 
 ; checks if the Pokemon at location e can evolve into the Pokemon with deck index d.
 ; also checks whether the Pokemon being evolved has been in play for a full turn
@@ -1399,6 +1420,7 @@ GetPlayAreaCardRetreatCost::
 ;	a = given Pokémon's Retreat Cost, after applying any modifiers
 GetLoadedCard1RetreatCost::
 	ld c, 0 ; Dodrio counter
+	ld d, 0 ; Aerodactyl counter
 	ld a, DUELVARS_BENCH
 	get_turn_duelist_var
 .check_bench_loop
@@ -1407,14 +1429,22 @@ GetLoadedCard1RetreatCost::
 	jr z, .no_more_bench
 	call _GetCardIDFromDeckIndex
 	cp DODRIO
-	jr nz, .check_bench_loop
+	jr nz, .aerodactyl_bench_loop
 	inc c
+.aerodactyl_bench_loop
+	call _GetCardIDFromDeckIndex
+	cp GENE_AERODACTYL
+	jr nz, .check_bench_loop
+	inc d
 	jr .check_bench_loop
 
 .no_more_bench
 	ld a, c
 	or a
 	jr nz, .dodrio_found
+	ld a, d
+	or a
+	jr nz, .aerodactyl_found
 .use_default_retreat_cost
 	ld a, [wLoadedCard1RetreatCost]
 	ret
@@ -1428,6 +1458,13 @@ GetLoadedCard1RetreatCost::
 	xor a ; set the Pokémon's Retreat Cost to 0
 	ret
 
+.aerodactyl_found
+	call CheckIfPkmnPowersAreCurrentlyDisabled
+	jr c, .use_default_retreat_cost
+	ld a, [wLoadedCard1RetreatCost]
+	rst SwapTurn
+	add c ; apply Primal Presence for each Aerodactyl on the turn holder's Bench
+	ret
 
 ; preserves bc and de
 ; input:
