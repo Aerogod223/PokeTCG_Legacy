@@ -227,4 +227,15 @@
 	const POKEMON_FLUTE               ; $e2
 	const GAMBLER                     ; $e3
 	const RECYCLE                     ; $e4
+	; new cards added here
+	const NICK_EXEGGUTOR
+	const RICK_GENGAR
+	const ISSAC_MAGNETON
+	const KEN_RAPIDASH
+	const MITCH_PRIMEAPE
+	const GENE_AERODACTYL
+	const AMY_STARMIE
+	const MURRAY_WEEZING
+	const BOSS_CHARIZARD
+	const BOSS_BLASTOISE
 DEF NUM_CARDS EQU const_value - 1
