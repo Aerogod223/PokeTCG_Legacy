@@ -947,29 +947,29 @@ EvolvePokemonCard::
 	ld a, [wLoadedCard1Stage]
 	ld [hl], a
 	or a
-	call _GetCardIDFromDeckIndex
-	cp RICK_GENGAR
-	jr nz, .gengar_evolve_bench_damage
+;	call _GetCardIDFromDeckIndex
+;	cp RICK_GENGAR
+;	jr nz, .gengar_evolve_bench_damage
 	ret
 
-.gengar_evolve_bench_damage
-	ld a, 10
-	call DealRecoilDamageToSelf
-	rst SwapTurn
-	xor a ; FALSE
-	ld [wIsDamageToSelf], a
-	ld de, 20
-	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
-	get_turn_duelist_var
-	ld c, a
-	ld b, PLAY_AREA_ARENA
-.loop
-	inc b
-	dec c
-	ret z
-	call DealDamageToPlayAreaPokemon_RegularAnim
-	jr .loop
-	jp SwapTurn
+; .gengar_evolve_bench_damage
+;	ld a, 10
+;	call DealRecoilDamageToSelf
+;	rst SwapTurn
+;	xor a ; FALSE
+;	ld [wIsDamageToSelf], a
+;	ld de, 10
+;	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
+;	get_turn_duelist_var
+;	ld c, a
+;	ld b, PLAY_AREA_ARENA
+; .loop
+;	inc b
+;	dec c
+;	ret z
+;	call DealDamageToPlayAreaPokemon_RegularAnim
+;	jr .loop
+;	jp SwapTurn
 
 ; checks if the Pokemon at location e can evolve into the Pokemon with deck index d.
 ; also checks whether the Pokemon being evolved has been in play for a full turn
