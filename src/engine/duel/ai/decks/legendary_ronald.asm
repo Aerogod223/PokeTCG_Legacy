@@ -45,7 +45,7 @@ AIActionTable_LegendaryRonald:
 	db $00
 
 .list_retreat
-	ai_retreat SCYTHER, -2
+	ai_retreat SCYTHER, +2
 	db $00
 
 .list_energy
@@ -55,11 +55,11 @@ AIActionTable_LegendaryRonald:
 	ai_energy ARTICUNO_LV37,    0, -8
 	ai_energy ELECTABUZZ_LV35,  2, +1
 	ai_energy ZAPDOS_LV68,      0, -8
-	ai_energy KANGASKHAN,       4, -1
+	ai_energy KANGASKHAN,       4, +0
 	ai_energy MAGMAR_LV31,      2, +1
 	ai_energy DRATINI,          2, +0
 	ai_energy DRAGONAIR,        4, +0
-	ai_energy DRAGONITE_LV41,   4, +0
+	ai_energy DRAGONITE_LV41,   4, +2
 	db $00
 
 .list_prize

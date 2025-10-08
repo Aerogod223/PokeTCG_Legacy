@@ -40,14 +40,14 @@ AIActionTable_WondersOfScience:
 	db $00
 
 .list_energy
-	ai_energy GRIMER,          2, +0
-	ai_energy MUK,             2, +0
+	ai_energy GRIMER,          2, -1
+	ai_energy MUK,             2, -1
 	ai_energy SCYTHER,         3, +0
 	ai_energy PINSIR,          4, +0
 	ai_energy MR_MIME,         2, +1
-	ai_energy MEWTWO_LV53,     2, +1
-	ai_energy MEWTWO_ALT_LV60, 3, +0
-	ai_energy MEWTWO_LV60,     3, +0
+	ai_energy MEWTWO_LV53,     2, +2
+	ai_energy MEWTWO_ALT_LV60, 3, +1
+	ai_energy MEWTWO_LV60,     3, +1
 	ai_energy PORYGON,         2, -1
 	db $00
 

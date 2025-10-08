@@ -38,7 +38,7 @@ AIActionTable_LegendaryArticuno:
 .list_energy
 	ai_energy CLEFAIRY,      3, +0
 	ai_energy CLEFABLE,      2, +1
-	ai_energy LAPRAS,        3, +0
+	ai_energy LAPRAS,        3, +1
 	ai_energy ARTICUNO_LV35, 4, +1
 	ai_energy ARTICUNO_LV37, 3, +0
 	ai_energy LICKITUNG,     2, +2
@@ -57,78 +57,6 @@ AIActionTable_LegendaryArticuno:
 	store_list_pointer wAICardListRetreatBonus, .list_retreat
 	store_list_pointer wAICardListEnergyBonus, .list_energy
 	ret
-
-
-; this routine handles how Legendary Articuno
-; prioritizes playing energy cards to each Pokémon.
-; first, it makes sure that all Lapras have at least
-; 3 energy cards before moving on to Articuno,
-; and then to Dewgong and Seel
-ScoreLegendaryArticunoCards:
-	rst SwapTurn
-	call CountPrizes
-	rst SwapTurn
-	cp 3
-	ret c
-
-; player prizes >= 3
-; if Lapras has more than half HP and enough Energy
-; to use each of its attacks, then start with Articuno.
-; otherwise, check if Articuno or Dewgong have more than half HP
-; and enough Energy to use each of their attacks. If either one does,
-; then consider Lapras before moving on to Articuno.
-	ld a, LAPRAS
-	call CheckForSetUpBenchPokemonWithThisID
-	jr c, .articuno
-	ld a, ARTICUNO_LV35
-	call CheckForSetUpBenchPokemonWithThisID
-	jr c, .lapras
-	ld a, CLEFABLE
-	call CheckForSetUpBenchPokemonWithThisID
-	jr c, .lapras
-	jr .articuno
-
-; the following routines check for certain card IDs in the Bench
-; and call RaiseAIScoreToAllMatchingIDsInBench if these are found.
-; for Lapras, an additional check is made to its attached Energy count,
-; which skips calling the routine if this count is >= 3.
-.lapras
-	ld a, LAPRAS
-	ld b, PLAY_AREA_BENCH_1
-	call LookForCardIDInPlayArea_Bank5
-	jr nc, .articuno
-	ld e, a
-	call GetPlayAreaCardAttachedEnergies
-	ld a, [wAttachedEnergies + WATER]
-	cp 3
-	jr nc, .articuno
-	ld a, LAPRAS
-	jp RaiseAIScoreToAllMatchingIDsInBench
-
-.articuno
-	ld a, ARTICUNO_LV35
-	ld b, PLAY_AREA_BENCH_1
-	call LookForCardIDInPlayArea_Bank5
-	jr nc, .clefable
-	ld a, ARTICUNO_LV35
-	jp RaiseAIScoreToAllMatchingIDsInBench
-
-.clefable
-	ld a, CLEFABLE
-	ld b, PLAY_AREA_BENCH_1
-	call LookForCardIDInPlayArea_Bank5
-	jr nc, .clefairy
-	ld a, CLEFABLE
-	jp RaiseAIScoreToAllMatchingIDsInBench
-
-.clefairy
-	ld a, CLEFAIRY
-	ld b, PLAY_AREA_BENCH_1
-	call LookForCardIDInPlayArea_Bank5
-	ret nc
-	ld a, CLEFAIRY
-	jp RaiseAIScoreToAllMatchingIDsInBench
-
 
 AIDoTurn_LegendaryArticuno:
 ; initialize variables

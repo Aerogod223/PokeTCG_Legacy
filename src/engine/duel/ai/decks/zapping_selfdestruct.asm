@@ -37,7 +37,7 @@ AIActionTable_ZappingSelfdestruct:
 	db $00
 
 .list_retreat
-	ai_retreat VOLTORB, -1
+	ai_retreat VOLTORB, +1
 	ai_retreat ELECTABUZZ_LV35, -1
 	ai_retreat LICKITUNG, -1
 	db $00
@@ -45,10 +45,10 @@ AIActionTable_ZappingSelfdestruct:
 .list_energy
 	ai_energy LICKITUNG,       2, +1
 	ai_energy ELECTABUZZ_LV20, 2, +0
-	ai_energy VOLTORB,         3, +1
+	ai_energy VOLTORB,         2, +0
 	ai_energy ELECTRODE_LV35,  2, +1
 	ai_energy ELECTABUZZ_LV35, 2, +2
-	ai_energy FLYING_PIKACHU,  2, +0
+	ai_energy FLYING_PIKACHU,  3, +0
 	ai_energy ZAPDOS_LV40,     3, +0
 	ai_energy ZAPDOS_LV64,     4, +1
 	ai_energy DITTO,           3, -1

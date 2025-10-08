@@ -42,19 +42,18 @@ AIActionTable_LegendaryMoltres:
 	db $00
 
 .list_retreat
-	ai_retreat GROWLITHE, -5
-	ai_retreat VULPIX,    -5
+	ai_retreat GROWLITHE, +2
 	db $00
 
 .list_energy
 	ai_energy VULPIX,         3, +0
-	ai_energy NINETALES_LV35, 3, +1
+	ai_energy NINETALES_LV35, 2, +1
 	ai_energy JIGGLYPUFF_LV14,  3, +0
-	ai_energy WIGGLYTUFF,  3, +2
+	ai_energy WIGGLYTUFF,     3, +2
 	ai_energy MAGMAR_LV24,    3, +0
-	ai_energy MAGMAR_LV31,    1, +0
-	ai_energy MOLTRES_LV37,   3, +2
-	ai_energy MOLTRES_LV35,   3, +1
+	ai_energy MAGMAR_LV31,    2, +2
+	ai_energy MOLTRES_LV37,   3, +1
+	ai_energy MOLTRES_LV35,   3, +0
 	db $00
 
 .list_prize

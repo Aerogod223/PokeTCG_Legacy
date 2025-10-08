@@ -33,17 +33,17 @@ AIActionTable_InvincibleRonald:
 	db $00
 
 .list_retreat
-	ai_retreat GRIMER, -1
+	ai_retreat GRIMER, +1
 	db $00
 
 .list_energy
 	ai_energy GRIMER,         1, -1
 	ai_energy MUK,            3, -1
 	ai_energy SCYTHER,        3, +1
-	ai_energy MAGMAR_LV31,    2, +0
+	ai_energy MAGMAR_LV31,    2, +1
 	ai_energy MEOWTH_LV14,    2, +0
-	ai_energy PERSIAN,        3, +0
-	ai_energy CHANSEY,        4, +0
+	ai_energy PERSIAN,        3, +1
+	ai_energy CHANSEY,        4, -1
 	ai_energy KANGASKHAN,     4, -1
 	db $00
 

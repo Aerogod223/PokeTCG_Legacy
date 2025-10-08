@@ -41,21 +41,21 @@ AIActionTable_PowerfulRonald:
 	db $00
 
 .list_retreat
-	ai_retreat KANGASKHAN, -1
-	ai_retreat DODUO,      -1
-	ai_retreat DODRIO,     -1
+	ai_retreat KANGASKHAN, +1
+	ai_retreat DODUO,      +1
+	ai_retreat DODRIO,     +1
 	db $00
 
 .list_energy
-	ai_energy ELECTABUZZ_LV35, 2, +1
+	ai_energy ELECTABUZZ_LV35, 2, +2
 	ai_energy HITMONLEE,       3, +1
-	ai_energy HITMONCHAN,      3, +1
-	ai_energy MR_MIME,         2, +0
+	ai_energy HITMONCHAN,      3, +2
+	ai_energy MR_MIME,         2, +1
 	ai_energy JYNX,            3, +0
-	ai_energy MEWTWO_LV53,     2, +0
+	ai_energy MEWTWO_LV53,     2, +2
 	ai_energy DODUO,           3, -1
 	ai_energy DODRIO,          3, -1
-	ai_energy LICKITUNG,       2, +0
+	ai_energy LICKITUNG,       2, +1
 	ai_energy KANGASKHAN,      4, -1
 	ai_energy TAUROS,          3, +0
 	db $00

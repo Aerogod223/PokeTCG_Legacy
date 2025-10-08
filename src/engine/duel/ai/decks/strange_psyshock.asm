@@ -33,20 +33,19 @@ AIActionTable_StrangePsyshock:
 	db $00
 
 .list_retreat
-	ai_retreat ABRA,       -3
-	ai_retreat CHANSEY,    -3
+	ai_retreat ABRA,       +3
 	ai_retreat KANGASKHAN, -1
 	ai_retreat TAUROS,     -1
 	db $00
 
 .list_energy
-	ai_energy ABRA,       1, +1
+	ai_energy ABRA,       1, +0
 	ai_energy KADABRA,    3, +0
 	ai_energy ALAKAZAM,   3, +0
-	ai_energy MR_MIME,    2, +0
+	ai_energy MR_MIME,    2, +2
 	ai_energy TAUROS,     3, +0
 	ai_energy CHANSEY,    2, -2
-	ai_energy KANGASKHAN, 3, -2
+	ai_energy KANGASKHAN, 3, +1
 	ai_energy MEWTWO_ALT_LV60,    3, +2
 	db $00
 

@@ -59,9 +59,7 @@ AIProcessEnergyCards:
 	jr nz, .loop
 
 ; Legendary Articuno Deck has its own Energy card logic
-	ld a, [wOpponentDeckID]
-	cp LEGENDARY_ARTICUNO_DECK_ID
-	jp z, ScoreLegendaryArticunoCards
+
 
 ; start the main play area loop
 	ld b, PLAY_AREA_ARENA

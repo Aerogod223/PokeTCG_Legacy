@@ -32,17 +32,16 @@ AIActionTable_LegendaryZapdos:
 	db $00
 
 .list_retreat
-	ai_retreat CHANSEY,         -5
-	ai_retreat VOLTORB,         -5
-	ai_retreat ELECTABUZZ_LV35, -5
+	ai_retreat VOLTORB,         +1
+	ai_retreat ELECTABUZZ_LV35, -1
 	db $00
 
 .list_energy
 	ai_energy VOLTORB,         1, -1
 	ai_energy ELECTRODE_LV35,  2, +2
 	ai_energy ELECTRODE_LV42,  3, +0
-	ai_energy ELECTABUZZ_LV35, 2, -1
-	ai_energy JOLTEON_LV29,    3, +1
+	ai_energy ELECTABUZZ_LV35, 2, +2
+	ai_energy JOLTEON_LV29,    3, +0
 	ai_energy ZAPDOS_LV40,     4, +1
 	ai_energy TAUROS,          3, +2
 	ai_energy ZAPDOS_LV68,     3, +0

@@ -33,13 +33,15 @@ AIActionTable_FireCharge:
 	db $00
 
 .list_retreat
-	ai_retreat CHARMANDER,     -1
-	ai_retreat VULPIX,         -1
+	ai_retreat CHARMANDER,     +1
+	ai_retreat VULPIX,         +1
+	ai_retreat MAGMAR_LV31,    -1
+	ai_retreat ELECTABUZZ_LV35,     -1
 	db $00
 
 .list_energy
-	ai_energy MAGMAR_LV31,     2, +2
-	ai_energy ELECTABUZZ_LV35, 2, +2
+	ai_energy MAGMAR_LV31,     2, +1
+	ai_energy ELECTABUZZ_LV35, 2, +1
 	ai_energy FLYING_PIKACHU,  3, +0
 	ai_energy VULPIX,          2, +0
 	ai_energy NINETALES_LV35,  2, +1

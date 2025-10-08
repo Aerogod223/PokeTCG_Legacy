@@ -31,14 +31,14 @@ AIActionTable_FirstStrike:
 	db $00
 
 .list_retreat
-	ai_retreat HITMONCHAN,  -1
+	ai_retreat SCYTHER,  +1
 	db $00
 
 .list_energy
 	ai_energy MACHOP,     1, +0
 	ai_energy SCYTHER,    3, +0
-	ai_energy ELECTABUZZ_LV35,    3, +2
-	ai_energy HITMONCHAN, 3, +2
+	ai_energy ELECTABUZZ_LV35,    2, +1
+	ai_energy HITMONCHAN, 3, +1
 	ai_energy FARFETCHD,  3, +0
 	db $00
 

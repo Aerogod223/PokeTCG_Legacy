@@ -33,14 +33,17 @@ AIActionTable_RockCrusher:
 	db $00
 
 .list_retreat
-	ai_retreat CUBONE, -1
+	ai_retreat CUBONE, +1
+	ai_retreat AERODACTYL, +1
+	ai_retreat ONIX, -1
+	ai_retreat LICKITUNG, -1
 	db $00
 
 .list_energy
 	ai_energy SNORLAX,  3, +0
 	ai_energy ONIX,     2, +2
-	ai_energy TAUROS,   3, +0
-	ai_energy AERODACTYL, 3, -1
+	ai_energy TAUROS,   3, +1
+	ai_energy AERODACTYL, 3, +0
 	ai_energy LICKITUNG,    2, +1
 	ai_energy RHYHORN,     2, +0
 	ai_energy CUBONE,      3, -1
