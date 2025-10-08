@@ -1269,6 +1269,6 @@ BubblebeamEffectCommands:
 	db  $00
 
 HydroCannonEffectCommands:
-	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, Flip4For20_MultiplierEffect
-	dbw EFFECTCMDTYPE_AI, FlipFor80_AIEffect
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, WWWHydroPumpEffect
+	dbw EFFECTCMDTYPE_AI, WWWHydroPumpEffect
 	db  $00
