@@ -617,35 +617,34 @@ SamsPracticeDeck:
 
 CharmanderAndFriendsDeck:
 	deck_list_start
-	card_item FIRE_ENERGY,      10
+	card_item FIRE_ENERGY,      15
 	card_item LIGHTNING_ENERGY,  8
-	card_item FIGHTING_ENERGY,   6
+	card_item DOUBLE_COLORLESS_ENERGY, 1
 	card_item CHARMANDER,        2
-	card_item CHARMELEON,        1
+	card_item CHARMELEON,        2
 	card_item CHARIZARD,         1
 	card_item GROWLITHE,         2
 	card_item ARCANINE_LV45,     1
-	card_item PONYTA,            2
+	card_item PONYTA,            1
 	card_item MAGMAR_LV24,       1
 	card_item PIKACHU_LV12,      2
 	card_item RAICHU_LV40,       1
+	card_item ELECTABUZZ_LV20,   1
 	card_item MAGNEMITE_LV13,    2
 	card_item MAGNETON_LV28,     1
 	card_item ZAPDOS_LV64,       1
-	card_item DIGLETT,           2
-	card_item DUGTRIO,           1
-	card_item MACHOP,            1
-	card_item MACHOKE,           1
 	card_item RATTATA,           2
 	card_item RATICATE,          1
-	card_item MEOWTH_LV14,       1
+	card_item MEOWTH_LV14,       2
+	card_item PERSIAN,           1
 	card_item PROFESSOR_OAK,     1
 	card_item BILL,              2
-	card_item SWITCH,            1
+	card_item SWITCH,            2
 	card_item COMPUTER_SEARCH,   1
-	card_item PLUSPOWER,         1
+	card_item PLUSPOWER,         2
+	card_item GUST_OF_WIND,      1
 	card_item POTION,            2
-	card_item FULL_HEAL,         2
+	card_item FULL_HEAL,         1
 	deck_list_end
 	tx CharmanderAndFriendsDeckName
 
@@ -674,36 +673,33 @@ CharmanderExtraDeck:
 
 SquirtleAndFriendsDeck:
 	deck_list_start
-	card_item WATER_ENERGY,    11
-	card_item FIGHTING_ENERGY,  6
-	card_item PSYCHIC_ENERGY,   8
+	card_item WATER_ENERGY,    16
+	card_item FIGHTING_ENERGY,  8
 	card_item SQUIRTLE,         2
-	card_item WARTORTLE,        1
+	card_item WARTORTLE,        2
 	card_item BLASTOISE,        1
 	card_item SEEL,             2
 	card_item DEWGONG,          1
-	card_item STARYU,           1
+	card_item STARYU,           2
 	card_item STARMIE,          1
-	card_item GOLDEEN,          1
-	card_item SEAKING,          1
 	card_item LAPRAS,           1
-	card_item ABRA,             2
-	card_item KADABRA,          1
-	card_item GASTLY_LV8,       2
-	card_item HAUNTER_LV22,     1
-	card_item MACHOP,           1
+	card_item MACHOP,           2
 	card_item MACHOKE,          1
 	card_item GEODUDE,          2
+	card_item GRAVELER,         1
 	card_item HITMONCHAN,       1
-	card_item RATTATA,          2
-	card_item RATICATE,         1
-	card_item MEOWTH_LV14,      1
+	card_item HITMONLEE,        1
+	card_item PIDGEY,           2
+	card_item PIDGEOTTO,        2
+	card_item PIDGEOT_LV40,     1
 	card_item PROFESSOR_OAK,    1
 	card_item BILL,             1
+	card_item POKEMON_BREEDER,  1
 	card_item SWITCH,           1
 	card_item POKE_BALL,        1
 	card_item SCOOP_UP,         1
 	card_item ITEM_FINDER,      1
+	card_item ENERGY_SEARCH,    2
 	card_item POTION,           1
 	card_item FULL_HEAL,        1
 	deck_list_end
@@ -736,36 +732,33 @@ SquirtleExtraDeck:
 
 BulbasaurAndFriendsDeck:
 	deck_list_start
-	card_item GRASS_ENERGY,    11
-	card_item FIRE_ENERGY,      3
-	card_item WATER_ENERGY,     9
+	card_item GRASS_ENERGY,    16
+	card_item PSYCHIC_ENERGY,   8
 	card_item BULBASAUR,        2
-	card_item IVYSAUR,          1
+	card_item IVYSAUR,          2
 	card_item VENUSAUR_LV67,    1
 	card_item CATERPIE,         2
-	card_item METAPOD,          1
-	card_item NIDORANF,         2
-	card_item NIDORANM,         2
-	card_item NIDORINO,         1
+	card_item METAPOD,          2
+	card_item BUTTERFREE,       2
 	card_item TANGELA_LV12,     1
-	card_item FLAREON_LV28,     1
-	card_item SEEL,             1
-	card_item DEWGONG,          1
-	card_item KRABBY,           2
-	card_item KINGLER,          1
-	card_item GOLDEEN,          2
-	card_item SEAKING,          1
-	card_item VAPOREON_LV42,    1
-	card_item JIGGLYPUFF_LV14,  1
-	card_item MEOWTH_LV14,      1
-	card_item EEVEE,            2
+	card_item DROWZEE,          2
+	card_item HYPNO,            1
+	card_item JYNX,             1
+	card_item TANGELA_LV8,      1
+	card_item GASTLY_LV17,      2
+	card_item HAUNTER_LV22,     1
+	card_item KOFFING,          2
+	card_item WEEZING,          1
+	card_item CLEFAIRY,         1
+	card_item CLEFABLE,         1
 	card_item KANGASKHAN,       1
 	card_item PROFESSOR_OAK,    1
+	card_item BILL,             1
 	card_item SWITCH,           1
-	card_item POKE_BALL,        1
-	card_item PLUSPOWER,        2
-	card_item DEFENDER,         1
-	card_item FULL_HEAL,        2
+	card_item POKE_BALL,        2
+	card_item POKEMON_TRADER,   1
+	card_item DEFENDER,         2
+	card_item FULL_HEAL,        1
 	card_item REVIVE,           1
 	deck_list_end
 	tx BulbasaurAndFriendsDeckName
@@ -1287,220 +1280,206 @@ LegendaryRonaldDeck:
 
 MusclesforBrainsDeck:
 	deck_list_start
-	card_item FIGHTING_ENERGY,         26
+	card_item FIGHTING_ENERGY,         12
+	card_item GRASS_ENERGY,             6
 	card_item DOUBLE_COLORLESS_ENERGY,  2
-	card_item MANKEY,                   1
-	card_item PRIMEAPE,                 1
 	card_item MACHOP,                   3
-	card_item MACHOKE,                  2
-	card_item MACHAMP,                  2
-	card_item HITMONLEE,                2
-	card_item HITMONCHAN,               2
-	card_item MEOWTH_LV15,              3
-	card_item PERSIAN,                  2
-	card_item LICKITUNG,                1
-	card_item KANGASKHAN,               1
-	card_item TAUROS,                   2
-	card_item BILL,                     1
-	card_item ENERGY_REMOVAL,           1
-	card_item PLUSPOWER,                2
-	card_item GUST_OF_WIND,             2
-	card_item POTION,                   1
-	card_item SUPER_POTION,             1
-	card_item FULL_HEAL,                1
-	card_item REVIVE,                   1
+	card_item MACHOKE,                  3
+	card_item MACHAMP,                  3
+	card_item ODDISH,                   3
+	card_item GLOOM,                    2
+	card_item VILEPLUME,                3
+	card_item PINSIR,                   2
+	card_item TANGELA_LV8,              2
+	card_item BILL,                     4
+	card_item PROFESSOR_OAK,            2
+	card_item SUPER_POTION,             2
+	card_item DEFENDER,                 3
+	card_item POKEMON_BREEDER,          4
+	card_item POKEMON_TRADER,           3
+	card_item GAMBLER,                  1
 	deck_list_end
 	tx MusclesforBrainsDeckName
 
 HeatedBattleDeck:
 	deck_list_start
-	card_item FIRE_ENERGY,       8
-	card_item LIGHTNING_ENERGY,  4
-	card_item FIGHTING_ENERGY,  15
-	card_item MAGMAR_LV24,       4
-	card_item ELECTABUZZ_LV35,   2
-	card_item MANKEY,            3
-	card_item PRIMEAPE,          2
-	card_item HITMONLEE,         3
-	card_item HITMONCHAN,        3
-	card_item KANGASKHAN,        2
-	card_item ENERGY_SEARCH,     2
-	card_item SCOOP_UP,          2
-	card_item PLUSPOWER,         3
-	card_item DEFENDER,          2
-	card_item POTION,            3
-	card_item FULL_HEAL,         2
+	card_item WATER_ENERGY,       10
+	card_item FIGHTING_ENERGY,    10
+	card_item HITMONLEE,          3
+	card_item HITMONCHAN,         3
+	card_item KRABBY,             3
+	card_item KINGLER,            3
+	card_item HORSEA,             2
+	card_item SEADRA,             2
+	card_item KANGASKHAN,         3
+	card_item PROFESSOR_OAK,      4
+	card_item GAMBLER,            2
+	card_item PLUSPOWER,          2
+	card_item ENERGY_SEARCH,      3
+	card_item POKEDEX,            2
+	card_item ITEM_FINDER,        2
+	card_item SWITCH,             2
+	card_item GUST_OF_WIND,       2
+	card_item ENERGY_REMOVAL,     2
 	deck_list_end
 	tx HeatedBattleDeckName
 
 LovetoBattleDeck:
 	deck_list_start
-	card_item FIGHTING_ENERGY, 26
-	card_item MANKEY,           2
-	card_item PRIMEAPE,         1
-	card_item MACHOP,           4
-	card_item MACHOKE,          3
-	card_item MACHAMP,          2
-	card_item RATTATA,          3
-	card_item RATICATE,         2
-	card_item DODUO,            2
-	card_item DODRIO,           1
-	card_item TAUROS,           1
-	card_item PLUSPOWER,        4
-	card_item DEFENDER,         4
-	card_item POTION,           3
-	card_item FULL_HEAL,        2
+	card_item FIGHTING_ENERGY, 10
+	card_item FIRE_ENERGY,      8
+	card_item DOUBLE_COLORLESS_ENERGY, 4
+	card_item MANKEY,           4
+	card_item PRIMEAPE,         4
+	card_item MAGMAR_LV31,      4
+	card_item PONYTA,           3
+	card_item RAPIDASH,         3
+	card_item SNORLAX,          2
+	card_item BILL,             3
+	card_item PROFESSOR_OAK,    2
+	card_item ENERGY_SEARCH,    3
+	card_item ENERGY_RETRIEVAL, 2
+	card_item POKE_BALL,        2
+	card_item SWITCH,           2
+	card_item GUST_OF_WIND,     1
+	card_item SUPER_ENERGY_RETRIEVAL, 1
+	card_item ITEM_FINDER,      2
 	deck_list_end
 	tx LovetoBattleDeckName
 
 ExcavationDeck:
 	deck_list_start
-	card_item FIGHTING_ENERGY,    15
-	card_item WATER_ENERGY,        8
+	card_item FIGHTING_ENERGY,     12
+	card_item WATER_ENERGY,        10
 	card_item SHELLDER,            3
-	card_item CLOYSTER,            1
+	card_item CLOYSTER,            2
 	card_item OMANYTE,             3
 	card_item OMASTAR,             2
-	card_item SANDSHREW,           4
-	card_item SANDSLASH,           2
-	card_item CUBONE,              3
-	card_item MAROWAK_LV32,        1
-	card_item HITMONCHAN,          3
-	card_item KABUTO,              2
-	card_item KABUTOPS,            1
-	card_item AERODACTYL,          2
-	card_item PROFESSOR_OAK,       2
-	card_item BILL,                2
-	card_item POKEMON_BREEDER,     2
+	card_item KABUTO,              3
+	card_item KABUTOPS,            2
+	card_item PROFESSOR_OAK,       3
+	card_item BILL,                3
+	card_item POKEMON_BREEDER,     3
 	card_item MYSTERIOUS_FOSSIL,   4
+	card_item SWITCH,              3
+	card_item GUST_OF_WIND,        3
+	card_item COMPUTER_SEARCH,     4
 	deck_list_end
 	tx ExcavationDeckName
 
 BlisteringPokemonDeck:
 	deck_list_start
-	card_item FIRE_ENERGY,             4
-	card_item FIGHTING_ENERGY,         8
-	card_item PSYCHIC_ENERGY,          5
-	card_item DOUBLE_COLORLESS_ENERGY, 2
-	card_item PONYTA,                  3
-	card_item RAPIDASH,                2
-	card_item ONIX,                    4
-	card_item CUBONE,                  4
-	card_item MAROWAK_LV26,            2
+	card_item FIGHTING_ENERGY,         20
+	card_item DOUBLE_COLORLESS_ENERGY, 4
 	card_item RHYHORN,                 4
-	card_item RHYDON,                  2
-	card_item JYNX,                    2
+	card_item RHYDON,                  4
+	card_item ONIX,                    2
+	card_item CUBONE,                  3
+	card_item MAROWAK_LV26,            2
+	card_item KANGASKHAN,              3
 	card_item PROFESSOR_OAK,           2
 	card_item BILL,                    3
-	card_item POKEMON_TRADER,          2
-	card_item ENERGY_RETRIEVAL,        1
-	card_item MR_FUJI,                 2
 	card_item SWITCH,                  3
 	card_item DEFENDER,                3
 	card_item GUST_OF_WIND,            2
+	card_item POTION,                  2
+	card_item MAINTENANCE,             2
+	card_item GAMBLER,                 1
 	deck_list_end
 	tx BlisteringPokemonDeckName
 
 HardPokemonDeck:
 	deck_list_start
-	card_item FIGHTING_ENERGY, 25
+	card_item FIGHTING_ENERGY, 19
+	card_item DOUBLE_COLORLESS_ENERGY, 4
 	card_item GEODUDE,          4
 	card_item GRAVELER,         3
-	card_item GOLEM,            2
-	card_item ONIX,             3
-	card_item CUBONE,           3
-	card_item MAROWAK_LV26,     2
-	card_item RHYHORN,          2
-	card_item RHYDON,           1
-	card_item SNORLAX,          1
-	card_item BILL,             3
-	card_item POKE_BALL,        2
+	card_item GOLEM,            3
+	card_item ONIX,             2
+	card_item CHANSEY,          3
+	card_item TAUROS,           3
+	card_item PROFESSOR_OAK,    4
+	card_item POKE_BALL,        3
 	card_item DEFENDER,         4
 	card_item GUST_OF_WIND,     3
-	card_item POTION,           2
+	card_item SWITCH,           2
+	card_item SUPER_POTION,     3
 	deck_list_end
 	tx HardPokemonDeckName
 
 WaterfrontPokemonDeck:
 	deck_list_start
 	card_item WATER_ENERGY,     18
-	card_item PSYCHIC_ENERGY,    7
-	card_item SQUIRTLE,          2
-	card_item WARTORTLE,         1
-	card_item BLASTOISE,         1
-	card_item PSYDUCK,           2
-	card_item GOLDUCK,           1
-	card_item POLIWAG,           2
-	card_item POLIWHIRL,         1
-	card_item POLIWRATH,         1
-	card_item GOLDEEN,           2
-	card_item SEAKING,           1
+	card_item TENTACOOL,         2
+	card_item TENTACRUEL,        2
+	card_item GOLDEEN,           4
+	card_item SEAKING,           4
 	card_item STARYU,            2
-	card_item STARMIE,           1
+	card_item STARMIE,           2
 	card_item SLOWPOKE_LV18,     2
-	card_item SLOWBRO,           1
-	card_item FARFETCHD,         1
-	card_item DRATINI,           2
-	card_item DRAGONAIR,         1
-	card_item BILL,              2
+	card_item SLOWBRO,           2
+	card_item BILL,              4
 	card_item ENERGY_RETRIEVAL,  2
+	card_item PROFESSOR_OAK,     2
+	card_item PLUSPOWER,         3
 	card_item SWITCH,            2
 	card_item POKEDEX,           1
-	card_item GUST_OF_WIND,      1
-	card_item POTION,            2
-	card_item SUPER_POTION,      1
+	card_item GUST_OF_WIND,      3
+	card_item ENERGY_REMOVAL,    2
+	card_item POTION,            3
 	deck_list_end
 	tx WaterfrontPokemonDeckName
 
 LonelyFriendsDeck:
 	deck_list_start
-	card_item GRASS_ENERGY,            8
-	card_item WATER_ENERGY,            9
+	card_item GRASS_ENERGY,            4
+	card_item WATER_ENERGY,            11
 	card_item DOUBLE_COLORLESS_ENERGY, 4
-	card_item SCYTHER,                 4
-	card_item POLIWAG,                 4
-	card_item OMANYTE,                 2
-	card_item OMASTAR,                 1
-	card_item AERODACTYL,              1
+	card_item SCYTHER,                 3
+	card_item LAPRAS,                  3
+	card_item SEEL,                    2
+	card_item DEWGONG,                 2
 	card_item JIGGLYPUFF_LV13,         2
 	card_item JIGGLYPUFF_LV14,         2
 	card_item WIGGLYTUFF,              4
 	card_item PROFESSOR_OAK,           2
-	card_item BILL,                    2
+	card_item BILL,                    3
 	card_item CLEFAIRY_DOLL,           4
-	card_item MYSTERIOUS_FOSSIL,       4
+	card_item MYSTERIOUS_FOSSIL,       2
 	card_item SCOOP_UP,                2
-	card_item POTION,                  4
-	card_item SUPER_POTION,            1
+	card_item POTION,                  2
+	card_item GAMBLER,                 1
+	card_item ENERGY_SEARCH,           3
+	card_item PLUSPOWER,               4
 	deck_list_end
 	tx LonelyFriendsDeckName
 
 SoundoftheWavesDeck:
 	deck_list_start
-	card_item WATER_ENERGY,   24
-	card_item TENTACOOL,       2
-	card_item TENTACRUEL,      1
-	card_item SEEL,            3
-	card_item DEWGONG,         2
-	card_item SHELLDER,        3
-	card_item CLOYSTER,        2
-	card_item KRABBY,          3
-	card_item KINGLER,         2
-	card_item HORSEA,          2
-	card_item SEADRA,          1
-	card_item LAPRAS,          3
+	card_item WATER_ENERGY,   18
+	card_item PSYDUCK,         4
+	card_item GOLDUCK,         4
+	card_item ARTICUNO_LV35,   2
+	card_item MAGIKARP,        2
+	card_item KANGASKHAN,       2
+	card_item LICKITUNG,       4
+	card_item GYARADOS,        2
+	card_item GRIMER,          2
 	card_item BILL,            3
-	card_item POKEMON_TRADER,  2
-	card_item ENERGY_REMOVAL,  2
+	card_item PROFESSOR_OAK,   2
+	card_item GUST_OF_WIND,    2
+	card_item SUPER_ENERGY_REMOVAL, 2
+	card_item SUPER_ENERGY_RETRIEVAL,  2
+	card_item ENERGY_REMOVAL,  4
 	card_item PLUSPOWER,       3
-	card_item FULL_HEAL,       2
+	card_item ITEM_FINDER,     2
 	deck_list_end
 	tx SoundoftheWavesDeckName
 
 PikachuDeck:
 	deck_list_start
 	card_item WATER_ENERGY,             6
-	card_item LIGHTNING_ENERGY,        16
+	card_item LIGHTNING_ENERGY,        14
 	card_item PIKACHU_LV12,             1
 	card_item PIKACHU_LV14,             1
 	card_item PIKACHU_LV16,             1
@@ -1511,346 +1490,326 @@ PikachuDeck:
 	card_item RAICHU_LV40,              2
 	card_item RAICHU_LV45,              2
 	card_item BILL,                     4
-	card_item SWITCH,                   4
-	card_item POKE_BALL,                4
-	card_item POTION,                   4
-	card_item SUPER_POTION,             2
-	card_item FULL_HEAL,                4
+	card_item SWITCH,                   2
+	card_item POKE_BALL,                3
+	card_item PROFESSOR_OAK,            2
+	card_item PLUSPOWER,                4
+	card_item POTION,                   2
+	card_item ENERGY_SEARCH,            4
+	card_item COMPUTER_SEARCH,          3
 	deck_list_end
 	tx PikachuDeckName
 
 BoomBoomSelfdestructDeck:
 	deck_list_start
-	card_item GRASS_ENERGY,      8
+	card_item GRASS_ENERGY,      6
 	card_item LIGHTNING_ENERGY, 14
-	card_item FIGHTING_ENERGY,   8
-	card_item KOFFING,           4
-	card_item WEEZING,           3
+	card_item KOFFING,           3
+	card_item WEEZING,           2
 	card_item MAGNEMITE_LV15,    4
 	card_item MAGNETON_LV28,     2
 	card_item MAGNETON_LV35,     2
-	card_item GEODUDE,           4
-	card_item GRAVELER,          3
-	card_item GOLEM,             2
-	card_item PROFESSOR_OAK,     2
-	card_item ENERGY_SEARCH,     2
-	card_item DEFENDER,          2
+	card_item GRIMER,            2
+	card_item MUK,               2
+	card_item TAUROS,            4
+	card_item PROFESSOR_OAK,     4
+	card_item ENERGY_SEARCH,     4
+	card_item DEFENDER,          4
+	card_item MR_FUJI,           1
+	card_item POKE_BALL,         1
+	card_item COMPUTER_SEARCH,   3
+	card_item ENERGY_RETRIEVAL,  2
 	deck_list_end
 	tx BoomBoomSelfdestructDeckName
 
 PowerGeneratorDeck:
 	deck_list_start
-	card_item LIGHTNING_ENERGY, 26
-	card_item PIKACHU_LV12,      2
-	card_item PIKACHU_LV14,      1
-	card_item RAICHU_LV40,       1
-	card_item MAGNEMITE_LV13,    1
-	card_item MAGNEMITE_LV15,    1
-	card_item MAGNETON_LV28,     1
-	card_item MAGNETON_LV35,     1
-	card_item VOLTORB,           3
-	card_item ELECTRODE_LV35,    1
-	card_item ELECTRODE_LV42,    1
+	card_item LIGHTNING_ENERGY, 20
+	card_item DOUBLE_COLORLESS_ENERGY,   4
+	card_item ZAPDOS_LV40,       2
+	card_item SPEAROW,           3
+	card_item FEAROW,            3
+	card_item DODUO,             2
+	card_item DODRIO,            2
 	card_item ELECTABUZZ_LV20,   1
-	card_item ELECTABUZZ_LV35,   1
-	card_item JOLTEON_LV29,      3
-	card_item ZAPDOS_LV64,       2
-	card_item EEVEE,             4
+	card_item ELECTABUZZ_LV35,   2
+	card_item PORYGON,           2
 	card_item BILL,              2
 	card_item POKEMON_TRADER,    2
 	card_item SWITCH,            2
-	card_item DEFENDER,          4
+	card_item COMPUTER_SEARCH,   4
+	card_item ITEM_FINDER,       3
+	card_item PROFESSOR_OAK,     2
+	card_item IMPOSTER_PROFESSOR_OAK,   1
+	card_item DEFENDER,          3
 	deck_list_end
 	tx PowerGeneratorDeckName
 
 EtceteraDeck:
 	deck_list_start
-	card_item GRASS_ENERGY,     8
-	card_item FIRE_ENERGY,      4
-	card_item LIGHTNING_ENERGY, 4
-	card_item FIGHTING_ENERGY,  4
-	card_item PSYCHIC_ENERGY,   4
-	card_item CATERPIE,         1
-	card_item WEEDLE,           1
-	card_item NIDORANF,         2
-	card_item ODDISH,           2
+	card_item GRASS_ENERGY,     20
+	card_item BELLSPROUT,       4
+	card_item WEEPINBELL,       3
+	card_item VICTREEBEL,       3
+	card_item PARAS,            2
+	card_item PARASECT,         2
+	card_item TANGELA_LV8,      2
 	card_item TANGELA_LV12,     2
-	card_item CHARMANDER,       2
-	card_item MAGMAR_LV31,      1
-	card_item PIKACHU_LV12,     2
-	card_item MAGNEMITE_LV13,   1
-	card_item DIGLETT,          1
-	card_item MACHOP,           2
-	card_item GASTLY_LV8,       2
-	card_item JYNX,             1
+	card_item FARFETCHD,        2
+	card_item KANGASKHAN,       2
 	card_item BILL,             3
+	card_item PROFESSOR_OAK,    3
 	card_item ENERGY_RETRIEVAL, 2
-	card_item ENERGY_SEARCH,    3
-	card_item POKE_BALL,        3
-	card_item PLUSPOWER,        3
-	card_item DEFENDER,         2
+	card_item SWITCH,           2
+	card_item GUST_OF_WIND,     2
+	card_item PLUSPOWER,        2
+	card_item SUPER_POTION,     1
+	card_item POKEMON_BREEDER,  3
 	deck_list_end
 	tx EtceteraDeckName
 
 FlowerGardenDeck:
 	deck_list_start
-	card_item GRASS_ENERGY,            24
-	card_item DOUBLE_COLORLESS_ENERGY,  2
-	card_item BULBASAUR,                3
-	card_item IVYSAUR,                  2
-	card_item VENUSAUR_LV67,            2
-	card_item ODDISH,                   3
-	card_item GLOOM,                    2
-	card_item VILEPLUME,                2
-	card_item BELLSPROUT,               2
-	card_item WEEPINBELL,               1
-	card_item VICTREEBEL,               1
-	card_item TANGELA_LV8,              2
-	card_item TANGELA_LV12,             1
-	card_item LICKITUNG,                2
-	card_item POKEMON_TRADER,           2
-	card_item POKEMON_BREEDER,          3
-	card_item ENERGY_SEARCH,            1
-	card_item SWITCH,                   2
-	card_item POTION,                   2
-	card_item FULL_HEAL,                1
+	card_item GRASS_ENERGY,     20
+	card_item CATERPIE,         3
+	card_item METAPOD,          2
+	card_item BUTTERFREE,       3
+	card_item WEEDLE,           3
+	card_item KAKUNA,           2
+	card_item BEEDRILL,         3
+	card_item SCYTHER,          2
+	card_item PINSIR,           2
+	card_item BILL,             3
+	card_item GAMBLER,          2
+	card_item PROFESSOR_OAK,    3
+	card_item ENERGY_RETRIEVAL, 2
+	card_item SWITCH,           2
+	card_item DEFENDER,         2
+	card_item PLUSPOWER,        2
+	card_item POKEMON_BREEDER,  4
 	deck_list_end
 	tx FlowerGardenDeckName
 
 KaleidoscopeDeck:
 	deck_list_start
 	card_item GRASS_ENERGY,            10
-	card_item FIRE_ENERGY,              4
-	card_item WATER_ENERGY,             4
-	card_item LIGHTNING_ENERGY,         4
-	card_item DOUBLE_COLORLESS_ENERGY,  3
-	card_item VENONAT,                  3
-	card_item VENOMOTH,                 2
-	card_item FLAREON_LV22,             1
-	card_item FLAREON_LV28,             1
-	card_item VAPOREON_LV29,            1
-	card_item VAPOREON_LV42,            1
-	card_item JOLTEON_LV24,             1
-	card_item JOLTEON_LV29,             1
-	card_item DITTO,                    4
+	card_item PSYCHIC_ENERGY,           6
+	card_item DOUBLE_COLORLESS_ENERGY,  4
+	card_item VENONAT,                  4
+	card_item VENOMOTH,                 4
+	card_item FLAREON_LV22,             2
+	card_item VAPOREON_LV29,            2
+	card_item JOLTEON_LV24,             2
+	card_item DITTO,                    1
 	card_item EEVEE,                    4
-	card_item PORYGON,                  4
-	card_item BILL,                     2
-	card_item MR_FUJI,                  2
-	card_item ENERGY_SEARCH,            2
-	card_item SWITCH,                   4
-	card_item GUST_OF_WIND,             2
+	card_item MR_MIME,                  3
+	card_item JYNX,                     2
+	card_item BILL,                     3
+	card_item PROFESSOR_OAK,            3
+	card_item PLUSPOWER,                2
+	card_item COMPUTER_SEARCH,          2
+	card_item ITEM_FINDER,              1
+	card_item ENERGY_SEARCH,            3
+	card_item SWITCH,                   2
 	deck_list_end
 	tx KaleidoscopeDeckName
 
 GhostDeck:
 	deck_list_start
-	card_item PSYCHIC_ENERGY,          15
-	card_item GRASS_ENERGY,             6
+	card_item PSYCHIC_ENERGY,          17
 	card_item DOUBLE_COLORLESS_ENERGY,  3
-	card_item ZUBAT,                    4
-	card_item GOLBAT,                   3
+	card_item DODUO,                    2
+	card_item DODRIO,                   2
+	card_item LICKITUNG,                2
 	card_item GASTLY_LV8,               2
 	card_item GASTLY_LV17,              2
 	card_item HAUNTER_LV17,             2
 	card_item HAUNTER_LV22,             2
 	card_item GENGAR,                   4
-	card_item MEOWTH_LV15,              3
-	card_item DITTO,                    3
-	card_item PROFESSOR_OAK,            2
-	card_item BILL,                     1
-	card_item POKEMON_BREEDER,          2
-	card_item GUST_OF_WIND,             1
-	card_item POTION,                   2
-	card_item FULL_HEAL,                1
-	card_item RECYCLE,                  2
+	card_item JYNX,                     3
+	card_item MR_MIME,                  2
+	card_item PROFESSOR_OAK,            4
+	card_item BILL,                     2
+	card_item POKEMON_BREEDER,          3
+	card_item GUST_OF_WIND,             3
+	card_item LASS,                     1
+	card_item SUPER_POTION,             2
+	card_item POKEMON_FLUTE,            2
 	deck_list_end
 	tx GhostDeckName
 
 NapTimeDeck:
 	deck_list_start
 	card_item GRASS_ENERGY,     8
-	card_item PSYCHIC_ENERGY,  18
-	card_item PARAS,            4
-	card_item EXEGGCUTE,        4
-	card_item GASTLY_LV8,       4
+	card_item PSYCHIC_ENERGY,  13
+	card_item HYPNO,            4
+	card_item DROWZEE,          3
+	card_item GASTLY_LV8,       3
 	card_item HAUNTER_LV17,     2
-	card_item HAUNTER_LV22,     2
-	card_item JIGGLYPUFF_LV14,  4
+	card_item PARAS,            3
+	card_item PARASECT,         2
+	card_item JIGGLYPUFF_LV14,  3
 	card_item WIGGLYTUFF,       3
-	card_item BILL,             2
+	card_item BILL,             4
 	card_item SWITCH,           2
-	card_item PLUSPOWER,        3
+	card_item POKEMON_TRADER,   3
+	card_item PROFESSOR_OAK,    2
+	card_item ENERGY_SEARCH,    3
 	card_item GUST_OF_WIND,     2
-	card_item POTION,           2
 	deck_list_end
 	tx NapTimeDeckName
 
 StrangePowerDeck:
 	deck_list_start
-	card_item PSYCHIC_ENERGY,          25
-	card_item DOUBLE_COLORLESS_ENERGY,  1
+	card_item PSYCHIC_ENERGY,          10
+	card_item FIRE_ENERGY,             11
 	card_item SLOWPOKE_LV9,             3
 	card_item SLOWBRO,                  2
-	card_item DROWZEE,                  4
-	card_item HYPNO,                    3
+	card_item MAGMAR_LV31,              4
+	card_item VULPIX,                   3
+	card_item NINETALES_LV35,           3
+	card_item MEWTWO_LV53,              3
 	card_item MR_MIME,                  2
-	card_item JYNX,                     2
-	card_item MEW_LV8,                  1
 	card_item MEW_LV23,                 2
-	card_item LICKITUNG,                2
-	card_item SNORLAX,                  1
-	card_item POKEMON_TRADER,           2
+	card_item POKEMON_TRADER,           3
 	card_item ENERGY_RETRIEVAL,         2
 	card_item ENERGY_REMOVAL,           2
 	card_item SUPER_ENERGY_REMOVAL,     1
-	card_item PLUSPOWER,                2
-	card_item ITEM_FINDER,              1
-	card_item GUST_OF_WIND,             1
-	card_item FULL_HEAL,                1
+	card_item ENERGY_SEARCH,            2
+	card_item BILL,                     3
+	card_item PROFESSOR_OAK,            2
+	card_item SCOOP_UP,                 2
 	deck_list_end
 	tx StrangePowerDeckName
 
 FlyinPokemonDeck:
 	deck_list_start
-	card_item GRASS_ENERGY,            13
-	card_item LIGHTNING_ENERGY,        10
-	card_item DOUBLE_COLORLESS_ENERGY,  2
-	card_item ZUBAT,                    4
-	card_item GOLBAT,                   3
-	card_item FLYING_PIKACHU,           2
-	card_item PIDGEY,                   4
+	card_item GRASS_ENERGY,            16
+	card_item DOUBLE_COLORLESS_ENERGY,  4
+	card_item ZUBAT,                    3
+	card_item GOLBAT,                   2
+	card_item SCYTHER,                  2
+	card_item PIDGEY,                   3
 	card_item PIDGEOTTO,                3
 	card_item PIDGEOT_LV38,             1
 	card_item PIDGEOT_LV40,             1
-	card_item SPEAROW,                  4
+	card_item SPEAROW,                  3
+	card_item PROFESSOR_OAK,            3
+	card_item FEAROW,                   3
+	card_item BILL,                     3
 	card_item FEAROW,                   3
 	card_item IMPOSTER_PROFESSOR_OAK,   2
 	card_item LASS,                     2
-	card_item BILL,                     2
-	card_item POTION,                   4
+	card_item COMPUTER_SEARCH,          2
+	card_item PLUSPOWER,               4
 	deck_list_end
 	tx FlyinPokemonDeckName
 
 LovelyNidoranDeck:
 	deck_list_start
-	card_item GRASS_ENERGY,    24
-	card_item NIDORANF,         4
+	card_item GRASS_ENERGY,    17
+	card_item DOUBLE_COLORLESS_ENERGY,  2
+	card_item NIDORANF,         3
 	card_item NIDORINA,         2
-	card_item NIDOQUEEN,        2
-	card_item NIDORANM,         3
-	card_item NIDORINO,         2
-	card_item NIDOKING,         1
+	card_item NIDOQUEEN,        3
+	card_item NIDORANM,         4
+	card_item NIDORINO,         3
+	card_item NIDOKING,         4
 	card_item GRIMER,           2
-	card_item MUK,              1
-	card_item KOFFING,          2
-	card_item WEEZING,          1
-	card_item PINSIR,           1
-	card_item MEOWTH_LV15,      2
-	card_item FARFETCHD,        2
-	card_item DODUO,            2
-	card_item PROFESSOR_OAK,    1
+	card_item MUK,              2
+	card_item KANGASKHAN,       2
+	card_item POKEMON_BREEDER,  4
+	card_item POKEMON_TRADER,   4
+	card_item PROFESSOR_OAK,    4
 	card_item BILL,             2
-	card_item POKEMON_BREEDER,  2
-	card_item SWITCH,           1
-	card_item POKE_BALL,        2
-	card_item GAMBLER,          1
+	card_item SWITCH,           2
 	deck_list_end
 	tx LovelyNidoranDeckName
 
 PoisonDeck:
 	deck_list_start
-	card_item GRASS_ENERGY,           24
-	card_item WEEDLE,                  3
-	card_item KAKUNA,                  2
-	card_item BEEDRILL,                1
+	card_item GRASS_ENERGY,           20
 	card_item EKANS,                   4
 	card_item ARBOK,                   3
 	card_item NIDORANM,                4
 	card_item NIDORINO,                3
-	card_item NIDOKING,                2
+	card_item NIDOKING,                3
 	card_item KOFFING,                 3
-	card_item WEEZING,                 2
-	card_item PROFESSOR_OAK,           1
-	card_item IMPOSTER_PROFESSOR_OAK,  2
-	card_item POKEMON_BREEDER,         1
-	card_item POTION,                  2
-	card_item FULL_HEAL,               2
-	card_item GAMBLER,                 1
+	card_item GRIMER,                  2
+	card_item LICKITUNG,               2
+	card_item WEEZING,                 1
+	card_item PROFESSOR_OAK,           2
+	card_item IMPOSTER_PROFESSOR_OAK,  1
+	card_item POKEMON_BREEDER,         3
+	card_item BILL,                    3
+	card_item ENERGY_REMOVAL,          2
+	card_item DEFENDER,                4
 	deck_list_end
 	tx PoisonDeckName
 
 AngerDeck:
 	deck_list_start
 	card_item FIRE_ENERGY,             10
-	card_item FIGHTING_ENERGY,          8
+	card_item FIGHTING_ENERGY,          7
 	card_item DOUBLE_COLORLESS_ENERGY,  4
+	card_item ONIX,                     3
+	card_item CUBONE,                   2
 	card_item GROWLITHE,                3
-	card_item ARCANINE_LV34,            2
-	card_item CUBONE,                   3
-	card_item RATTATA,                  3
-	card_item RATICATE,                 2
+	card_item ARCANINE_LV34,            3
 	card_item DODUO,                    3
 	card_item DODRIO,                   2
-	card_item TAUROS,                   3
+	card_item TAUROS,                   4
 	card_item PROFESSOR_OAK,            2
-	card_item BILL,                     3
-	card_item ENERGY_RETRIEVAL,         2
+	card_item BILL,                     4
+	card_item ENERGY_RETRIEVAL,         1
 	card_item COMPUTER_SEARCH,          2
-	card_item PLUSPOWER,                4
-	card_item DEFENDER,                 2
+	card_item PLUSPOWER,                3
+	card_item SCOOP_UP,                 2
+	card_item DEFENDER,                 3
 	card_item GUST_OF_WIND,             2
 	deck_list_end
 	tx AngerDeckName
 
 FlamethrowerDeck:
 	deck_list_start
-	card_item FIRE_ENERGY,             22
-	card_item DOUBLE_COLORLESS_ENERGY,  4
-	card_item CHARMANDER,               2
-	card_item CHARMELEON,               2
-	card_item CHARIZARD,                1
-	card_item VULPIX,                   2
-	card_item NINETALES_LV32,           1
-	card_item GROWLITHE,                2
-	card_item ARCANINE_LV45,            1
-	card_item MAGMAR_LV24,              3
-	card_item FLAREON_LV28,             2
-	card_item EEVEE,                    3
-	card_item BILL,                     3
-	card_item POKEMON_TRADER,           1
-	card_item ENERGY_RETRIEVAL,         3
+	card_item FIRE_ENERGY,             20
+	card_item MAGMAR_LV31,              2
+	card_item MAGMAR_LV24,              2
+	card_item VULPIX,                   4
+	card_item NINETALES_LV32,           2
+	card_item NINETALES_LV35,           2
+	card_item GROWLITHE,                4
+	card_item ARCANINE_LV45,            4
+	card_item BILL,                     4
+	card_item POKEMON_TRADER,           3
+	card_item ENERGY_RETRIEVAL,         2
 	card_item SUPER_ENERGY_RETRIEVAL,   1
 	card_item SWITCH,                   2
-	card_item PLUSPOWER,                2
-	card_item GUST_OF_WIND,             3
+	card_item PLUSPOWER,                3
+	card_item PROFESSOR_OAK,            3
+	card_item GUST_OF_WIND,             2
 	deck_list_end
 	tx FlamethrowerDeckName
 
 ReshuffleDeck:
 	deck_list_start
-	card_item FIRE_ENERGY,             23
-	card_item DOUBLE_COLORLESS_ENERGY,  2
-	card_item VULPIX,                   4
-	card_item NINETALES_LV35,           3
-	card_item GROWLITHE,                2
-	card_item ARCANINE_LV45,            1
-	card_item PONYTA,                   2
+	card_item FIRE_ENERGY,             18
+	card_item DOUBLE_COLORLESS_ENERGY,  4
+	card_item PONYTA,                   3
+	card_item RAPIDASH,                 3
 	card_item PIDGEY,                   4
 	card_item PIDGEOTTO,                3
-	card_item PIDGEOT_LV38,             2
-	card_item JIGGLYPUFF_LV13,          1
-	card_item WIGGLYTUFF,               1
-	card_item LICKITUNG,                2
-	card_item KANGASKHAN,               1
-	card_item TAUROS,                   1
-	card_item BILL,                     2
-	card_item ENERGY_RETRIEVAL,         2
-	card_item ENERGY_REMOVAL,           1
+	card_item PIDGEOT_LV38,             3
+	card_item JIGGLYPUFF_LV13,          2
+	card_item WIGGLYTUFF,               2
+	card_item MOLTRES_LV35,             2
+	card_item KANGASKHAN,               2
+	card_item BILL,                     3
+	card_item PROFESSOR_OAK,            2
+	card_item ENERGY_REMOVAL,           3
 	card_item SUPER_ENERGY_REMOVAL,     1
-	card_item SWITCH,                   2
-	card_item POKEMON_CENTER,           1
-	card_item POTION,                   2
+	card_item SWITCH,                   3
+	card_item SUPER_POTION,             2
 	; this deck list has 63 cards
 	;deck_list_end
 	db 0
