@@ -939,7 +939,7 @@ HandleAIEnergyTrans:
 	inc e
 	ld a, DECK_SIZE
 	cp e
-	jr nz, .loop_deck_locations
+	jp nz, .loop_deck_locations
 
 ; transfer is done, perform delay
 ; and return to main scene.
@@ -1183,7 +1183,7 @@ AIEnergyTransTransferEnergyToBench:
 	inc e
 	ld a, DECK_SIZE
 	cp e
-	jr nz, .loop_deck_locations
+	jp nz, .loop_deck_locations
 
 ; transfer is done, perform delay
 ; and return to main scene.
