@@ -1034,6 +1034,7 @@ FindBenchCardWithWeakness:
 ;	    that the AI's Active Pokémon can KO, if any (PLAY_AREA_* constant)
 ;	carry = set:  if the AI's Active Pokémon could KO one of the Player's Benched Pokémon
 FindBenchCardToKnockOut:
+	lb bc, 0, 0 ; best attached Energy count and selected location
 	ld a, DUELVARS_BENCH
 	call GetNonTurnDuelistVariable
 	ld e, PLAY_AREA_BENCH_1 - 1
@@ -1041,8 +1042,9 @@ FindBenchCardToKnockOut:
 .loop_bench
 	ld a, [hli]
 	cp -1 ; empty play area slot?
-	ret z ; return no carry if there are no more Benched Pokémon to check
+	jp z, .done
 	inc e
+	push bc
 	push de
 	push hl
 
@@ -1123,9 +1125,36 @@ FindBenchCardToKnockOut:
 	ld [hl], b
 	pop hl
 	pop de
+	pop bc
 	jr c, .loop_bench
 
-; found a Benched Pokémon that can be KO'd, so return carry with its location in a.
+; Boss Trainers prefer the guaranteed KO target with the most attached Energy.
+	call CheckIfOpponentHasBossDeckID
+	jr nc, .return_ko ; preserve the existing target order for other decks
+	push bc
+	push hl
+	push de
+	rst SwapTurn
+	call GetPlayAreaCardAttachedEnergies
+	rst SwapTurn
+	pop de
+	pop hl
+	pop bc
+	cp b
+	jr c, .loop_bench ; keep the earlier target when it has more Energy
+	jr z, .loop_bench ; keep the earlier target on a tie
+	ld b, a
+	ld c, e
+	jr .loop_bench
+
+.done
+	ld a, c
+	or a
+	ret z ; no KO target was found
+	scf
+	ret
+
+.return_ko
 	ld a, e
 	scf
 	ret

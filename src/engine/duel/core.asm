@@ -7986,6 +7986,7 @@ MoveAllTurnHolderKnockedOutPokemonToDiscardPile:
 	jr nz, .next
 	push hl
 	push de
+	call Aftermath_DiscardOpponentDeckCards
 	call MovePlayAreaCardToDiscardPile
 	pop de
 	pop hl
@@ -7993,6 +7994,35 @@ MoveAllTurnHolderKnockedOutPokemonToDiscardPile:
 	inc e
 	dec d
 	jr nz, .loop
+	ret
+
+
+; if the Knocked Out Pokémon is Murray's Weezing and Pokémon Powers aren't disabled,
+; discards the top 3 cards of the opponent's deck (Aftermath).
+; preserves all registers except af
+; input:
+;	e = play area location offset of the Knocked Out Pokémon (PLAY_AREA_* constant)
+Aftermath_DiscardOpponentDeckCards:
+	ld a, DUELVARS_ARENA_CARD
+	add e
+	get_turn_duelist_var
+	call _GetCardIDFromDeckIndex
+	cp MURRAY_WEEZING
+	ret nz
+	call CheckIfPkmnPowersAreCurrentlyDisabled
+	ret c
+	push bc
+	rst SwapTurn
+	ld c, 3
+.discard_loop
+	call DrawCardFromDeck
+	jr c, .done ; deck is empty
+	call PutCardInDiscardPile
+	dec c
+	jr nz, .discard_loop
+.done
+	rst SwapTurn
+	pop bc
 	ret
 
 

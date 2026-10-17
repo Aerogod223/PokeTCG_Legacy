@@ -8,6 +8,11 @@
 ;	- Slowbro's Strange Behavior
 ;	- Gengar's Curse
 ;	- DragoniteLv45's Step In
+;	- Nikki's Exeggutor's Growing Pains
+;	- Isaac's Magneton's Super Conductor
+;	- Ken's Rapidash's Blazing Speed
+;	- Mitch's Primeape's Work Up
+;	- Amy's Starmie's Crystal Type
 ; output:
 ;	carry = set:  if the turn ended
 HandleAIPkmnPowers:
@@ -109,7 +114,37 @@ HandleAIPkmnPowers:
 
 .step_in
 	cp DRAGONITE_LV45
-	call z, HandleAIStepIn
+	jr nz, .growing_pains
+	call HandleAIStepIn
+	jr .next_1
+
+.growing_pains
+	cp NICK_EXEGGUTOR
+	jr nz, .super_conductor
+	call HandleAIGrowingPains
+	jr .next_1
+
+.super_conductor
+	cp ISSAC_MAGNETON
+	jr nz, .blazing_speed
+	call HandleAISuperConductor
+	jr .next_1
+
+.blazing_speed
+	cp KEN_RAPIDASH
+	jr nz, .work_up
+	call HandleAIBlazingSpeed
+	jr .next_1
+
+.work_up
+	cp MITCH_PRIMEAPE
+	jr nz, .crystal_type
+	call HandleAIWorkUp
+	jr .next_1
+
+.crystal_type
+	cp AMY_STARMIE
+	call z, HandleAICrystalType
 ;	fallthrough
 
 .next_1
@@ -643,6 +678,143 @@ HandleAIStepIn:
 	ret
 
 
+; uses the Pokémon Power of [wce08] without any extra parameters
+AIUsePkmnPower_NoParameters:
+	ld a, [wce08]
+	ldh [hTempCardIndex_ff9f], a
+	ld a, OPPACTION_USE_PKMN_POWER
+	bank1call AIMakeDecision
+	ld a, OPPACTION_EXECUTE_PKMN_POWER_EFFECT
+	bank1call AIMakeDecision
+	ld a, OPPACTION_DUEL_MAIN_SCENE
+	bank1call AIMakeDecision
+	ret
+
+
+; checks whether AI uses Nikki's Exeggutor's Growing Pains.
+; it's only used if the user would still have at least 30 HP afterwards.
+; input:
+;	c = user's play area location offset (PLAY_AREA_* constant)
+HandleAIGrowingPains:
+	ld a, c
+	ldh [hTemp_ffa0], a
+	add DUELVARS_ARENA_CARD_HP
+	get_turn_duelist_var
+	ld a, [hl]
+	cp 50
+	ret c ; return if the user would be left with less than 30 HP
+	jp AIUsePkmnPower_NoParameters
+
+
+; checks whether AI uses Isaac's Magneton's Super Conductor.
+; if the user is the Active Pokémon, it must keep at least 1 Lightning Energy
+; so that it can still use Magnet Bomb.
+; input:
+;	c = user's play area location offset (PLAY_AREA_* constant)
+HandleAISuperConductor:
+	ld a, c
+	ldh [hTemp_ffa0], a
+	or a ; cp PLAY_AREA_ARENA
+	jr z, .active
+.use
+	ld a, EFFECTCMDTYPE_AI_SELECTION
+	call TryExecuteEffectCommandFunction
+	jp AIUsePkmnPower_NoParameters
+.active
+	ld e, PLAY_AREA_ARENA
+	call GetPlayAreaCardAttachedEnergies
+	ld a, [wAttachedEnergies + LIGHTNING]
+	cp 2
+	ret c ; return if the user has fewer than 2 Lightning Energy
+	jr .use
+
+
+; checks whether AI uses Ken's Rapidash's Blazing Speed.
+; the user must have at least 2 Energy attached to attack
+; and at least 50 HP so that it survives the 20 damage.
+; input:
+;	c = user's play area location offset (PLAY_AREA_* constant)
+HandleAIBlazingSpeed:
+	ld a, c
+	ldh [hTemp_ffa0], a
+	add DUELVARS_ARENA_CARD_HP
+	get_turn_duelist_var
+	ld a, [hl]
+	cp 50
+	ret c ; return if the user doesn't have enough HP
+	ldh a, [hTemp_ffa0]
+	ld e, a
+	call GetPlayAreaCardAttachedEnergies
+	ld a, [wTotalAttachedEnergies]
+	cp 2
+	ret c ; return if the user doesn't have enough Energy to attack
+	jp AIUsePkmnPower_NoParameters
+
+
+; checks whether AI uses Mitch's Primeape's Work Up.
+; it's only used if the user would still have at least 30 HP afterwards.
+; input:
+;	c = user's play area location offset (PLAY_AREA_* constant)
+HandleAIWorkUp:
+	ld a, c
+	or a ; cp PLAY_AREA_ARENA
+	ret nz ; return if the user is not the Active Pokémon
+	ldh [hTemp_ffa0], a
+	ld a, DUELVARS_ARENA_CARD_HP
+	get_turn_duelist_var
+	ld a, [hl]
+	cp 50
+	ret c ; return if the user would be left with less than 30 HP
+	jp AIUsePkmnPower_NoParameters
+
+
+; checks whether AI uses Amy's Starmie's Crystal Type. It must be the Active Pokémon.
+; AI picks a Water or Psychic Energy card from its hand, preferring the type
+; that matches the Defending Pokémon's Weakness.
+; input:
+;	c = user's play area location offset (PLAY_AREA_* constant)
+HandleAICrystalType:
+	ld a, c
+	or a ; cp PLAY_AREA_ARENA
+	ret nz ; return if the user is not the Active Pokémon
+	ldh [hTemp_ffa0], a
+	farcall CreateWaterOrPsychicEnergyListFromHand
+	ret c ; return if there are no Water or Psychic Energy cards in hand
+	rst SwapTurn
+	call GetArenaCardWeakness
+	rst SwapTurn
+	ld b, a ; Defending Pokémon's Weakness
+	ld hl, wDuelTempList
+	ld a, [hl]
+	ld d, a ; default to the first card in the list
+.loop_cards
+	ld a, [hli]
+	cp $ff
+	jr z, .chosen
+	ld e, a
+	call GetCardTypeFromDeckIndex_SaveDE
+	ld c, WR_WATER
+	cp TYPE_ENERGY_WATER
+	jr z, .compare
+	ld c, WR_PSYCHIC
+.compare
+	ld a, b
+	and c
+	jr z, .loop_cards
+	ld d, e ; this card's type matches the Weakness
+	jr .loop_cards
+.chosen
+	ld a, d
+	ldh [hTempPlayAreaLocation_ffa1], a
+	call GetCardTypeFromDeckIndex_SaveDE
+	ld b, TYPE_PKMN_WATER
+	cp TYPE_ENERGY_WATER
+	jr z, .set_type
+	ld b, TYPE_PKMN_PSYCHIC
+.set_type
+	ld a, b
+	ldh [hAIPkmnPowerEffectParam], a
+	jp AIUsePkmnPower_NoParameters
 
 
 ; handles AI routines for Energy Trans.

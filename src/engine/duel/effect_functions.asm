@@ -9412,56 +9412,149 @@ SwitchEffect:
 ;	ret
 
 
-; Gets the amount of damage counters on each active pokemon, 
-; then heals the damage done and swaps the damage healed onto the opposite active pokemon.
-; input: 
-; b = damage carried from first active pokemon
-; af = damage carried from second active pokemon
-AmnesiaBlastEffect:
+; transfers damage counters between the two Active Pokémon:
+; each one ends up with the amount of damage the other one had (limited by its own max HP).
+AmnesiaBlast_SwapDamageEffect:
 	ld e, PLAY_AREA_ARENA
 	call GetCardDamageAndMaxHP
+	ld d, a ; user's damage
+	rst SwapTurn
+	ld e, PLAY_AREA_ARENA
+	call GetCardDamageAndMaxHP
+	ld e, a ; Defending Pokémon's damage
+	ld a, DUELVARS_ARENA_CARD_HP
+	get_turn_duelist_var
+	ld a, [hl]
+	or a
+	jr z, .done ; Defending Pokémon was Knocked Out
+	ld a, c
+	sub d
+	jr nc, .set_defender_hp
+	xor a
+.set_defender_hp
+	ld [hl], a
+	rst SwapTurn
+	push de
+	ld e, PLAY_AREA_ARENA
+	call GetCardDamageAndMaxHP
+	pop de
+	ld a, c
+	sub e
+	jr nc, .set_user_hp
+	xor a
+.set_user_hp
 	ld b, a
-	ld e, a ; all damage for recovery
-	ld d, 0
-	rst SwapTurn
-	ld e, PLAY_AREA_ARENA
-	call GetCardDamageAndMaxHP
-	ld d, a
-	ld e, a ; all damage for recovery
-	ld d, 0
-	rst SwapTurn
-	ld a, b
-	ld [wDamage], a
-	ld [wAIMinDamage], a
-	ld [wAIMaxDamage], a
-	xor a
-	ld [wDamage + 1], a
-	rst SwapTurn
-	ld a, d
-	ld [wDamage], a
-	ld [wAIMinDamage], a
-	ld [wAIMaxDamage], a
-	xor a
-	ld [wDamage + 1], a
+	ld a, DUELVARS_ARENA_CARD_HP
+	get_turn_duelist_var
+	ld [hl], b
+	ret
+
+.done
 	jp SwapTurn
+
+
+; output:
+;	[hTemp_ffa0] = play area location offset of the user (PLAY_AREA_* constant)
+;	hl = ID for notification text
+;	carry = set:  if Growing Pains cannot be used
+GrowingPainsCheck:
+	call OncePerTurnPokePowerCheck
+	ret c
+	call DeckCheck
+	ret c
+	ldh a, [hTemp_ffa0]
+	add DUELVARS_ARENA_CARD_HP
+	get_turn_duelist_var
+	ldtx hl, CannotUseBecauseItWillBeKnockedOutText
+	cp 30
+	ret
+
+
+; puts 2 damage counters on the user and draws a card
+; input:
+;	[hTemp_ffa0] = play area location offset of the user (PLAY_AREA_* constant)
+GrowingPains_DrawEffect:
+	ldh a, [hTemp_ffa0]
+	add DUELVARS_ARENA_CARD_FLAGS
+	get_turn_duelist_var
+	set USED_PKMN_POWER_THIS_TURN_F, [hl]
+	ldh a, [hTemp_ffa0]
+	add DUELVARS_ARENA_CARD_HP
+	get_turn_duelist_var
+	ld a, [hl]
+	sub 20
+	ld [hl], a
+	jp Draw1CardFromDeck
+
+
+; puts 1 damage counter on each of the opponent's Pokémon and on the Pokémon that was just played
+; input:
+;	[hTempPlayAreaLocation_ff9d] = play area location offset of the evolved Pokémon (PLAY_AREA_* constant)
+SinisterShadow_DamageEffect:
+	ldh a, [hTempPlayAreaLocation_ff9d]
+	ld b, a
+	ld de, 10
+	call DealDamageToPlayAreaPokemon
+	rst SwapTurn
+	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
+	get_turn_duelist_var
+	ld c, a
+	ld b, PLAY_AREA_ARENA
+.loop
+	ld de, 10
+	call DealDamageToPlayAreaPokemon
+	inc b
+	dec c
+	jr nz, .loop
+	rst SwapTurn
+	bank1call HandleDestinyBondAndBetweenTurnKnockOuts
+	ret
+
+
+; fills wDuelTempList with the Lightning Energy cards attached to the Pokémon in [hTemp_ffa0]
+; and returns the first one.
+; output:
+;	a = deck index of an attached Lightning Energy card
+;	carry = set:  if there isn't one
+SuperConductor_FindLightningEnergy:
+	ldh a, [hTemp_ffa0]
+	call CreateArenaOrBenchEnergyCardList
+	ret c
+	ld hl, wDuelTempList
+.loop
+	ld a, [hli]
+	cp $ff
+	jr z, .none
+	ld b, a
+	call GetCardTypeFromDeckIndex_SaveDE
+	cp TYPE_ENERGY_LIGHTNING
+	ld a, b
+	jr nz, .loop
+	or a
+	ret
+.none
+	scf
+	ret
 
 
 ; output:
 ;	hl = ID for notification text
 ;	carry = set:  if there isn't an attached Lightning Energy to discard or
-;	              if there are no Trainer cards in the turn holder's discard pile
-SuperConductor_DiscardPileAndEnergyCheck:
-	call ActivePokemon_LightningEnergyCheck
-	ret c ; return if no Lightning Energy are attached
+;	              if there are no Trainer cards in the turn holder's discard pile or
+;	              if the Pokémon Power was already used this turn
+SuperConductorCheck:
+	call OncePerTurnPokePowerCheck
+	ret c
+	call SuperConductor_FindLightningEnergy
+	ldtx hl, NotEnoughLightningEnergyText
+	ret c
 	jp CreateTrainerCardListFromDiscardPile
 
 
-; AI picks the first available Energy and Trainer card from the respective location
+; AI picks the first available Trainer card from the discard pile
 ; output:
-;	[hTemp_ffa0] = deck index of the Lightning Energy card to discard
 ;	[hTempPlayAreaLocation_ffa1] = deck index of a Trainer card in own discard pile (0-59)
 SuperConductor_AISelection:
-	call DiscardAttachedLightningEnergy_AISelection
 	call CreateTrainerCardListFromDiscardPile
 	ld a, [wDuelTempList]
 	ldh [hTempPlayAreaLocation_ffa1], a
@@ -9500,41 +9593,272 @@ SuperConductor_MoveToHandEffect:
 	bank1call DisplayCardDetailScreen
 	ret
 
-	; flips a coin, and if heads, the opponent's Active Pokemon is Paralyzed, and if tails, an opponents Benched Pokemon takes 20 damage.
-StarBlast_Paralysis50PercentEffect:
+; flips a coin, and if heads, the opponent's Active Pokemon is Paralyzed.
+; if tails, the bench damage is dealt after the attack's damage.
+; output:
+;	[hTempPlayAreaLocation_ffa1] = 1 if heads, 0 if tails
+StarBlast_CoinFlipEffect:
 	ldtx de, ParalysisCheckText
 	call TossCoin
 	jr c, .heads
+	xor a
+	ldh [hTempPlayAreaLocation_ffa1], a
+	ret
+.heads
+	ld a, 1
+	ldh [hTempPlayAreaLocation_ffa1], a
+	jp ParalysisEffect
 
-; tails
-	rst SwapTurn
+
+; deals 20 damage to the selected Benched Pokémon if the coin flip was tails
+; input:
+;	[hTempPlayAreaLocation_ffa1] = 0 if tails
+;	[hTemp_ffa0] = play area location offset of the target (PLAY_AREA_* constant, -1 if none)
+StarBlast_BenchDamageEffect:
+	ldh a, [hTempPlayAreaLocation_ffa1]
+	or a
+	ret nz ; return if heads
 	ldh a, [hTemp_ffa0]
+	cp $ff
+	ret z ; return if there was no Benched Pokémon
+	rst SwapTurn
 	ld b, a
 	ld de, 20
 	call DealDamageToPlayAreaPokemon_RegularAnim
 	jp SwapTurn
 
-.heads
-	call ParalysisEffect
-	ldh a, [hTempPlayAreaLocation_ff9d]
-	ld b, a
-	ld c, $00 ; neither WEAKNESS nor RESISTANCE
-	ldh a, [hWhoseTurn]
-	ld h, a
-	call PlayAttackAnimation
-	bank1call PlayStatusConditionQueueAnimations
-	call WaitAttackAnimation
-	bank1call ApplyStatusConditionQueue
-	bank1call DrawDuelHUDs
-	bank1call PrintFailedEffectText
-	jp c, WaitForWideTextBoxInput
+
+; discards the used Lightning Energy, then moves the selected Trainer card to the hand
+; input:
+;	[hTemp_ffa0] = play area location offset of the user (PLAY_AREA_* constant)
+;	[hTempPlayAreaLocation_ffa1] = deck index of the Trainer card in the discard pile (0-59)
+SuperConductor_DiscardAndMoveToHandEffect:
+	ldh a, [hTemp_ffa0]
+	add DUELVARS_ARENA_CARD_FLAGS
+	get_turn_duelist_var
+	set USED_PKMN_POWER_THIS_TURN_F, [hl]
+	call SuperConductor_FindLightningEnergy
+	call nc, PutCardInDiscardPile
+	jp SuperConductor_MoveToHandEffect
+
+
+; output:
+;	hl = ID for notification text
+;	carry = set:  if Blazing Speed cannot be used
+BlazingSpeedCheck:
+	call StepInCheck
+	ret c
+	ld a, DUELVARS_ARENA_CARD
+	get_turn_duelist_var
+	call _GetCardIDFromDeckIndex
+	cp KEN_RAPIDASH
+	jr nz, .can_use
+	ldtx hl, UnableToSelectText
+	scf
+	ret
+.can_use
+	or a
 	ret
 
-DiscardAllAttachedFireEnergyEffect:
-	xor a ; PLAY_AREA_ARENA
-	call CreateListOfFireEnergyAttachedToActive
+
+; switches the user with the Active Pokémon, then deals 20 damage
+; to the user and to the Defending Pokémon
+BlazingSpeed_SwitchAndDamageEffect:
+	call StepIn_SwitchEffect
+	ld b, PLAY_AREA_ARENA
+	ld de, 20
+	call DealDamageToPlayAreaPokemon
+	rst SwapTurn
+	ld b, PLAY_AREA_ARENA
+	ld de, 20
+	call DealDamageToPlayAreaPokemon
+	rst SwapTurn
+	bank1call HandleDestinyBondAndBetweenTurnKnockOuts
+	ret
+
+
+; output:
+;	hl = ID for notification text
+;	carry = set:  if Work Up cannot be used
+WorkUpCheck:
+	call OncePerTurnPokePowerCheck
+	ret c
+	ldh a, [hTempPlayAreaLocation_ff9d]
+	or a
+	jr z, .is_active
+	ldtx hl, UnableToSelectText
+	scf
+	ret
+.is_active
+	call DeckCheck
+	ret c
+	ld a, DUELVARS_ARENA_CARD_HP
+	get_turn_duelist_var
+	ld a, [hl]
+	cp 30
+	ldtx hl, CannotUseBecauseItWillBeKnockedOutText
+	ret c
+	call FindPlusPowerInDeck
+	ldtx hl, NoCardsLeftInTheDeckText
+	ret
+
+
+; output:
+;	a = deck index of a PlusPower card in the turn holder's deck
+;	carry = set:  if there isn't one
+FindPlusPowerInDeck:
+	call CreateDeckCardList
+	ret c
 	ld hl, wDuelTempList
-; put all Fire Energy cards in the discard pile
+.loop
+	ld a, [hli]
+	cp $ff
+	jr z, .none
+	ld b, a
+	call _GetCardIDFromDeckIndex
+	cp PLUSPOWER
+	ld a, b
+	jr nz, .loop
+	or a
+	ret
+.none
+	scf
+	ret
+
+
+; puts 2 damage counters on the user and adds a PlusPower from the deck to the hand
+WorkUp_AddPlusPowerEffect:
+	ld a, DUELVARS_ARENA_CARD_FLAGS
+	get_turn_duelist_var
+	set USED_PKMN_POWER_THIS_TURN_F, [hl]
+	ld a, DUELVARS_ARENA_CARD_HP
+	get_turn_duelist_var
+	ld a, [hl]
+	sub 20
+	ld [hl], a
+	call FindPlusPowerInDeck
+	jr nc, .found
+	ld a, $ff
+.found
+	ldh [hTemp_ffa0], a
+	jp AddCardFromDeckToHandEffect
+
+
+; output:
+;	hl = ID for notification text
+;	carry = set:  if Crystal Type cannot be used
+CrystalTypeCheck:
+	call OncePerTurnPokePowerCheck
+	ret c
+	ldh a, [hTempPlayAreaLocation_ff9d]
+	or a
+	jr z, .is_active
+	ldtx hl, UnableToSelectText
+	scf
+	ret
+.is_active
+	call CreateWaterOrPsychicEnergyListFromHand
+	ldtx hl, NotEnoughWaterEnergyText
+	ret
+
+
+; handles the Player's selection of a Water or Psychic Energy card from their hand
+; output:
+;	carry = set:  if the operation was cancelled by the Player (with B button)
+;	[hTempPlayAreaLocation_ffa1] = deck index of the Energy card
+;	[hAIPkmnPowerEffectParam] = the new type (TYPE_PKMN_* constant)
+CrystalType_PlayerSelection:
+	call CreateWaterOrPsychicEnergyListFromHand
+	bank1call InitAndDrawCardListScreenLayout_WithSelectCheckMenu
+	ldtx hl, ChooseAnEnergyCardText
+	ldtx de, YourHandText
+	call SetCardListHeaderText
+	bank1call DisplayCardList
+	ret c
+	ldh [hTempPlayAreaLocation_ffa1], a
+	call GetCardTypeFromDeckIndex_SaveDE
+	ld b, TYPE_PKMN_WATER
+	cp TYPE_ENERGY_WATER
+	jr z, .set_type
+	ld b, TYPE_PKMN_PSYCHIC
+.set_type
+	ld a, b
+	ldh [hAIPkmnPowerEffectParam], a
+	or a
+	ret
+
+
+; attaches the selected Energy card from the hand to the user and changes the user's type
+CrystalType_AttachAndChangeTypeEffect:
+	xor a ; PLAY_AREA_ARENA
+	ldh [hTemp_ffa0], a
+	ldh a, [hTempPlayAreaLocation_ffa1]
+	ld e, PLAY_AREA_ARENA
+	call PutHandCardInPlayArea
+	jp Shift_ChangeColorEffect
+
+
+; creates in wDuelTempList a list of the Water and Psychic Energy cards in the turn holder's hand
+; output:
+;	a = number of cards in the list
+;	carry = set:  if there are none
+CreateWaterOrPsychicEnergyListFromHand:
+	lb bc, TYPE_ENERGY_WATER, TYPE_ENERGY_PSYCHIC
+	jr CreateHandEnergyListOfTypes
+
+; creates in wDuelTempList a list of the Water Energy cards in the turn holder's hand
+; output:
+;	a = number of cards in the list
+;	carry = set:  if there are none
+CreateWaterEnergyListFromHand:
+	lb bc, TYPE_ENERGY_WATER, TYPE_ENERGY_WATER
+;	fallthrough
+
+; creates in wDuelTempList a list of the cards in the turn holder's hand matching one of 2 Energy types
+; input:
+;	b, c = TYPE_ENERGY_* constants
+; output:
+;	a = number of cards in the list
+;	carry = set:  if there are none
+CreateHandEnergyListOfTypes:
+	push bc
+	call CreateHandCardList
+	pop bc
+	ret c
+	ld hl, wDuelTempList
+	ld de, wDuelTempList
+.loop
+	ld a, [hli]
+	cp $ff
+	jr z, .done
+	call GetCardTypeFromDeckIndex_SaveDE
+	cp b
+	jr z, .keep
+	cp c
+	jr nz, .loop
+.keep
+	dec hl
+	ld a, [hli]
+	ld [de], a
+	inc de
+	jr .loop
+.done
+	ld a, $ff
+	ld [de], a
+	ld a, e
+	sub LOW(wDuelTempList)
+	or a
+	ret nz
+	scf
+	ret
+
+; discards all Fire Energy attached to the Active Pokémon, saving how many were discarded
+; output:
+;	[hTemp_ffa0] = number of Fire Energy cards discarded
+FireBlast_DiscardEffect:
+	call CreateListOfFireEnergyAttachedToActive
+	ldh [hTemp_ffa0], a
+	ld hl, wDuelTempList
 .loop
 	ld a, [hli]
 	cp $ff
@@ -9542,58 +9866,124 @@ DiscardAllAttachedFireEnergyEffect:
 	call PutCardInDiscardPile
 	jr .loop
 
-; sets the attack damage to 30 times the total amount of Energy
-; attached to both Active Pokémon, up to a maximum of 240 damage.
-; preserves bc and hl
-FireBlastDamageEffect:
-	call CountEnergyAttachedToActivePkmn
-	cp 8
-	jr nc, .cap_damage ; set damage to 240 if there are at least 8 Energy
-	; otherwise, multiply the amount of Energy by 30, and set damage to that.
-	call ATimes10
-	jp SetDefiniteDamage
-.cap_damage
-	ld a, 240
-	jp SetDefiniteDamage
+
+; sets the damage to 30 times the number of Fire Energy discarded
+FireBlast_DamageEffect:
+	ldh a, [hTemp_ffa0]
+	ld l, a
+	ld h, 30
+	jp SetDefiniteDamage_HTimesL
 
 
-; counts the total amount of Energy attached to both Active Pokémon.
-; each Double Colorless Energy counts as 2 Energy.
-; preserves bc and hl
-; output:
-;	a = total amount of Energy attached to both Active Pokémon
-CountEnergyAttachedToActivePkmn:
+; sets the AI damage to 30 times the number of Fire Energy attached to the Active Pokémon
+FireBlast_AIEffect:
 	ld e, PLAY_AREA_ARENA
 	call GetPlayAreaCardAttachedEnergies
 	ld a, [wAttachedEnergies + FIRE]
-	ld d, a ; wTotalAttachedEnergies for the Attacking Pokémon
-;fallthrough
-
-; does 30 more damage for each Energy attached to both Active Pokémon.
-; total damage is capped at 240.
-; preserves bc
-FireBlast_30MoreDamageEffect:
-	call CountEnergyAttachedToActivePkmn
 	ld l, a
 	ld h, 30
-	call HtimesL ; added damage is 30 * total Energy
-	ld a, [wDamage]
-	ld e, a
-	ld d, $00
-	add hl, de
+	call SetDefiniteDamage_HTimesL
+	jp SetDefiniteAIDamage
+
+
+; sets the damage to h * l, capped at 250
+; input:
+;	h, l = factors
+SetDefiniteDamage_HTimesL:
+	call HtimesL
 	ld a, h
 	or a
 	ld a, l
-	jr z, .set_damage ; use the damage in hl if it can fit in 1 byte (0-255)
-	; otherwise, cap the damage to 250
-	ld a, 240
-.set_damage
+	jp z, SetDefiniteDamage
+	ld a, 250
 	jp SetDefiniteDamage
+
+
+; handles the Player's selection of Water Energy cards in their hand to discard
+; output:
+;	[hTemp_ffa0] = number of Energy cards discarded
+HydroCannon_PlayerSelection:
+	xor a
+	ldh [hTemp_ffa0], a
+.loop
+	call CreateWaterEnergyListFromHand
+	jr c, .done
+	bank1call InitAndDrawCardListScreenLayout_WithSelectCheckMenu
+	ldtx hl, ChooseEnergyCardToDiscardText
+	ldtx de, YourHandText
+	call SetCardListHeaderText
+	bank1call DisplayCardList
+	jr c, .done ; B button, stop discarding
+	call MoveHandCardToDiscardPile
+	ldh a, [hTemp_ffa0]
+	inc a
+	ldh [hTemp_ffa0], a
+	jr .loop
+.done
+	or a
+	ret
+
+
+; AI discards all Water Energy cards in its hand
+; output:
+;	[hTemp_ffa0] = number of Energy cards discarded
+HydroCannon_AISelection:
+	xor a
+	ldh [hTemp_ffa0], a
+	call CreateWaterEnergyListFromHand
+	ret c
+	ld hl, wDuelTempList
+.loop
+	ld a, [hli]
+	cp $ff
+	ret z
+	push hl
+	call MoveHandCardToDiscardPile
+	pop hl
+	ldh a, [hTemp_ffa0]
+	inc a
+	ldh [hTemp_ffa0], a
+	jr .loop
+
+
+; sets the AI damage to 20 times the number of Water Energy cards in the turn holder's hand
+HydroCannon_AIEffect:
+	ld a, DUELVARS_NUMBER_OF_CARDS_IN_HAND
+	get_turn_duelist_var
+	ld c, a
+	ld b, 0
+	ld a, DUELVARS_HAND
+	get_turn_duelist_var
+.loop
+	ld a, c
+	or a
+	jr z, .done
+	ld a, [hli]
+	call GetCardTypeFromDeckIndex_SaveDE
+	cp TYPE_ENERGY_WATER
+	jr nz, .next
+	inc b
+.next
+	dec c
+	jr .loop
+.done
+	ld l, b
+	ld h, 20
+	call SetDefiniteDamage_HTimesL
+	jp SetDefiniteAIDamage
+
+
+; sets the damage to 20 times the number of Energy cards discarded
+HydroCannon_DamageEffect:
+	ldh a, [hTemp_ffa0]
+	ld l, a
+	ld h, 20
+	jp SetDefiniteDamage_HTimesL
 
 ; output:
 ;	a = 10 * Defending Pokémon's adjusted Retreat Cost (accounting for things like Retreat Aid)
 RCPlusDamageCalc:
-        call SwapTurn
+	call SwapTurn
 	ld e, PLAY_AREA_ARENA
 	call GetPlayAreaCardRetreatCost
 	call SwapTurn
