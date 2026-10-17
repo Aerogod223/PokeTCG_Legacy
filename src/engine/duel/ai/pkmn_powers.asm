@@ -31,7 +31,7 @@ HandleAIPkmnPowers:
 	ld a, DUELVARS_ARENA_CARD_STATUS
 	get_turn_duelist_var
 	and CNF_SLP_PRZ
-	jr nz, .next_2
+	jp nz, .next_2
 
 .loop_play_area
 	ld a, DUELVARS_ARENA_CARD
@@ -53,7 +53,7 @@ HandleAIPkmnPowers:
 
 .next_3
 	pop af
-	jr .next_2
+	jp .next_2
 
 .execute_effect
 	ld a, EFFECTCMDTYPE_INITIAL_EFFECT_2
