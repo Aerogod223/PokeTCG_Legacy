@@ -150,13 +150,10 @@ HydroCannonName:
 	done
 
 GrowingPainsDescription:
-	text "Once during your turn (before"
-	line "your attack), you may put 2"
-	line "damage counters on Exeggutor."
-	line "Then, draw a card. This power"
-	line "can't be used if Exeggutor is"
-	line "Asleep, Confused, or"
-	line "Paralyzed."
+	text "Once per turn, put 3 damage"
+	line "counters on Exeggutor to draw"
+	line "a card. Can't be used if Asleep,"
+	line "Confused, or Paralyzed."
 	done
 
 AmnesiaBlastDescription:
@@ -185,15 +182,12 @@ CreepyCorridorDescription:
 	done
 
 SuperConductorDescription:
-	text "Once during your turn (before"
-	line "your attack), you may discard a"
-	line "<LIGHTNING> Energy card attached"
-	line "to Magneton. If you do, put a"
-	line "Trainer card from your discard"
-	line "pile into your hand. This power"
-	line "can't be used"
-	line "if Magneton is Asleep, Confused,"
-	line "or Paralyzed."
+	text "Once per turn, discard a"
+	line "<LIGHTNING> Energy attached to"
+	line "Magneton to return a Trainer"
+	line "from your discard pile to your"
+	line "hand. Can't be used if Asleep,"
+	line "Confused, or Paralyzed."
 	done
 
 MagnetBombDescription:
@@ -203,13 +197,10 @@ MagnetBombDescription:
 	done
 
 BlazingSpeedDescription:
-	text "Once during your turn, if"
-	line "Rapidash is on your Bench and"
-	line "your Active Pokémon isn't"
-	line "Rapidash, you may switch it with"
-	line "your Active Pokémon. If you do,"
-	line "put 2 damage counters on"
-	line "Rapidash and the"
+	text "Once per turn, if Rapidash is on"
+	line "your Bench, switch it with your"
+	line "Active Pokémon. Put 2 damage"
+	line "counters on Rapidash and the"
 	line "Defending Pokémon."
 	done
 
@@ -219,16 +210,12 @@ FlameChargeDescription:
 	done
 
 WorkUpDescription:
-	text "Once during your turn (before"
-	line "your attack), if Primeape is the"
-	line "Active Pokémon, you may put 2"
-	line "damage counters on it. Then,"
-	line "search your deck for a PlusPower"
-	line "card and put it into your hand."
-	line "Shuffle your deck afterward."
-	line "This power can't be used"
-	line "if Primeape is Asleep, Confused,"
-	line "or Paralyzed."
+	text "Once per turn, if Primeape is"
+	line "Active, put 2 damage counters on"
+	line "it. Search your deck for a"
+	line "PlusPower and put it into your"
+	line "hand, then shuffle. Can't be used"
+	line "if Asleep, Confused, or Paralyzed."
 	done
 
 RageFistDescription:
@@ -254,15 +241,12 @@ RockSlideDescription:
 	done
 
 CrystalTypeDescription:
-	text "Once during your turn (before"
-	line "your attack), if Starmie is your"
-	line "Active Pokémon, you may attach a"
-	line "<WATER> or <PSYCHIC> Energy card"
-	line "from your hand to it. Starmie's"
-	line "type becomes the same as that"
-	line "Energy's type. This power can't"
-	line "be used if Starmie is Asleep,"
-	line "Confused, or Paralyzed."
+	text "Once per turn, if Starmie is"
+	line "Active, attach a <WATER> or"
+	line "<PSYCHIC> Energy from your hand"
+	line "to it. Its type becomes that"
+	line "Energy's type. Can't be used if"
+	line "Asleep, Confused, or Paralyzed."
 	done
 
 StarBlastDescription:
@@ -279,6 +263,12 @@ AftermathDescription:
 	text "When Weezing is Knocked Out,"
 	line "discard the top 3 cards of your"
 	line "opponent's deck."
+	done
+
+AftermathTriggeredText:
+	text "Aftermath activated!"
+	line "Discard up to 3 cards from"
+	line "the opponent's deck."
 	done
 
 RevoltingGasDescription:

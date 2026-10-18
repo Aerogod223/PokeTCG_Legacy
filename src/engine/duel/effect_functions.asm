@@ -7531,7 +7531,7 @@ DevolutionSpray_PlayerSelection:
 	ldtx hl, ChooseEvolutionCardAndPressAButtonToDevolveText
 	call DrawWideTextBox_WaitForInput
 
-; have Player select an an Evolved Pokemon in the Play Area screen
+; have the Player select an Evolved Pokemon in the Play Area screen
 	ld a, 1
 	ldh [hCurSelectionItem], a
 	call InitPlayAreaScreenVars
@@ -7559,28 +7559,13 @@ DevolutionSpray_PlayerSelection:
 	ld a, [hl]
 	push hl
 	push af
-	jr .update_data
 
-.repeat_devolution
-; show the Play Area screen with a static cursor
-; so that the Player either presses A to do one more devolution
-; or presses B to finish selecting.
-	bank1call InitAndPrintPlayAreaCardInformationAndLocation_WithTextBox
-	jr c, .done_selection ; end selection if B button was pressed
-	; do one more devolution
-	call GetCardOneStageBelow
-
-.update_data
 ; overwrite the card data to the newly devolved stats
 	ld a, d
 	call UpdateDevolvedCardHPAndStage
 	call GetNextPositionInTempList
 	ld [hl], e
-	ld a, d
-	call LoadCardDataToBuffer2_FromDeckIndex
-	ld a, [wLoadedCard2Stage]
-	or a
-	jr nz, .repeat_devolution ; can do one more devolution
+	jr .done_selection
 
 .done_selection
 	call GetNextPositionInTempList
@@ -7618,8 +7603,8 @@ DevolutionSpray_PlayerSelection:
 	ret
 
 
-; discards a specified number of Evolution cards from a given
-; Evolved Pokemon in the turn holder's play area
+; devolves a chosen Pokemon by one stage and returns its top Evolution card
+; to the turn holder's hand
 ; input:
 ;	hTempList = $ff-terminated list with devolution information
 DevolutionSpray_DevolutionEffect:
@@ -7644,6 +7629,10 @@ DevolutionSpray_DevolutionEffect:
 	ld a, d
 	call UpdateDevolvedCardHPAndStage
 	call ResetDevolvedCardStatus
+	ldh a, [hTempPlayAreaLocation_ff9d]
+	add DUELVARS_ARENA_CARD_FLAGS
+	get_turn_duelist_var
+	res CAN_EVOLVE_THIS_TURN_F, [hl]
 	pop hl
 	ld a, [hli]
 	call PutCardInDiscardPile
@@ -9466,11 +9455,10 @@ GrowingPainsCheck:
 	add DUELVARS_ARENA_CARD_HP
 	get_turn_duelist_var
 	ldtx hl, CannotUseBecauseItWillBeKnockedOutText
-	cp 30
+	cp 40
 	ret
 
-
-; puts 2 damage counters on the user and draws a card
+; puts 3 damage counters on the user and draws a card
 ; input:
 ;	[hTemp_ffa0] = play area location offset of the user (PLAY_AREA_* constant)
 GrowingPains_DrawEffect:
@@ -9482,7 +9470,7 @@ GrowingPains_DrawEffect:
 	add DUELVARS_ARENA_CARD_HP
 	get_turn_duelist_var
 	ld a, [hl]
-	sub 20
+	sub 30
 	ld [hl], a
 	jp Draw1CardFromDeck
 
@@ -9593,18 +9581,47 @@ SuperConductor_MoveToHandEffect:
 	bank1call DisplayCardDetailScreen
 	ret
 
-; flips a coin, and if heads, the opponent's Active Pokemon is Paralyzed.
-; if tails, the bench damage is dealt after the attack's damage.
+; flips before selecting a Benched Pokémon; heads skips the selection.
 ; output:
 ;	[hTempPlayAreaLocation_ffa1] = 1 if heads, 0 if tails
-StarBlast_CoinFlipEffect:
+;	[hTemp_ffa0] = selected Benched Pokémon, or -1 if none is needed
+StarBlast_PlayerSelection:
 	ldtx de, ParalysisCheckText
 	call TossCoin
-	jr c, .heads
-	xor a
 	ldh [hTempPlayAreaLocation_ffa1], a
+	jr c, .player_no_target
+	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
+	call GetNonTurnDuelistVariable
+	cp 2
+	jp nc, AlsoDamageTo1Benched_PlayerSelection
+.player_no_target
+	ld a, -1
+	ldh [hTemp_ffa0], a
+	or a
 	ret
-.heads
+
+; AI flips first and selects the weakest Benched Pokémon only on tails.
+StarBlast_AISelection:
+	ldtx de, ParalysisCheckText
+	call TossCoin
+	ldh [hTempPlayAreaLocation_ffa1], a
+	jr c, .ai_no_target
+	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
+	call GetNonTurnDuelistVariable
+	cp 2
+	jp nc, AlsoChooseWeakestBenchedPokemon_AISelection
+
+.ai_no_target
+	ld a, -1
+	ldh [hTemp_ffa0], a
+	or a
+	ret
+
+; applies paralysis from the pre-selection coin toss.
+StarBlast_ApplyCoinFlipEffect:
+	ldh a, [hTempPlayAreaLocation_ffa1]
+	or a
+	ret z
 	ld a, 1
 	ldh [hTempPlayAreaLocation_ffa1], a
 	jp ParalysisEffect
@@ -9765,7 +9782,7 @@ CrystalTypeCheck:
 ; handles the Player's selection of a Water or Psychic Energy card from their hand
 ; output:
 ;	carry = set:  if the operation was cancelled by the Player (with B button)
-;	[hTempPlayAreaLocation_ffa1] = deck index of the Energy card
+;	[hTemp_ffa0] = deck index of the Energy card
 ;	[hAIPkmnPowerEffectParam] = the new type (TYPE_PKMN_* constant)
 CrystalType_PlayerSelection:
 	call CreateWaterOrPsychicEnergyListFromHand
@@ -9775,7 +9792,7 @@ CrystalType_PlayerSelection:
 	call SetCardListHeaderText
 	bank1call DisplayCardList
 	ret c
-	ldh [hTempPlayAreaLocation_ffa1], a
+	ldh [hTemp_ffa0], a
 	call GetCardTypeFromDeckIndex_SaveDE
 	ld b, TYPE_PKMN_WATER
 	cp TYPE_ENERGY_WATER
@@ -9790,11 +9807,11 @@ CrystalType_PlayerSelection:
 
 ; attaches the selected Energy card from the hand to the user and changes the user's type
 CrystalType_AttachAndChangeTypeEffect:
-	xor a ; PLAY_AREA_ARENA
-	ldh [hTemp_ffa0], a
-	ldh a, [hTempPlayAreaLocation_ffa1]
+	ldh a, [hTemp_ffa0]
 	ld e, PLAY_AREA_ARENA
 	call PutHandCardInPlayArea
+	xor a ; PLAY_AREA_ARENA
+	ldh [hTemp_ffa0], a
 	jp Shift_ChangeColorEffect
 
 

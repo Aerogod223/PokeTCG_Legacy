@@ -1235,9 +1235,9 @@ CrystalTypeEffectCommands:
 	db  $00
 
 StarBlastEffectCommands:
-	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, AlsoDamageTo1Benched_PlayerSelection
-	dbw EFFECTCMDTYPE_AI_SELECTION, AlsoChooseWeakestBenchedPokemon_AISelection
-	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, StarBlast_CoinFlipEffect
+	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, StarBlast_PlayerSelection
+	dbw EFFECTCMDTYPE_AI_SELECTION, StarBlast_AISelection
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, StarBlast_ApplyCoinFlipEffect
 	dbw EFFECTCMDTYPE_AFTER_DAMAGE, StarBlast_BenchDamageEffect
 	db  $00
 

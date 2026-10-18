@@ -8011,6 +8011,8 @@ Aftermath_DiscardOpponentDeckCards:
 	ret nz
 	call CheckIfPkmnPowersAreCurrentlyDisabled
 	ret c
+	ldtx hl, AftermathTriggeredText
+	call DrawWideTextBox_WaitForInput
 	push bc
 	rst SwapTurn
 	ld c, 3
@@ -8670,7 +8672,15 @@ UsePokemonPower:
 	ld [wAttackAnimationIsPlaying], a
 	ld a, EFFECTCMDTYPE_INITIAL_EFFECT_2
 	call TryExecuteEffectCommandFunction
-	jr c, DisplayUsePokemonPowerScreen_WaitForInput
+	jr nc, .check_selection
+	push hl
+	ld de, UnableDueToToxicGasText_
+	or a
+	sbc hl, de
+	pop hl
+	jr z, DrawWideTextBox_WaitForInput_ReturnCarry
+	jp DisplayUsePokemonPowerScreen_WaitForInput
+.check_selection
 	ld a, EFFECTCMDTYPE_REQUIRE_SELECTION
 	call TryExecuteEffectCommandFunction
 	ret c

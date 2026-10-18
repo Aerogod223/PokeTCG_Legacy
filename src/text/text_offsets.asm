@@ -3019,6 +3019,7 @@ TextOffsets::
 	textpointer CharizardFireBlastDescription
 	textpointer BubblebeamDescription
 	textpointer HydroCannonDescription
+	textpointer AftermathTriggeredText
 	textpointer ChooseAndDiscard2FightingEnergyCardsText
 	textpointer NotEnoughLightningEnergyText
 	textpointer NotEnoughFightingEnergyText

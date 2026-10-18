@@ -285,7 +285,7 @@ BulbasaurCard:
 	db 0
 	db ATK_ANIM_NONE ; animation
 
-	db 1 ; retreat cost
+	db 2 ; retreat cost
 	db WR_FIRE ; weakness
 	db NONE ; resistance
 	tx SeedName ; category
@@ -585,7 +585,7 @@ ButterfreeCard:
 	db HEALING_EQUALS_HALF_DAMAGE_DEALT ; used to calculate the HEAL_USER attack score bonus
 	db ATK_ANIM_DRAIN ; animation
 
-	db 0 ; retreat cost
+	db 2 ; retreat cost
 	db WR_FIRE ; weakness
 	db WR_FIGHTING ; resistance
 	tx ButterflyName ; category
@@ -10054,7 +10054,7 @@ NickExeggutorCard:
 	db DIAMOND ; rarity
 	db MYSTERY | JUNGLE ; sets
 	db NICK_EXEGGUTOR
-	db 70 ; hp
+	db 60 ; hp
 	db STAGE1 ; stage
 	tx ExeggcuteName ; pre-evo name
 
@@ -10204,7 +10204,7 @@ KenRapidashCard:
 	db DIAMOND ; rarity
 	db EVOLUTION | JUNGLE ; sets
 	db KEN_RAPIDASH
-	db 80 ; hp
+	db 60 ; hp
 	db STAGE1 ; stage
 	tx PonytaName ; pre-evo name
 
@@ -10236,7 +10236,7 @@ KenRapidashCard:
 	db 0
 	db ATK_ANIM_QUICK_ATTACK ; animation
 
-	db 0 ; retreat cost
+	db 2 ; retreat cost
 	db WR_FIGHTING ; weakness
 	db WR_GRASS ; resistance
 	tx FireHorseName ; category
@@ -10304,7 +10304,7 @@ GeneAerodactylCard:
 	db STAR ; rarity
 	db MYSTERY | FOSSIL ; sets
 	db GENE_AERODACTYL
-	db 90 ; hp
+	db 70 ; hp
 	db STAGE1 ; stage
 	tx MysteriousFossilName ; pre-evo name
 
@@ -10336,7 +10336,7 @@ GeneAerodactylCard:
 	db 0
 	db ATK_ANIM_HIT ; animation
 
-	db 1 ; retreat cost
+	db 2 ; retreat cost
 	db WR_LIGHTNING ; weakness
 	db WR_COLORLESS ; resistance
 	tx FossilName ; category
@@ -10354,7 +10354,7 @@ AmyStarmieCard:
 	db CIRCLE ; rarity
 	db EVOLUTION | NONE ; sets
 	db AMY_STARMIE
-	db 80 ; hp
+	db 70 ; hp
 	db STAGE1 ; stage
 	tx StaryuName ; pre-evo name
 
@@ -10386,7 +10386,7 @@ AmyStarmieCard:
 	db 0
 	db ATK_ANIM_BEAM ; animation
 
-	db 1 ; retreat cost
+	db 2 ; retreat cost
 	db WR_LIGHTNING ; weakness
 	db NONE ; resistance
 	tx MysteriousName ; category
@@ -10504,7 +10504,7 @@ BossBlastoiseCard:
 	db STAR ; rarity
 	db EVOLUTION | NONE ; sets
 	db BOSS_BLASTOISE
-	db 120 ; hp
+	db 110 ; hp
 	db STAGE2 ; stage
 	tx WartortleName ; pre-evo name
 

@@ -124,18 +124,15 @@ DevolutionSprayName:
 	done
 
 DevolutionSprayDescription:
-	text " Choose 1 of your in-play Pokémon"
-	line " and a Stage of Evolution. Discard"
-	line " all Evolution cards of that Stage"
-	line " or higher attached to that Pokémon."
+	text " Choose 1 of your Evolved Pokémon."
+	line " Devolve it by 1 Stage and return"
+	line " the Evolution card to your hand."
 	done
 
 DevolutionSprayDescriptionCont:
-	text " That Pokémon is no longer Asleep,"
-	line " Confused, Paralyzed, Poisoned, or"
-	line " anything else that might be the"
-	line " result of an attack (just as if"
-	line " you had evolved it)."
+	text " That Pokémon can't evolve this"
+	line " turn. Special Conditions and"
+	line " attack effects are removed."
 	done
 
 PotionName:

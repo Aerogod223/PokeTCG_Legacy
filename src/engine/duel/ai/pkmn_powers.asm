@@ -701,7 +701,7 @@ HandleAIGrowingPains:
 	add DUELVARS_ARENA_CARD_HP
 	get_turn_duelist_var
 	ld a, [hl]
-	cp 50
+	cp 60
 	ret c ; return if the user would be left with less than 30 HP
 	jp AIUsePkmnPower_NoParameters
 
@@ -805,7 +805,7 @@ HandleAICrystalType:
 	jr .loop_cards
 .chosen
 	ld a, d
-	ldh [hTempPlayAreaLocation_ffa1], a
+	ldh [hTemp_ffa0], a
 	call GetCardTypeFromDeckIndex_SaveDE
 	ld b, TYPE_PKMN_WATER
 	cp TYPE_ENERGY_WATER
