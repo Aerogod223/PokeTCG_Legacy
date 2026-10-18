@@ -8673,12 +8673,13 @@ UsePokemonPower:
 	ld a, EFFECTCMDTYPE_INITIAL_EFFECT_2
 	call TryExecuteEffectCommandFunction
 	jr nc, .check_selection
-	push hl
-	ld de, UnableDueToToxicGasText_
-	or a
-	sbc hl, de
-	pop hl
+	ld a, h
+	cp HIGH(UnableDueToToxicGasText_)
+	jr nz, .display_power_screen
+	ld a, l
+	cp LOW(UnableDueToToxicGasText_)
 	jr z, DrawWideTextBox_WaitForInput_ReturnCarry
+.display_power_screen
 	jp DisplayUsePokemonPowerScreen_WaitForInput
 .check_selection
 	ld a, EFFECTCMDTYPE_REQUIRE_SELECTION
