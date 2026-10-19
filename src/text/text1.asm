@@ -1751,46 +1751,4 @@ RearrangedCardsInDuelistsDeckText:
 	text "<RAMNAME>'s deck was rearranged."
 	done
 
-GrowingPainsName:
-AmnesiaBlastName:
-SinisterShadowName:
-CreepyCorridorName:
-SuperConductorName:
-MagnetBombName:
-BlazingSpeedName:
-FlameChargeName:
-WorkUpName:
-RageFistName:
-PrimalPresenceName:
-RockSlideName:
-CrystalTypeName:
-StarBlastName:
-AftermathName:
-RevoltingGasName:
-NailFlickName:
-CharizardFireBlastName:
-BlastoiseBubblebeamName:
-HydroCannonName:
-GrowingPainsDescription:
-AmnesiaBlastDescription:
-SinisterShadowDescription:
-CreepyCorridorDescription:
-SuperConductorDescription:
-MagnetBombDescription:
-BlazingSpeedDescription:
-FlameChargeDescription:
-WorkUpDescription:
-RageFistDescription:
-PrimalPresenceDescription:
-RockSlideDescription:
-CrystalTypeDescription:
-StarBlastDescription:
-AftermathDescription:
-RevoltingGasDescription:
-CharizardFireBlastDescription:
-BubblebeamDescription:
-HydroCannonDescription:
-	text "Test Text."
-	done
-
 ;	ds $d

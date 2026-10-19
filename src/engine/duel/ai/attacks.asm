@@ -218,7 +218,11 @@ GetAIScoreOfAttack:
 	sub [hl]
 	jr nc, .check_damage
 .can_ko
+	call CheckIfOpponentHasBossDeckID
 	ld a, 20
+	jr nc, .encourage_ko
+	ld a, 30
+.encourage_ko
 	call AIEncourage
 
 ; increase this attack's score by the number of damage counters that it will do.

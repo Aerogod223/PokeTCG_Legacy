@@ -288,7 +288,7 @@ BulbasaurCard:
 	db 0
 	db ATK_ANIM_NONE ; animation
 
-	db 1 ; retreat cost
+	db 2 ; retreat cost
 	db WR_FIRE ; weakness
 	db NONE ; resistance
 	tx SeedName ; category
@@ -588,7 +588,7 @@ ButterfreeCard:
 	db HEALING_EQUALS_HALF_DAMAGE_DEALT ; used to calculate the HEAL_USER attack score bonus
 	db ATK_ANIM_DRAIN ; animation
 
-	db 0 ; retreat cost
+	db 2 ; retreat cost
 	db WR_FIRE ; weakness
 	db WR_FIGHTING ; resistance
 	tx ButterflyName ; category
@@ -10056,8 +10056,8 @@ NickExeggutorCard:
 	tx ExeggutorName ; name
 	db DIAMOND ; rarity
 	db MYSTERY | JUNGLE ; sets
-	db EXEGGUTOR
-	db 70 ; hp
+	db NICK_EXEGGUTOR
+	db 60 ; hp
 	db STAGE1 ; stage
 	tx ExeggcuteName ; pre-evo name
 
@@ -10089,7 +10089,7 @@ NickExeggutorCard:
 	db 0
 	db ATK_ANIM_BIG_HIT ; animation
 
-	db 1 ; retreat cost
+	db 3 ; retreat cost
 	db WR_FIRE ; weakness
 	db WR_FIGHTING ; resistance
 	tx CoconutName ; category
@@ -10106,7 +10106,7 @@ RickGengarCard:
 	tx GengarName ; name
 	db STAR ; rarity
 	db EVOLUTION | FOSSIL ; sets
-	db GENGAR
+	db RICK_GENGAR
 	db 90 ; hp
 	db STAGE2 ; stage
 	tx HaunterName ; pre-evo name
@@ -10127,10 +10127,10 @@ RickGengarCard:
 
 	; attack 2
 	energy GRASS, 2 ; energies
-	tx DarkMindName ; name
-	tx DarkMindDescription ; description
+	tx CreepyCorridorName ; name
+	tx CreepyCorridorDescription ; description
 	dw NONE ; description (cont)
-	db 30 ; damage
+	db 0 ; damage
 	db DAMAGE_NORMAL ; category
 	dw CreepyCorridorEffectCommands ; effect commands
 	db NONE ; flags 1
@@ -10156,13 +10156,13 @@ IssacMagnetonCard:
 	tx MagnetonName ; name
 	db STAR ; rarity
 	db LABORATORY | FOSSIL ; sets
-	db MAGNETON_LV35
+	db ISSAC_MAGNETON
 	db 60 ; hp
 	db STAGE1 ; stage
 	tx MagnemiteName ; pre-evo name
 
 	; attack 1
-	energy 0; energies
+	energy 0 ; energies
 	tx SuperConductorName ; name
 	tx SuperConductorDescription ; description
 	dw NONE ; description (cont)
@@ -10184,9 +10184,9 @@ IssacMagnetonCard:
 	db DAMAGE_NORMAL ; category
 	dw MagnetBombEffectCommands ; effect commands
 	db NONE ; flags 1
-	db NONE ; flags 2
+	db DISCARD_ENERGY ; flags 2
 	db NONE ; flags 3
-	db 0
+	db 3 ; attack score penalty for DISCARD_ENERGY
 	db ATK_ANIM_BIG_SELFDESTRUCTION ; animation
 
 	db 2 ; retreat cost
@@ -10206,8 +10206,8 @@ KenRapidashCard:
 	tx RapidashName ; name
 	db DIAMOND ; rarity
 	db EVOLUTION | JUNGLE ; sets
-	db RAPIDASH
-	db 80 ; hp
+	db KEN_RAPIDASH
+	db 60 ; hp
 	db STAGE1 ; stage
 	tx PonytaName ; pre-evo name
 
@@ -10216,7 +10216,7 @@ KenRapidashCard:
 	tx BlazingSpeedName ; name
 	tx BlazingSpeedDescription ; description
 	dw NONE ; description (cont)
-	db 20 ; damage
+	db 0 ; damage
 	db POKEMON_POWER ; category
 	dw BlazingSpeedEffectCommands ; effect commands
 	db NONE ; flags 1
@@ -10239,7 +10239,7 @@ KenRapidashCard:
 	db 0
 	db ATK_ANIM_QUICK_ATTACK ; animation
 
-	db 0 ; retreat cost
+	db 2 ; retreat cost
 	db WR_FIGHTING ; weakness
 	db WR_GRASS ; resistance
 	tx FireHorseName ; category
@@ -10248,7 +10248,7 @@ KenRapidashCard:
 	db 5, 7 ; length
 	dw 209 * 10 ; weight
 	tx RapidashDescription ; description
-	db 0 ; pokemon flags'
+	db 0 ; pokemon flags
 
 MitchPrimeapeCard:
 	db TYPE_PKMN_FIGHTING ; type
@@ -10256,7 +10256,7 @@ MitchPrimeapeCard:
 	tx PrimeapeName ; name
 	db DIAMOND ; rarity
 	db MYSTERY | JUNGLE ; sets
-	db PRIMEAPE
+	db MITCH_PRIMEAPE
 	db 70 ; hp
 	db STAGE1 ; stage
 	tx MankeyName ; pre-evo name
@@ -10276,7 +10276,7 @@ MitchPrimeapeCard:
 	db ATK_ANIM_MULTIPLE_SLASH ; animation
 
 	; attack 2
-	energy FIGHTING, 2, ; energies
+	energy FIGHTING, 2 ; energies
 	tx RageFistName ; name
 	tx RageFistDescription ; description
 	dw NONE ; description (cont)
@@ -10306,8 +10306,8 @@ GeneAerodactylCard:
 	tx AerodactylName ; name
 	db STAR ; rarity
 	db MYSTERY | FOSSIL ; sets
-	db AERODACTYL
-	db 90 ; hp
+	db GENE_AERODACTYL
+	db 70 ; hp
 	db STAGE1 ; stage
 	tx MysteriousFossilName ; pre-evo name
 
@@ -10330,8 +10330,8 @@ GeneAerodactylCard:
 	tx RockSlideName ; name
 	tx RockSlideDescription ; description
 	dw NONE ; description (cont)
-	db 40 ; damage
-	db DAMAGE_NORMAL ; category
+	db 20 ; damage
+	db DAMAGE_PLUS ; category
 	dw RockSlideEffectCommands ; effect commands
 	db NONE ; flags 1
 	db NONE ; flags 2
@@ -10339,7 +10339,7 @@ GeneAerodactylCard:
 	db 0
 	db ATK_ANIM_HIT ; animation
 
-	db 1 ; retreat cost
+	db 2 ; retreat cost
 	db WR_LIGHTNING ; weakness
 	db WR_COLORLESS ; resistance
 	tx FossilName ; category
@@ -10356,8 +10356,8 @@ AmyStarmieCard:
 	tx StarmieName ; name
 	db CIRCLE ; rarity
 	db EVOLUTION | NONE ; sets
-	db STARMIE
-	db 80 ; hp
+	db AMY_STARMIE
+	db 70 ; hp
 	db STAGE1 ; stage
 	tx StaryuName ; pre-evo name
 
@@ -10389,9 +10389,9 @@ AmyStarmieCard:
 	db 0
 	db ATK_ANIM_BEAM ; animation
 
-	db 1 ; retreat cost
-	db WR_GRASS ; weakness
-	db WR_PSYCHIC ; resistance
+	db 2 ; retreat cost
+	db WR_LIGHTNING ; weakness
+	db NONE ; resistance
 	tx MysteriousName ; category
 	dw 121 ; Pokedex number
 	db 28 ; level
@@ -10406,7 +10406,7 @@ MurrayWeezingCard:
 	tx WeezingName ; name
 	db DIAMOND ; rarity
 	db LABORATORY | FOSSIL ; sets
-	db WEEZING
+	db MURRAY_WEEZING
 	db 60 ; hp
 	db STAGE1 ; stage
 	tx KoffingName ; pre-evo name
@@ -10439,7 +10439,7 @@ MurrayWeezingCard:
 	db 0
 	db ATK_ANIM_SMOG ; animation
 
-	db 1 ; retreat cost
+	db 2 ; retreat cost
 	db WR_PSYCHIC ; weakness
 	db NONE ; resistance
 	tx PoisonGasName ; category
@@ -10456,7 +10456,7 @@ BossCharizardCard:
 	tx CharizardName ; name
 	db STAR ; rarity
 	db EVOLUTION | NONE ; sets
-	db CHARIZARD
+	db BOSS_CHARIZARD
 	db 110 ; hp
 	db STAGE2 ; stage
 	tx CharmeleonName ; pre-evo name
@@ -10484,9 +10484,9 @@ BossCharizardCard:
 	db DAMAGE_X ; category
 	dw FireBlastEffectCommands ; effect commands
 	db NONE ; flags 1
-	db NONE ; flags 2
+	db DISCARD_ENERGY ; flags 2
 	db NONE ; flags 3
-	db 0 ; attack score penalty for DISCARD_ENERGY
+	db 8 ; attack score penalty for DISCARD_ENERGY
 	db ATK_ANIM_FIRE_SPIN ; animation
 
 	db 2 ; retreat cost
@@ -10506,8 +10506,8 @@ BossBlastoiseCard:
 	tx BlastoiseName ; name
 	db STAR ; rarity
 	db EVOLUTION | NONE ; sets
-	db BLASTOISE
-	db 120 ; hp
+	db BOSS_BLASTOISE
+	db 110 ; hp
 	db STAGE2 ; stage
 	tx WartortleName ; pre-evo name
 

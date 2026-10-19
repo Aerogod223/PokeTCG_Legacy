@@ -1419,8 +1419,8 @@ GetPlayAreaCardRetreatCost::
 ; output:
 ;	a = given Pokémon's Retreat Cost, after applying any modifiers
 GetLoadedCard1RetreatCost::
+	push de
 	ld c, 0 ; Dodrio counter
-	ld d, 0 ; Aerodactyl counter
 	ld a, DUELVARS_BENCH
 	get_turn_duelist_var
 .check_bench_loop
@@ -1429,41 +1429,47 @@ GetLoadedCard1RetreatCost::
 	jr z, .no_more_bench
 	call _GetCardIDFromDeckIndex
 	cp DODRIO
-	jr nz, .aerodactyl_bench_loop
-	inc c
-.aerodactyl_bench_loop
-	call _GetCardIDFromDeckIndex
-	cp GENE_AERODACTYL
 	jr nz, .check_bench_loop
-	inc d
+	inc c
 	jr .check_bench_loop
 
 .no_more_bench
+	ld a, [wLoadedCard1RetreatCost]
+	ld e, a
 	ld a, c
 	or a
-	jr nz, .dodrio_found
-	ld a, d
-	or a
-	jr nz, .aerodactyl_found
-.use_default_retreat_cost
-	ld a, [wLoadedCard1RetreatCost]
-	ret
-
-.dodrio_found
+	jr z, .primal_presence
 	call CheckIfPkmnPowersAreCurrentlyDisabled
-	jr c, .use_default_retreat_cost
-	ld a, [wLoadedCard1RetreatCost]
+	jr c, .primal_presence
+	ld a, e
 	sub c ; apply Retreat Aid for each Dodrio on the turn holder's Bench
-	ret nc ; return if the Pokémon's Retreat Cost isn't a negative number
+	jr nc, .retreat_aid_applied
 	xor a ; set the Pokémon's Retreat Cost to 0
-	ret
+.retreat_aid_applied
+	ld e, a
 
-.aerodactyl_found
+.primal_presence
 	call CheckIfPkmnPowersAreCurrentlyDisabled
-	jr c, .use_default_retreat_cost
-	ld a, [wLoadedCard1RetreatCost]
+	jr c, .done
 	rst SwapTurn
-	add c ; apply Primal Presence for each Aerodactyl on the turn holder's Bench
+	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
+	get_turn_duelist_var
+	ld d, a
+	ld l, DUELVARS_ARENA_CARD
+.aerodactyl_loop
+	ld a, [hli]
+	call _GetCardIDFromDeckIndex
+	cp GENE_AERODACTYL
+	jr nz, .next_aerodactyl_slot
+	inc e ; apply Primal Presence for each Aerodactyl in the opponent's play area
+.next_aerodactyl_slot
+	dec d
+	jr nz, .aerodactyl_loop
+	rst SwapTurn
+
+.done
+	ld a, e
+	pop de
 	ret
 
 ; preserves bc and de
