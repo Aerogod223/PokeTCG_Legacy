@@ -57,6 +57,24 @@ Draw2EffectCommands:
 	dbw EFFECTCMDTYPE_AFTER_DAMAGE, Draw2CardsEffect
 	db  $00
 
+SnorlaxAppetitieEffectCommands:
+	dbw EFFECTCMDTYPE_AFTER_DAMAGE, SnorlaxAppetitieEffect
+	db  $00
+
+PoliwrathWaterfallEffectCommands:
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, PoliwrathWaterfall_DamageEffect
+	dbw EFFECTCMDTYPE_AFTER_DAMAGE, PoliwrathWaterfall_ReduceDamageEffect
+	db  $00
+
+PoliwrathStrangeSpiralEffectCommands:
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, PoliwrathStrangeSpiral_Check
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_2, OncePerTurnPokePowerCheck
+	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, PoliwrathStrangeSpiral_PlayerSelection
+	dbw EFFECTCMDTYPE_AI_SELECTION, PoliwrathStrangeSpiral_AISelection
+	dbw EFFECTCMDTYPE_DISCARD_ENERGY, CardDiscardEffect
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, ConfusionEffect
+	db  $00
+
 EnergySpikeEffectCommands:
 	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, DeckCheck
 	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, AttachBasicEnergyFromDeck_PlayerSelection

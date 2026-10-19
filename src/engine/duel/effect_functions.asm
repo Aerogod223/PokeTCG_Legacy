@@ -704,6 +704,103 @@ DrawNCards_ShowCardDetails:
 	jr nz, .loop_draw
 	ret
 
+SnorlaxAppetitieEffect:
+	call CreateHandCardList
+	call SortCardsInDuelTempListByID
+	ld hl, wDuelTempList
+.return_hand_to_deck
+	ld a, [hli]
+	cp $ff
+	jr z, .draw_cards
+	call RemoveCardFromHand
+	call ReturnCardToDeck
+	jr .return_hand_to_deck
+.draw_cards
+	call ShuffleCardsInDeck
+	ld a, 5
+	call DrawNCards_ShowCardDetails
+	rst SwapTurn
+	call SleepEffect
+	rst SwapTurn
+	ret
+
+PoliwrathWaterfall_DamageEffect:
+	ldh a, [hTempPlayAreaLocation_ff9d]
+	ld e, a
+	call GetPlayAreaCardAttachedEnergies
+	ld a, [wAttachedEnergies + WATER]
+	cp 2
+	ret c
+	ld a, 20
+	jp AddToDamage
+
+PoliwrathWaterfall_ReduceDamageEffect:
+	ldh a, [hTempPlayAreaLocation_ff9d]
+	ld e, a
+	call GetPlayAreaCardAttachedEnergies
+	ld a, [wAttachedEnergies + FIGHTING]
+	or a
+	ret z
+	jp Prevent20DamageEffect
+
+PoliwrathStrangeSpiral_Check:
+	ldh a, [hTempPlayAreaLocation_ff9d]
+	or a
+	jr z, .active
+	ldtx hl, UnableToUseItText
+	scf
+	ret
+.active
+	call PoliwrathStrangeSpiral_CreateEnergyList
+	ld a, [wDuelTempList]
+	cp $ff
+	ret nz
+	ldtx hl, NoEnergyCardsAttachedText
+	scf
+	ret
+
+PoliwrathStrangeSpiral_PlayerSelection:
+	call PoliwrathStrangeSpiral_CreateEnergyList
+	xor a ; PLAY_AREA_ARENA
+	bank1call DisplayEnergyDiscardScreen
+	bank1call HandleEnergyDiscardMenuInput
+	ldh [hTemp_ffa0], a
+	ret
+
+PoliwrathStrangeSpiral_AISelection:
+	call PoliwrathStrangeSpiral_CreateEnergyList
+	ld a, [wDuelTempList]
+	ldh [hTemp_ffa0], a
+	ret
+
+PoliwrathStrangeSpiral_CreateEnergyList:
+	ld a, TYPE_ENERGY_WATER
+	call CreateListOfEnergyAttachedToActive
+	ld hl, wDuelTempList
+	ld de, hTempList
+.copy_water_energy
+	ld a, [hli]
+	ld [de], a
+	inc de
+	cp $ff
+	jr nz, .copy_water_energy
+	ld a, TYPE_ENERGY_FIGHTING
+	call CreateListOfEnergyAttachedToActive
+	ld hl, wDuelTempList
+.find_end
+	ld a, [hli]
+	cp $ff
+	jr nz, .find_end
+	dec hl
+	ld de, hTempList
+.append_water_energy
+	ld a, [de]
+	ld [hli], a
+	inc de
+	cp $ff
+	jr nz, .append_water_energy
+	ret
+
 ; You can replace the question marks (?) in the following functions
 ; with whatever number of cards that you want to have the player draw.
 ; Obviously, the first function isn't necessary if you're creating a Trainer effect.

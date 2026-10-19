@@ -243,6 +243,9 @@ CardPointers::
 	dw MurrayWeezingCard
 	dw BossCharizardCard
 	dw BossBlastoiseCard
+	dw AeroSnorlaxCard
+	dw KarlosPoliwrathCard
+	dw ZachEeveeCard
 	dw NULL
 	assert_table_length NUM_CARDS + 2
 
@@ -10546,3 +10549,153 @@ BossBlastoiseCard:
 	dw 189 * 10 ; weight
 	tx BlastoiseDescription ; description
 	db 0 ; pokemon flags
+
+AeroSnorlaxCard:
+	db TYPE_PKMN_COLORLESS ; type
+	gfx SnorlaxCardGfx ; gfx
+	tx AeroSnorlaxName ; name
+	db STAR ; rarity
+	db MYSTERY | NONE ; sets
+	db AERO_SNORLAX
+	db 100 ; hp
+	db BASIC ; stage
+	dw NONE ; pre-evo name
+
+	; attack 1
+	energy COLORLESS, 2 ; energies
+	tx AppetitieName ; name
+	tx AppetitieDescription ; description
+	dw NONE ; description (cont)
+	db 10 ; damage
+	db DAMAGE_NORMAL ; category
+	dw SnorlaxAppetitieEffectCommands ; effect commands
+	db NONE ; flags 1
+	db NONE ; flags 2
+	db NONE ; flags 3
+	db 0
+	db ATK_ANIM_HIT ; animation
+
+	; attack 2
+	energy COLORLESS, 4 ; energies
+	tx ExerciseName ; name
+	tx ExerciseDescription ; description
+	dw NONE ; description (cont)
+	db 50 ; damage
+	db DAMAGE_NORMAL ; category
+	dw DrainAllEffectCommands ; effect commands
+	db NONE ; flags 1
+	db HEAL_USER ; flags 2
+	db NONE ; flags 3
+	db HEALING_EQUALS_DAMAGE_DEALT
+	db ATK_ANIM_DRAIN ; animation
+
+	db 4 ; retreat cost
+	db WR_FIGHTING ; weakness
+	db NONE ; resistance
+	tx SleepingName ; category
+	dw 143 ; Pokedex number
+	db 20 ; level
+	db 6, 11 ; length
+	dw 1014 * 10 ; weight
+	tx SnorlaxDescription ; description
+	db 0 ; pokemon flags
+
+KarlosPoliwrathCard:
+	db TYPE_PKMN_WATER ; type
+	gfx PoliwrathCardGfx ; gfx
+	tx KarlosPoliwrathName ; name
+	db STAR ; rarity
+	db MYSTERY | NONE ; sets
+	db KARLOS_POLIWRATH
+	db 100 ; hp
+	db STAGE2 ; stage
+	tx PoliwhirlName ; pre-evo name
+
+	; attack 1
+	energy 0 ; energies
+	tx StrangeSpiralName ; name
+	tx StrangeSpiralDescription ; description
+	dw NONE ; description (cont)
+	db 0 ; damage
+	db POKEMON_POWER ; category
+	dw PoliwrathStrangeSpiralEffectCommands ; effect commands
+	db NONE ; flags 1
+	db NONE ; flags 2
+	db NONE ; flags 3
+	db 0
+	db ATK_ANIM_PKMN_POWER_1 ; animation
+
+	; attack 2
+	energy WATER, 1, FIGHTING, 1 ; energies
+	tx WaterfallName ; name
+	tx WaterfallDescription ; description
+	dw NONE ; description (cont)
+	db 20 ; damage
+	db DAMAGE_NORMAL ; category
+	dw PoliwrathWaterfallEffectCommands ; effect commands
+	db NONE ; flags 1
+	db NONE ; flags 2
+	db NONE ; flags 3
+	db 0
+	db ATK_ANIM_WATER_GUN ; animation
+
+	db 2 ; retreat cost
+	db WR_PSYCHIC ; weakness
+	db NONE ; resistance
+	tx TadpoleName ; category
+	dw 62 ; Pokedex number
+	db 48 ; level
+	db 4, 3 ; length
+	dw 119 * 10 ; weight
+	tx PoliwrathDescription ; description
+	db 0 ; pokemon flags
+
+ZachEeveeCard:
+	db TYPE_PKMN_COLORLESS ; type
+	gfx EeveeCardGfx ; gfx
+	tx ZachEeveeName ; name
+	db CIRCLE ; rarity
+	db MYSTERY | NONE ; sets
+	db ZACH_EEVEE
+	db 50 ; hp
+	db BASIC ; stage
+	tx EeveeName ; pre-evo name
+
+	; attack 1
+	energy 0 ; energies
+	tx UnstableGeneName ; name
+	tx UnstableGeneDescription ; description
+	dw NONE ; description (cont)
+	db 0 ; damage
+	db POKEMON_POWER ; category
+	dw EnergySpikeEffectCommands ; effect commands
+	db NONE ; flags 1
+	db NONE ; flags 2
+	db NONE ; flags 3
+	db 0
+	db ATK_ANIM_PKMN_POWER_1 ; animation
+
+	; attack 2
+	energy FIRE, 1, WATER, 1, LIGHTNING, 1 ; energies
+	tx TriAttackName ; name
+	tx TriAttackDescription ; description
+	dw NONE ; description (cont)
+	db 40 ; damage
+	db DAMAGE_NORMAL ; category
+	dw EvolutionSearchEffectCommands ; effect commands
+	db NONE ; flags 1
+	db NONE ; flags 2
+	db NONE ; flags 3
+	db 0
+	db ATK_ANIM_QUICK_ATTACK ; animation
+
+	db 1 ; retreat cost
+	db NONE ; weakness
+	db NONE ; resistance
+	tx EvolutionName ; category
+	dw 133 ; Pokedex number
+	db 12 ; level
+	db 1, 0 ; length
+	dw 14 * 10 ; weight
+	tx EeveeDescription ; description
+	db HAS_EVOLUTION ; pokemon flags

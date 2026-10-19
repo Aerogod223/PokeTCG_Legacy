@@ -1113,6 +1113,39 @@ EeveeName:
 	text "Eevee"
 	done
 
+AeroSnorlaxName:
+	text "Aero's Snorlax"
+	done
+
+KarlosPoliwrathName:
+	text "Karlos's Poliwrath"
+	done
+
+ZachEeveeName:
+	text "Zach's Eevee"
+	done
+
+UnstableGeneName:
+	text "Unstable Gene"
+	done
+
+UnstableGeneDescription:
+	text "Once during your turn, search your"
+	line "deck for an Energy card and attach"
+	line "it to Eevee. Eevee takes 10 damage."
+	line "Shuffle your deck afterward."
+	done
+
+TriAttackName:
+	text "Tri Attack"
+	done
+
+TriAttackDescription:
+	text "Choose Vaporeon, Jolteon, or Flareon"
+	line "from your deck and evolve Eevee."
+	line "Shuffle your deck afterward."
+	done
+
 BiteName:
 	text "Bite"
 	done
@@ -1383,6 +1416,25 @@ PoliwhirlsDescription:
 
 PoliwrathName:
 	text "Poliwrath"
+	done
+
+StrangeSpiralName:
+	text "Strange Spiral"
+	done
+
+StrangeSpiralDescription:
+	text "If Poliwrath is your Active Pokémon,"
+	line "you may discard a <WATER> or <FIGHTING>"
+	line "Energy attached to it. The Defending"
+	line "Pokémon is now Confused."
+	done
+
+WaterfallDescription:
+	text "If Poliwrath has extra <WATER> Energy"
+	line "attached, this attack does 20 more"
+	line "damage. If it has <FIGHTING> Energy"
+	line "attached, it takes 20 less damage"
+	line "during your opponent's next turn."
 	done
 
 PoliwrathsWaterGunDescription:

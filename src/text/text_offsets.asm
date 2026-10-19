@@ -3022,3 +3022,17 @@ TextOffsets::
 	textpointer ChooseAndDiscard2FightingEnergyCardsText
 	textpointer NotEnoughLightningEnergyText
 	textpointer NotEnoughFightingEnergyText
+	textpointer AeroSnorlaxName
+	textpointer KarlosPoliwrathName
+	textpointer ZachEeveeName
+	textpointer UnstableGeneName
+	textpointer UnstableGeneDescription
+	textpointer TriAttackName
+	textpointer TriAttackDescription
+	textpointer StrangeSpiralName
+	textpointer StrangeSpiralDescription
+	textpointer WaterfallDescription
+	textpointer AppetitieName
+	textpointer AppetitieDescription
+	textpointer ExerciseName
+	textpointer ExerciseDescription
