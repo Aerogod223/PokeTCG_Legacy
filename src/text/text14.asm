@@ -299,3 +299,57 @@ HydroCannonDescription:
 	line "for each Energy card discarded"
 	line "this way."
 	done
+
+RematchFirstStrikeDeckName:
+	text "First Strike"
+	done
+
+RematchRockCrusherDeckName:
+	text "Rock Crusher"
+	done
+
+RematchGoGoRainDanceDeckName:
+	text "Go-Go Rain Dance"
+	done
+
+RematchZappingSelfdestructDeckName:
+	text "Zapping Selfdestruct"
+	done
+
+RematchFlowerPowerDeckName:
+	text "Flower Power"
+	done
+
+RematchStrangePsyshockDeckName:
+	text "Strange Psyshock"
+	done
+
+RematchWondersOfScienceDeckName:
+	text "Wonders of Science"
+	done
+
+RematchFireChargeDeckName:
+	text "Fire Charge"
+	done
+
+ClubMasterWantARematchText:
+	text "Want a Rematch?"
+	done
+
+AppetitieName:
+	text "Appetitie"
+	done
+
+AppetitieDescription:
+	text "Shuffle your hand into your deck and"
+	line "draw 5 cards. Snorlax is now Asleep."
+	done
+
+ExerciseName:
+	text "Exercise"
+	done
+
+ExerciseDescription:
+	text "Heal damage from Snorlax equal to"
+	line "the damage done by this attack."
+	done

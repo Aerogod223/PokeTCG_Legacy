@@ -1122,24 +1122,6 @@ SnorlaxName:
 	text "Snorlax"
 	done
 
-AppetitieName:
-	text "Appetitie"
-	done
-
-AppetitieDescription:
-	text "Shuffle your hand into your deck and"
-	line "draw 5 cards. Snorlax is now Asleep."
-	done
-
-ExerciseName:
-	text "Exercise"
-	done
-
-ExerciseDescription:
-	text "Heal damage from Snorlax equal to"
-	line "the damage done by this attack."
-	done
-
 ThickSkinnedName:
 	text "Thick Skinned"
 	done
