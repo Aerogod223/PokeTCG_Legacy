@@ -65,6 +65,14 @@ ENDM
 	deck_const FLAMETHROWER_DECK           ; $34
 	deck_const RESHUFFLE_DECK              ; $35
 	deck_const IMAKUNI_DECK                ; $36
+	deck_const REMATCH_FIRST_STRIKE_DECK   ; $37
+	deck_const REMATCH_ROCK_CRUSHER_DECK   ; $38
+	deck_const REMATCH_GO_GO_RAIN_DANCE_DECK ; $39
+	deck_const REMATCH_ZAPPING_SELFDESTRUCT_DECK ; $3A
+	deck_const REMATCH_FLOWER_POWER_DECK   ; $3B
+	deck_const REMATCH_STRANGE_PSYSHOCK_DECK ; $3C
+	deck_const REMATCH_WONDERS_OF_SCIENCE_DECK ; $3D
+	deck_const REMATCH_FIRE_CHARGE_DECK    ; $3E
 DEF NUM_VALID_DECKS EQU const_value
 DEF NUM_DECK_IDS EQU const_value - 2
 

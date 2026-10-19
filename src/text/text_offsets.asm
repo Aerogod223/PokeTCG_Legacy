@@ -3023,6 +3023,15 @@ TextOffsets::
 	textpointer ChooseAndDiscard2FightingEnergyCardsText
 	textpointer NotEnoughLightningEnergyText
 	textpointer NotEnoughFightingEnergyText
+	textpointer RematchFirstStrikeDeckName
+	textpointer RematchRockCrusherDeckName
+	textpointer RematchGoGoRainDanceDeckName
+	textpointer RematchZappingSelfdestructDeckName
+	textpointer RematchFlowerPowerDeckName
+	textpointer RematchStrangePsyshockDeckName
+	textpointer RematchWondersOfScienceDeckName
+	textpointer RematchFireChargeDeckName
+	textpointer ClubMasterWantARematchText
 	textpointer AeroSnorlaxName
 	textpointer KarlosPoliwrathName
 	textpointer ZachEeveeName

@@ -111,8 +111,15 @@ Script_Nikki:
 	quit_script_fully
 
 .ows_e7cb
+	jump_if_event_greater_or_equal EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .rematch_question
 	print_npc_text Text071e
 	start_duel PRIZES_6, FLOWER_POWER_DECK_ID, MUSIC_DUEL_THEME_2
+	quit_script_fully
+.rematch_question
+	ask_question_jump ClubMasterWantARematchText, .rematch_duel
+	quit_script_fully
+.rematch_duel
+	start_duel PRIZES_6, REMATCH_FLOWER_POWER_DECK_ID, MUSIC_DUEL_THEME_2
 	quit_script_fully
 
 Script_BeatNikki:
@@ -126,7 +133,12 @@ Script_BeatNikki:
 	record_master_win $05
 	print_npc_text Text0721
 .ows_e7eb
+	jump_if_event_greater_or_equal EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .rematch_reward
 	give_booster_packs BOOSTER_LABORATORY_NEUTRAL, BOOSTER_LABORATORY_NEUTRAL, NO_BOOSTER
+	script_jump Script_LostToNikki.ows_e7f3
+.rematch_reward
+	give_booster_packs BOOSTER_LABORATORY_NEUTRAL, NO_BOOSTER, NO_BOOSTER
+	give_card NICK_EXEGGUTOR
 	script_jump Script_LostToNikki.ows_e7f3
 
 Script_LostToNikki:

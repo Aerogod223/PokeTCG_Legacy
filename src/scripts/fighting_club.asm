@@ -76,6 +76,7 @@ Script_LostToMitch:
 	print_text_quit_fully MitchPlayerLostInitialText
 
 Script_Mitch_AlreadyHaveMedal:
+	jump_if_event_greater_or_equal EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .rematch_question
 	print_npc_text MitchWouldLikeToDuelRepeatText
 	ask_question_jump MitchWouldYouLikeToDuelText, .start_duel
 	print_npc_text MitchDeclinedDuelRepeatText
@@ -85,10 +86,22 @@ Script_Mitch_AlreadyHaveMedal:
 	print_npc_text MitchDuelStartRepeatText
 	start_duel PRIZES_6, FIRST_STRIKE_DECK_ID, MUSIC_DUEL_THEME_2
 	quit_script_fully
+.rematch_question
+	ask_question_jump ClubMasterWantARematchText, .rematch_duel
+	quit_script_fully
+.rematch_duel
+	start_duel PRIZES_6, REMATCH_FIRST_STRIKE_DECK_ID, MUSIC_DUEL_THEME_2
+	quit_script_fully
 
 Script_Mitch_GiveBoosters:
 	print_npc_text MitchPlayerWonRepeat1Text
+	jump_if_event_greater_or_equal EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .rematch_reward
 	give_booster_packs BOOSTER_LABORATORY_NEUTRAL, BOOSTER_LABORATORY_NEUTRAL, NO_BOOSTER
+	print_npc_text MitchPlayerWonRepeat2Text
+	quit_script_fully
+.rematch_reward
+	give_booster_packs BOOSTER_LABORATORY_NEUTRAL, NO_BOOSTER, NO_BOOSTER
+	give_card MITCH_PRIMEAPE
 	print_npc_text MitchPlayerWonRepeat2Text
 	quit_script_fully
 

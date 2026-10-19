@@ -105,6 +105,7 @@ Script_LostToRick:
 	print_text_quit_fully Text0765
 
 .ows_eca2
+	jump_if_event_greater_or_equal EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .rematch_question
 	print_npc_text Text0766
 	ask_question_jump Text075f, .ows_ecae
 	print_npc_text Text0767
@@ -114,10 +115,22 @@ Script_LostToRick:
 	print_npc_text Text0768
 	start_duel PRIZES_6, WONDERS_OF_SCIENCE_DECK_ID, MUSIC_DUEL_THEME_2
 	quit_script_fully
+.rematch_question
+	ask_question_jump ClubMasterWantARematchText, .rematch_duel
+	quit_script_fully
+.rematch_duel
+	start_duel PRIZES_6, REMATCH_WONDERS_OF_SCIENCE_DECK_ID, MUSIC_DUEL_THEME_2
+	quit_script_fully
 
 .ows_ecb6
 	print_npc_text Text0769
+	jump_if_event_greater_or_equal EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .rematch_reward
 	give_booster_packs BOOSTER_LABORATORY_GRASS, BOOSTER_LABORATORY_GRASS, NO_BOOSTER
+	print_npc_text Text076a
+	quit_script_fully
+.rematch_reward
+	give_booster_packs BOOSTER_LABORATORY_GRASS, NO_BOOSTER, NO_BOOSTER
+	give_card RICK_GENGAR
 	print_npc_text Text076a
 	quit_script_fully
 

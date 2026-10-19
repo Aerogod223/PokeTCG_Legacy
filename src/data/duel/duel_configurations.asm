@@ -136,6 +136,70 @@ DeckIDDuelConfigurations:
 	tx ClubMasterText ; rank
 	tx ChallengeMachineFireIconText ; element
 
+	db REMATCH_FIRST_STRIKE_DECK_ID ; deck ID
+	db MITCH_PIC ; NPC portrait
+	tx MitchNPCName ; name text ID
+	db PRIZES_6 ; number of prize cards
+	db MUSIC_DUEL_THEME_2 ; theme
+	tx ClubMasterText ; rank
+	tx ChallengeMachineFightingIconText ; element
+
+	db REMATCH_ROCK_CRUSHER_DECK_ID ; deck ID
+	db GENE_PIC ; NPC portrait
+	tx GeneNPCName ; name text ID
+	db PRIZES_6 ; number of prize cards
+	db MUSIC_DUEL_THEME_2 ; theme
+	tx ClubMasterText ; rank
+	tx ChallengeMachineFightingIconText ; element
+
+	db REMATCH_GO_GO_RAIN_DANCE_DECK_ID ; deck ID
+	db AMY_PIC ; NPC portrait
+	tx AmyNPCName ; name text ID
+	db PRIZES_6 ; number of prize cards
+	db MUSIC_DUEL_THEME_2 ; theme
+	tx ClubMasterText ; rank
+	tx ChallengeMachineWaterIconText ; element
+
+	db REMATCH_ZAPPING_SELFDESTRUCT_DECK_ID ; deck ID
+	db ISAAC_PIC ; NPC portrait
+	tx IsaacNPCName ; name text ID
+	db PRIZES_6 ; number of prize cards
+	db MUSIC_DUEL_THEME_2 ; theme
+	tx ClubMasterText ; rank
+	tx ChallengeMachineLightningIconText ; element
+
+	db REMATCH_FLOWER_POWER_DECK_ID ; deck ID
+	db NIKKI_PIC ; NPC portrait
+	tx NikkiNPCName ; name text ID
+	db PRIZES_6 ; number of prize cards
+	db MUSIC_DUEL_THEME_2 ; theme
+	tx ClubMasterText ; rank
+	tx ChallengeMachineGrassIconText ; element
+
+	db REMATCH_STRANGE_PSYSHOCK_DECK_ID ; deck ID
+	db MURRAY_PIC ; NPC portrait
+	tx MurrayNPCName ; name text ID
+	db PRIZES_6 ; number of prize cards
+	db MUSIC_DUEL_THEME_2 ; theme
+	tx ClubMasterText ; rank
+	tx ChallengeMachinePsychicIconText ; element
+
+	db REMATCH_WONDERS_OF_SCIENCE_DECK_ID ; deck ID
+	db RICK_PIC ; NPC portrait
+	tx RickNPCName ; name text ID
+	db PRIZES_6 ; number of prize cards
+	db MUSIC_DUEL_THEME_2 ; theme
+	tx ClubMasterText ; rank
+	tx ChallengeMachineGrassIconText ; element
+
+	db REMATCH_FIRE_CHARGE_DECK_ID ; deck ID
+	db KEN_PIC ; NPC portrait
+	tx KenNPCName ; name text ID
+	db PRIZES_6 ; number of prize cards
+	db MUSIC_DUEL_THEME_2 ; theme
+	tx ClubMasterText ; rank
+	tx ChallengeMachineFireIconText ; element
+
 	db IM_RONALD_DECK_ID ; deck ID
 	db RONALD_PIC ; NPC portrait
 	tx RonaldNPCName ; name text ID

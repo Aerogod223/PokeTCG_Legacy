@@ -283,7 +283,11 @@ GetAIScoreOfAttack:
 	ld a, [wOpponentDeckID]
 	cp ROCK_CRUSHER_DECK_ID
 	jr z, .rock_crusher_deck
+	cp REMATCH_ROCK_CRUSHER_DECK_ID
+	jr z, .rock_crusher_deck
 	cp ZAPPING_SELFDESTRUCT_DECK_ID
+	jr z, .zapping_selfdestruct_deck
+	cp REMATCH_ZAPPING_SELFDESTRUCT_DECK_ID
 	jr z, .zapping_selfdestruct_deck
 	cp BOOM_BOOM_SELFDESTRUCT_DECK_ID
 	jr z, .encourage_high_recoil_atk ; Boom Boom Selfdestruct deck always encourages

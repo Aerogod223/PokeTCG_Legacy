@@ -62,3 +62,46 @@ AIActionTable_RockCrusher:
 	store_list_pointer wAICardListRetreatBonus, .list_retreat
 	store_list_pointer wAICardListEnergyBonus, .list_energy
 	ret
+
+AIActionTable_RematchRockCrusher:
+	dw AIMainTurnLogic
+	dw AIMainTurnLogic
+	dw RematchRockCrusher_StartDuel
+	dw AIDecideBenchPokemonToSwitchTo
+	dw AIDecideBenchPokemonToSwitchTo
+	dw AIPickPrizeCards
+
+RematchRockCrusher_StartDuel:
+	call InitAIDuelVars
+	store_list_pointer wAICardListAvoidPrize, RematchRockCrusher_PrizeList
+	store_list_pointer wAICardListArenaPriority, RematchRockCrusher_ArenaList
+	store_list_pointer wAICardListBenchPriority, RematchRockCrusher_BenchList
+	store_list_pointer wAICardListPlayFromHandPriority, RematchRockCrusher_BenchList
+	store_list_pointer wAICardListRetreatBonus, RematchRockCrusher_RetreatList
+	store_list_pointer wAICardListEnergyBonus, RematchRockCrusher_EnergyList
+	call SetUpBossStartingHandAndDeck
+	call TrySetUpBossStartingPlayArea
+	ret nc
+	jp AIPlayInitialBasicCards
+
+RematchRockCrusher_ArenaList:
+	db LICKITUNG, ONIX, TAUROS, SNORLAX, RHYHORN, CUBONE, $00
+RematchRockCrusher_BenchList:
+	db RHYHORN, SNORLAX, TAUROS, ONIX, LICKITUNG, CUBONE, $00
+RematchRockCrusher_RetreatList:
+	ai_retreat CUBONE, +1
+	ai_retreat AERODACTYL, +1
+	ai_retreat ONIX, -1
+	ai_retreat LICKITUNG, -1
+	db $00
+RematchRockCrusher_EnergyList:
+	ai_energy SNORLAX, 3, +0
+	ai_energy ONIX, 2, +2
+	ai_energy TAUROS, 3, +1
+	ai_energy AERODACTYL, 3, +0
+	ai_energy LICKITUNG, 2, +1
+	ai_energy RHYHORN, 2, +0
+	ai_energy CUBONE, 3, -1
+	db $00
+RematchRockCrusher_PrizeList:
+	db ENERGY_REMOVAL, RHYHORN, $00

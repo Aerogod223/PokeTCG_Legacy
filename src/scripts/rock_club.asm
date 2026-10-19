@@ -100,6 +100,7 @@ Script_LostToGene:
 	print_text_quit_fully Text07aa
 
 .ows_e07b
+	jump_if_event_greater_or_equal EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .rematch_question
 	print_npc_text Text07ab
 	ask_question_jump Text07a4, .ows_e087
 	print_npc_text Text07ac
@@ -109,10 +110,22 @@ Script_LostToGene:
 	print_npc_text Text07ad
 	start_duel PRIZES_6, ROCK_CRUSHER_DECK_ID, MUSIC_DUEL_THEME_2
 	quit_script_fully
+.rematch_question
+	ask_question_jump ClubMasterWantARematchText, .rematch_duel
+	quit_script_fully
+.rematch_duel
+	start_duel PRIZES_6, REMATCH_ROCK_CRUSHER_DECK_ID, MUSIC_DUEL_THEME_2
+	quit_script_fully
 
 .ows_e08f
 	print_npc_text Text07ae
+	jump_if_event_greater_or_equal EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .rematch_reward
 	give_booster_packs BOOSTER_MYSTERY_FIGHTING_COLORLESS, BOOSTER_MYSTERY_FIGHTING_COLORLESS, NO_BOOSTER
+	print_npc_text Text07af
+	quit_script_fully
+.rematch_reward
+	give_booster_packs BOOSTER_MYSTERY_FIGHTING_COLORLESS, NO_BOOSTER, NO_BOOSTER
+	give_card GENE_AERODACTYL
 	print_npc_text Text07af
 	quit_script_fully
 

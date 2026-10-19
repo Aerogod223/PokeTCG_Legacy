@@ -1871,6 +1871,8 @@ AIDecide_ProfessorOak:
 	jp z, .HandleExcavationDeck
 	cp WONDERS_OF_SCIENCE_DECK_ID
 	jp z, .HandleWondersOfScienceDeck
+	cp REMATCH_WONDERS_OF_SCIENCE_DECK_ID
+	jp z, .HandleWondersOfScienceDeck
 
 ; don't play Professor Oak if there are fewer than 15 cards left in the AI's deck.
 .check_cards_deck
@@ -2186,7 +2188,10 @@ AIDecide_EnergyRetrieval:
 ; don't play Energy Retrieval unless Rain Dance is active.
 	ld a, [wOpponentDeckID]
 	cp GO_GO_RAIN_DANCE_DECK_ID
+	jr z, .go_go_rain_dance
+	cp REMATCH_GO_GO_RAIN_DANCE_DECK_ID
 	jr nz, .start
+.go_go_rain_dance
 	call CheckIfPkmnPowersAreCurrentlyDisabled
 	jr c, .start
 	ld a, BLASTOISE
@@ -2343,7 +2348,10 @@ AIDecide_SuperEnergyRetrieval:
 ; don't play Super Energy Retrieval unless Rain Dance is active.
 	ld a, [wOpponentDeckID]
 	cp GO_GO_RAIN_DANCE_DECK_ID
+	jr z, .go_go_rain_dance
+	cp REMATCH_GO_GO_RAIN_DANCE_DECK_ID
 	jr nz, .start
+.go_go_rain_dance
 	call CheckIfPkmnPowersAreCurrentlyDisabled
 	jr c, .start
 	ld a, BLASTOISE
@@ -2647,6 +2655,8 @@ AIDecide_EnergySearch:
 	jr z, LookForUsefulEnergyCardInList_OnlyCheckFireAndLightningPokemon
 	cp WONDERS_OF_SCIENCE_DECK_ID
 	jr z, LookForUsefulEnergyCardInList_OnlyCheckGrassPokemon
+	cp REMATCH_WONDERS_OF_SCIENCE_DECK_ID
+	jr z, LookForUsefulEnergyCardInList_OnlyCheckGrassPokemon
 
 ; if any of the Basic Energy cards in the deck is useful
 ; for a play area Pokémon, then pick one of them and return carry.
@@ -2877,6 +2887,8 @@ AIDecide_Pokedex:
 .pick_cards
 	ld a, [wOpponentDeckID]
 	cp WONDERS_OF_SCIENCE_DECK_ID
+	jp z, PickPokedexCards_PokemonTrainerEnergy
+	cp REMATCH_WONDERS_OF_SCIENCE_DECK_ID
 	jp nz, PickPokedexCards_EnergyPokemonTrainer
 	; fallthrough for the Wonders of Science deck
 
@@ -3623,6 +3635,8 @@ AIDecide_Recycle:
 	ld a, [wOpponentDeckID]
 	cp FIRE_CHARGE_DECK_ID
 	jr z, .fire_charge_search_loop
+	cp REMATCH_FIRE_CHARGE_DECK_ID
+	jr z, .fire_charge_search_loop
 	cp GHOST_DECK_ID
 	jr z, .ghost_search_loop
 
@@ -4236,6 +4250,8 @@ AIDecide_Pokeball:
 	ld a, [wOpponentDeckID]
 	cp FIRE_CHARGE_DECK_ID
 	jr z, .fire_charge
+	cp REMATCH_FIRE_CHARGE_DECK_ID
+	jr z, .fire_charge
 	cp HARD_POKEMON_DECK_ID
 	jr z, .hard_pokemon
 	cp PIKACHU_DECK_ID
@@ -4532,9 +4548,15 @@ AIDecide_ComputerSearch:
 	ld a, [wOpponentDeckID]
 	cp ROCK_CRUSHER_DECK_ID
 	jr z, AIDecide_ComputerSearch_RockCrusher
+	cp REMATCH_ROCK_CRUSHER_DECK_ID
+	jr z, AIDecide_ComputerSearch_RockCrusher
 	cp WONDERS_OF_SCIENCE_DECK_ID
 	jp z, AIDecide_ComputerSearch_WondersOfScience
+	cp REMATCH_WONDERS_OF_SCIENCE_DECK_ID
+	jp z, AIDecide_ComputerSearch_WondersOfScience
 	cp FIRE_CHARGE_DECK_ID
+	jp z, AIDecide_ComputerSearch_FireCharge
+	cp REMATCH_FIRE_CHARGE_DECK_ID
 	jp z, AIDecide_ComputerSearch_FireCharge
 	cp ANGER_DECK_ID
 	jp z, AIDecide_ComputerSearch_Anger

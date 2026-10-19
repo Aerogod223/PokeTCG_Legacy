@@ -884,6 +884,8 @@ CheckSpecificDecksToAttachDoubleColorless:
 	jr z, .legendary_dragonite_deck
 	cp FIRE_CHARGE_DECK_ID
 	jr z, .fire_charge_deck
+	cp REMATCH_FIRE_CHARGE_DECK_ID
+	jr z, .fire_charge_deck
 	cp LEGENDARY_RONALD_DECK_ID
 	jr z, .legendary_ronald_deck
 

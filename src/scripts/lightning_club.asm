@@ -163,6 +163,7 @@ Script_LostToIsaac:
 	print_text_quit_fully Text063b
 
 .ows_e503
+	jump_if_event_greater_or_equal EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .rematch_question
 	print_npc_text Text063c
 	ask_question_jump Text0635, .ows_e50f
 	print_npc_text Text063d
@@ -172,10 +173,22 @@ Script_LostToIsaac:
 	print_npc_text Text063e
 	start_duel PRIZES_6, ZAPPING_SELFDESTRUCT_DECK_ID, MUSIC_DUEL_THEME_2
 	quit_script_fully
+.rematch_question
+	ask_question_jump ClubMasterWantARematchText, .rematch_duel
+	quit_script_fully
+.rematch_duel
+	start_duel PRIZES_6, REMATCH_ZAPPING_SELFDESTRUCT_DECK_ID, MUSIC_DUEL_THEME_2
+	quit_script_fully
 
 .ows_e517
 	print_npc_text Text063f
+	jump_if_event_greater_or_equal EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .rematch_reward
 	give_booster_packs BOOSTER_MYSTERY_LIGHTNING_COLORLESS, BOOSTER_MYSTERY_LIGHTNING_COLORLESS, NO_BOOSTER
+	print_npc_text Text0640
+	quit_script_fully
+.rematch_reward
+	give_booster_packs BOOSTER_MYSTERY_LIGHTNING_COLORLESS, NO_BOOSTER, NO_BOOSTER
+	give_card ISSAC_MAGNETON
 	print_npc_text Text0640
 	quit_script_fully
 

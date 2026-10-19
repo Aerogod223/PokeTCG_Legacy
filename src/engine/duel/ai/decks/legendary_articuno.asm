@@ -68,11 +68,23 @@ AIDoTurn_LegendaryArticuno:
 ; process Trainer cards
 	ld a, AI_TRAINER_CARD_PHASE_02
 	call AIProcessHandTrainerCards
+	ld a, AI_TRAINER_CARD_PHASE_04
+	call AIProcessHandTrainerCards
 ; play Pokemon from hand
 	call AIDecidePlayPokemonCard
 	ret c ; return if turn ended
+	ld a, AI_TRAINER_CARD_PHASE_05
+	call AIProcessHandTrainerCards
+	ld a, AI_TRAINER_CARD_PHASE_07
+	call AIProcessHandTrainerCards
+	ld a, AI_TRAINER_CARD_PHASE_09
+	call AIProcessHandTrainerCards
 	call AIProcessRetreat
 	ld a, AI_TRAINER_CARD_PHASE_10
+	call AIProcessHandTrainerCards
+	ld a, AI_TRAINER_CARD_PHASE_11
+	call AIProcessHandTrainerCards
+	ld a, AI_TRAINER_CARD_PHASE_12
 	call AIProcessHandTrainerCards
 ; play Energy card if possible
 	ld a, [wAlreadyPlayedEnergy]
@@ -94,16 +106,32 @@ AIDoTurn_LegendaryArticuno:
 	call AIProcessHandTrainerCards
 	ld a, AI_TRAINER_CARD_PHASE_02
 	call AIProcessHandTrainerCards
+	ld a, AI_TRAINER_CARD_PHASE_03
+	call AIProcessHandTrainerCards
+	ld a, AI_TRAINER_CARD_PHASE_04
+	call AIProcessHandTrainerCards
 	call AIDecidePlayPokemonCard
 	ret c ; return if turn ended
+	ld a, AI_TRAINER_CARD_PHASE_05
+	call AIProcessHandTrainerCards
+	ld a, AI_TRAINER_CARD_PHASE_07
+	call AIProcessHandTrainerCards
+	ld a, AI_TRAINER_CARD_PHASE_09
+	call AIProcessHandTrainerCards
 	call AIProcessRetreat
 	ld a, AI_TRAINER_CARD_PHASE_10
+	call AIProcessHandTrainerCards
+	ld a, AI_TRAINER_CARD_PHASE_11
+	call AIProcessHandTrainerCards
+	ld a, AI_TRAINER_CARD_PHASE_12
 	call AIProcessHandTrainerCards
 	ld a, [wAlreadyPlayedEnergy]
 	or a
 	call z, AIProcessAndTryToPlayEnergy
 	call AIDecidePlayPokemonCard
 	ret c ; return if turn ended
+	ld a, AI_TRAINER_CARD_PHASE_13
+	call AIProcessHandTrainerCards
 .try_attack
 ; attack if possible, if not,
 ; finish turn without attacking.

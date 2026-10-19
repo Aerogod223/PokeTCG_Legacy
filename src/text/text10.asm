@@ -1113,6 +1113,42 @@ EeveeName:
 	text "Eevee"
 	done
 
+RematchFirstStrikeDeckName:
+	text "First Strike"
+	done
+
+RematchRockCrusherDeckName:
+	text "Rock Crusher"
+	done
+
+RematchGoGoRainDanceDeckName:
+	text "Go-Go Rain Dance"
+	done
+
+RematchZappingSelfdestructDeckName:
+	text "Zapping Selfdestruct"
+	done
+
+RematchFlowerPowerDeckName:
+	text "Flower Power"
+	done
+
+RematchStrangePsyshockDeckName:
+	text "Strange Psyshock"
+	done
+
+RematchWondersOfScienceDeckName:
+	text "Wonders of Science"
+	done
+
+RematchFireChargeDeckName:
+	text "Fire Charge"
+	done
+
+ClubMasterWantARematchText:
+	text "Want a Rematch?"
+	done
+
 AeroSnorlaxName:
 	text "Aero's Snorlax"
 	done

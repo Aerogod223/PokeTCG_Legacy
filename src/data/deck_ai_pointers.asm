@@ -53,4 +53,12 @@ DeckAIPointerTable::
 	dw AIActionTable_GeneralDecks        ; FLAMETHROWER_DECK
 	dw AIActionTable_GeneralDecks        ; RESHUFFLE_DECK
 	dw AIActionTable_GeneralNoRetreat    ; IMAKUNI_DECK
+	dw AIActionTable_RematchFirstStrike         ; REMATCH_FIRST_STRIKE_DECK
+	dw AIActionTable_RematchRockCrusher         ; REMATCH_ROCK_CRUSHER_DECK
+	dw AIActionTable_RematchGoGoRainDance       ; REMATCH_GO_GO_RAIN_DANCE_DECK
+	dw AIActionTable_RematchZappingSelfdestruct ; REMATCH_ZAPPING_SELFDESTRUCT_DECK
+	dw AIActionTable_RematchFlowerPower         ; REMATCH_FLOWER_POWER_DECK
+	dw AIActionTable_RematchStrangePsyshock     ; REMATCH_STRANGE_PSYSHOCK_DECK
+	dw AIActionTable_RematchWondersOfScience    ; REMATCH_WONDERS_OF_SCIENCE_DECK
+	dw AIActionTable_RematchFireCharge          ; REMATCH_FIRE_CHARGE_DECK
 	assert_table_length NUM_DECK_IDS

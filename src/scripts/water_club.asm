@@ -293,7 +293,14 @@ Script_BeatAmy:
 	record_master_win $03
 	print_npc_text AmyGivesMedal2Text
 .give_booster_packs
+	jump_if_event_greater_or_equal EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .rematch_reward
 	give_booster_packs BOOSTER_LABORATORY_WATER, BOOSTER_LABORATORY_WATER, NO_BOOSTER
+	print_npc_text AmyPlayerWon2Text
+	jump_if_active_npc_coords_match 20, 4, Script_LostToAmy.ows_e34e
+	quit_script_fully
+.rematch_reward
+	give_booster_packs BOOSTER_LABORATORY_WATER, NO_BOOSTER, NO_BOOSTER
+	give_card AMY_STARMIE
 	print_npc_text AmyPlayerWon2Text
 	jump_if_active_npc_coords_match 20, 4, Script_LostToAmy.ows_e34e
 	quit_script_fully
@@ -310,6 +317,7 @@ Script_LostToAmy:
 	quit_script_fully
 
 Script_Amy_AlreadyHaveMedal:
+	jump_if_event_greater_or_equal EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .rematch_question
 	print_npc_text AmyWantsToDuelRepeatText
 	ask_question_jump AmyWouldYouLikeToDuelText, .start_duel
 	script_jump Script_Amy.deny_duel
@@ -317,4 +325,10 @@ Script_Amy_AlreadyHaveMedal:
 .start_duel
 	print_npc_text AmyDuelStartRepeatText
 	start_duel PRIZES_6, GO_GO_RAIN_DANCE_DECK_ID, MUSIC_DUEL_THEME_2
+	quit_script_fully
+.rematch_question
+	ask_question_jump ClubMasterWantARematchText, .rematch_duel
+	quit_script_fully
+.rematch_duel
+	start_duel PRIZES_6, REMATCH_GO_GO_RAIN_DANCE_DECK_ID, MUSIC_DUEL_THEME_2
 	quit_script_fully

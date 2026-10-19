@@ -119,9 +119,15 @@ AIDoTurn_LegendaryRonald:
 	call AIProcessHandTrainerCards
 	ld a, AI_TRAINER_CARD_PHASE_07
 	call AIProcessHandTrainerCards
+	ld a, AI_TRAINER_CARD_PHASE_09
+	call AIProcessHandTrainerCards
 	call AIProcessRetreat
 	ld a, AI_TRAINER_CARD_PHASE_10
 	call AIProcessHandTrainerCards
+	ld a, AI_TRAINER_CARD_PHASE_12
+	call AIProcessHandTrainerCards
+	farcall HandleAIPkmnPowers
+	ret c ; return if turn ended
 ; play Energy card if possible
 	ld a, [wAlreadyPlayedEnergy]
 	or a
@@ -169,13 +175,19 @@ AIDoTurn_LegendaryRonald:
 	call AIProcessHandTrainerCards
 	ld a, AI_TRAINER_CARD_PHASE_07
 	call AIProcessHandTrainerCards
+	ld a, AI_TRAINER_CARD_PHASE_09
+	call AIProcessHandTrainerCards
 	call AIProcessRetreat
 	ld a, AI_TRAINER_CARD_PHASE_10
+	call AIProcessHandTrainerCards
+	ld a, AI_TRAINER_CARD_PHASE_12
 	call AIProcessHandTrainerCards
 	ld a, [wAlreadyPlayedEnergy]
 	or a
 	call z, AIProcessAndTryToPlayEnergy
 	call AIDecidePlayPokemonCard
+	ret c ; return if turn ended
+	farcall HandleAIPkmnPowers
 	ret c ; return if turn ended
 .try_attack
 ; attack if possible, if not,

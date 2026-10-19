@@ -1366,7 +1366,10 @@ HandleAIDamageSwap:
 HandleAIGoGoRainDanceEnergy:
 	ld a, [wOpponentDeckID]
 	cp GO_GO_RAIN_DANCE_DECK_ID
+	jr z, .go_go_rain_dance_deck
+	cp REMATCH_GO_GO_RAIN_DANCE_DECK_ID
 	ret nz ; return if not Go Go Rain Dance deck
+.go_go_rain_dance_deck
 
 	ld a, BLASTOISE
 	call CountTurnDuelistPokemonWithActivePkmnPower

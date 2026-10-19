@@ -128,7 +128,13 @@ Script_BeatKen:
 	record_master_win $08
 	print_npc_text Text06c2
 .give_booster_packs
+	jump_if_event_greater_or_equal EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .rematch_reward
 	give_booster_packs BOOSTER_MYSTERY_NEUTRAL, BOOSTER_MYSTERY_NEUTRAL, NO_BOOSTER
+	print_npc_text Text06c3
+	quit_script_fully
+.rematch_reward
+	give_booster_packs BOOSTER_MYSTERY_NEUTRAL, NO_BOOSTER, NO_BOOSTER
+	give_card KEN_RAPIDASH
 	print_npc_text Text06c3
 	quit_script_fully
 
@@ -139,6 +145,7 @@ Script_LostToKen:
 	quit_script_fully
 
 Script_Ken_AlreadyHaveMedal:
+	jump_if_event_greater_or_equal EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .rematch_question
 	print_npc_text Text06c6
 	ask_question_jump Text06be, .start_duel
 	print_text_quit_fully Text06bf
@@ -146,4 +153,10 @@ Script_Ken_AlreadyHaveMedal:
 .start_duel
 	print_npc_text Text06c7
 	start_duel PRIZES_6, FIRE_CHARGE_DECK_ID, MUSIC_DUEL_THEME_2
+	quit_script_fully
+.rematch_question
+	ask_question_jump ClubMasterWantARematchText, .rematch_duel
+	quit_script_fully
+.rematch_duel
+	start_duel PRIZES_6, REMATCH_FIRE_CHARGE_DECK_ID, MUSIC_DUEL_THEME_2
 	quit_script_fully

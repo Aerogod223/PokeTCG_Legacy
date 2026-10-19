@@ -64,3 +64,46 @@ AIActionTable_StrangePsyshock:
 	store_list_pointer wAICardListRetreatBonus, .list_retreat
 	store_list_pointer wAICardListEnergyBonus, .list_energy
 	ret
+
+AIActionTable_RematchStrangePsyshock:
+	dw AIMainTurnLogic
+	dw AIMainTurnLogic
+	dw RematchStrangePsyshock_StartDuel
+	dw AIDecideBenchPokemonToSwitchTo
+	dw AIDecideBenchPokemonToSwitchTo
+	dw AIPickPrizeCards
+
+RematchStrangePsyshock_StartDuel:
+	call InitAIDuelVars
+	store_list_pointer wAICardListAvoidPrize, RematchStrangePsyshock_PrizeList
+	store_list_pointer wAICardListArenaPriority, RematchStrangePsyshock_ArenaList
+	store_list_pointer wAICardListBenchPriority, RematchStrangePsyshock_BenchList
+	store_list_pointer wAICardListPlayFromHandPriority, RematchStrangePsyshock_BenchList
+	store_list_pointer wAICardListRetreatBonus, RematchStrangePsyshock_RetreatList
+	store_list_pointer wAICardListEnergyBonus, RematchStrangePsyshock_EnergyList
+	call SetUpBossStartingHandAndDeck
+	call TrySetUpBossStartingPlayArea
+	ret nc
+	jp AIPlayInitialBasicCards
+
+RematchStrangePsyshock_ArenaList:
+	db KANGASKHAN, MR_MIME, MEWTWO_ALT_LV60, TAUROS, CHANSEY, ABRA, $00
+RematchStrangePsyshock_BenchList:
+	db ABRA, CHANSEY, MEWTWO_ALT_LV60, MR_MIME, TAUROS, KANGASKHAN, $00
+RematchStrangePsyshock_RetreatList:
+	ai_retreat ABRA, +3
+	ai_retreat KANGASKHAN, -1
+	ai_retreat TAUROS, -1
+	db $00
+RematchStrangePsyshock_EnergyList:
+	ai_energy ABRA, 1, +0
+	ai_energy KADABRA, 3, +0
+	ai_energy ALAKAZAM, 3, +0
+	ai_energy MR_MIME, 2, +2
+	ai_energy TAUROS, 3, +0
+	ai_energy CHANSEY, 2, -2
+	ai_energy KANGASKHAN, 3, +1
+	ai_energy MEWTWO_ALT_LV60, 3, +2
+	db $00
+RematchStrangePsyshock_PrizeList:
+	db SCOOP_UP, MR_MIME, ALAKAZAM, SWITCH, $00

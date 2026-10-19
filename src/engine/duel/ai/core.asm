@@ -1976,20 +1976,23 @@ CheckIfDefendingPokemonCanKnockOutWithThisAttack:
 
 ; preserves all registers except f (flags)
 ; output:
-;	carry = set:  if AI's deck ID is between LEGENDARY_MOLTRES_DECK_ID (inclusive)
-;	              and MUSCLES_FOR_BRAINS_DECK_ID (exclusive). this range includes
-;	              the decks for each of the Grandmasters, Club Masters, and Ronald.
+; carry = set: if AI's deck ID is in the original boss range or rematch range
 CheckIfOpponentHasBossDeckID:
 	push af
 	ld a, [wOpponentDeckID]
 	cp LEGENDARY_MOLTRES_DECK_ID
-	jr c, .no_carry
+	jr c, .check_rematch_decks
 	cp MUSCLES_FOR_BRAINS_DECK_ID
+	jr c, .boss_deck
+.check_rematch_decks
+	cp REMATCH_FIRST_STRIKE_DECK_ID
+	jr c, .no_carry
+	cp REMATCH_FIRE_CHARGE_DECK_ID + 1
 	jr nc, .no_carry
+.boss_deck
 	pop af
 	scf
 	ret
-
 .no_carry
 	pop af
 	or a

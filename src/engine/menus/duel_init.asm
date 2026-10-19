@@ -226,4 +226,28 @@ OpponentTitlesAndDeckNames:
 	tx StrangeLifeformText
 	tx ImakuniDeckName
 
+	tx FightingClubMasterText
+	tx RematchFirstStrikeDeckName
+
+	tx RockClubMasterText
+	tx RematchRockCrusherDeckName
+
+	tx WaterClubMasterText
+	tx RematchGoGoRainDanceDeckName
+
+	tx LightningClubMasterText
+	tx RematchZappingSelfdestructDeckName
+
+	tx GrassClubMasterText
+	tx RematchFlowerPowerDeckName
+
+	tx PsychicClubMasterText
+	tx RematchStrangePsyshockDeckName
+
+	tx ScienceClubMasterText
+	tx RematchWondersOfScienceDeckName
+
+	tx FireClubMasterText
+	tx RematchFireChargeDeckName
+
 	assert_table_length NUM_DECK_IDS

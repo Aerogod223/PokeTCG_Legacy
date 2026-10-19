@@ -69,10 +69,16 @@ AIDoTurn_LegendaryDragonite:
 ; process Trainer cards
 	ld a, AI_TRAINER_CARD_PHASE_02
 	call AIProcessHandTrainerCards
+	ld a, AI_TRAINER_CARD_PHASE_04
+	call AIProcessHandTrainerCards
 ; play Pokemon from hand
 	call AIDecidePlayPokemonCard
 	ret c ; return if turn ended
+	ld a, AI_TRAINER_CARD_PHASE_05
+	call AIProcessHandTrainerCards
 	ld a, AI_TRAINER_CARD_PHASE_07
+	call AIProcessHandTrainerCards
+	ld a, AI_TRAINER_CARD_PHASE_09
 	call AIProcessHandTrainerCards
 	call AIProcessRetreat
 	ld a, AI_TRAINER_CARD_PHASE_10
@@ -112,6 +118,8 @@ AIDoTurn_LegendaryDragonite:
 	ret c ; return if turn ended
 	ld a, AI_TRAINER_CARD_PHASE_15
 	call AIProcessHandTrainerCards
+	farcall HandleAIPkmnPowers
+	ret c ; return if turn ended
 ; if used Professor Oak, process new hand
 ; if not, then proceed to attack.
 	ld a, [wPreviousAIFlags]
@@ -121,9 +129,15 @@ AIDoTurn_LegendaryDragonite:
 	call AIProcessHandTrainerCards
 	ld a, AI_TRAINER_CARD_PHASE_02
 	call AIProcessHandTrainerCards
+	ld a, AI_TRAINER_CARD_PHASE_04
+	call AIProcessHandTrainerCards
 	call AIDecidePlayPokemonCard
 	ret c ; return if turn ended
+	ld a, AI_TRAINER_CARD_PHASE_05
+	call AIProcessHandTrainerCards
 	ld a, AI_TRAINER_CARD_PHASE_07
+	call AIProcessHandTrainerCards
+	ld a, AI_TRAINER_CARD_PHASE_09
 	call AIProcessHandTrainerCards
 	call AIProcessRetreat
 	ld a, AI_TRAINER_CARD_PHASE_10
@@ -134,6 +148,8 @@ AIDoTurn_LegendaryDragonite:
 	or a
 	call z, AIProcessAndTryToPlayEnergy
 	call AIDecidePlayPokemonCard
+	ret c ; return if turn ended
+	farcall HandleAIPkmnPowers
 	ret c ; return if turn ended
 .try_attack
 ; attack if possible, if not,

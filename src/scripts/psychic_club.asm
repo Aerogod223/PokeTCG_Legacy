@@ -138,6 +138,7 @@ Script_LostToMurray:
 	print_text_quit_fully Text0685
 
 .ows_eb31
+	jump_if_event_greater_or_equal EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .rematch_question
 	print_npc_text Text0686
 	ask_question_jump Text067f, .ows_eb3d
 	print_npc_text Text0687
@@ -147,10 +148,22 @@ Script_LostToMurray:
 	print_npc_text Text0688
 	start_duel PRIZES_6, STRANGE_PSYSHOCK_DECK_ID, MUSIC_DUEL_THEME_2
 	quit_script_fully
+.rematch_question
+	ask_question_jump ClubMasterWantARematchText, .rematch_duel
+	quit_script_fully
+.rematch_duel
+	start_duel PRIZES_6, REMATCH_STRANGE_PSYSHOCK_DECK_ID, MUSIC_DUEL_THEME_2
+	quit_script_fully
 
 .ows_eb45
 	print_npc_text Text0689
+	jump_if_event_greater_or_equal EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .rematch_reward
 	give_booster_packs BOOSTER_LABORATORY_PSYCHIC, BOOSTER_LABORATORY_PSYCHIC, NO_BOOSTER
+	print_npc_text Text068a
+	quit_script_fully
+.rematch_reward
+	give_booster_packs BOOSTER_LABORATORY_PSYCHIC, NO_BOOSTER, NO_BOOSTER
+	give_card MURRAY_WEEZING
 	print_npc_text Text068a
 	quit_script_fully
 
