@@ -7091,6 +7091,17 @@ OppAction_BeginUseAttack:
 	call UpdateArenaCardIDsAndClearTwoTurnDuelVars
 	call CheckSmokescreenSubstatus
 	jr c, .has_status
+	ldh a, [hTemp_ffa0]
+	or a ; cp FIRST_ATTACK_OR_PKMN_POWER
+	jr nz, .check_confusion
+	ld a, [wLoadedAttackCategory]
+	cp POKEMON_POWER
+	jr nz, .check_confusion
+	ldh a, [hTempCardIndex_ff9f]
+	call _GetCardIDFromDeckIndex
+	cp IMAKUNIS_MEWTWO
+	jp z, ExchangeRNG
+.check_confusion
 	ld a, DUELVARS_ARENA_CARD_STATUS
 	get_turn_duelist_var
 	and CNF_SLP_PRZ

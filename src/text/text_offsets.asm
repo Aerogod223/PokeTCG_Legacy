@@ -3046,3 +3046,10 @@ TextOffsets::
 	textpointer AppetitieDescription
 	textpointer ExerciseName
 	textpointer ExerciseDescription
+	textpointer ImakunisMewtwoName
+	textpointer ImakuniPowerName
+	textpointer ImakuniPowerDescription
+	textpointer NoImakuniInDiscardPileText
+	textpointer PowerfulConfusionName
+	textpointer PowerfulConfusionDescription
+	textpointer DiscardImakuniForPowerfulConfusionText

@@ -352,6 +352,41 @@ MewtwoName:
 	text "Mewtwo"
 	done
 
+ImakunisMewtwoName:
+	text "Imakuni?'s Mewtwo"
+	done
+
+ImakuniPowerName:
+	text "Imakuni? Power!"
+	done
+
+ImakuniPowerDescription:
+	text "If this Pokémon is Confused, you may"
+	line "remove its Confusion and return an"
+	line "Imakuni? card from your discard pile"
+	line "to your hand."
+	done
+
+NoImakuniInDiscardPileText:
+	text "No Imakuni? card in your"
+	line "discard pile."
+	done
+
+PowerfulConfusionName:
+	text "Powerful Confusion"
+	done
+
+PowerfulConfusionDescription:
+	text "If you discard an Imakuni? card from"
+	line "your hand, this attack does 10 more"
+	line "damage and both Active Pokémon are"
+	line "Confused."
+	done
+
+DiscardImakuniForPowerfulConfusionText:
+	text "Discard Imakuni? for the bonus?"
+	done
+
 PsychicName:
 	text "Psychic"
 	done

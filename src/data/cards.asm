@@ -246,6 +246,7 @@ CardPointers::
 	dw AeroSnorlaxCard
 	dw KarlosPoliwrathCard
 	dw ZachEeveeCard
+	dw ImakunisMewtwoCard
 	dw NULL
 	assert_table_length NUM_CARDS + 2
 
@@ -10699,3 +10700,53 @@ ZachEeveeCard:
 	dw 14 * 10 ; weight
 	tx EeveeDescription ; description
 	db HAS_EVOLUTION ; pokemon flags
+
+ImakunisMewtwoCard:
+	db TYPE_PKMN_PSYCHIC ; type
+	gfx MewtwoLv60CardGfx ; gfx
+	tx ImakunisMewtwoName ; name
+	db STAR ; rarity
+	db PROMOTIONAL | PRO ; sets
+	db IMAKUNIS_MEWTWO
+	db 100 ; hp
+	db BASIC ; stage
+	dw NONE ; pre-evo name
+
+	; attack 1
+	energy 0 ; energies
+	tx ImakuniPowerName ; name
+	tx ImakuniPowerDescription ; description
+	dw NONE ; description (cont)
+	db 0 ; damage
+	db POKEMON_POWER ; category
+	dw ImakuniMewtwoPowerEffectCommands ; effect commands
+	db NONE ; flags 1
+	db NONE ; flags 2
+	db NONE ; flags 3
+	db 0
+	db ATK_ANIM_PKMN_POWER_1 ; animation
+
+	; attack 2
+	energy COLORLESS, 4 ; energies
+	tx PowerfulConfusionName ; name
+	tx PowerfulConfusionDescription ; description
+	dw NONE ; description (cont)
+	db 50 ; damage
+	db DAMAGE_PLUS ; category
+	dw PowerfulConfusionEffectCommands ; effect commands
+	db INFLICT_CONFUSION ; flags 1
+	db NONE ; flags 2
+	db NONE ; flags 3
+	db 0
+	db ATK_ANIM_PSYCHIC_HIT ; animation
+
+	db 3 ; retreat cost
+	db WR_FIGHTING ; weakness
+	db WR_FIGHTING ; resistance
+	tx GeneticName ; category
+	dw 150 ; Pokedex number
+	db 60 ; level
+	db 6, 7 ; length
+	dw 269 * 10 ; weight
+	tx MewtwoLv60Description ; description
+	db 0 ; pokemon flags

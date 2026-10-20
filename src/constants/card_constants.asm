@@ -241,4 +241,5 @@
 	const AERO_SNORLAX
 	const KARLOS_POLIWRATH
 	const ZACH_EEVEE
+	const IMAKUNIS_MEWTWO
 DEF NUM_CARDS EQU const_value - 1

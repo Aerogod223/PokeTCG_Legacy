@@ -31,7 +31,14 @@ HandleAIPkmnPowers:
 	ld a, DUELVARS_ARENA_CARD_STATUS
 	get_turn_duelist_var
 	and CNF_SLP_PRZ
-	jp nz, .next_2
+	jr z, .loop_play_area
+	cp CONFUSED
+	jr nz, .next_2
+	ld a, DUELVARS_ARENA_CARD
+	get_turn_duelist_var
+	call _GetCardIDFromDeckIndex
+	cp IMAKUNIS_MEWTWO
+	jr nz, .next_2
 
 .loop_play_area
 	ld a, DUELVARS_ARENA_CARD
@@ -114,9 +121,17 @@ HandleAIPkmnPowers:
 
 .step_in
 	cp DRAGONITE_LV45
-	jr nz, .growing_pains
+	jr nz, .imakuni_mewtwo
 	call HandleAIStepIn
 	jr .next_1
+
+.imakuni_mewtwo
+	cp IMAKUNIS_MEWTWO
+	jr nz, .growing_pains
+	call AIUsePkmnPower_NoParameters
+	pop bc
+	or a
+	ret
 
 .growing_pains
 	cp NICK_EXEGGUTOR

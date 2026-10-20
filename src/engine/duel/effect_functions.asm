@@ -413,6 +413,86 @@ SetCarryEF:
 	scf
 	ret
 
+ImakuniMewtwoPower_Check:
+	ldh a, [hTempPlayAreaLocation_ff9d]
+	or a
+	jr nz, .cannot_use
+	ld a, DUELVARS_ARENA_CARD_FLAGS
+	get_turn_duelist_var
+	and USED_PKMN_POWER_THIS_TURN
+	jr nz, .already_used
+	ld a, DUELVARS_ARENA_CARD_STATUS
+	get_turn_duelist_var
+	and CNF_SLP_PRZ
+	cp CONFUSED
+	jr nz, .cannot_use
+	call FindImakuniInDiscardPile
+	jr c, .no_imakuni
+	call CheckIfPkmnPowersAreCurrentlyDisabled
+	ret c
+	xor a ; PLAY_AREA_ARENA
+	ldh [hTemp_ffa0], a
+	or a
+	ret
+.already_used
+	ldtx hl, OnlyOncePerTurnText
+	scf
+	ret
+.no_imakuni
+	ldtx hl, NoImakuniInDiscardPileText
+	scf
+	ret
+.cannot_use
+	ldtx hl, CannotUseDueToStatusText
+	scf
+	ret
+
+ImakuniMewtwoPower_Effect:
+	ldh a, [hTemp_ffa0]
+	add DUELVARS_ARENA_CARD_FLAGS
+	get_turn_duelist_var
+	set USED_PKMN_POWER_THIS_TURN_F, [hl]
+	ld a, ATK_ANIM_FULL_HEAL
+	call PlayTrainerEffectAnimation
+	ld a, DUELVARS_ARENA_CARD_STATUS
+	get_turn_duelist_var
+	ld a, [hl]
+	and PSN_DBLPSN
+	ld [hl], a
+	bank1call DrawDuelHUDs
+	call FindImakuniInDiscardPile
+	jr c, .done
+	ldh [hTempPlayAreaLocation_ffa1], a
+	call MoveDiscardPileCardToHand
+	call AddCardToHand
+	call IsPlayerTurn
+	jr c, .done ; player's hand is already visible
+	ldh a, [hTempPlayAreaLocation_ffa1]
+	ldtx hl, WasPlacedInTheHandText
+	bank1call DisplayCardDetailScreen
+.done
+	or a
+	ret
+
+FindImakuniInDiscardPile:
+	call CreateTrainerCardListFromDiscardPile
+	jr c, .not_found
+	ld hl, wDuelTempList
+.loop
+	ld a, [hli]
+	cp $ff
+	jr z, .not_found
+	ld b, a
+	call _GetCardIDFromDeckIndex
+	cp IMAKUNI_CARD
+	jr nz, .loop
+	ld a, b
+	or a
+	ret
+.not_found
+	scf
+	ret
+
 
 ;---------------------------------------------------------------------------------
 ; (2) NEXT ARE SOME FUNCTIONS THAT ARE FREQUENTLY CALLED BY OTHER FUNCTIONS
@@ -2152,6 +2232,59 @@ ConfuseBothActivePokemonEffect:
 	rst SwapTurn
 	call ConfusionEffect
 	jp SwapTurn
+
+; discards Imakuni? from hand for the attack's bonus damage and confusion.
+PowerfulConfusion_Effect:
+	call FindImakuniInHand
+	ret c ; no Imakuni? card in hand
+	ldh [hTemp_ffa0], a
+	call IsPlayerTurn
+	jr nc, .discard_imakuni ; AI always takes the optional bonus
+	xor a ; default to No
+	ld [wDefaultYesOrNo], a
+	ldtx hl, DiscardImakuniForPowerfulConfusionText
+	call YesOrNoMenuWithText
+	ret c ; Player declined the bonus
+.discard_imakuni
+	ldh a, [hTemp_ffa0]
+	call RemoveCardFromHand
+	call PutCardInDiscardPile
+	ld a, 10
+	call AddToDamage
+	jp ConfuseBothActivePokemonEffect
+
+; adds the optional damage to the AI's damage estimate if Imakuni? is in hand.
+PowerfulConfusion_AIEffect:
+	call FindImakuniInHand
+	ret c
+	ld a, 10
+	jp AddToDamage
+
+; output: a = deck index of Imakuni? in hand, or carry set if absent.
+FindImakuniInHand:
+	ld a, DUELVARS_CARD_LOCATIONS
+	get_turn_duelist_var
+	ld b, DECK_SIZE
+	ld c, 0
+.loop
+	ld a, [hli]
+	and $ff ^ CARD_LOCATION_JUST_DRAWN
+	cp CARD_LOCATION_HAND
+	jr nz, .next_card
+	ld a, c
+	call _GetCardIDFromDeckIndex
+	cp IMAKUNI_CARD
+	jr z, .found
+.next_card
+	inc c
+	dec b
+	jr nz, .loop
+	scf
+	ret
+.found
+	ld a, c
+	or a
+	ret
 
 
 ;---------------------------------------------------------------------------------

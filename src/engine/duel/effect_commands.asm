@@ -264,6 +264,10 @@ InflictConfusionEffectCommands:
 DoubleConfusionEffectCommands:
 	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, ConfuseBothActivePokemonEffect
 	db  $00
+PowerfulConfusionEffectCommands:
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, PowerfulConfusion_Effect
+	dbw EFFECTCMDTYPE_AI, PowerfulConfusion_AIEffect
+	db  $00
 
 MayInflictParalysisEffectCommands:
 	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, Paralysis50PercentEffect
@@ -929,6 +933,11 @@ MrMimeInvisibleWallEffectCommands:
 ; actual effect handled in home/substatus.asm and engine/duel/effect_functions.asm
 MewNeutralizingShieldEffectCommands:
 	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, SetCarryEF ; passive pokemon power
+	db  $00
+ImakuniMewtwoPowerEffectCommands:
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, ImakuniMewtwoPower_Check
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_2, ImakuniMewtwoPower_Check
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, ImakuniMewtwoPower_Effect
 	db  $00
 
 ; actual effect handled in home/duel.asm
