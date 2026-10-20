@@ -64,7 +64,7 @@ AIDoTurn_LegendaryArticuno:
 	ld a, AI_TRAINER_CARD_PHASE_01
 	call AIProcessHandTrainerCards
 	call HandleAIAntiMewtwoDeckStrategy
-	jr nc, .try_attack
+	jp nc, .try_attack
 ; process Trainer cards
 	ld a, AI_TRAINER_CARD_PHASE_02
 	call AIProcessHandTrainerCards
