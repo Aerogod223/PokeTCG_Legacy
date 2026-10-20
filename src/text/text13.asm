@@ -231,3 +231,126 @@ RecycleDescription:
 	line ""
 	line " your deck."
 	done
+
+TangelaName:
+	text "Tangela"
+	done
+
+BindName:
+	text "Bind"
+	done
+
+VineName:
+	text "Vine"
+	done
+
+TangelaLv8Description:
+	text "Its whole body is swathed with wide"
+	line "vines that are similar to seaweed."
+	line "These vines shake as it walks."
+	done
+
+PoisonWhipName:
+	text "Poison Whip"
+	done
+
+TangelaLv12Description:
+	text "Its identity is obscured by masses"
+	line "of thick, blue vines. The vines are"
+	line "said to never stop growing."
+	done
+
+ScytherName:
+	text "Scyther"
+	done
+
+SwordsDanceName:
+	text "Swords Dance"
+	done
+
+SwordsDanceDescription:
+	text "During your next turn, Scyther's"
+	line "Slash attack's base damage is"
+	line "doubled."
+	done
+
+MantisName:
+	text "Mantis"
+	done
+
+ScytherDescription:
+	text "With ninja-like agility and speed,"
+	line "it can create the illusion that"
+	line "there is more than one of it."
+	done
+
+PinsirName:
+	text "Pinsir"
+	done
+
+IronGripName:
+	text "Irongrip"
+	done
+
+GuillotineName:
+	text "Guillotine"
+	done
+
+StagbeetleName:
+	text "Stagbeetle"
+	done
+
+PinsirDescription:
+	text "If it fails to crush the victim in"
+	line "its pincers, it will swing its"
+	line "victim around and toss it hard."
+	done
+
+CharmanderName:
+	text "Charmander"
+	done
+
+EmberName:
+	text "Ember"
+	done
+
+EmberDescription:
+	text "Discard 1 <FIRE> Energy card attached"
+	line "to Charmander in order to use this"
+	line "attack."
+	done
+
+LizardName:
+	text "Lizard"
+	done
+
+CharmanderDescription:
+	text "Obviously prefers hot places. If it"
+	line "gets caught in the rain, steam is"
+	line "said to spout from the tip of its"
+	line "tail."
+	done
+
+CharmeleonName:
+	text "Charmeleon"
+	done
+
+FlamethrowerName:
+	text "Flamethrower"
+	done
+
+CharmeleonsFlamethrowerDescription:
+	text "Discard 1 <FIRE> Energy card attached"
+	line "to Charmeleon in order to use this"
+	line "attack."
+	done
+
+FlameName:
+	text "Flame"
+	done
+
+CharmeleonDescription:
+	text "When it swings its burning tail, it"
+	line "raises the temperature to unbearably"
+	line "high levels."
+	done
