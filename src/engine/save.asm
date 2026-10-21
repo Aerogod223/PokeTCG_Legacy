@@ -569,6 +569,15 @@ _AddCardToCollectionAndUpdateAlbumProgress::
 	call AddCardToCollection
 	ld de, sAlbumProgress
 	call UpdateAlbumProgress
+	ld a, [wTotalNumCardsCollected]
+	ld b, a
+	ld a, [wTotalNumCardsToCollect]
+	cp b
+	jr nz, .done
+	ld a, EVENT_ALL_CARDS_COLLECTED
+	ld c, 1
+	farcall SetEventValue
+.done
 	pop af
 	call BankswitchSRAM
 	; unintentional? runs the same write operation

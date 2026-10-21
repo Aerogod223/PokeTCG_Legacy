@@ -106,8 +106,14 @@ Script_Imakuni:
 	quit_script_fully
 
 .start_duel
+	jump_if_event_greater_or_equal EVENT_IMAKUNI_WIN_COUNT, 7, .rematch_duel
 	print_npc_text ImakuniDuelStartText
 	start_duel PRIZES_6, IMAKUNI_DECK_ID, MUSIC_IMAKUNI
+	quit_script_fully
+
+.rematch_duel
+	print_npc_text ImakuniDuelStartText
+	start_duel PRIZES_6, REMATCH_IMAKUNI_DECK_ID, MUSIC_IMAKUNI
 	quit_script_fully
 
 Script_BeatImakuni:
@@ -119,6 +125,8 @@ Script_BeatImakuni:
 .give_boosters
 	print_npc_text ImakuniPlayerWonNormalText
 	give_one_of_each_trainer_booster
+	give_card IMAKUNIS_MEWTWO
+	show_card_received_screen IMAKUNIS_MEWTWO
 	script_jump .done
 
 .three_wins

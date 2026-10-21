@@ -332,12 +332,32 @@ RematchFireChargeDeckName:
 	text "Fire Charge"
 	done
 
+RematchImakuniDeckName:
+	text "Imakuni? Rematch"
+	done
+
+AeroBattleDeckName:
+	text "Aero's Deck"
+	done
+
+KarlosBattleDeckName:
+	text "Karlos's Deck"
+	done
+
+ZachBattleDeckName:
+	text "Zach's Deck"
+	done
+
+DrMasonBattleDeckName:
+	text "Dr. Mason's Deck"
+	done
+
 ClubMasterWantARematchText:
 	text "Want a Rematch?"
 	done
 
 AppetitieName:
-	text "Appetitie"
+	text "Appetite"
 	done
 
 AppetitieDescription:
@@ -352,4 +372,123 @@ ExerciseName:
 ExerciseDescription:
 	text "Heal damage from Snorlax equal to"
 	line "the damage done by this attack."
+	done
+
+ImakunisMewtwoName:
+	text "Imakuni?'s Mewtwo"
+	done
+
+ImakuniPowerName:
+	text "Imakuni? Power!"
+	done
+
+ImakuniPowerDescription:
+	text "If this Pokémon is Confused, remove its"
+	line "Confusion and return an Imakuni? card"
+	line "from your discard pile to your hand."
+	line "Then put 10 damage on this Pokémon."
+	done
+
+NoImakuniInDiscardPileText:
+	text "No Imakuni? card in your"
+	line "discard pile."
+	done
+
+PowerfulConfusionName:
+	text "Powerful Confusion"
+	done
+
+PowerfulConfusionDescription:
+	text "If you discard an Imakuni? card from"
+	line "your hand, this attack does 10 more"
+	line "damage and both Active Pokémon are"
+	line "Confused."
+	done
+
+DiscardImakuniForPowerfulConfusionText:
+	text "Discard Imakuni? for the bonus?"
+	done
+
+AeroTrainerName:
+	text "Aero"
+	done
+
+KarlosTrainerName:
+	text "Karlos"
+	done
+
+ZachTrainerName:
+	text "Zach"
+	done
+
+MasonBattleMenuText:
+	text "Would you like to"
+	line "challenge a trainer?"
+	done
+
+AeroBattleQuestionText:
+	text "Challenge Aero?"
+	done
+
+KarlosBattleQuestionText:
+	text "Challenge Karlos?"
+	done
+
+ZachBattleQuestionText:
+	text "Challenge Zach?"
+	done
+
+MasonBattleQuestionText:
+	text "Challenge Dr. Mason?"
+	done
+
+MasonBattleDeclinedText:
+	text "Come back when you"
+	line "are ready to duel."
+	done
+
+MasonChallengeWonText:
+	text "Excellent duel!"
+	done
+
+MasonChallengeLostText:
+	text "You played well."
+	done
+
+PsychicName:
+	text "Psychic"
+	done
+
+PsychicDescription:
+	text "Does 10 damage plus 10 more damage"
+	line "for each Energy card attached to the"
+	line "Defending Pokémon."
+	done
+
+BarrierDescription:
+	text "Discard 1 <PSYCHIC> Energy card attached to"
+	line "Mewtwo in order to use this attack."
+	line "During your opponent's next turn,"
+	line "prevent all effects of attacks,"
+	line "including damage, done to Mewtwo."
+	done
+
+LickName:
+	text "Lick"
+	done
+
+EnergyConversionName:
+	text "Energy Conversion"
+	done
+
+EnergyConversionDescription:
+	text "Choose 2 Energy cards from your"
+	line "discard pile and put them into your"
+	line "hand. Gastly does 10 damage to itself."
+	done
+
+GastlyLv17Description:
+	text "Its thin, long tongue can be freely"
+	line "extended and withdrawn. It can be"
+	line "used to lick enemies."
 	done

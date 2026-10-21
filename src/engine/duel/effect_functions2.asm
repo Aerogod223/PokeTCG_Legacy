@@ -402,6 +402,92 @@ FindTrainer:
 	ret
 
 
+; selects a Basic Fire, Water, or Lightning Energy card for Zach's Eevee.
+; output:
+; [hTemp_ffa0] = selected deck index, or -1 if none are available
+FindZachEeveeEnergy:
+	call CreateDeckCardList
+	call FilterZachEeveeEnergyList
+	ld hl, wDuelTempList
+	ld a, [hl]
+	cp $ff
+	jr z, .none_found
+	bank1call InitAndDrawCardListScreenLayout_WithSelectCheckMenu
+	ldtx hl, ChooseBasicEnergyCardText
+	ldtx de, DuelistDeckText
+	call SetCardListHeaderText
+.read_input
+	bank1call DisplayCardList
+	jr c, .invalid_choice
+	ldh a, [hTempCardIndex_ff98]
+	ldh [hTemp_ffa0], a
+	or a
+	ret
+.invalid_choice
+	call PlaySFX_InvalidChoice
+	jr .read_input
+.none_found
+	ld a, -1
+	ldh [hTemp_ffa0], a
+	or a
+	ret
+
+; AI selects the first matching Basic Energy card in its deck.
+AIFindZachEeveeEnergy:
+	call CreateDeckCardList
+	ld hl, wDuelTempList
+.loop
+	ld a, [hli]
+	cp $ff
+	jr z, .none_found
+	ld b, a
+	call _GetCardIDFromDeckIndex
+	call IsZachEeveeEnergy
+	jr nc, .loop
+	ld a, b
+	ldh [hTemp_ffa0], a
+	or a
+	ret
+.none_found
+	ld a, -1
+	ldh [hTemp_ffa0], a
+	or a
+	ret
+
+; keeps only Basic Fire, Water, and Lightning Energy deck indices in place.
+FilterZachEeveeEnergyList:
+	ld hl, wDuelTempList
+	ld de, wDuelTempList
+.loop
+	ld a, [hli]
+	cp $ff
+	jr z, .done
+	ld b, a
+	call _GetCardIDFromDeckIndex
+	call IsZachEeveeEnergy
+	jr nc, .loop
+	ld a, b
+	ld [de], a
+	inc de
+	jr .loop
+.done
+	ld a, $ff
+	ld [de], a
+	ret
+
+; input: a = card ID; carry is set for a supported Basic Energy.
+IsZachEeveeEnergy:
+	cp FIRE_ENERGY
+	jr z, .eligible
+	cp WATER_ENERGY
+	jr z, .eligible
+	cp LIGHTNING_ENERGY
+	ret nz
+.eligible
+	scf
+	ret
+
+
 ; finds the first Trainer card in the deck
 ; output:
 ;	[hTemp_ffa0] = deck index of a Trainer card in the turn holder's deck (0-59, -1 if none)

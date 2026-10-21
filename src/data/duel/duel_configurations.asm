@@ -432,5 +432,45 @@ DeckIDDuelConfigurations:
 	tx StrangeLifeformText ; rank
 	dw NULL ; element
 
+	db REMATCH_IMAKUNI_DECK_ID ; deck ID
+	db IMAKUNI_PIC ; NPC portrait
+	tx ImakuniNPCName ; name text ID
+	db PRIZES_6 ; number of prize cards
+	db MUSIC_IMAKUNI ; theme
+	tx StrangeLifeformText ; rank
+	dw NULL ; element
+
+	db AERO_BATTLE_DECK_ID ; deck ID
+	db AARON_PIC ; NPC portrait
+	tx AeroTrainerName ; name text ID
+	db PRIZES_4 ; number of prize cards
+	db MUSIC_DUEL_THEME_1 ; theme
+	tx ClubMemberText ; rank
+	dw NULL ; element
+
+	db KARLOS_BATTLE_DECK_ID ; deck ID
+	db RYAN_PIC ; NPC portrait
+	tx KarlosTrainerName ; name text ID
+	db PRIZES_4 ; number of prize cards
+	db MUSIC_DUEL_THEME_1 ; theme
+	tx ClubMemberText ; rank
+	tx ChallengeMachineWaterIconText ; element
+
+	db ZACH_BATTLE_DECK_ID ; deck ID
+	db MATTHEW_PIC ; NPC portrait
+	tx ZachTrainerName ; name text ID
+	db PRIZES_4 ; number of prize cards
+	db MUSIC_DUEL_THEME_1 ; theme
+	tx ClubMemberText ; rank
+	dw NULL ; element
+
+	db DR_MASON_BATTLE_DECK_ID ; deck ID
+	db AARON_PIC ; NPC portrait
+	tx DrMasonNPCName ; name text ID
+	db PRIZES_4 ; number of prize cards
+	db MUSIC_DUEL_THEME_1 ; theme
+	tx ClubMemberText ; rank
+	dw NULL ; element
+
 	assert_table_length NUM_AI_DECK_IDS
 	db -1 ; end

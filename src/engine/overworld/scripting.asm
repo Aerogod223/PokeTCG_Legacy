@@ -566,6 +566,7 @@ EventVarMasks:
 	event_def $1c, %11110000 ; EVENT_SAM_MENU_CHOICE
 	event_def $1c, %00001111 ; EVENT_AARON_DECK_MENU_CHOICE
 	event_def $1d, %00000001 ; EVENT_PLAYER_GENDER
+	event_def $1d, %00000010 ; EVENT_ALL_CARDS_COLLECTED
 	assert_table_length NUM_EVENT_FLAGS
 
 

@@ -149,24 +149,6 @@ GastlyLv8Description:
 	line "it to sleep without notice."
 	done
 
-LickName:
-	text "Lick"
-	done
-
-EnergyConversionName:
-	text "Energy Conversion"
-	done
-
-EnergyConversionDescription:
-	text "Put up to 2 Energy cards from"
-	line "your discard pile into your hand."
-	line "Gastly does 10 damage to itself."
-	done
-
-GastlyLv17Description:
-	text "A mysterious Pokémon. Some say it is"
-	line "a lifeform from another dimension,"
-	line "while others believe it is formed"
 	line "from smog."
 	done
 
@@ -350,59 +332,6 @@ JynxDescription:
 
 MewtwoName:
 	text "Mewtwo"
-	done
-
-ImakunisMewtwoName:
-	text "Imakuni?'s Mewtwo"
-	done
-
-ImakuniPowerName:
-	text "Imakuni? Power!"
-	done
-
-ImakuniPowerDescription:
-	text "If this Pokémon is Confused, you may"
-	line "remove its Confusion and return an"
-	line "Imakuni? card from your discard pile"
-	line "to your hand."
-	done
-
-NoImakuniInDiscardPileText:
-	text "No Imakuni? card in your"
-	line "discard pile."
-	done
-
-PowerfulConfusionName:
-	text "Powerful Confusion"
-	done
-
-PowerfulConfusionDescription:
-	text "If you discard an Imakuni? card from"
-	line "your hand, this attack does 10 more"
-	line "damage and both Active Pokémon are"
-	line "Confused."
-	done
-
-DiscardImakuniForPowerfulConfusionText:
-	text "Discard Imakuni? for the bonus?"
-	done
-
-PsychicName:
-	text "Psychic"
-	done
-
-PsychicDescription:
-	text "Does 10 damage plus 10 more damage"
-	line "for each Energy card attached to the"
-	line "Defending Pokémon."
-	done
-
-BarrierDescription:
-	text "Discard 1 <PSYCHIC> Energy card attached to"
-	line "Mewtwo in order to use this attack."
-	line "During your opponent's next turn,"
-	line "prevent all effects of attacks,"
-	line "including damage, done to Mewtwo."
 	done
 
 GeneticName:

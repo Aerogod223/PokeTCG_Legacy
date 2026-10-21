@@ -3031,6 +3031,11 @@ TextOffsets::
 	textpointer RematchStrangePsyshockDeckName
 	textpointer RematchWondersOfScienceDeckName
 	textpointer RematchFireChargeDeckName
+	textpointer RematchImakuniDeckName
+	textpointer AeroBattleDeckName
+	textpointer KarlosBattleDeckName
+	textpointer ZachBattleDeckName
+	textpointer DrMasonBattleDeckName
 	textpointer ClubMasterWantARematchText
 	textpointer AeroSnorlaxName
 	textpointer KarlosPoliwrathName
@@ -3053,3 +3058,14 @@ TextOffsets::
 	textpointer PowerfulConfusionName
 	textpointer PowerfulConfusionDescription
 	textpointer DiscardImakuniForPowerfulConfusionText
+	textpointer AeroTrainerName
+	textpointer KarlosTrainerName
+	textpointer ZachTrainerName
+	textpointer MasonBattleMenuText
+	textpointer AeroBattleQuestionText
+	textpointer KarlosBattleQuestionText
+	textpointer ZachBattleQuestionText
+	textpointer MasonBattleQuestionText
+	textpointer MasonBattleDeclinedText
+	textpointer MasonChallengeWonText
+	textpointer MasonChallengeLostText

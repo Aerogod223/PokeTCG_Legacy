@@ -63,6 +63,11 @@ DeckPointers::
 	dw RematchStrangePsyshockDeck
 	dw RematchWondersOfScienceDeck
 	dw RematchFireChargeDeck
+	dw RematchImakuniDeck
+	dw AeroBattleDeck
+	dw KarlosBattleDeck
+	dw ZachBattleDeck
+	dw DrMasonBattleDeck
 	dw NULL
 	assert_table_length NUM_VALID_DECKS + 1
 
@@ -2033,3 +2038,105 @@ ImakuniDeck:
 	card_item GAMBLER,         1
 	deck_list_end
 	tx ImakuniDeckName
+
+RematchImakuniDeck:
+	deck_list_start
+	card_item WATER_ENERGY,   10
+	card_item PSYCHIC_ENERGY, 16
+	card_item PSYDUCK,         4
+	card_item GOLDUCK,         3
+	card_item SLOWPOKE_LV9,    2
+	card_item SLOWPOKE_LV18,   2
+	card_item SLOWBRO,         3
+	card_item DROWZEE,         4
+	card_item HYPNO,           3
+	card_item FARFETCHD,       4
+	card_item IMAKUNI_CARD,    4
+	card_item MAINTENANCE,     2
+	card_item POKEMON_FLUTE,   2
+	card_item GAMBLER,         1
+	deck_list_end
+	tx RematchImakuniDeckName
+
+AeroBattleDeck:
+	deck_list_start
+	card_item FIGHTING_ENERGY,  22
+	card_item DOUBLE_COLORLESS_ENERGY, 4
+	card_item TAUROS,            2
+	card_item SNORLAX,           1
+	card_item AERODACTYL,        3
+	card_item ONIX,              4
+	card_item RHYHORN,           3
+	card_item PROFESSOR_OAK,     3
+	card_item BILL,              4
+	card_item SWITCH,            3
+	card_item MYSTERIOUS_FOSSIL, 4
+	card_item DEFENDER,          2
+	card_item GUST_OF_WIND,      2
+	card_item ENERGY_REMOVAL,    2
+	card_item ITEM_FINDER,       1
+	deck_list_end
+	tx AeroBattleDeckName
+
+KarlosBattleDeck:
+	deck_list_start
+	card_item WATER_ENERGY,           22
+	card_item POLIWAG,                 4
+	card_item POLIWHIRL,               3
+	card_item POLIWRATH,               3
+	card_item PSYDUCK,                 3
+	card_item GOLDUCK,                 2
+	card_item PROFESSOR_OAK,           3
+	card_item BILL,                    4
+	card_item ENERGY_RETRIEVAL,        2
+	card_item SUPER_ENERGY_RETRIEVAL,  2
+	card_item POKEMON_BREEDER,         3
+	card_item SWITCH,                  2
+	card_item GUST_OF_WIND,            2
+	card_item COMPUTER_SEARCH,         3
+	card_item ENERGY_SEARCH,           2
+	deck_list_end
+	tx KarlosBattleDeckName
+
+ZachBattleDeck:
+	deck_list_start
+	card_item LIGHTNING_ENERGY,        18
+	card_item DOUBLE_COLORLESS_ENERGY,  4
+	card_item EEVEE,                    4
+	card_item JOLTEON_LV24,             3
+	card_item PIKACHU_LV16,             3
+	card_item RAICHU_LV40,              2
+	card_item PROFESSOR_OAK,            3
+	card_item BILL,                     4
+	card_item SWITCH,                   3
+	card_item ENERGY_SEARCH,            3
+	card_item ENERGY_RETRIEVAL,         2
+	card_item PLUSPOWER,                4
+	card_item GUST_OF_WIND,             2
+	card_item COMPUTER_SEARCH,          3
+	card_item POTION,                   2
+	deck_list_end
+	tx ZachBattleDeckName
+
+DrMasonBattleDeck:
+	deck_list_start
+	card_item PSYCHIC_ENERGY,           16
+	card_item DOUBLE_COLORLESS_ENERGY,   4
+	card_item MEWTWO_LV60,               2
+	card_item ABRA,                     3
+	card_item KADABRA,                  2
+	card_item ALAKAZAM,                 2
+	card_item MR_MIME,                  2
+	card_item CHANSEY,                  2
+	card_item PROFESSOR_OAK,            3
+	card_item BILL,                     4
+	card_item COMPUTER_SEARCH,          3
+	card_item SWITCH,                   3
+	card_item ENERGY_REMOVAL,           3
+	card_item DEFENDER,                 2
+	card_item POKEMON_CENTER,           2
+	card_item SCOOP_UP,                 2
+	card_item ITEM_FINDER,              2
+	card_item GUST_OF_WIND,             3
+	deck_list_end
+	tx DrMasonBattleDeckName

@@ -250,4 +250,19 @@ OpponentTitlesAndDeckNames:
 	tx FireClubMasterText
 	tx RematchFireChargeDeckName
 
+	tx StrangeLifeformText
+	tx RematchImakuniDeckName
+
+	tx ClubMemberText
+	tx AeroBattleDeckName
+
+	tx ClubMemberText
+	tx KarlosBattleDeckName
+
+	tx ClubMemberText
+	tx ZachBattleDeckName
+
+	tx ClubMemberText
+	tx DrMasonBattleDeckName
+
 	assert_table_length NUM_DECK_IDS

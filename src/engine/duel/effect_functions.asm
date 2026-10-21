@@ -461,18 +461,18 @@ ImakuniMewtwoPower_Effect:
 	ld [hl], a
 	bank1call DrawDuelHUDs
 	call FindImakuniInDiscardPile
-	jr c, .done
+	jr c, .self_damage
 	ldh [hTempPlayAreaLocation_ffa1], a
 	call MoveDiscardPileCardToHand
 	call AddCardToHand
 	call IsPlayerTurn
-	jr c, .done ; player's hand is already visible
+	jr c, .self_damage ; player's hand is already visible
 	ldh a, [hTempPlayAreaLocation_ffa1]
 	ldtx hl, WasPlacedInTheHandText
 	bank1call DisplayCardDetailScreen
-.done
-	or a
-	ret
+.self_damage
+	ld a, 10
+	jp DealRecoilDamageToSelf
 
 FindImakuniInDiscardPile:
 	call CreateTrainerCardListFromDiscardPile
@@ -505,7 +505,7 @@ IsPlayerTurn:
 	ld a, DUELVARS_DUELIST_TYPE
 	get_turn_duelist_var
 	cp DUELIST_TYPE_PLAYER
-	jr z, SetCarryEF ; player
+	jp z, SetCarryEF ; player
 	or a
 	ret
 
@@ -810,8 +810,8 @@ PoliwrathWaterfall_DamageEffect:
 	call GetPlayAreaCardAttachedEnergies
 	ld a, [wAttachedEnergies + WATER]
 	cp 2
-	ret c
-	ld a, 20
+	ret c ; require Water Energy beyond the attack cost
+	ld a, 10
 	jp AddToDamage
 
 PoliwrathWaterfall_ReduceDamageEffect:
@@ -819,9 +819,9 @@ PoliwrathWaterfall_ReduceDamageEffect:
 	ld e, a
 	call GetPlayAreaCardAttachedEnergies
 	ld a, [wAttachedEnergies + FIGHTING]
-	or a
-	ret z
-	jp Prevent20DamageEffect
+	cp 2
+	ret c ; require Fighting Energy beyond the attack cost
+	jp Prevent10DamageEffect
 
 PoliwrathStrangeSpiral_Check:
 	ldh a, [hTempPlayAreaLocation_ff9d]
@@ -986,6 +986,18 @@ AttachBasicEnergyFromDeck_PlayerSelection:
 ;	[hTempPlayAreaLocation_ffa1] = target Pokémon's play area location offset (PLAY_AREA_* constant)
 AttachBasicEnergyFromDeck_AISelection:
 	farcall AIFindBasicEnergyToAttach
+	ret
+
+ZachEeveeEnergy_PlayerSelection:
+	farcall FindZachEeveeEnergy
+	xor a ; PLAY_AREA_ARENA
+	ldh [hTempPlayAreaLocation_ffa1], a
+	ret
+
+ZachEeveeEnergy_AISelection:
+	farcall AIFindZachEeveeEnergy
+	xor a ; PLAY_AREA_ARENA
+	ldh [hTempPlayAreaLocation_ffa1], a
 	ret
 
 

@@ -73,6 +73,11 @@ ENDM
 	deck_const REMATCH_STRANGE_PSYSHOCK_DECK ; $3C
 	deck_const REMATCH_WONDERS_OF_SCIENCE_DECK ; $3D
 	deck_const REMATCH_FIRE_CHARGE_DECK    ; $3E
+	deck_const REMATCH_IMAKUNI_DECK        ; $3F
+	deck_const AERO_BATTLE_DECK            ; $40
+	deck_const KARLOS_BATTLE_DECK          ; $41
+	deck_const ZACH_BATTLE_DECK            ; $42
+	deck_const DR_MASON_BATTLE_DECK        ; $43
 DEF NUM_VALID_DECKS EQU const_value
 DEF NUM_DECK_IDS EQU const_value - 2
 

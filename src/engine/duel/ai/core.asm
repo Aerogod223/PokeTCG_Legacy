@@ -1987,7 +1987,7 @@ CheckIfOpponentHasBossDeckID:
 .check_rematch_decks
 	cp REMATCH_FIRST_STRIKE_DECK_ID
 	jr c, .no_carry
-	cp REMATCH_FIRE_CHARGE_DECK_ID + 1
+	cp REMATCH_IMAKUNI_DECK_ID + 1
 	jr nc, .no_carry
 .boss_deck
 	pop af

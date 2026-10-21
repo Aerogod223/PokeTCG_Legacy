@@ -10056,7 +10056,7 @@ NickExeggutorCard:
 	gfx ExeggutorCardGfx ; gfx
 	tx ExeggutorName ; name
 	db DIAMOND ; rarity
-	db MYSTERY | JUNGLE ; sets
+	db PROMOTIONAL | PRO ; sets
 	db NICK_EXEGGUTOR
 	db 60 ; hp
 	db STAGE1 ; stage
@@ -10106,7 +10106,7 @@ RickGengarCard:
 	gfx GengarCardGfx ; gfx
 	tx GengarName ; name
 	db STAR ; rarity
-	db EVOLUTION | FOSSIL ; sets
+	db PROMOTIONAL | PRO ; sets
 	db RICK_GENGAR
 	db 90 ; hp
 	db STAGE2 ; stage
@@ -10156,7 +10156,7 @@ IssacMagnetonCard:
 	gfx MagnetonLv35CardGfx ; gfx
 	tx MagnetonName ; name
 	db STAR ; rarity
-	db LABORATORY | FOSSIL ; sets
+	db PROMOTIONAL | PRO ; sets
 	db ISSAC_MAGNETON
 	db 60 ; hp
 	db STAGE1 ; stage
@@ -10206,7 +10206,7 @@ KenRapidashCard:
 	gfx RapidashCardGfx ; gfx
 	tx RapidashName ; name
 	db DIAMOND ; rarity
-	db EVOLUTION | JUNGLE ; sets
+	db PROMOTIONAL | PRO ; sets
 	db KEN_RAPIDASH
 	db 60 ; hp
 	db STAGE1 ; stage
@@ -10256,7 +10256,7 @@ MitchPrimeapeCard:
 	gfx PrimeapeCardGfx ; gfx
 	tx PrimeapeName ; name
 	db DIAMOND ; rarity
-	db MYSTERY | JUNGLE ; sets
+	db PROMOTIONAL | PRO ; sets
 	db MITCH_PRIMEAPE
 	db 70 ; hp
 	db STAGE1 ; stage
@@ -10306,7 +10306,7 @@ GeneAerodactylCard:
 	gfx AerodactylCardGfx ; gfx
 	tx AerodactylName ; name
 	db STAR ; rarity
-	db MYSTERY | FOSSIL ; sets
+	db PROMOTIONAL | PRO ; sets
 	db GENE_AERODACTYL
 	db 70 ; hp
 	db STAGE1 ; stage
@@ -10356,7 +10356,7 @@ AmyStarmieCard:
 	gfx StarmieCardGfx ; gfx
 	tx StarmieName ; name
 	db CIRCLE ; rarity
-	db EVOLUTION | NONE ; sets
+	db PROMOTIONAL | PRO ; sets
 	db AMY_STARMIE
 	db 70 ; hp
 	db STAGE1 ; stage
@@ -10406,7 +10406,7 @@ MurrayWeezingCard:
 	gfx WeezingCardGfx ; gfx
 	tx WeezingName ; name
 	db DIAMOND ; rarity
-	db LABORATORY | FOSSIL ; sets
+	db PROMOTIONAL | PRO ; sets
 	db MURRAY_WEEZING
 	db 60 ; hp
 	db STAGE1 ; stage
@@ -10456,7 +10456,7 @@ BossCharizardCard:
 	gfx CharizardCardGfx ; gfx
 	tx CharizardName ; name
 	db STAR ; rarity
-	db EVOLUTION | NONE ; sets
+	db PROMOTIONAL | PRO ; sets
 	db BOSS_CHARIZARD
 	db 110 ; hp
 	db STAGE2 ; stage
@@ -10506,7 +10506,7 @@ BossBlastoiseCard:
 	gfx BlastoiseCardGfx ; gfx
 	tx BlastoiseName ; name
 	db STAR ; rarity
-	db EVOLUTION | NONE ; sets
+	db PROMOTIONAL | PRO ; sets
 	db BOSS_BLASTOISE
 	db 110 ; hp
 	db STAGE2 ; stage
@@ -10556,9 +10556,9 @@ AeroSnorlaxCard:
 	gfx SnorlaxCardGfx ; gfx
 	tx AeroSnorlaxName ; name
 	db STAR ; rarity
-	db MYSTERY | NONE ; sets
+	db PROMOTIONAL | PRO ; sets
 	db AERO_SNORLAX
-	db 100 ; hp
+	db 80 ; hp
 	db BASIC ; stage
 	dw NONE ; pre-evo name
 
@@ -10577,7 +10577,7 @@ AeroSnorlaxCard:
 	db ATK_ANIM_HIT ; animation
 
 	; attack 2
-	energy COLORLESS, 4 ; energies
+	energy COLORLESS, 5 ; energies
 	tx ExerciseName ; name
 	tx ExerciseDescription ; description
 	dw NONE ; description (cont)
@@ -10606,7 +10606,7 @@ KarlosPoliwrathCard:
 	gfx PoliwrathCardGfx ; gfx
 	tx KarlosPoliwrathName ; name
 	db STAR ; rarity
-	db MYSTERY | NONE ; sets
+	db PROMOTIONAL | PRO ; sets
 	db KARLOS_POLIWRATH
 	db 100 ; hp
 	db STAGE2 ; stage
@@ -10656,7 +10656,7 @@ ZachEeveeCard:
 	gfx EeveeCardGfx ; gfx
 	tx ZachEeveeName ; name
 	db CIRCLE ; rarity
-	db MYSTERY | NONE ; sets
+	db PROMOTIONAL | PRO ; sets
 	db ZACH_EEVEE
 	db 50 ; hp
 	db BASIC ; stage
@@ -10668,8 +10668,8 @@ ZachEeveeCard:
 	tx UnstableGeneDescription ; description
 	dw NONE ; description (cont)
 	db 0 ; damage
-	db POKEMON_POWER ; category
-	dw EnergySpikeEffectCommands ; effect commands
+	db DAMAGE_NORMAL ; category
+	dw ZachEeveeEnergyEffectCommands ; effect commands
 	db NONE ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
@@ -10681,13 +10681,13 @@ ZachEeveeCard:
 	tx TriAttackName ; name
 	tx TriAttackDescription ; description
 	dw NONE ; description (cont)
-	db 40 ; damage
+	db 70 ; damage
 	db DAMAGE_NORMAL ; category
-	dw EvolutionSearchEffectCommands ; effect commands
+	dw DiscardAllAttachedEnergyEffectCommands ; effect commands
 	db NONE ; flags 1
-	db NONE ; flags 2
+	db DISCARD_ENERGY ; flags 2
 	db NONE ; flags 3
-	db 0
+	db 9 ; attack score penalty for DISCARD_ENERGY
 	db ATK_ANIM_QUICK_ATTACK ; animation
 
 	db 1 ; retreat cost
@@ -10708,7 +10708,7 @@ ImakunisMewtwoCard:
 	db STAR ; rarity
 	db PROMOTIONAL | PRO ; sets
 	db IMAKUNIS_MEWTWO
-	db 100 ; hp
+	db 80 ; hp
 	db BASIC ; stage
 	dw NONE ; pre-evo name
 
@@ -10731,7 +10731,7 @@ ImakunisMewtwoCard:
 	tx PowerfulConfusionName ; name
 	tx PowerfulConfusionDescription ; description
 	dw NONE ; description (cont)
-	db 50 ; damage
+	db 30 ; damage
 	db DAMAGE_PLUS ; category
 	dw PowerfulConfusionEffectCommands ; effect commands
 	db INFLICT_CONFUSION ; flags 1

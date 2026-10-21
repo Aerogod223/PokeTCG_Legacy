@@ -82,6 +82,13 @@ EnergySpikeEffectCommands:
 	dbw EFFECTCMDTYPE_AFTER_DAMAGE, AttachBasicEnergyFromDeck_AttachEffect
 	db  $00
 
+ZachEeveeEnergyEffectCommands:
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, DeckCheck
+	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, ZachEeveeEnergy_PlayerSelection
+	dbw EFFECTCMDTYPE_AI_SELECTION, ZachEeveeEnergy_AISelection
+	dbw EFFECTCMDTYPE_AFTER_DAMAGE, AttachBasicEnergyFromDeck_AttachEffect
+	db  $00
+
 ; This is an attack effect that searches for a Trainer card
 ; and adds it to the player's hand. (a.k.a. Errand-Running)
 ; Feel free to delete this effect command or modify it into a Trainer effect.

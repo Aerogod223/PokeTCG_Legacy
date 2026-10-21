@@ -1007,10 +1007,9 @@ UnstableGeneName:
 	done
 
 UnstableGeneDescription:
-	text "Once during your turn, search your"
-	line "deck for an Energy card and attach"
-	line "it to Eevee. Eevee takes 10 damage."
-	line "Shuffle your deck afterward."
+	text "Search your deck for a Basic Fire,"
+	line "Water, or Lightning Energy card."
+	line "Attach it to Eevee, then shuffle."
 	done
 
 TriAttackName:
@@ -1018,9 +1017,7 @@ TriAttackName:
 	done
 
 TriAttackDescription:
-	text "Choose Vaporeon, Jolteon, or Flareon"
-	line "from your deck and evolve Eevee."
-	line "Shuffle your deck afterward."
+	text "Discard all Energy from Eevee."
 	done
 
 BiteName:
@@ -1308,10 +1305,10 @@ StrangeSpiralDescription:
 
 WaterfallDescription:
 	text "If Poliwrath has extra <WATER> Energy"
-	line "attached, this attack does 20 more"
-	line "damage. If it has <FIGHTING> Energy"
-	line "attached, it takes 20 less damage"
-	line "during your opponent's next turn."
+	line "attached, this attack does 10 more"
+	line "damage. If it has extra <FIGHTING>"
+	line "Energy attached, it takes 10 less"
+	line "damage during your opponent's next turn."
 	done
 
 PoliwrathsWaterGunDescription:

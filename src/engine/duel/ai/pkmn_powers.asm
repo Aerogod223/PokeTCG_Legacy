@@ -33,12 +33,12 @@ HandleAIPkmnPowers:
 	and CNF_SLP_PRZ
 	jr z, .loop_play_area
 	cp CONFUSED
-	jr nz, .next_2
+	jp nz, .next_2
 	ld a, DUELVARS_ARENA_CARD
 	get_turn_duelist_var
 	call _GetCardIDFromDeckIndex
 	cp IMAKUNIS_MEWTWO
-	jr nz, .next_2
+	jp nz, .next_2
 
 .loop_play_area
 	ld a, DUELVARS_ARENA_CARD

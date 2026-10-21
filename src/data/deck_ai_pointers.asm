@@ -61,4 +61,9 @@ DeckAIPointerTable::
 	dw AIActionTable_RematchStrangePsyshock     ; REMATCH_STRANGE_PSYSHOCK_DECK
 	dw AIActionTable_RematchWondersOfScience    ; REMATCH_WONDERS_OF_SCIENCE_DECK
 	dw AIActionTable_RematchFireCharge          ; REMATCH_FIRE_CHARGE_DECK
+	dw AIActionTable_GeneralNoRetreat            ; REMATCH_IMAKUNI_DECK
+	dw AIActionTable_GeneralDecks                ; AERO_BATTLE_DECK
+	dw AIActionTable_GeneralDecks                ; KARLOS_BATTLE_DECK
+	dw AIActionTable_GeneralDecks                ; ZACH_BATTLE_DECK
+	dw AIActionTable_GeneralDecks                ; DR_MASON_BATTLE_DECK
 	assert_table_length NUM_DECK_IDS

@@ -15,6 +15,10 @@ MasonLaboratoryAfterDuel:
 	db NPC_SAM
 	dw Script_BeatSam
 	dw Script_LostToSam
+	db NPC_DRMASON
+	db NPC_DRMASON
+	dw Script_BeatMasonChallenge
+	dw Script_LostToMasonChallenge
 	db $00
 
 MasonLabLoadMap:
@@ -308,7 +312,84 @@ Script_DrMason:
 	print_text_quit_fully Text05e1
 
 .ows_d750
-	print_text_quit_fully Text05e2
+	print_text Text05e2
+	ask_question_jump MasonBattleMenuText, .challenge_menu
+	quit_script_fully
+
+.challenge_menu
+	ask_question_jump AeroBattleQuestionText, .battle_aero
+	ask_question_jump KarlosBattleQuestionText, .battle_karlos
+	ask_question_jump ZachBattleQuestionText, .battle_zach
+	ask_question_jump MasonBattleQuestionText, .battle_mason
+	print_text_quit_fully MasonBattleDeclinedText
+
+.battle_aero
+	ldtx hl, AeroTrainerName
+	ld a, l
+	ld [wCurrentNPCNameTx], a
+	ld a, h
+	ld [wCurrentNPCNameTx + 1], a
+	start_duel PRIZES_4, AERO_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
+	quit_script_fully
+
+.battle_karlos
+	ldtx hl, KarlosTrainerName
+	ld a, l
+	ld [wCurrentNPCNameTx], a
+	ld a, h
+	ld [wCurrentNPCNameTx + 1], a
+	start_duel PRIZES_4, KARLOS_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
+	quit_script_fully
+
+.battle_zach
+	ldtx hl, ZachTrainerName
+	ld a, l
+	ld [wCurrentNPCNameTx], a
+	ld a, h
+	ld [wCurrentNPCNameTx + 1], a
+	start_duel PRIZES_4, ZACH_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
+	quit_script_fully
+
+.battle_mason
+	start_duel PRIZES_4, DR_MASON_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
+	quit_script_fully
+
+Script_BeatMasonChallenge:
+	start_script
+	ld a, [wOpponentDeckID]
+	cp AERO_BATTLE_DECK_ID
+	jr z, .aero_reward
+	cp KARLOS_BATTLE_DECK_ID
+	jr z, .karlos_reward
+	cp ZACH_BATTLE_DECK_ID
+	jr z, .zach_reward
+	give_card BOSS_CHARIZARD
+	show_card_received_screen BOSS_CHARIZARD
+	give_card BOSS_BLASTOISE
+	show_card_received_screen BOSS_BLASTOISE
+	script_jump .won
+
+.aero_reward
+	give_card AERO_SNORLAX
+	show_card_received_screen AERO_SNORLAX
+	script_jump .won
+
+.karlos_reward
+	give_card KARLOS_POLIWRATH
+	show_card_received_screen KARLOS_POLIWRATH
+	script_jump .won
+
+.zach_reward
+	give_card ZACH_EEVEE
+	show_card_received_screen ZACH_EEVEE
+.won
+	print_npc_text MasonChallengeWonText
+	quit_script_fully
+
+Script_LostToMasonChallenge:
+	start_script
+	print_npc_text MasonChallengeLostText
+	quit_script_fully
 
 ; SKIP PRACTICE DUEL HACK: Uncomment the following 24 lines of code to automatically skip the practice duel with Sam.
 Script_EnterLabFirstTime:
