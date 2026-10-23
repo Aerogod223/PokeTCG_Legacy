@@ -1081,7 +1081,7 @@ PlusPowerEffectCommands:
 PokeBallEffectCommands:
 	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, DeckCheck
 	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, PokeBall_PlayerSelection
-	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, AddCardFromDeckToHandEffect
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, PokeBall_AddCardFromDeckToHandEffect
 	db  $00
 
 PokedexEffectCommands:

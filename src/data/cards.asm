@@ -6414,7 +6414,7 @@ OnixCard:
 	; attack 1
 	energy FIGHTING, 2 ; energies
 	tx RageName ; name
-	tx CubonesRageDescription ; description
+	tx OnixsRageDescription ; description
 	dw NONE ; description (cont)
 	db 10 ; damage
 	db DAMAGE_PLUS ; category

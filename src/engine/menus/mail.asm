@@ -33,6 +33,7 @@ _PCMenu_ReadMail:
 	call DrawRegularTextBox
 	ld hl, MailScreenLabels
 	call PrintLabels
+	call PCMailReindexPacks
 	call PrintObtainedPCPacks
 	xor a
 	ld [wCursorBlinkTimer], a
@@ -399,7 +400,7 @@ GetPCPackNameTextID:
 ; prints on screen the name of the PC pack from input in a
 ; preserves all registers except af
 ; input:
-;	a = e-mail index (1-15)
+;      a = e-mail index (1-15)
 PrintPCPackName:
 	push hl
 	push bc
@@ -534,34 +535,76 @@ PCMailCoordinates:
 TryGivePCPack:
 	push hl
 	push bc
+	push de
+	push af
+	call PCMailReindexPacks
+	pop af
+	cp 1
+	jr c, .quit
+	cp NUM_MAILS + 1
+	jr nc, .quit
 	ld b, a
-	ld c, NUM_PC_PACKS
+	dec a
+	ld e, a
+	ld d, 0
 	ld hl, wPCPacks
-.searchLoop1
-	ld a, [hli]
-	and $7f ; mask out PACK_UNOPENED_F
-	cp b
-	jr z, .quit ; exit if this booster pack was already assigned
-	dec c
-	jr nz, .searchLoop1
-	ld c, NUM_PC_PACKS
-	ld hl, wPCPacks
-.findFreeSlotLoop
+	add hl, de
 	ld a, [hl]
-	and $7f ; mask out PACK_UNOPENED_F
-	jr z, .foundFreeSlot
-	inc hl
-	dec c
-	jr nz, .findFreeSlotLoop
-	jr .quit
-
-.foundFreeSlot
+	or a
+	jr nz, .quit
 	ld a, b
 	or PACK_UNOPENED ; mark pack as unopened
 	ld [hl], a
 .quit
+	pop de
 	pop bc
 	pop hl
+	ret
+
+
+; moves each stored mail to the slot matching its mail ID.
+; preserves all registers except af
+PCMailReindexPacks:
+	push bc
+	push de
+	push hl
+	ld b, 1
+.mail_loop
+	ld c, b
+	ld hl, wPCPacks
+	ld d, NUM_PC_PACKS
+.find_mail
+	ld a, [hli]
+	and $7f ; mask out PACK_UNOPENED_F
+	cp c
+	jr z, .found_mail
+	dec d
+	jr nz, .find_mail
+	jr .next_mail
+.found_mail
+	dec hl
+	push hl
+	ld a, b
+	dec a
+	ld e, a
+	ld d, 0
+	ld hl, wPCPacks
+	add hl, de
+	pop de
+	ld a, [hl]
+	ld c, a
+	ld a, [de]
+	ld [hl], a
+	ld a, c
+	ld [de], a
+.next_mail
+	inc b
+	ld a, b
+	cp NUM_MAILS + 1
+	jr c, .mail_loop
+	pop hl
+	pop de
+	pop bc
 	ret
 
 

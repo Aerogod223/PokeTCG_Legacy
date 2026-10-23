@@ -3069,3 +3069,4 @@ TextOffsets::
 	textpointer MasonBattleDeclinedText
 	textpointer MasonChallengeWonText
 	textpointer MasonChallengeLostText
+	textpointer OnixsRageDescription

@@ -3451,9 +3451,35 @@ GustOfWind_PlayerSelection:
 	call DrawWideTextBox_WaitForInput
 	rst SwapTurn
 	bank1call InitVarsAndOpenPlayAreaScreenForSelection_OnlyBench
+	jr nc, .selected
 	rst SwapTurn
-;	ret c ; exit if the B button was pressed
+	scf
+	ret
+.selected
 	ldh [hTemp_ffa0], a
+	ld e, a
+	or a
+	jr z, .invalid_selection
+	cp MAX_PLAY_AREA_POKEMON
+	jr nc, .invalid_selection
+	ld a, e
+	add DUELVARS_ARENA_CARD_HP
+	get_turn_duelist_var
+	or a
+	jr z, .invalid_selection
+	ld a, e
+	add DUELVARS_ARENA_CARD
+	get_turn_duelist_var
+	call GetCardTypeFromDeckIndex_SaveDE
+	cp TYPE_ENERGY
+	jr nc, .invalid_selection
+	rst SwapTurn
+	or a
+	ret
+.invalid_selection
+	rst SwapTurn
+	call PlaySFX_InvalidChoice
+	scf
 	ret
 
 
@@ -3463,14 +3489,36 @@ GustOfWind_PlayerSelection:
 ;	[hTemp_ffa0] = play area location offset of the chosen Benched Pokemon (PLAY_AREA_* constant)
 GustOfWind_SwitchEffect:
 ; play whirlwind animation
+	ldh a, [hTemp_ffa0]
+	push af
 	ld a, ATK_ANIM_GUST_OF_WIND
 	call PlayTrainerEffectAnimation
+	pop af
+	ldh [hTemp_ffa0], a
 
 ; switch Active Pokemon
 	rst SwapTurn
 	ldh a, [hTemp_ffa0]
+	or a
+	jr z, .done_switching
+	cp MAX_PLAY_AREA_POKEMON
+	jr nc, .done_switching
+	ld e, a
+	ld a, e
+	add DUELVARS_ARENA_CARD_HP
+	get_turn_duelist_var
+	or a
+	jr z, .done_switching
+	ld a, e
+	add DUELVARS_ARENA_CARD
+	get_turn_duelist_var
+	call GetCardTypeFromDeckIndex_SaveDE
+	cp TYPE_ENERGY
+	jr nc, .done_switching
+	ldh a, [hTemp_ffa0]
 	ld e, a
 	call SwapArenaWithBenchPokemon
+.done_switching
 	rst SwapTurn
 	bank1call ClearDamageReductionSubstatus2
 	xor a
@@ -3894,6 +3942,9 @@ ReturnDefendingPokemonToTheHandEffect:
 	call DrawWideTextBox_WaitForInput
 	xor a
 	ld [wDuelDisplayedScreen], a
+	ld a, TRUE
+	ld [wDefendingWasForcedToSwitch], a
+	bank1call ReplaceKnockedOutPokemon
 	jp SwapTurn
 
 
@@ -8624,6 +8675,12 @@ PokeBall_PlayerSelection:
 	ld a, -1
 	ldh [hTemp_ffa0], a
 	ret
+
+PokeBall_AddCardFromDeckToHandEffect:
+	ldh a, [hTemp_ffa0]
+	cp -1
+	ret z ; failed coin toss or no selected Pokémon: do not shuffle
+	jp AddCardFromDeckToHandEffect
 
 
 ; output:

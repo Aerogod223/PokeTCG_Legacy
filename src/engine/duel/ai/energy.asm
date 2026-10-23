@@ -120,19 +120,41 @@ AIProcessEnergyCards:
 	jr nz, .bench
 
 ; arena
+	call CheckIfDefendingPokemonCanKnockOut
+	jr nc, .active_can_survive
+	; The Active may still be worth powering if the Player's Active has no
+	; attached Energy or if this Energy can help the AI retreat next turn.
+	ld a, 20
+	call AIDiscourage
+	rst SwapTurn
+	ld e, PLAY_AREA_ARENA
+	call GetPlayAreaCardAttachedEnergies
+	push af
+	rst SwapTurn
+	pop af
+	or a
+	jr z, .opponent_has_no_energy
+	ldh a, [hTempPlayAreaLocation_ff9d]
+	call GetPlayAreaCardAttachedEnergies
+	ld b, a ; current attached Energy
+	call GetPlayAreaCardRetreatCost
+	cp b ; compare Retreat Cost to attached Energy
+	jr c, .active_can_survive ; already has enough Energy to retreat
+	jr z, .active_can_survive ; exact Retreat Cost is also enough
+	ld a, 20
+	call AIEncourage
+	jr .active_can_survive
+.opponent_has_no_energy
+	ld a, 25
+	call AIEncourage
+
+.active_can_survive
 	ld a, [wAIBarrierFlagCounter]
 	bit AI_MEWTWO_MILL_F, a
 	jr z, .add_to_score
 
 ; decrease the AI score by 5 if the Player is running a MewtwoLv53 mill deck.
 	ld a, 5
-	call AIDiscourage
-
-; decrease the AI score by 10 if the Defending Pokémon can KO the AI's Active Pokémon.
-.check_defending_can_ko
-	call CheckIfDefendingPokemonCanKnockOut
-	jr nc, .ai_score_bonus
-	ld a, 10
 	call AIDiscourage
 
 ; if either poison damage or the Defending Pokémon will KO,
@@ -157,7 +179,7 @@ AIProcessEnergyCards:
 	get_turn_duelist_var
 	call ConvertHPToDamageCounters_Bank5
 	cp 3
-	jr nc, .check_defending_can_ko
+	jr nc, .ai_score_bonus
 	; hp < 30
 	cp 2
 	jr z, .has_20_hp
@@ -165,13 +187,13 @@ AIProcessEnergyCards:
 	ld a, DUELVARS_ARENA_CARD_STATUS
 	get_turn_duelist_var
 	and POISONED
-	jr z, .check_defending_can_ko
+	jr z, .ai_score_bonus
 	jr .poison_will_ko
 .has_20_hp
 	ld a, DUELVARS_ARENA_CARD_STATUS
 	get_turn_duelist_var
 	and DOUBLE_POISONED
-	jr z, .check_defending_can_ko
+	jr z, .ai_score_bonus
 .poison_will_ko
 	ld a, 10
 	call AIDiscourage

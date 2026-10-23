@@ -374,6 +374,11 @@ ExerciseDescription:
 	line "the damage done by this attack."
 	done
 
+OnixsRageDescription:
+	text "Does 10 damage plus 10 more damage"
+	line "for each damage counter on Onix."
+	done
+
 ImakunisMewtwoName:
 	text "Imakuni?'s Mewtwo"
 	done

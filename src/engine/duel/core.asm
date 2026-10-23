@@ -7995,6 +7995,11 @@ MoveAllTurnHolderKnockedOutPokemonToDiscardPile:
 	ld a, [hli]
 	or a
 	jr nz, .next
+	ld a, DUELVARS_ARENA_CARD
+	add e
+	get_turn_duelist_var
+	inc a ; skip an empty play-area slot
+	jr z, .next
 	push hl
 	push de
 	call Aftermath_DiscardOpponentDeckCards
@@ -9182,6 +9187,9 @@ ApplyTransparencyIfApplicable:
 ;	[wTempTurnDuelistCardID] = Attacking Pokémon's card ID
 ;	[wTempNonTurnDuelistCardID] = Defending Pokémon's card ID
 HandleStrikesBack_AgainstNormalAttack:
+	ld a, [wDefendingWasForcedToSwitch]
+	or a
+	ret nz ; the original Defending Pokemon left the Active position
 	ld a, [wTempNonTurnDuelistCardID]
 	cp MACHAMP
 	ret nz ; return if the Defending Pokemon isn't a Machamp
