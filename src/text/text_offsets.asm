@@ -3061,12 +3061,12 @@ TextOffsets::
 	textpointer AeroTrainerName
 	textpointer KarlosTrainerName
 	textpointer ZachTrainerName
-	textpointer MasonBattleMenuText
 	textpointer AeroBattleQuestionText
 	textpointer KarlosBattleQuestionText
 	textpointer ZachBattleQuestionText
-	textpointer MasonBattleQuestionText
 	textpointer MasonBattleDeclinedText
 	textpointer MasonChallengeWonText
 	textpointer MasonChallengeLostText
+	textpointer MasonPostgameIntroText
+	textpointer MasonPostgameWonText
 	textpointer OnixsRageDescription

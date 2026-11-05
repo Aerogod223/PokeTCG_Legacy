@@ -33,7 +33,6 @@ _PCMenu_ReadMail:
 	call DrawRegularTextBox
 	ld hl, MailScreenLabels
 	call PrintLabels
-	call PCMailReindexPacks
 	call PrintObtainedPCPacks
 	xor a
 	ld [wCursorBlinkTimer], a

@@ -576,11 +576,11 @@ ButterfreeCard:
 	db ATK_ANIM_WHIRLWIND ; animation
 
 	; attack 2
-	energy GRASS, 2 ; energies
+	energy GRASS, 1, COLORLESS, 2 ; energies
 	tx MegaDrainName ; name
 	tx ButterfreesMegaDrainDescription ; description
 	tx ButterfreesMegaDrainDescriptionCont ; description (cont)
-	db 40 ; damage
+	db 50 ; damage
 	db DAMAGE_NORMAL ; category
 	dw DrainHalfEffectCommands ; effect commands
 	db NONE ; flags 1
@@ -589,8 +589,8 @@ ButterfreeCard:
 	db HEALING_EQUALS_HALF_DAMAGE_DEALT ; used to calculate the HEAL_USER attack score bonus
 	db ATK_ANIM_DRAIN ; animation
 
-	db 2 ; retreat cost
-	db WR_FIRE ; weakness
+	db 1 ; retreat cost
+	db WR_LIGHTNING ; weakness
 	db WR_FIGHTING ; resistance
 	tx ButterflyName ; category
 	dw 12 ; Pokedex number
@@ -1457,7 +1457,7 @@ ParasectCard:
 	db DIAMOND ; rarity
 	db MYSTERY | JUNGLE ; sets
 	db PARASECT
-	db 70 ; hp
+	db 90 ; hp
 	db STAGE1 ; stage
 	tx ParasName ; pre-evo name
 
@@ -1489,7 +1489,7 @@ ParasectCard:
 	db 0
 	db ATK_ANIM_SLASH ; animation
 
-	db 2 ; retreat cost
+	db 3 ; retreat cost
 	db WR_FIRE ; weakness
 	db WR_FIGHTING ; resistance
 	tx MushroomName ; category

@@ -196,6 +196,9 @@ DEF NUM_PICS EQU const_value
 	const NPC_RONALD2                     ; $71
 	const NPC_RONALD3                     ; $72
 	const NPC_PLAYER_CREDITS              ; $73
+	const NPC_ZACH                        ; $74
+	const NPC_KARLOS                      ; $75
+	const NPC_AERO                        ; $76
 
 DEF NUM_NPCS EQU const_value
 

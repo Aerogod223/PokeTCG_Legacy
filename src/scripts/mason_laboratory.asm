@@ -288,6 +288,19 @@ Preload_DrMason:
 	scf
 	ret
 
+Preload_PostgameTrainer:
+	get_event_value EVENT_RONALD_POKEMON_DOME_STATE
+	cp RONALD_DEFEATED
+	jr c, .hidden
+	get_event_value EVENT_BEAT_DRMASON_POSTGAME
+	or a
+	jr z, .hidden
+	scf
+	ret
+.hidden
+	and a
+	ret
+
 Script_DrMason:
 	start_script
 	jump_if_event_true EVENT_RONALD_FIRST_CLUB_ENTRANCE_ENCOUNTER, .ows_d72f
@@ -309,49 +322,42 @@ Script_DrMason:
 .ows_d747
 	jump_if_event_true EVENT_DRMASON_CONGRATULATED_PLAYER, .ows_d750
 	max_out_event_value EVENT_DRMASON_CONGRATULATED_PLAYER
-	print_text_quit_fully Text05e1
+	print_text Text05e1
 
 .ows_d750
-	print_text Text05e2
-	ask_question_jump MasonBattleMenuText, .challenge_menu
-	quit_script_fully
+	jump_if_event_greater_or_equal EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .postgame
+	print_text_quit_fully Text05e2
 
-.challenge_menu
-	ask_question_jump AeroBattleQuestionText, .battle_aero
-	ask_question_jump KarlosBattleQuestionText, .battle_karlos
-	ask_question_jump ZachBattleQuestionText, .battle_zach
-	ask_question_jump MasonBattleQuestionText, .battle_mason
+.postgame
+	ask_question_jump MasonPostgameIntroText, .battle_mason
 	print_text_quit_fully MasonBattleDeclinedText
-
-.battle_aero
-	ldtx hl, AeroTrainerName
-	ld a, l
-	ld [wCurrentNPCNameTx], a
-	ld a, h
-	ld [wCurrentNPCNameTx + 1], a
-	start_duel PRIZES_4, AERO_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
-	quit_script_fully
-
-.battle_karlos
-	ldtx hl, KarlosTrainerName
-	ld a, l
-	ld [wCurrentNPCNameTx], a
-	ld a, h
-	ld [wCurrentNPCNameTx + 1], a
-	start_duel PRIZES_4, KARLOS_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
-	quit_script_fully
-
-.battle_zach
-	ldtx hl, ZachTrainerName
-	ld a, l
-	ld [wCurrentNPCNameTx], a
-	ld a, h
-	ld [wCurrentNPCNameTx + 1], a
-	start_duel PRIZES_4, ZACH_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
-	quit_script_fully
 
 .battle_mason
 	start_duel PRIZES_4, DR_MASON_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
+	quit_script_fully
+
+Script_Zach:
+	start_script
+	ask_question_jump ZachBattleQuestionText, .duel
+	print_text_quit_fully MasonBattleDeclinedText
+.duel
+	start_duel PRIZES_4, ZACH_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
+	quit_script_fully
+
+Script_Karlos:
+	start_script
+	ask_question_jump KarlosBattleQuestionText, .duel
+	print_text_quit_fully MasonBattleDeclinedText
+.duel
+	start_duel PRIZES_4, KARLOS_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
+	quit_script_fully
+
+Script_Aero:
+	start_script
+	ask_question_jump AeroBattleQuestionText, .duel
+	print_text_quit_fully MasonBattleDeclinedText
+.duel
+	start_duel PRIZES_4, AERO_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
 	quit_script_fully
 
 Script_BeatMasonChallenge:
@@ -363,23 +369,36 @@ Script_BeatMasonChallenge:
 	jr z, .karlos_reward
 	cp ZACH_BATTLE_DECK_ID
 	jr z, .zach_reward
+	jump_if_event_true EVENT_BEAT_DRMASON_POSTGAME, .mason_repeat
+	max_out_event_value EVENT_BEAT_DRMASON_POSTGAME
 	give_card BOSS_CHARIZARD
 	show_card_received_screen BOSS_CHARIZARD
 	give_card BOSS_BLASTOISE
 	show_card_received_screen BOSS_BLASTOISE
-	script_jump .won
+	print_npc_text MasonPostgameWonText
+	quit_script_fully
+
+.mason_repeat
+	print_npc_text MasonChallengeWonText
+	quit_script_fully
 
 .aero_reward
+	jump_if_event_true EVENT_BEAT_AERO, .won
+	max_out_event_value EVENT_BEAT_AERO
 	give_card AERO_SNORLAX
 	show_card_received_screen AERO_SNORLAX
 	script_jump .won
 
 .karlos_reward
+	jump_if_event_true EVENT_BEAT_KARLOS, .won
+	max_out_event_value EVENT_BEAT_KARLOS
 	give_card KARLOS_POLIWRATH
 	show_card_received_screen KARLOS_POLIWRATH
 	script_jump .won
 
 .zach_reward
+	jump_if_event_true EVENT_BEAT_ZACH, .won
+	max_out_event_value EVENT_BEAT_ZACH
 	give_card ZACH_EEVEE
 	show_card_received_screen ZACH_EEVEE
 .won

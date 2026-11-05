@@ -193,6 +193,13 @@ DetermineChallengeHallEvent:
 ; skips current room and does not occur if you haven't talked to Imakuni.
 ; preserves de
 DetermineImakuniRoom:
+	get_event_value EVENT_ALL_CARDS_COLLECTED
+	or a
+	jr z, .choose_room
+	get_event_value EVENT_RONALD_POKEMON_DOME_STATE
+	cp RONALD_DEFEATED
+	ret nc
+.choose_room
 	ld c, IMAKUNI_FIGHTING_CLUB
 	get_event_value EVENT_IMAKUNI_STATE
 	cp IMAKUNI_TALKED
@@ -567,6 +574,10 @@ EventVarMasks:
 	event_def $1c, %00001111 ; EVENT_AARON_DECK_MENU_CHOICE
 	event_def $1d, %00000001 ; EVENT_PLAYER_GENDER
 	event_def $1d, %00000010 ; EVENT_ALL_CARDS_COLLECTED
+	event_def $1d, %00000100 ; EVENT_BEAT_DRMASON_POSTGAME
+	event_def $1d, %00001000 ; EVENT_BEAT_AERO
+	event_def $1d, %00010000 ; EVENT_BEAT_KARLOS
+	event_def $1d, %00100000 ; EVENT_BEAT_ZACH
 	assert_table_length NUM_EVENT_FLAGS
 
 

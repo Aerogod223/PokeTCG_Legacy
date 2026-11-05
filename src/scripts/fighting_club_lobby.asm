@@ -75,6 +75,13 @@ Script_Man1:
 	print_text_quit_fully Man1GaveAllCardsText
 
 Preload_ImakuniInFightingClubLobby:
+	get_event_value EVENT_ALL_CARDS_COLLECTED
+	or a
+	jr z, .check_room
+	get_event_value EVENT_RONALD_POKEMON_DOME_STATE
+	cp RONALD_DEFEATED
+	jr nc, .dont_load
+.check_room
 	get_event_value EVENT_IMAKUNI_STATE
 	cp IMAKUNI_MENTIONED
 	jr z, .load_imakuni
@@ -106,7 +113,13 @@ Script_Imakuni:
 	quit_script_fully
 
 .start_duel
-	jump_if_event_greater_or_equal EVENT_IMAKUNI_WIN_COUNT, 7, .rematch_duel
+	get_event_value EVENT_ALL_CARDS_COLLECTED
+	or a
+	jr z, .normal_duel
+	get_event_value EVENT_RONALD_POKEMON_DOME_STATE
+	cp RONALD_DEFEATED
+	jr nc, .rematch_duel
+.normal_duel
 	print_npc_text ImakuniDuelStartText
 	start_duel PRIZES_6, IMAKUNI_DECK_ID, MUSIC_IMAKUNI
 	quit_script_fully
@@ -148,6 +161,13 @@ Script_LostToImakuni:
 	print_npc_text ImakuniPlayerLostText
 .imakuni_common
 	close_text_box
+	get_event_value EVENT_ALL_CARDS_COLLECTED
+	or a
+	jr z, .club_exit
+	get_event_value EVENT_RONALD_POKEMON_DOME_STATE
+	cp RONALD_DEFEATED
+	jr nc, .house_exit
+.club_exit
 	jump_if_player_coords_match 18, 4, .ows_dd69
 	script_jump .ows_dd6e
 
@@ -157,6 +177,7 @@ Script_LostToImakuni:
 .ows_dd6e
 	move_active_npc NPCMovement_dd78
 	unload_active_npc
+.house_exit
 	max_out_event_value EVENT_TEMP_DUELED_IMAKUNI
 	set_default_song MUSIC_OVERWORLD
 	play_default_song

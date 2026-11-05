@@ -35,6 +35,8 @@ IshiharasHouseNPCS:
 	dw Preload_NikkiInIshiharasHouse
 	db NPC_ISHIHARA, $08, $08, SOUTH
 	dw Preload_IshiharaInIshiharasHouse
+	db NPC_IMAKUNI, $0e, $08, SOUTH
+	dw Preload_ImakuniInIshiharasHouse
 	db NPC_RONALD1, $02, $04, WEST
 	dw Preload_Ronald1InIshiharasHouse
 	db $00
@@ -189,6 +191,8 @@ LightningClubNPCS:
 	dw NULL
 	db NPC_ISAAC, $0c, $04, NORTH
 	dw Preload_Isaac
+	db NPC_ZACH, $18, $0a, SOUTH
+	dw Preload_PostgameTrainer
 	db $00
 
 GrassClubEntranceNPCS:
@@ -400,6 +404,8 @@ PokemonDomeNPCS:
 	dw Preload_Rod
 	db NPC_RONALD1, $1e, $00, SOUTH
 	dw Preload_Ronald1InPokemonDome
+	db NPC_KARLOS, $1a, $0c, SOUTH
+	dw Preload_PostgameTrainer
 	db $00
 
 HallOfHonorNPCS:
@@ -415,4 +421,6 @@ HallOfHonorNPCS:
 	dw NULL
 	db NPC_LEGENDARY_CARD_RIGHT_SPARK, $0e, $0a, SOUTH
 	dw NULL
+	db NPC_AERO, $16, $0a, SOUTH
+	dw Preload_PostgameTrainer
 	db $00

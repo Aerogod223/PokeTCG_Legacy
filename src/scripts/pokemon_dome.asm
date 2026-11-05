@@ -41,6 +41,11 @@ PokemonDomeAfterDuel:
 	db NPC_RONALD1
 	dw Script_BeatRonald1InPokemonDome
 	dw Script_LostToRonald1InPokemonDome
+
+	db NPC_KARLOS
+	db NPC_KARLOS
+	dw Script_BeatMasonChallenge
+	dw Script_LostToMasonChallenge
 	db $00
 
 PokemonDomeLoadMap:
@@ -641,6 +646,12 @@ Script_BeatRonald1InPokemonDome:
 	set_event EVENT_POKEMON_DOME_STATE, POKEMON_DOME_DEFEATED
 	max_out_event_value EVENT_HALL_OF_HONOR_DOORS_OPEN
 	record_master_win $0a
+	jump_if_event_false EVENT_ALL_CARDS_COLLECTED, .normal_ending
+	print_text Text05b4
+	close_text_box
+	enter_map $03, ISHIHARAS_HOUSE, $08, $14, NORTH
+	quit_script_fully
+.normal_ending
 	print_text_quit_fully Text05b4
 
 NPCMovement_fb8c:

@@ -158,5 +158,8 @@ DEF SPRITE_FRAME_OFFSET_SIZE EQU 4
 	const SPRITE_PSYCHIC            ; $70
 	const SPRITE_FIGHTING           ; $71
 	const SPRITE_OW_MINT            ; $72
+	const SPRITE_OW_ZACH            ; $73
+	const SPRITE_OW_KARLOS          ; $74
+	const SPRITE_OW_AERO            ; $75
 
 DEF NUM_SPRITES EQU const_value

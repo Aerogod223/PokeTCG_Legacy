@@ -10,6 +10,13 @@ WaterClubLobbyAfterDuel:
 	db $00
 
 Preload_ImakuniInWaterClubLobby:
+	get_event_value EVENT_ALL_CARDS_COLLECTED
+	or a
+	jr z, .check_room
+	get_event_value EVENT_RONALD_POKEMON_DOME_STATE
+	cp RONALD_DEFEATED
+	jr nc, .dont_load
+.check_room
 	get_event_value EVENT_IMAKUNI_STATE
 	cp IMAKUNI_TALKED
 	jr c, .dont_load

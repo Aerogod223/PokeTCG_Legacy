@@ -50,7 +50,7 @@ MapScripts::
 	dw IshiharasHouseObjects
 	dw NULL
 	dw NULL
-	dw NULL
+	dw IshiharasHouseAfterDuel
 	dw NULL
 	dw NULL
 
@@ -350,7 +350,7 @@ MapScripts::
 	dw HallOfHonorObjects
 	dw NULL
 	dw HallOfHonorLoadMap
-	dw NULL
+	dw HallOfHonorAfterDuel
 	dw NULL
 	dw NULL
 

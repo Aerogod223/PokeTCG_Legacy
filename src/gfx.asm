@@ -1370,6 +1370,21 @@ OWMintGfx::
 	INCBIN "gfx/overworld_sprites/mint.2bpp"
 
 
+SECTION "Postgame Trainer Sprites", ROMX
+
+OWZachGfx::
+	dw $14
+	INCBIN "gfx/overworld_sprites/zach.2bpp"
+
+OWKarlosGfx::
+	dw $14
+	INCBIN "gfx/overworld_sprites/karlos.2bpp"
+
+OWAeroGfx::
+	dw $14
+	INCBIN "gfx/overworld_sprites/aero.2bpp"
+
+
 SECTION "Anims 1", ROMX
 	INCLUDE "data/duel/animations/anims1.asm"
 

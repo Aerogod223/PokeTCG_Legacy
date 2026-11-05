@@ -1,3 +1,14 @@
+IshiharasHouseAfterDuel:
+	ld hl, .after_duel_table
+	jp FindEndOfDuelScript
+
+.after_duel_table
+	db NPC_IMAKUNI
+	db NPC_IMAKUNI
+	dw Script_BeatImakuni
+	dw Script_LostToImakuni
+	db $00
+
 Preload_NikkiInIshiharasHouse:
 	get_event_value EVENT_NIKKI_STATE
 	cp NIKKI_IN_ISHIHARAS_HOUSE
@@ -6,6 +17,18 @@ Preload_NikkiInIshiharasHouse:
 	ret
 .dont_load
 	or a
+	ret
+
+Preload_ImakuniInIshiharasHouse:
+	get_event_value EVENT_ALL_CARDS_COLLECTED
+	or a
+	ret z
+	get_event_value EVENT_RONALD_POKEMON_DOME_STATE
+	cp RONALD_DEFEATED
+	ret c
+	ld a, MUSIC_IMAKUNI
+	ld [wDefaultSong], a
+	scf
 	ret
 
 Script_NikkiInIshiharasHouse:

@@ -426,11 +426,6 @@ ZachTrainerName:
 	text "Zach"
 	done
 
-MasonBattleMenuText:
-	text "Would you like to"
-	line "challenge a trainer?"
-	done
-
 AeroBattleQuestionText:
 	text "Challenge Aero?"
 	done
@@ -441,10 +436,6 @@ KarlosBattleQuestionText:
 
 ZachBattleQuestionText:
 	text "Challenge Zach?"
-	done
-
-MasonBattleQuestionText:
-	text "Challenge Dr. Mason?"
 	done
 
 MasonBattleDeclinedText:
@@ -458,6 +449,23 @@ MasonChallengeWonText:
 
 MasonChallengeLostText:
 	text "You played well."
+	done
+
+MasonPostgameIntroText:
+	text "Wow! You have a ton of"
+	line "cool cards. How about a"
+	line "battle against me? I used"
+	line "to be pretty good in my"
+	line "prime."
+	done
+
+MasonPostgameWonText:
+	text "You've gotten really good,"
+	line "<RAMNAME>! I saw three"
+	line "trainers from far away who"
+	line "have some rare cards. Try"
+	line "battling them to see if"
+	line "they'll give you one!"
 	done
 
 PsychicName:

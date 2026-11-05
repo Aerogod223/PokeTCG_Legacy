@@ -22,6 +22,11 @@ LightningClubAfterDuel:
 	db NPC_ISAAC
 	dw Script_BeatIsaac
 	dw Script_LostToIsaac
+
+	db NPC_ZACH
+	db NPC_ZACH
+	dw Script_BeatMasonChallenge
+	dw Script_LostToMasonChallenge
 	db $00
 
 Script_Jennifer:

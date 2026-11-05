@@ -120,6 +120,10 @@
 	const EVENT_AARON_DECK_MENU_CHOICE                 ; $76
 	const EVENT_PLAYER_GENDER                          ; $77
 	const EVENT_ALL_CARDS_COLLECTED                    ; $78
+	const EVENT_BEAT_DRMASON_POSTGAME                  ; $79
+	const EVENT_BEAT_AERO                              ; $7a
+	const EVENT_BEAT_KARLOS                            ; $7b
+	const EVENT_BEAT_ZACH                              ; $7c
 DEF NUM_EVENT_FLAGS EQU const_value
 
 DEF EVENT_VAR_BYTES EQU $40

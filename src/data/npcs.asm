@@ -119,6 +119,9 @@ NPCHeaderPointers:
 	dw Ronald2NPCHeader
 	dw Ronald3NPCHeader
 	dw DummyNPCHeader
+	dw ZachNPCHeader
+	dw KarlosNPCHeader
+	dw AeroNPCHeader
 	assert_table_length NUM_NPCS
 
 DrMasonNPCHeader:
@@ -1522,3 +1525,42 @@ DummyNPCHeader:
 	db SPRITE_ANIM_LIGHT_NPC_UP
 	db SPRITE_ANIM_RED_NPC_UP
 	db $00
+
+ZachNPCHeader:
+	db NPC_ZACH
+	db SPRITE_OW_ZACH
+	db SPRITE_ANIM_DARK_NPC_UP
+	db SPRITE_ANIM_BLUE_NPC_UP
+	db $00
+	dw Script_Zach
+	tx ZachTrainerName
+	db MATTHEW_PIC
+	db ZACH_BATTLE_DECK_ID
+	db MUSIC_DUEL_THEME_1
+	db MUSIC_MATCH_START_1
+
+KarlosNPCHeader:
+	db NPC_KARLOS
+	db SPRITE_OW_KARLOS
+	db SPRITE_ANIM_LIGHT_NPC_UP
+	db SPRITE_ANIM_RED_NPC_UP
+	db $00
+	dw Script_Karlos
+	tx KarlosTrainerName
+	db RYAN_PIC
+	db KARLOS_BATTLE_DECK_ID
+	db MUSIC_DUEL_THEME_1
+	db MUSIC_MATCH_START_1
+
+AeroNPCHeader:
+	db NPC_AERO
+	db SPRITE_OW_AERO
+	db SPRITE_ANIM_DARK_NPC_UP
+	db SPRITE_ANIM_YELLOW_NPC_UP
+	db $00
+	dw Script_Aero
+	tx AeroTrainerName
+	db AARON_PIC
+	db AERO_BATTLE_DECK_ID
+	db MUSIC_DUEL_THEME_1
+	db MUSIC_MATCH_START_1
