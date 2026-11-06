@@ -275,6 +275,8 @@ cards = {
 	0xf0: "KARLOS_POLIWRATH",
 	0xf1: "ZACH_EEVEE",
 	0xf2: "IMAKUNIS_MEWTWO",
+	0xf3: "DITTO_LV20",
+	0xf4: "ELECTRODE_LV40",
 	0xff: "$ff",
 }
 

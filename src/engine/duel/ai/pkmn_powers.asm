@@ -159,7 +159,13 @@ HandleAIPkmnPowers:
 
 .crystal_type
 	cp AMY_STARMIE
-	call z, HandleAICrystalType
+	jr nz, .buzzap
+	call HandleAICrystalType
+	jr .next_1
+
+.buzzap
+	cp ELECTRODE_LV40
+	call z, HandleAIBuzzap
 ;	fallthrough
 
 .next_1
@@ -175,6 +181,51 @@ HandleAIPkmnPowers:
 ; checks whether AI uses VenusaurLv64's Solar Power
 ; input:
 ;	c = user's play area location offset (PLAY_AREA_* constant)
+HandleAIBuzzap:
+	ld a, c
+	or a
+	ret z
+	push bc
+	ld a, DUELVARS_ARENA_CARD
+	get_turn_duelist_var
+	ld d, a
+	call LoadCardDataToBuffer1_FromDeckIndex
+	ld a, [wLoadedCard1Atk1Category]
+	cp POKEMON_POWER
+	ld e, 0
+	jr nz, .check_attack
+	inc e
+.check_attack
+	push de
+	ld e, PLAY_AREA_ARENA
+	call GetPlayAreaCardAttachedEnergies
+	call HandleEnergyBurn
+	pop de
+	bank1call _CheckIfEnoughEnergiesToAttack
+	pop bc
+	ret nc
+	push bc
+	xor a
+	call GetPlayAreaCardColor
+	ldh [hAIPkmnPowerEffectParam], a
+	push af
+	ld a, [wce08]
+	ldh [hTempCardIndex_ff9f], a
+	ld a, c
+	ldh [hTemp_ffa0], a
+	ld a, OPPACTION_USE_PKMN_POWER
+	bank1call AIMakeDecision
+	pop af
+	ldh [hAIPkmnPowerEffectParam], a
+	xor a
+	ldh [hPlayAreaEffectTarget], a
+	ld a, OPPACTION_EXECUTE_PKMN_POWER_EFFECT
+	bank1call AIMakeDecision
+	ld a, OPPACTION_DUEL_MAIN_SCENE
+	bank1call AIMakeDecision
+	pop bc
+	ret
+
 HandleAISolarPower:
 	ld a, c
 	ldh [hTemp_ffa0], a

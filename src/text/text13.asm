@@ -61,7 +61,7 @@ PokedexName:
 	done
 
 PokedexDescription:
-	text "   Look at up to 5 cards from the"
+	text "   Look at up to 7 cards from the"
 	line ""
 	line "   top of your deck and rearrange"
 	line ""
@@ -178,10 +178,9 @@ ReviveName:
 ReviveDescription:
 	text "Put 1 Basic Pokémon card from your"
 	line "discard pile onto your Bench."
-	line "Put damage counters on that Pokémon"
-	line "equal to half its HP (rounded down"
-	line "to the nearest 10). (You can't play"
-	line "Revive if your Bench is full.)"
+	line "Put 2 damage counters on that"
+	line "Pokémon. (You can't play Revive"
+	line "if your Bench is full.)"
 	done
 
 MaintenanceName:
@@ -189,11 +188,9 @@ MaintenanceName:
 	done
 
 MaintenanceDescription:
-	text " Shuffle 2 of the other cards from"
-	line ""
-	line " your hand into your deck in order"
-	line ""
-	line " to draw a card."
+	text "Shuffle 3 of the other cards from"
+	line "your hand into your deck in order"
+	line "to draw 2 cards."
 	done
 
 PokemonFluteName:
@@ -217,7 +214,7 @@ GamblerDescription:
 	line ""
 	line "  Flip a coin. If heads, draw 8"
 	line ""
-	line "  cards. If tails, draw 1 card."
+	line "  cards. If tails, draw 2 cards."
 	done
 
 RecycleName:

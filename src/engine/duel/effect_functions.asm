@@ -638,7 +638,7 @@ PlayAreaSelectionMenuParameters:
 ; (3) THIS IS THE START OF THE ATTACK FUNCTIONS
 ; EFFECTS THAT REARRANGE, DRAW FROM, OR PULL CARDS OUT OF THE DECK ARE FIRST.
 ;---------------------------------------------------------------------------------
-; handles the Player's selection for reordering the top 3 cards of either player's deck
+; handles the Player's selection for reordering the top 5 cards of either player's deck
 ; (actual logic is in effect_functions2.asm)
 ; output:
 ;	[hTempList] = which deck was chosen (0 = turn holder's deck, 1 = opponent's deck)
@@ -673,7 +673,7 @@ Prophecy_ReorderEffect:
 	jp SwapTurn
 
 
-; handles the Player's selection for reordering the top 5 cards of their deck
+; handles the Player's selection for reordering the top 7 cards of their deck
 ; (actual logic is in effect_functions2.asm)
 ; output:
 ;	hTempList + 1 = $ff-terminated list with deck indices of cards to place on top of the deck
@@ -963,8 +963,56 @@ ShuffleCardsInDeck:
 ; output:
 ;	[hTemp_ffa0] = deck index of a Basic Energy card in the Player's deck (0-59, -1 if none)
 EnergySearch_PlayerSelection:
-	farcall FindBasicEnergy
+	farcall FindTwoBasicEnergy
 	ret
+
+EnergySearch_AddToHandEffect:
+	ld a, DUELVARS_DUELIST_TYPE
+	get_turn_duelist_var
+	and DUELIST_TYPE_AI_OPP
+	jr z, .selected
+	ldh a, [hTemp_ffa0]
+	ldh [hTempList], a
+	call CreateDeckCardList
+	ld hl, wDuelTempList
+.ai_second
+	ld a, [hli]
+	cp $ff
+	jr z, .store_second
+	ld e, a
+	ldh a, [hTempList]
+	cp e
+	jr z, .ai_second
+	ld a, e
+	farcall CheckDeckIndexForBasicEnergy
+	jr nc, .ai_second
+	ld a, e
+.store_second
+	ldh [hTempList + 1], a
+.selected
+	ld hl, hTempList
+	ld c, 2
+.add_cards
+	ld a, [hli]
+	cp $ff
+	jr z, .shuffle
+	push hl
+	push bc
+	ldh [hTemp_ffa0], a
+	call SearchCardInDeckAndAddToHand
+	call AddCardToHand
+	call IsPlayerTurn
+	jr c, .next_card
+	ldh a, [hTemp_ffa0]
+	ldtx hl, WasPlacedInTheHandText
+	bank1call DisplayCardDetailScreen
+.next_card
+	pop bc
+	pop hl
+	dec c
+	jr nz, .add_cards
+.shuffle
+	jp ShuffleCardsInDeck
 
 
 ; handles the Player's selection of a Basic Energy card from their deck
@@ -1008,7 +1056,7 @@ ZachEeveeEnergy_AISelection:
 AttachBasicEnergyFromDeck_AttachEffect:
 	ldh a, [hTemp_ffa0]
 	cp -1
-	jr z, ShuffleCardsInDeck ; shuffle and return if no card was selected
+	jp z, ShuffleCardsInDeck ; shuffle and return if no card was selected
 
 ; add card to the hand and attach it to the selected Pokemon
 	call SearchCardInDeckAndAddToHand
@@ -1018,7 +1066,7 @@ AttachBasicEnergyFromDeck_AttachEffect:
 	ldh a, [hTemp_ffa0]
 	call PutHandCardInPlayArea
 	call IsPlayerTurn
-	jr c, ShuffleCardsInDeck ; shuffle and return if it's the Player's turn
+	jp c, ShuffleCardsInDeck ; shuffle and return if it's the Player's turn
 
 ; not Player, so show detail screen and which Pokemon was chosen to attach Energy
 	ldh a, [hTempPlayAreaLocation_ffa1]
@@ -1035,7 +1083,7 @@ AttachBasicEnergyFromDeck_AttachEffect:
 	ldh a, [hTemp_ffa0]
 	ldtx hl, AttachedEnergyToPokemonText
 	bank1call DisplayCardDetailScreen
-	jr ShuffleCardsInDeck
+	jp ShuffleCardsInDeck
 
 
 ; handles the Player's selection of a Trainer card from their deck
@@ -4320,6 +4368,11 @@ FlipFor120_AIEffect:
 	lb de, 0, 120
 	jr SetExpectedAIDamage
 
+FlipFor100_AIEffect:
+	ld a, 100 / 2
+	lb de, 0, 100
+	jr SetExpectedAIDamage
+
 
 ; preserves bc and hl
 FlipXFor10_AIEffect:
@@ -4751,6 +4804,14 @@ CreateListOfFireEnergyAttachedToActive:
 ;	wDuelTempList = $ff-terminated list with deck indices of the relevant Energy cards
 CreateListOfEnergyAttachedToActive:
 	ld b, a
+	push bc
+	ld a, DUELVARS_ARENA_CARD
+	get_turn_duelist_var
+	farcall GetDittoTransformCardID
+	pop bc
+	jr nc, .printed_types
+	set 7, b
+.printed_types
 	xor a
 	ld c, a ; initial Energy card counter = 0
 	ld de, wDuelTempList
@@ -4763,8 +4824,15 @@ CreateListOfEnergyAttachedToActive:
 	jr nz, .next
 	ld a, l
 	call GetCardTypeFromDeckIndex_SaveDE
+	bit 7, b
+	jr z, .match_printed_type
+	bit TYPE_ENERGY_F, a
+	jr z, .next
+	jr .add_energy
+.match_printed_type
 	cp b
 	jr nz, .next ; is same as input type?
+.add_energy
 	ld a, l
 	ld [de], a
 	inc de
@@ -5226,6 +5294,11 @@ Selfdestruct60Effect:
 ; user does 80 damage to itself and 20 damage to each Benched Pokemon
 Explosion80DamageEffect:
 	ld a, 80
+	call DealRecoilDamageToSelf
+	jr DamageBothBenches_20DamageEffect
+
+Explosion120DamageEffect:
+	ld a, 120
 	call DealRecoilDamageToSelf
 	jr DamageBothBenches_20DamageEffect
 
@@ -6012,6 +6085,89 @@ ShuffleAttachedEnergyEffect:
 	jp DrawPlayAreaScreenToShowChanges
 
 
+BuzzapCheck:
+	ldh a, [hTempPlayAreaLocation_ff9d]
+	ldh [hTemp_ffa0], a
+	call CheckIsIncapableOfUsingPkmnPower
+	ret c
+	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
+	get_turn_duelist_var
+	ldtx hl, YouNoBenchedPokemonText
+	cp 2
+	ret
+
+BuzzapSelection:
+	ldh a, [hTemp_ffa0]
+	push af
+.select_target
+	bank1call InitVarsAndOpenPlayAreaScreenForSelection
+	jr c, .cancel
+	ld e, a
+	pop af
+	push af
+	cp e
+	jr z, .select_target
+	ld a, e
+	push af
+	ldtx hl, BuzzapColorlessQuestionText
+	call YesOrNoMenuWithText_SetCursorToYes
+	jr c, .colored
+	ld a, COLORLESS
+	jr .selected_color
+.colored
+	ld a, $80
+	ldtx hl, BuzzapChooseEnergyText
+	call HandleColorChangeScreen
+	jr c, .cancel_color
+.selected_color
+	ldh [hAIPkmnPowerEffectParam], a
+	pop af
+	ldh [hPlayAreaEffectTarget], a
+	pop af
+	ldh [hTemp_ffa0], a
+	or a
+	ret
+.cancel_color
+	pop af
+.cancel
+	pop af
+	ldh [hTemp_ffa0], a
+	scf
+	ret
+
+BuzzapEffect:
+	ldh a, [hTemp_ffa0]
+	add DUELVARS_ARENA_CARD
+	get_turn_duelist_var
+	push af
+	ldh a, [hAIPkmnPowerEffectParam]
+	push af
+	ldh a, [hPlayAreaEffectTarget]
+	or CARD_LOCATION_PLAY_AREA
+	ld c, a
+	pop af
+	pop de
+	push de
+	push af
+	ld a, d
+	get_turn_duelist_var
+	ld [hl], c
+	ldh a, [hTemp_ffa0]
+	add DUELVARS_ARENA_CARD_HP
+	get_turn_duelist_var
+	ld [hl], 0
+	bank1call HandleBetweenTurnKnockOuts
+	pop af
+	add BUZZAP_ENERGY_MARKER
+	ld c, a
+	pop de
+	ld a, d
+	call GetRawCardIDFromDeckIndex
+	ld [hl], c
+	xor a
+	ld [wDuelDisplayedScreen], a
+	ret
+
 ; replaces the user with a copy of a random Basic Pokemon from the deck
 MorphEffect:
 	call ExchangeRNG
@@ -6721,14 +6877,26 @@ Heal_RemoveDamageEffect:
 	or a
 	ret z ; return if coin toss result was tails
 
-	ldh a, [hPlayAreaEffectTarget]
-	add DUELVARS_ARENA_CARD_HP
-	get_turn_duelist_var
-	add 20 ; remove 2 damage counter
-	ld [hl], a
+	call Heal20DamageFromSelectedPokemon
 	ldh a, [hPlayAreaEffectTarget]
 	call DrawPlayAreaScreenToShowChanges
 	jp ExchangeRNG
+
+Heal20DamageFromSelectedPokemon:
+	ldh a, [hPlayAreaEffectTarget]
+	ld e, a
+	call GetCardDamageAndMaxHP
+	cp 20
+	jr c, .amount
+	ld a, 20
+.amount
+	ld c, a
+	ld a, e
+	add DUELVARS_ARENA_CARD_HP
+	get_turn_duelist_var
+	add c
+	ld [hl], a
+	ret
 
 
 ; handles the Player's selection of a Pokemon type/color in the play area
@@ -7669,6 +7837,14 @@ Discard2Cards_PlayerSelection:
 ;	[hTempList] = deck index of the first card that was selected from the hand (0-59)
 ;	[hTempList + 1] = deck index of the second card that was selected from the hand (0-59)
 HandlePlayerSelection2HandCards:
+	ld a, 2
+	jr HandlePlayerSelectionHandCards
+
+HandlePlayerSelection3HandCards:
+	ld a, 3
+
+HandlePlayerSelectionHandCards:
+	push af
 	push de
 	call DrawWideTextBox_WaitForInput
 
@@ -7688,16 +7864,25 @@ HandlePlayerSelection2HandCards:
 	push hl
 	bank1call DisplayCardList
 	pop hl
-	ret c ; exit if the B button was pressed
+	jr c, .cancel
 	push hl
 	call GetNextPositionInTempList
 	ldh a, [hTempCardIndex_ff98]
 	ld [hl], a
 	call RemoveCardFromDuelTempList
 	pop hl
+	pop af
+	push af
+	ld b, a
 	ldh a, [hCurSelectionItem]
-	cp 2
+	cp b
 	jr c, .loop ; is selection over?
+	pop af
+	or a
+	ret
+.cancel
+	pop af
+	scf
 	ret
 
 
@@ -8324,7 +8509,7 @@ SuperEnergyRetrieval_DiscardAndAddToHandEffect:
 
 
 ; shuffles the turn holder's hand into their deck and flips a coin.
-; if heads, the turn holder draws 8 cards from their deck, and if tails, they draw 1.
+; if heads, the turn holder draws 8 cards from their deck, and if tails, they draw 2.
 ; assumes the effect is coming from a Trainer card which needs to be removed
 ; from the hand before it is shuffled into the deck
 GamblerEffect:
@@ -8355,8 +8540,8 @@ GamblerEffect:
 	ldh a, [hTemp_ffa0]
 	or a
 	jr nz, .draw_cards ; coin toss was heads?
-	; if tails, number of cards to draw is 1
-	ld c, 1
+	; if tails, number of cards to draw is 2
+	ld c, 2
 
 ; correct number of cards to draw is stored in c
 .draw_cards
@@ -8560,35 +8745,33 @@ LassEffect:
 Maintenance_PlayerSelection:
 	ldtx hl, Choose2HandCardsFromHandToReturnToDeckText
 	ldtx de, ChooseTheCardToPutBackText
-	jp HandlePlayerSelection2HandCards
+	jp HandlePlayerSelection3HandCards
+
+MaintenanceCheck:
+	ld a, DUELVARS_NUMBER_OF_CARDS_IN_HAND
+	get_turn_duelist_var
+	ldtx hl, NotEnoughCardsInHandText
+	cp 4
+	ret
 
 
-; shuffles 2 given cards from the turn holder's hand into their deck
-; and then, that player draws 1 card.
+; shuffles 3 given cards from the turn holder's hand into their deck
+; and then, that player draws 2 cards.
 ; input:
 ;	[hTempList] = deck index of the first card to remove from the hand (0-59)
 ;	[hTempList + 1] = deck index of the second card to remove from the hand (0-59)
 Maintenance_ReturnToDeckAndDrawEffect:
-; return both selected cards to the deck
-	ldh a, [hTempList]
+	ld hl, hTempList
+	ld c, 3
+.return_cards
+	ld a, [hli]
 	call RemoveCardFromHand
 	call ReturnCardToDeck
-	ldh a, [hTempList + 1]
-	call RemoveCardFromHand
-	call ReturnCardToDeck
+	dec c
+	jr nz, .return_cards
 	call ShuffleCardsInDeck
-
-; draw one card
-	bank1call DisplayDrawOneCardScreen
-	call DrawCardFromDeck
-	ldh [hTempCardIndex_ff98], a
-	call AddCardToHand
-
-; show the drawn card on the screen if this effect was initiated by the Player
-	call IsPlayerTurn
-	ret nc ; return if it isn't the Player's turn
-	bank1call DisplayPlayerDrawCardScreen
-	ret
+	ld a, 2
+	jp DrawNCards_NoCardDetails
 
 
 ; shuffles a given Benched Pokemon and all of its attached cards into the deck
@@ -9328,7 +9511,7 @@ Revive_PlayerSelection:
 
 
 ; puts a Pokemon from the turn holder's discard pile onto their Bench
-; and sets its current HP to half its maximum HP (rounded up)
+; and puts 20 damage on it
 ; input:
 ;	[hTemp_ffa0] = deck index of the chosen Pokemon in the turn holder's discard pile (0-59)
 Revive_PlaceInPlayAreaEffect:
@@ -9338,11 +9521,8 @@ Revive_PlaceInPlayAreaEffect:
 	call AddCardToHand
 	call PutHandPokemonCardInPlayArea
 
-; set HP to half, rounded up
-	add DUELVARS_ARENA_CARD_HP
-	get_turn_duelist_var
-	call HalfARoundedUp
-	ld [hl], a
+; put 2 damage counters on the revived Pokemon
+	call Revive_SetHPAfterDamage
 	call IsPlayerTurn
 	ret c ; return if it's the Player's turn
 
@@ -9350,6 +9530,16 @@ Revive_PlaceInPlayAreaEffect:
 	ldh a, [hTemp_ffa0]
 	ldtx hl, PlacedOnTheBenchText
 	bank1call DisplayCardDetailScreen
+	ret
+
+Revive_SetHPAfterDamage:
+	add DUELVARS_ARENA_CARD_HP
+	get_turn_duelist_var
+	sub 20
+	jr nc, .set_hp
+	xor a
+.set_hp
+	ld [hl], a
 	ret
 
 

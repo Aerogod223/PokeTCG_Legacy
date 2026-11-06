@@ -265,6 +265,17 @@ PutCardInDiscardPile::
 	push af
 	push hl
 	push de
+	push bc
+	push af
+	call GetRawCardIDFromDeckIndex
+	cp BUZZAP_ENERGY_MARKER
+	jr c, .physical_card
+	cp BUZZAP_ENERGY_MARKER_END
+	jr nc, .physical_card
+	ld [hl], ELECTRODE_LV40
+.physical_card
+	pop af
+	pop bc
 	get_turn_duelist_var
 	ld [hl], CARD_LOCATION_DISCARD_PILE
 	ld e, l
@@ -645,6 +656,18 @@ GetCardIDFromDeckIndex::
 _GetCardIDFromDeckIndex::
 	push de
 	push hl
+	call GetRawCardIDFromDeckIndex
+	cp BUZZAP_ENERGY_MARKER
+	jr c, .physical_card
+	cp BUZZAP_ENERGY_MARKER_END
+	jr nc, .physical_card
+	ld a, ELECTRODE_LV40
+.physical_card
+	pop hl
+	pop de
+	ret
+
+GetRawCardIDFromDeckIndex::
 	ld e, a
 	ld d, $0
 	ld hl, wPlayerDeck
@@ -655,8 +678,6 @@ _GetCardIDFromDeckIndex::
 .load_card_from_deck
 	add hl, de
 	ld a, [hl]
-	pop hl
-	pop de
 	ret
 
 
@@ -667,8 +688,30 @@ _GetCardIDFromDeckIndex::
 ;	a = type ID of the card from input (TYPE_* constant)
 GetCardTypeFromDeckIndex_SaveDE::
 	push de
+	push hl
+	push bc
+	ld c, a
+	call GetRawCardIDFromDeckIndex
+	cp BUZZAP_ENERGY_MARKER
+	jr c, .pokemon
+	cp BUZZAP_ENERGY_MARKER_END
+	jr nc, .pokemon
+	sub BUZZAP_ENERGY_MARKER
+	or TYPE_ENERGY
+	jr .done
+.pokemon
+	ld a, c
 	call GetCardIDFromDeckIndex
+	ld a, c
+	farcall GetDittoTransformCardID
+	jr c, .get_type
+	ld a, c
+	call GetCardIDFromDeckIndex
+.get_type
 	call GetCardType
+.done
+	pop bc
+	pop hl
 	pop de
 	ret
 
@@ -696,7 +739,12 @@ LoadCardDataToBuffer1_FromDeckIndex::
 	ld a, l
 	ld hl, wLoadedCard1
 .after_load
+	push af
+	push hl
 	farcall ConvertSpecialTrainerCardToPokemon ; located in engine/duel/effect_functions2.asm
+	pop hl
+	pop af
+	farcall ConvertDittoAndBuzzapCardData
 .done
 	ld a, e
 	pop bc
@@ -983,6 +1031,12 @@ EvolvePokemonCard::
 ;	carry = set:  if the evolution wasn't possible
 CheckIfCanEvolveInto::
 	push de
+	ld a, e
+	add DUELVARS_ARENA_CARD
+	get_turn_duelist_var
+	call _GetCardIDFromDeckIndex
+	cp DITTO_LV20
+	jr z, .cant_evolve
 	ld a, e
 	add DUELVARS_ARENA_CARD
 	get_turn_duelist_var
@@ -1344,6 +1398,7 @@ GetPlayAreaCardAttachedEnergies::
 	push hl
 	push de
 	push bc
+	push de
 	xor a
 	ld c, NUM_TYPES
 	ld hl, wAttachedEnergies
@@ -1373,7 +1428,19 @@ GetPlayAreaCardAttachedEnergies::
 	add hl, bc
 	inc [hl] ; increment the number of Energy cards of this type
 	cp COLORLESS
-	jr nz, .not_colorless
+	jr z, .double_energy
+	pop hl
+	push hl
+	ld a, l
+	call IsBuzzapEnergyDeckIndex
+	jr nc, .not_colorless
+	push hl
+	ld hl, wAttachedEnergies
+	add hl, bc
+	inc [hl]
+	pop hl
+	jr .not_colorless
+.double_energy
 	inc [hl] ; each Colorless Energy counts as two
 .not_colorless
 	pop hl
@@ -1391,7 +1458,39 @@ GetPlayAreaCardAttachedEnergies::
 	dec c
 	jr nz, .sum_attached_energies_loop
 	ld [hl], a ; save to wTotalAttachedEnergies
+	pop de
+	ld a, e
+	add DUELVARS_ARENA_CARD
+	get_turn_duelist_var
+	farcall GetDittoTransformCardID
+	jr nc, .energy_done
+	ld a, [wTotalAttachedEnergies]
+	ld hl, wAttachedEnergies
+	ld c, NUM_COLORED_TYPES
+.ditto_energy
+	ld [hli], a
+	dec c
+	jr nz, .ditto_energy
+.energy_done
 	pop bc
+	pop de
+	pop hl
+	ld a, [wTotalAttachedEnergies]
+	ret
+
+IsBuzzapEnergyDeckIndex::
+	push hl
+	push de
+	call GetRawCardIDFromDeckIndex
+	cp BUZZAP_ENERGY_MARKER
+	jr c, .not_buzzap
+	cp BUZZAP_ENERGY_MARKER_END
+	jr nc, .not_buzzap
+	scf
+	jr .done
+.not_buzzap
+	or a
+.done
 	pop de
 	pop hl
 	ret

@@ -2361,3 +2361,34 @@ GamblerCardGfx::
 RecycleCardGfx::
 	INCBIN "gfx/cards/recycle.2bpp"
 	INCBIN "gfx/cards/recycle.pal"
+
+
+SECTION "Card Gfx 12", ROMX
+
+DittoLv20CardGfx::
+	INCBIN "gfx/cards/ditto2.2bpp"
+	INCBIN "gfx/cards/ditto2.pal"
+
+ElectrodeLv40CardGfx::
+	INCBIN "gfx/cards/electrode3.2bpp"
+	INCBIN "gfx/cards/electrode3.pal"
+
+BossBlastoiseCardGfx::
+	INCBIN "gfx/cards/blastoise2.2bpp"
+	INCBIN "gfx/cards/blastoise2.pal"
+
+NickExeggutorCardGfx::
+	INCBIN "gfx/cards/exeggutor2.2bpp"
+	INCBIN "gfx/cards/exeggutor2.pal"
+
+KenRapidashCardGfx::
+	INCBIN "gfx/cards/rapidash2.2bpp"
+	INCBIN "gfx/cards/rapidash2.pal"
+
+AmyStarmieCardGfx::
+	INCBIN "gfx/cards/starmie2.2bpp"
+	INCBIN "gfx/cards/starmie2.pal"
+
+MitchPrimeapeCardGfx::
+	INCBIN "gfx/cards/primeape2.2bpp"
+	INCBIN "gfx/cards/primeape2.pal"

@@ -1115,7 +1115,11 @@ DisplayRetreatScreen:
 	ld c, 1
 	ld a, [wLoadedCard2ID]
 	cp DOUBLE_COLORLESS_ENERGY
-	jr nz, .not_double
+	jr z, .double_energy
+	ldh a, [hTempCardIndex_ff98]
+	call IsBuzzapEnergyDeckIndex
+	jr nc, .not_double
+.double_energy
 	inc c
 .not_double
 	ld hl, wNumRetreatEnergiesSelected
@@ -1574,6 +1578,7 @@ _CheckIfEnoughEnergiesToAttack:
 	ld c, a
 	ld a, [wTotalAttachedEnergies]
 	sub c
+	jr c, .not_usable_or_not_enough_energies
 	cp b
 	pop de
 	ret
@@ -7852,6 +7857,7 @@ HandleDestinyBondAndBetweenTurnKnockOuts::
 ; output:
 ;	carry = set:  if the duel has ended
 HandleBetweenTurnKnockOuts:
+	farcall SynchronizeDittoHP
 	call .ClearDamageReductionSubstatus2_AllKnockedOutPokemon
 	xor a
 	ld [wDuelFinishParam], a
@@ -8459,6 +8465,7 @@ TakeAPrizes:
 ; this is called when a Pokemon card is played or when an attack is used.
 ; preserves bc and de
 UpdateArenaCardIDsAndClearTwoTurnDuelVars:
+	farcall SynchronizeDittoHP
 	ld a, DUELVARS_ARENA_CARD
 	get_turn_duelist_var
 	ldh [hTempCardIndex_ff9f], a
@@ -9216,8 +9223,8 @@ HandleStrikesBack_AgainstNormalAttack:
 	call LoadTxRam2
 	ld a, DUELVARS_ARENA_CARD_HP
 	get_turn_duelist_var
-	push af
 	pop de
+	push af
 	call SubtractHP
 	ldtx hl, ReceivesDamageDueToStrikesBackText
 	call DrawWideTextBox_PrintText

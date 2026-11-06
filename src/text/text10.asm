@@ -158,8 +158,9 @@ BoyfriendsName:
 	done
 
 BoyfriendsDescription:
-	text "Does 20 damage plus 20 more damage"
-	line "for each Nidoking you have in play."
+	text "Does 30 damage plus 20 more"
+	line "damage for each Nidoking you"
+	line "have in play."
 	done
 
 MegaPunchName:
@@ -350,7 +351,7 @@ HealName:
 HealDescription:
 	text "Once during your turn (before your"
 	line "attack), you may flip a coin. If"
-	line "heads, remove 1 damage counter from"
+	line "heads, remove 2 damage counters from"
 	line "1 of your Pokémon. This power can't"
 	line "be used if Vileplume is Asleep,"
 	line "Confused, or Paralyzed."
@@ -731,6 +732,12 @@ FireSpinDescription:
 	line "attack."
 	done
 
+MoltresFireSpinDescription:
+	text "Discard 2 Energy cards"
+	line "attached to Moltres to use"
+	line "this attack."
+	done
+
 CharizardDescription:
 	text "Spits fire that is hot enough to"
 	line "melt boulders. Known to"
@@ -962,6 +969,12 @@ MagmarLv24Description:
 	text "Its body always burns with an"
 	line "orange glow that enables it to"
 	line "hide perfectly among flames."
+	done
+
+MagmarLv24EnergyAbsorptionDescription:
+	text "Choose up to 2 Energy cards"
+	line "from your discard pile and"
+	line "attach them to Magmar."
 	done
 
 SmokescreenName:

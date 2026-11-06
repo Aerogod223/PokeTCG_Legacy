@@ -967,7 +967,7 @@ KarateChopName:
 	done
 
 KarateChopDescription:
-	text "Does 50 damage minus 10 damage for"
+	text "Does 70 damage minus 10 damage for"
 	line "each damage counter on Machoke."
 	done
 
@@ -997,7 +997,7 @@ StrikesBackDescription:
 	text "Whenever your opponent's attack"
 	line "damages Machamp (even if Machamp"
 	line "is Knocked Out), this power does"
-	line "10 damage to the attacking Pokémon."
+	line "20 damage to the attacking Pokémon."
 	line "(Don't apply Weakness and"
 	line "Resistance.)"
 	done
@@ -1083,7 +1083,7 @@ GolemsSelfdestructDescription:
 	line "each player's Bench. (Don't apply"
 	line "Weakness and Resistance for"
 	line "Benched Pokémon.) Golem does"
-	line "100 damage to itself."
+	line "120 damage to itself."
 	done
 
 MegatonName:

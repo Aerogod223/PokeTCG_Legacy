@@ -414,6 +414,68 @@ DiscardImakuniForPowerfulConfusionText:
 	text "Discard Imakuni? for the bonus?"
 	done
 
+DittoTransformName:
+	text "Transform"
+	done
+
+DittoTransformDescription:
+	text "If Ditto is your Active Pokemon,"
+	line "treat it as the same card as the"
+	line "Defending Pokemon, including type,"
+	line "HP, Weakness, and so on. Ditto can't"
+	line "evolve and always has this Power."
+	done
+
+DittoTransformDescriptionCont:
+	text "You may treat Energy attached to"
+	line "Ditto as Energy of any type. Ditto"
+	line "isn't a copy while it is Asleep,"
+	line "Confused, or Paralyzed."
+	done
+
+BuzzapName:
+	text "Buzzap"
+	done
+
+BuzzapDescription:
+	text "During your turn, before attacking,"
+	line "you may Knock Out Electrode and"
+	line "attach it to another Pokemon. Choose"
+	line "an Energy type. Electrode becomes an"
+	line "Energy card providing 2 of that type."
+	done
+
+BuzzapDescriptionCont:
+	text "This Power can't be used if Electrode"
+	line "is Asleep, Confused, or Paralyzed."
+	done
+
+ElectricShockName:
+	text "Electric Shock"
+	done
+
+ElectricShockDescription:
+	text "Flip a coin. If tails, Electrode"
+	line "does 10 damage to itself."
+	done
+
+BuzzapColorlessQuestionText:
+	text "Choose Colorless Energy?"
+	done
+
+BuzzapChooseEnergyText:
+	text "Choose the Energy type."
+	done
+
+BuzzapEnergyDescription:
+	text "Provides 2 Energy of the type chosen"
+	line "when Electrode used Buzzap."
+	done
+
+KindlingFireName:
+	text "Kindling Fire"
+	done
+
 AeroTrainerName:
 	text "Aero"
 	done
@@ -473,17 +535,20 @@ PsychicName:
 	done
 
 PsychicDescription:
-	text "Does 10 damage plus 10 more damage"
-	line "for each Energy card attached to the"
-	line "Defending Pokémon."
+	text "Does 10 damage plus 10"
+	line "more damage for each"
+	line "Energy card attached to"
+	line "the Defending Pokémon."
 	done
 
 BarrierDescription:
-	text "Discard 1 <PSYCHIC> Energy card attached to"
-	line "Mewtwo in order to use this attack."
-	line "During your opponent's next turn,"
-	line "prevent all effects of attacks,"
-	line "including damage, done to Mewtwo."
+	text "Discard 1 <PSYCHIC>"
+	line "Energy attached to Mewtwo"
+	line "to use this attack. During"
+	line "your opponent's next turn,"
+	line "prevent all effects of"
+	line "attacks, including damage,"
+	line "done to Mewtwo."
 	done
 
 LickName:
@@ -495,13 +560,16 @@ EnergyConversionName:
 	done
 
 EnergyConversionDescription:
-	text "Choose 2 Energy cards from your"
-	line "discard pile and put them into your"
-	line "hand. Gastly does 10 damage to itself."
+	text "Choose 2 Energy cards"
+	line "from your discard pile"
+	line "and put them in your hand."
+	line "Gastly does 10 damage"
+	line "to itself."
 	done
 
 GastlyLv17Description:
-	text "Its thin, long tongue can be freely"
-	line "extended and withdrawn. It can be"
-	line "used to lick enemies."
+	text "Its thin tongue can"
+	line "extend and retract at"
+	line "will. It uses it to lick"
+	line "its enemies."
 	done

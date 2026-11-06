@@ -569,6 +569,11 @@ FlipFor80EffectCommands:
 	dbw EFFECTCMDTYPE_AI, FlipFor80_AIEffect
 	db  $00
 
+FlipFor100EffectCommands:
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, NoDamage50PercentEffect
+	dbw EFFECTCMDTYPE_AI, FlipFor100_AIEffect
+	db $00
+
 Flip2For10EffectCommands:
 	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, Flip2For10_MultiplierEffect
 	dbw EFFECTCMDTYPE_AI, FlipFor20_AIEffect
@@ -722,6 +727,10 @@ Selfdestruct110And20EffectCommands:
 	dbw EFFECTCMDTYPE_AFTER_DAMAGE, Explosion110DamageEffect
 	db  $00
 
+Selfdestruct120And20EffectCommands:
+	dbw EFFECTCMDTYPE_AFTER_DAMAGE, Explosion120DamageEffect
+	db $00
+
 Also10DamageTo1BenchedEffectCommands:
 	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, AlsoDamageTo1Benched_PlayerSelection
 	dbw EFFECTCMDTYPE_AI_SELECTION, AlsoChooseWeakestBenchedPokemon_AISelection
@@ -782,6 +791,16 @@ MagneticStormEffectCommands:
 DittoMorphEffectCommands:
 	dbw EFFECTCMDTYPE_AFTER_DAMAGE, MorphEffect
 	db  $00
+
+DittoTransformEffectCommands:
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, SetCarryEF
+	db $00
+
+BuzzapEffectCommands:
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_2, BuzzapCheck
+	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, BuzzapSelection
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, BuzzapEffect
+	db $00
 
 ClefairyMetronomeEffectCommands:
 	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, DefendingPokemon_AttackCheck
@@ -1026,7 +1045,7 @@ EnergyRetrievalEffectCommands:
 EnergySearchEffectCommands:
 	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, DeckCheck
 	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, EnergySearch_PlayerSelection
-	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, AddCardFromDeckToHandEffect
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, EnergySearch_AddToHandEffect
 	db  $00
 
 FullHealEffectCommands:
@@ -1063,7 +1082,7 @@ LassEffectCommands:
 	db  $00
 
 MaintenanceEffectCommands:
-	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, OtherCardsInHandCheck
+	dbw EFFECTCMDTYPE_INITIAL_EFFECT_1, MaintenanceCheck
 	dbw EFFECTCMDTYPE_INITIAL_EFFECT_2, Maintenance_PlayerSelection
 	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, Maintenance_ReturnToDeckAndDrawEffect
 	db  $00

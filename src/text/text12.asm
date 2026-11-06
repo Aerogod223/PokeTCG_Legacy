@@ -132,10 +132,12 @@ DestinyBondName:
 	done
 
 DestinyBondDescription:
-	text "Discard 1 <PSYCHIC> Energy card attached to"
-	line "Gastly in order to use this attack."
-	line "If a Pokémon Knocks Out Gastly"
-	line "during your opponent's next turn,"
+	text "Discard 1 <PSYCHIC>"
+	line "Energy card attached"
+	line "to Gastly to use this"
+	line "attack. If Gastly is"
+	line "Knocked Out during your"
+	line "opponent's next turn,"
 	line "Knock Out that Pokémon."
 	done
 
@@ -144,9 +146,10 @@ GasName:
 	done
 
 GastlyLv8Description:
-	text "Almost invisible, this gaseous"
-	line "Pokémon cloaks the target and puts"
-	line "it to sleep without notice."
+	text "Almost invisible and"
+	line "gaseous, it cloaks its"
+	line "target and puts it to"
+	line "sleep without notice."
 	done
 
 	line "from smog."
@@ -252,7 +255,7 @@ ProphecyName:
 	done
 
 ProphecyDescription:
-	text "Look at up to 3 cards from the"
+	text "Look at up to 5 cards from the"
 	line "top of either player's deck and"
 	line "rearrange them as you like."
 	done
@@ -339,9 +342,10 @@ GeneticName:
 	done
 
 MewtwoLv53Description:
-	text "A scientist created this Pokémon"
-	line "after years of horrific"
-	line "gene-splicing and DNA engineering"
+	text "A scientist created"
+	line "this Pokémon after years"
+	line "of horrific gene-splicing"
+	line "and DNA engineering"
 	line "experiments."
 	done
 
@@ -350,8 +354,9 @@ EnergyAbsorptionName:
 	done
 
 EnergyAbsorptionDescription:
-	text "Choose up to 2 Energy cards from"
-	line "your discard pile and attach them"
+	text "Choose up to 2 Energy"
+	line "cards from your discard"
+	line "pile and attach them"
 	line "to Mewtwo."
 	done
 
@@ -360,9 +365,10 @@ PsyburnName:
 	done
 
 MewtwoLv60Description:
-	text "Years of genetic experiments"
-	line "resulted in the creation of this"
-	line "never-before-seen violent Pokémon."
+	text "Years of genetic"
+	line "experiments created a"
+	line "violent Pokémon never"
+	line "seen before."
 	done
 
 MewName:
@@ -478,7 +484,7 @@ SlicingWindName:
 	done
 
 SlicingWildDescription:
-	text "Does 30 damage to 1 of your"
+	text "Does 40 damage to 1 of your"
 	line "opponent's Pokémon chosen at random."
 	line "Don't apply Weakness and Resistance"
 	line "for this attack. (Any other effects"
@@ -803,7 +809,7 @@ PounceDescription:
 	text "If the Defending Pokémon attacks"
 	line "Persian during your opponent's next"
 	line "turn, any damage done by the attack"
-	line "is reduced by 10 (after applying"
+	line "is reduced by 20 (after applying"
 	line "Weakness and Resistance)."
 	line "(Benching or evolving either Pokémon"
 	line "ends this effect.)"
@@ -1346,10 +1352,10 @@ EnergySearchName:
 	done
 
 EnergySearchDescription:
-	text " Search your deck for a Basic Energy"
-	line " card, show it to your opponent,"
-	line " and put it into your hand."
-	line " Shuffle your deck afterward."
+	text "Search your deck for 2 Basic Energy"
+	line "cards, show them to your opponent,"
+	line "and put them into your hand."
+	line "Shuffle your deck afterward."
 	done
 
 EnergyRemovalName:

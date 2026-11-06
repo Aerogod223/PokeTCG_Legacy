@@ -91,6 +91,10 @@ LoadCardDataToHL_FromCardID::
 ;	e = card ID
 ; output:
 ;	a = type ID of the card from input (TYPE_* constant)
+LoadCardDataToBuffer_FromCardID::
+	push hl
+	jp LoadCardDataToHL_FromCardID
+
 GetCardType::
 	push hl
 	call GetCardPointer

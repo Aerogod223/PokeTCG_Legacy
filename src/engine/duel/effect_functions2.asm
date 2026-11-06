@@ -202,6 +202,8 @@ LookForCardsInDeck:
 ;	[hTemp_ffa0] = deck index of a Basic Energy card in the turn holder's deck (0-59, -1 if none)
 FindBasicEnergy:
 	call CreateDeckCardList
+
+FindBasicEnergyInDuelTempList:
 	ldtx hl, Choose1BasicEnergyCardFromDeckText
 	ldtx bc, BasicEnergyCardText
 	lb de, SEARCHEFFECT_BASIC_ENERGY, 0
@@ -248,6 +250,35 @@ FindBasicEnergy:
 	or a
 	ret
 
+
+; uses a card's deck index to check whether or not it is a Basic Energy card
+FindTwoBasicEnergy:
+	call FindBasicEnergy
+	ldh a, [hTemp_ffa0]
+	cp $ff
+	jr z, .none
+	push af
+	call RemoveCardFromDuelTempList
+	ld hl, wDuelTempList
+.check_second
+	ld a, [hli]
+	cp $ff
+	jr z, .store_second
+	call CheckDeckIndexForBasicEnergy
+	jr nc, .check_second
+	call FindBasicEnergyInDuelTempList
+	ldh a, [hTemp_ffa0]
+.store_second
+	ldh [hTempList + 1], a
+	pop af
+	ldh [hTempList], a
+	or a
+	ret
+.none
+	ldh [hTempList], a
+	ldh [hTempList + 1], a
+	or a
+	ret
 
 ; uses a card's deck index to check whether or not it is a Basic Energy card
 ; preserves all registers except af
@@ -1127,14 +1158,14 @@ AIFindKrabby:
 
 
 
-; handles the Player's selection for reordering the top 5 cards of their deck
+; handles the Player's selection for reordering the top 7 cards of their deck
 ; output:
 ;	hTempList + 1 = $ff-terminated list with deck indices of cards to place on top of the deck
 HandlePokedexPlayerSelection:
 ; print text box
 	ldtx hl, RearrangeThe5CardsAtTopOfDeckText
 	call DrawWideTextBox_WaitForInput
-	ld c, 5 ; number of cards that will be reordered
+	ld c, 7 ; number of cards that will be reordered
 	jr ReorderCardsOnTopOfDeck
 
 
@@ -1173,12 +1204,12 @@ HandleProphecyPlayerSelection:
 	jr nc, .select_deck ; no cards, go back to deck selection
 ;	fallthrough
 
-; draws and handles the Player's selection for reordering the top 3 cards of the deck.
+; draws and handles the Player's selection for reordering the top 5 cards of the deck.
 ; the resulting list is output in order in hTempList.
 ; output:
 ;	hTempList + 1 = $ff-terminated list with deck indices of cards to place on top of the deck
 HandleProphecyScreen:
-	ld c, 3 ; number of cards that will be reordered
+	ld c, 5 ; number of cards that will be reordered
 ;	fallthrough
 
 ; input:
@@ -1381,6 +1412,200 @@ PrintSortNumberInCardList:
 ;	de = its card ID
 ;	hl = contains its card_data_struct (e.g. wLoadedCard1)
 ConvertSpecialTrainerCardToPokemon::
+	jp ConvertSpecialTrainerCardToPokemon_Start
+
+GetDittoTransformCardID::
+	push hl
+	push bc
+	ld c, a
+	call _GetCardIDFromDeckIndex
+	cp DITTO_LV20
+	jr nz, .inactive
+	ld a, DUELVARS_ARENA_CARD
+	get_turn_duelist_var
+	cp c
+	jr nz, .inactive
+	call CheckIsIncapableOfUsingPkmnPower_ArenaCard
+	jr c, .inactive
+	rst SwapTurn
+	ld a, DUELVARS_ARENA_CARD
+	get_turn_duelist_var
+	cp -1
+	jr z, .empty_opponent
+	call _GetCardIDFromDeckIndex
+	push af
+	rst SwapTurn
+	pop af
+	cp DITTO_LV20
+	jr z, .inactive
+	ld e, a
+	ld d, 0
+	scf
+	jr .done
+.empty_opponent
+	rst SwapTurn
+.inactive
+	or a
+.done
+	pop bc
+	pop hl
+	ret
+
+ConvertDittoAndBuzzapCardData::
+	push de
+	push bc
+	push hl
+	ld c, a
+	call GetRawCardIDFromDeckIndex
+	cp BUZZAP_ENERGY_MARKER
+	jr c, .check_ditto
+	cp BUZZAP_ENERGY_MARKER_END
+	jr nc, .check_ditto
+	sub BUZZAP_ENERGY_MARKER
+	or TYPE_ENERGY
+	pop hl
+	push hl
+	ld [hl], a
+	ld de, CARD_DATA_EFFECT_COMMANDS
+	add hl, de
+	ld [hl], LOW(GrassEnergyEffectCommands)
+	inc hl
+	ld [hl], HIGH(GrassEnergyEffectCommands)
+	inc hl
+	ldtx de, BuzzapEnergyDescription
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	jr .done
+.check_ditto
+	cp DITTO_LV20
+	jr nz, .done
+	ld a, c
+	call GetDittoTransformCardID
+	jr nc, .ditto_hp
+	pop hl
+	push hl
+	call LoadCardDataToBuffer_FromCardID
+	ld de, CARD_DATA_ATTACK1_CATEGORY
+	add hl, de
+	ld a, [hl]
+	cp POKEMON_POWER
+	jr nz, .ditto_hp
+	ld de, CARD_DATA_ATTACK1 - CARD_DATA_ATTACK1_CATEGORY
+	add hl, de
+	ld de, .transform_power
+	push bc
+	ld c, CARD_DATA_ATTACK2 - CARD_DATA_ATTACK1
+	call CopyNBytesFromDEToHL
+	pop bc
+.ditto_hp
+	pop hl
+	push hl
+	ld de, CARD_DATA_HP
+	add hl, de
+	ld d, [hl]
+	ld a, c
+	get_turn_duelist_var
+	and CARD_LOCATION_PLAY_AREA | $07
+	sub CARD_LOCATION_PLAY_AREA
+	cp MAX_PLAY_AREA_POKEMON
+	jr nc, .done
+	ld e, a
+	add DUELVARS_ARENA_CARD
+	get_turn_duelist_var
+	cp c
+	jr nz, .done
+	ld a, e
+	add DUELVARS_ARENA_CARD_FLAGS
+	get_turn_duelist_var
+	ld a, [hl]
+	and $0f
+	jr nz, .cached_hp
+	ld a, 5
+.cached_hp
+	ld b, a
+	add a
+	add a
+	add b
+	add a
+	ld b, a
+	ld a, d
+	ld c, 0
+.encode_hp
+	sub 10
+	jr c, .encoded_hp
+	inc c
+	jr .encode_hp
+.encoded_hp
+	ld a, [hl]
+	and $f0
+	or c
+	ld [hl], a
+	ld a, e
+	add DUELVARS_ARENA_CARD_HP
+	get_turn_duelist_var
+	or a
+	jr z, .done
+	ld a, b
+	sub [hl]
+	ld b, a
+	ld a, d
+	sub b
+	jr nc, .set_hp
+	xor a
+.set_hp
+	ld [hl], a
+.done
+	pop hl
+	pop bc
+	pop de
+	ret
+
+.transform_power
+	energy 0
+	tx DittoTransformName
+	tx DittoTransformDescription
+	tx DittoTransformDescriptionCont
+	db 0, POKEMON_POWER
+	dw DittoTransformEffectCommands
+	db NONE, NONE, NONE, 0, ATK_ANIM_PKMN_POWER_1
+
+SynchronizeDittoHP::
+	push af
+	push bc
+	push de
+	push hl
+	call .one_side
+	rst SwapTurn
+	call .one_side
+	rst SwapTurn
+	pop hl
+	pop de
+	pop bc
+	pop af
+	ret
+.one_side
+	ld b, MAX_PLAY_AREA_POKEMON
+	ld c, PLAY_AREA_ARENA
+.next_slot
+	ld a, c
+	add DUELVARS_ARENA_CARD
+	get_turn_duelist_var
+	cp -1
+	jr z, .next
+	ld d, a
+	call _GetCardIDFromDeckIndex
+	cp DITTO_LV20
+	jr nz, .next
+	ld a, d
+	call LoadCardDataToBuffer2_FromDeckIndex
+.next
+	inc c
+	dec b
+	jr nz, .next_slot
+	ret
+
+ConvertSpecialTrainerCardToPokemon_Start:
 	ld c, a
 	ld a, [hl]
 	cp TYPE_TRAINER

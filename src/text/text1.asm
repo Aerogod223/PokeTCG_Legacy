@@ -982,7 +982,7 @@ TrainerCardSuccessCheckText:
 
 CardCheckIfHeads8CardsIfTails1CardText:
 	text "If heads, draw 8 cards!"
-	line "If tails, draw 1 card!"
+	line "If tails, draw 2 cards!"
 	done
 
 IfHeadsNoDamageNextTurnText:
@@ -1345,7 +1345,7 @@ ProcedureForProphecyText:
 	line "   A Button."
 	line ""
 	line "3. Select ”Yes” after you choose"
-	line "   the 3 cards and their order."
+	line "   the 5 cards and their order."
 	line ""
 	line "4. Press the B Button to cancel."
 	done
@@ -1538,7 +1538,7 @@ Choose2CardsFromHandToDiscardText:
 	done
 
 Choose2HandCardsFromHandToReturnToDeckText:
-	text "Choose 2 cards from your hand"
+	text "Choose 3 cards from your hand"
 	line "to return to your deck."
 	done
 
@@ -1594,7 +1594,7 @@ ChoosePokemonCardText:
 	done
 
 RearrangeThe5CardsAtTopOfDeckText:
-	text "Rearrange 5 cards from"
+	text "Rearrange 7 cards from"
 	line "the top of the deck."
 	done
 

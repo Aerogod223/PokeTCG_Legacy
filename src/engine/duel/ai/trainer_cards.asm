@@ -3499,6 +3499,8 @@ AIPlay_Maintenance:
 	ldh [hTempList], a
 	ld a, [wce1b]
 	ldh [hTempList + 1], a
+	ld a, [wce1c]
+	ldh [hTempList + 2], a
 	ld a, OPPACTION_EXECUTE_TRAINER_EFFECTS
 	bank1call AIMakeDecision
 	ret
@@ -3545,7 +3547,12 @@ AIDecide_Maintenance:
 
 ; store the second duplicate card and return carry.
 	ld [wce1b], a
-	ret ; carry set
+	ld hl, wDuelTempList
+	call FindAndRemoveCardFromList
+	call FindDuplicateCards
+	ret nc
+	ld [wce1c], a
+	ret
 
 .imakuni
 ; Imakuni? randomly decides to not play Maintenance 80% of the time.
@@ -3557,7 +3564,7 @@ AIDecide_Maintenance:
 ; can't play Maintenance if there are fewer than 3 cards (including Maintenance) in hand.
 	ld a, DUELVARS_NUMBER_OF_CARDS_IN_HAND
 	get_turn_duelist_var
-	cp 3
+	cp 4
 	ccf
 	ret nc
 
@@ -3570,7 +3577,7 @@ AIDecide_Maintenance:
 ; and store those deck indices in wce1a and wce1b.
 	ld a, [wAITrainerCardToPlay]
 	ld b, a
-	ld c, 2
+	ld c, 3
 	ld de, wce1a
 
 .loop

@@ -2249,6 +2249,7 @@ TextOffsets::
 	textpointer EnergyBurnDescription                              ; 0x08df
 	textpointer FireSpinName                                       ; 0x08e0
 	textpointer FireSpinDescription                                ; 0x08e1
+	textpointer MoltresFireSpinDescription
 	textpointer CharizardDescription                               ; 0x08e2
 	textpointer VulpixName                                         ; 0x08e3
 	textpointer ConfuseRayName                                     ; 0x08e4
@@ -2296,6 +2297,7 @@ TextOffsets::
 	textpointer FirePunchDescription                               ; 0x090e
 	textpointer SpitfireName                                       ; 0x090f
 	textpointer MagmarLv24Description                              ; 0x0910
+	textpointer MagmarLv24EnergyAbsorptionDescription
 	textpointer SmokescreenName                                    ; 0x0911
 	textpointer MagmarsSmokescreenDescription                      ; 0x0912
 	textpointer MagmarLv31Description                              ; 0x0913
@@ -3070,3 +3072,15 @@ TextOffsets::
 	textpointer MasonPostgameIntroText
 	textpointer MasonPostgameWonText
 	textpointer OnixsRageDescription
+	textpointer DittoTransformName
+	textpointer DittoTransformDescription
+	textpointer DittoTransformDescriptionCont
+	textpointer BuzzapName
+	textpointer BuzzapDescription
+	textpointer BuzzapDescriptionCont
+	textpointer ElectricShockName
+	textpointer ElectricShockDescription
+	textpointer BuzzapColorlessQuestionText
+	textpointer BuzzapChooseEnergyText
+	textpointer BuzzapEnergyDescription
+	textpointer KindlingFireName
