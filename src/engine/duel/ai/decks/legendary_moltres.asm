@@ -52,7 +52,7 @@ AIActionTable_LegendaryMoltres:
 	ai_energy WIGGLYTUFF,     3, +2
 	ai_energy MAGMAR_LV24,    3, +0
 	ai_energy MAGMAR_LV31,    2, +2
-	ai_energy MOLTRES_LV37,   3, +1
+	ai_energy MOLTRES_LV37,   3, +0
 	ai_energy MOLTRES_LV35,   3, +0
 	db $00
 

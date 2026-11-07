@@ -897,9 +897,9 @@ GrassAndPsychicDeck:
 
 LegendaryMoltresDeck:
 	deck_list_start
-	card_item FIRE_ENERGY,            15
+	card_item FIRE_ENERGY,            18
 	card_item DOUBLE_COLORLESS_ENERGY, 4
-	card_item VULPIX,                  4
+	card_item VULPIX,                  3
 	card_item NINETALES_LV35,          3
 	card_item MAGMAR_LV31,             4
 	card_item JIGGLYPUFF_LV14,         3
@@ -909,12 +909,10 @@ LegendaryMoltresDeck:
 	card_item BILL,                    4
 	card_item LASS,                    1
 	card_item POKEMON_TRADER,          2
-	card_item ENERGY_RETRIEVAL,        1
 	card_item SUPER_ENERGY_RETRIEVAL,  1
 	card_item ENERGY_REMOVAL,          2
 	card_item SWITCH,                  2
 	card_item PROFESSOR_OAK,           2
-	card_item MR_FUJI,                 1
 	card_item COMPUTER_SEARCH,         3
 	card_item ITEM_FINDER,             1
 	deck_list_end
@@ -922,21 +920,20 @@ LegendaryMoltresDeck:
 
 LegendaryZapdosDeck:
 	deck_list_start
-	card_item LIGHTNING_ENERGY, 17
+	card_item LIGHTNING_ENERGY, 19
 	card_item DOUBLE_COLORLESS_ENERGY, 2
-	card_item VOLTORB,           4
-	card_item ELECTRODE_LV35,    3
-	card_item ELECTRODE_LV42,    1
+	card_item DODUO,             2
+	card_item DODRIO,            2
 	card_item ELECTABUZZ_LV35,   3
 	card_item CHANSEY,           2
 	card_item ZAPDOS_LV40,       1
 	card_item ZAPDOS_LV68,       3
-	card_item TAUROS,            2
+	card_item TAUROS,            4
 	card_item BILL,              4
 	card_item ENERGY_RETRIEVAL,  1
 	card_item SWITCH,            2
-	card_item PLUSPOWER,         3
-	card_item PROFESSOR_OAK,     3
+	card_item PLUSPOWER,         2
+	card_item PROFESSOR_OAK,     4
 	card_item SCOOP_UP,          4
 	card_item POKE_BALL,         3
 	card_item COMPUTER_SEARCH,   2
@@ -1182,68 +1179,69 @@ FireChargeDeck:
 
 RematchFirstStrikeDeck:
 	deck_list_start
-	card_item FIGHTING_ENERGY,  8
-	card_item LIGHTNING_ENERGY, 7
-	card_item DOUBLE_COLORLESS_ENERGY, 4
-	card_item MACHOP,           1
-	card_item ELECTABUZZ_LV35,  4
-	card_item FARFETCHD,        1
-	card_item HITMONCHAN,       4
-	card_item SCYTHER,          3
-	card_item PROFESSOR_OAK,    2
-	card_item ENERGY_RETRIEVAL, 2
+	card_item FIGHTING_ENERGY,  17
+	card_item DODUO,            3
+	card_item DODRIO,           3
+	card_item MANKEY,           4
+	card_item MITCH_PRIMEAPE,   4
+	card_item HITMONCHAN,       3
+	card_item HITMONLEE,        1
+	card_item KANGASKHAN,       1
+	card_item PROFESSOR_OAK,    3
+	card_item ENERGY_RETRIEVAL, 1
 	card_item PLUSPOWER,        4
-	card_item SWITCH,           2
-	card_item GUST_OF_WIND,     2
+	card_item POTION,           1
+	card_item GUST_OF_WIND,     1
 	card_item BILL,             4
-	card_item ITEM_FINDER,      1
-	card_item ENERGY_SEARCH,    3
+	card_item ITEM_FINDER,      2
+	card_item ENERGY_SEARCH,    2
 	card_item LASS,             1
-	card_item ENERGY_REMOVAL,   4
-	card_item COMPUTER_SEARCH,  3
+	card_item ENERGY_REMOVAL,   3
+	card_item COMPUTER_SEARCH,  2
 	deck_list_end
 	tx RematchFirstStrikeDeckName
 
 RematchRockCrusherDeck:
 	deck_list_start
-	card_item FIGHTING_ENERGY,         15
+	card_item FIGHTING_ENERGY,         16
 	card_item DOUBLE_COLORLESS_ENERGY,  4
 	card_item TAUROS,                   2
-	card_item SNORLAX,                  1
-	card_item AERODACTYL,               3
-	card_item CUBONE,                   1
-	card_item LICKITUNG,                3
-	card_item ONIX,                     4
-	card_item RHYHORN,                  3
+	card_item GENE_AERODACTYL,          4
+	card_item FLYING_PIKACHU,           1
+	card_item LICKITUNG,                2
+	card_item ONIX,                     2
+	card_item SCYTHER,                  2
 	card_item PROFESSOR_OAK,            3
-	card_item SUPER_POTION,             2
-	card_item ENERGY_REMOVAL,           2
-	card_item SWITCH,                   3
+	card_item POKEMON_TRADER,           2
+	card_item ENERGY_REMOVAL,           4
 	card_item MYSTERIOUS_FOSSIL,        4
-	card_item DEFENDER,                 2
+	card_item DEFENDER,                 3
 	card_item BILL,                     4
 	card_item GUST_OF_WIND,             2
-	card_item MR_FUJI,                  1
-	card_item ITEM_FINDER,              1
+	card_item GAMBLER,                  1
+	card_item ITEM_FINDER,              2
+	card_item COMPUTER_SEARCH,          2
 	deck_list_end
 	tx RematchRockCrusherDeckName
 
 RematchGoGoRainDanceDeck:
 	deck_list_start
-	card_item WATER_ENERGY,           18
-	card_item SQUIRTLE,                4
-	card_item WARTORTLE,               3
-	card_item BLASTOISE,               3
-	card_item MAGIKARP,                3
-	card_item GYARADOS,                2
-	card_item ARTICUNO_LV35,           2
-	card_item LAPRAS,                  2
+	card_item WATER_ENERGY,            10
+	card_item PSYCHIC_ENERGY,          8
+	card_item STARYU,                  4
+	card_item AMY_STARMIE,             4
+	card_item MR_MIME,                 2
+	card_item MEWTWO_ALT_LV60,         2
+	card_item GOLDEEN,                 3
+	card_item SEAKING,                 3
+	card_item LAPRAS,                  1
 	card_item PROFESSOR_OAK,           3
-	card_item POKEMON_BREEDER,         3
-	card_item SUPER_ENERGY_RETRIEVAL,  2
+	card_item GAMBLER,                 1
 	card_item POKEMON_TRADER,          3
+	card_item SUPER_ENERGY_RETRIEVAL,  1
+	card_item ENERGY_SEARCH,           3
 	card_item SUPER_ENERGY_REMOVAL,    2
-	card_item SWITCH,                  2
+	card_item ITEM_FINDER,             2
 	card_item SUPER_POTION,            1
 	card_item BILL,                    4
 	card_item COMPUTER_SEARCH,         3
@@ -1253,122 +1251,117 @@ RematchGoGoRainDanceDeck:
 RematchZappingSelfdestructDeck:
 	deck_list_start
 	card_item LIGHTNING_ENERGY,        15
-	card_item DOUBLE_COLORLESS_ENERGY,  3
-	card_item ZAPDOS_LV40,              1
+	card_item DOUBLE_COLORLESS_ENERGY,  4
+	card_item MAGNEMITE_LV13,           3
 	card_item LICKITUNG,                2
-	card_item VOLTORB,                  3
-	card_item ELECTRODE_LV35,           3
-	card_item ELECTABUZZ_LV35,          3
-	card_item ELECTABUZZ_LV20,          1
-	card_item ZAPDOS_LV64,              3
-	card_item DITTO,                    1
-	card_item FLYING_PIKACHU,           1
+	card_item ISSAC_MAGNETON,           3
+	card_item EEVEE,                    4
+	card_item ELECTABUZZ_LV35,          2
+	card_item JOLTEON_LV29,             2
+	card_item FLAREON_LV22,             2
+	card_item DITTO_LV20,               2
 	card_item PROFESSOR_OAK,            3
 	card_item BILL,                     4
-	card_item SWITCH,                   3
-	card_item ENERGY_RETRIEVAL,         2
-	card_item GUST_OF_WIND,             3
-	card_item PLUSPOWER,                3
+	card_item SWITCH,                   1
+	card_item ENERGY_RETRIEVAL,         1
+	card_item GUST_OF_WIND,             1
+	card_item PLUSPOWER,                2
 	card_item COMPUTER_SEARCH,          3
-	card_item ENERGY_REMOVAL,           2
+	card_item DEFENDER,                 1
+	card_item ENERGY_SEARCH,            2
+	card_item SUPER_ENERGY_REMOVAL,     1
+	card_item LASS,                     1
 	card_item GAMBLER,                  1
 	deck_list_end
 	tx RematchZappingSelfdestructDeckName
 
 RematchFlowerPowerDeck:
 	deck_list_start
-	card_item GRASS_ENERGY,     16
-	card_item DOUBLE_COLORLESS_ENERGY, 2
+	card_item GRASS_ENERGY,     15
+	card_item DOUBLE_COLORLESS_ENERGY, 4
 	card_item TANGELA_LV12,      3
-	card_item BULBASAUR,         4
-	card_item IVYSAUR,           3
-	card_item VENUSAUR_LV67,     3
-	card_item DODUO,             2
-	card_item DODRIO,            2
-	card_item EXEGGCUTE,         3
+	card_item NICK_EXEGGUTOR,    3
+	card_item EXEGGCUTE,         4
+	card_item EXEGGUTOR,         1
+	card_item CLEFAIRY,          3
+	card_item CLEFABLE,          3
+	card_item PORYGON,           2
 	card_item EXEGGUTOR,         2
-	card_item PROFESSOR_OAK,     2
+	card_item PROFESSOR_OAK,     3
 	card_item BILL,              4
-	card_item POKEMON_BREEDER,   2
-	card_item ENERGY_RETRIEVAL,  2
-	card_item GUST_OF_WIND,      1
-	card_item ENERGY_REMOVAL,    2
-	card_item POKEMON_CENTER,    2
-	card_item POKEMON_TRADER,    3
+	card_item POKEMON_TRADER,    2
+	card_item ENERGY_RETRIEVAL,  1
+	card_item SCOOP_UP,          2
+	card_item ENERGY_REMOVAL,    3
+	card_item MAINTENANCE,       3
 	card_item COMPUTER_SEARCH,   2
 	deck_list_end
 	tx RematchFlowerPowerDeckName
 
 RematchStrangePsyshockDeck:
 	deck_list_start
-	card_item PSYCHIC_ENERGY, 15
+	card_item PSYCHIC_ENERGY, 7
+	card_item GRASS_ENERGY,   6
 	card_item DOUBLE_COLORLESS_ENERGY, 4
-	card_item ABRA,            3
-	card_item KADABRA,         2
-	card_item ALAKAZAM,        3
-	card_item MR_MIME,         3
+	card_item KOFFING,         4
+	card_item WEEZING,         4
+	card_item LICKITUNG,       4
+	card_item MR_MIME,         2
+	card_item MEW_LV8,         2
+	card_item MEWTWO_LV53,     1
 	card_item CHANSEY,         2
-	card_item KANGASKHAN,      2
-	card_item TAUROS,          2
-	card_item MEWTWO_ALT_LV60, 3
-	card_item PROFESSOR_OAK,   3
-	card_item SCOOP_UP,        2
+	card_item PROFESSOR_OAK,   2
+	card_item SCOOP_UP,        3
 	card_item ENERGY_REMOVAL,  4
-	card_item DEFENDER,        2
-	card_item ITEM_FINDER,     1
-	card_item SWITCH,          3
+	card_item GAMBLER,         2
+	card_item MAINTENANCE,     3
+	card_item SWITCH,          2
 	card_item BILL,            4
-	card_item COMPUTER_SEARCH, 2
+	card_item ENERGY_SEARCH,   2
+	card_item LASS,            2
 	deck_list_end
 	tx RematchStrangePsyshockDeckName
 
 RematchWondersOfScienceDeck:
 	deck_list_start
-	card_item GRASS_ENERGY,            9
-	card_item PSYCHIC_ENERGY,          9
-	card_item DOUBLE_COLORLESS_ENERGY, 2
-	card_item GRIMER,                  3
-	card_item MUK,                     3
-	card_item PINSIR,                  2
-	card_item SCYTHER,                 2
-	card_item MEWTWO_LV53,             2
-	card_item MEWTWO_ALT_LV60,         1
-	card_item MEWTWO_LV60,             1
-	card_item MR_MIME,                 2
-	card_item PORYGON,                 1
-	card_item IMPOSTER_PROFESSOR_OAK,  2
-	card_item PROFESSOR_OAK,           3
-	card_item POKEDEX,                 1
-	card_item DEFENDER,                2
-	card_item SWITCH,                  3
-	card_item COMPUTER_SEARCH,         4
-	card_item BILL,                    3
-	card_item POKE_BALL,               2
-	card_item ITEM_FINDER,              2
-	card_item LASS,                    1
+	card_item GRASS_ENERGY,   11
+	card_item GASTLY_LV8,      4
+	card_item HAUNTER_LV17,    4
+	card_item RICK_GENGAR,     3
+	card_item GENGAR,          1
+	card_item CHANSEY,         1
+	card_item LICKITUNG,       4
+	card_item SCYTHER,         2
+	card_item PROFESSOR_OAK,   4
+	card_item SCOOP_UP,        4
+	card_item ENERGY_REMOVAL,  3
+	card_item GAMBLER,         2
+	card_item MAINTENANCE,     3
+	card_item DEVOLUTION_SPRAY, 4
+	card_item BILL,            4
+	card_item POKEMON_BREEDER, 2
+	card_item ITEM_FINDER,     4
 	deck_list_end
 	tx RematchWondersOfScienceDeckName
 
 RematchFireChargeDeck:
 	deck_list_start
-	card_item FIRE_ENERGY,             12
-	card_item LIGHTNING_ENERGY,         6
+	card_item FIRE_ENERGY,             14
 	card_item DOUBLE_COLORLESS_ENERGY,  4
-	card_item VULPIX,                   3
-	card_item NINETALES_LV35,           3
-	card_item MAGMAR_LV31,              3
-	card_item CHARMANDER,               4
-	card_item CHARMELEON,               3
-	card_item CHARIZARD,                3
-	card_item ELECTABUZZ_LV35,          3
-	card_item TAUROS,                   1
-	card_item PROFESSOR_OAK,            2
+	card_item PONYTA,                   4
+	card_item KEN_RAPIDASH,             4
+	card_item DRATINI,                  4
+	card_item DRAGONAIR,                2
+	card_item DRAGONITE_LV45,           3
+	card_item PORYGON,                  2
+	card_item POTION,                   3
+	card_item SCOOP_UP,                 2
+	card_item PROFESSOR_OAK,            4
 	card_item BILL,                     4
-	card_item ENERGY_RETRIEVAL,         2
+	card_item GAMBLER,                  2
 	card_item POKEMON_BREEDER,          2
-	card_item POKEMON_TRADER,           2
-	card_item SWITCH,                   1
-	card_item ENERGY_SEARCH,            2
+	card_item POKE_BALL,                 2
+	card_item SWITCH,                   4
 	deck_list_end
 	tx RematchFireChargeDeckName
 
@@ -1690,8 +1683,7 @@ PikachuDeck:
 	card_item PIKACHU_LV16,             1
 	card_item PIKACHU_ALT_LV16,         1
 	card_item FLYING_PIKACHU,           4
-	card_item SURFING_PIKACHU_LV13,     2
-	card_item SURFING_PIKACHU_ALT_LV13,	2
+	card_item SURFING_PIKACHU_LV13,     4
 	card_item RAICHU_LV40,              2
 	card_item RAICHU_LV45,              2
 	card_item BILL,                     4
@@ -2041,58 +2033,62 @@ ImakuniDeck:
 
 RematchImakuniDeck:
 	deck_list_start
-	card_item WATER_ENERGY,   10
 	card_item PSYCHIC_ENERGY, 16
-	card_item PSYDUCK,         4
-	card_item GOLDUCK,         3
+	card_item DOUBLE_COLORLESS_ENERGY, 4
+	card_item IMAKUNIS_MEWTWO, 4
+	card_item MEW_LV15,        4
 	card_item SLOWPOKE_LV9,    2
 	card_item SLOWPOKE_LV18,   2
 	card_item SLOWBRO,         3
-	card_item DROWZEE,         4
-	card_item HYPNO,           3
-	card_item FARFETCHD,       4
+	card_item PORYGON,         2
+	card_item DITTO_LV20,      2
+	card_item BILL,            4
 	card_item IMAKUNI_CARD,    4
-	card_item MAINTENANCE,     2
-	card_item POKEMON_FLUTE,   2
-	card_item GAMBLER,         1
+	card_item MAINTENANCE,     3
+	card_item PROFESSOR_OAK,   4
+	card_item GAMBLER,         3
+	card_item COMPUTER_SEARCH, 3
 	deck_list_end
 	tx RematchImakuniDeckName
 
 AeroBattleDeck:
 	deck_list_start
-	card_item FIGHTING_ENERGY,  22
+	card_item FIRE_ENERGY,  13
 	card_item DOUBLE_COLORLESS_ENERGY, 4
-	card_item TAUROS,            2
-	card_item SNORLAX,           1
-	card_item AERODACTYL,        3
-	card_item ONIX,              4
-	card_item RHYHORN,           3
+	card_item AERO_SNORLAX,      4
+	card_item VOLTORB,           4
+	card_item ELECTRODE_LV40,    4
+	card_item GROWLITHE,         3
+	card_item ARCANINE_LV45,     3
+	card_item MAGMAR_LV31,       2
 	card_item PROFESSOR_OAK,     3
 	card_item BILL,              4
-	card_item SWITCH,            3
-	card_item MYSTERIOUS_FOSSIL, 4
-	card_item DEFENDER,          2
-	card_item GUST_OF_WIND,      2
-	card_item ENERGY_REMOVAL,    2
-	card_item ITEM_FINDER,       1
+	card_item SWITCH,            2
+	card_item ITEM_FINDER,       2
+	card_item COMPUTER_SEARCH,   3
+	card_item ENERGY_REMOVAL,    4
+	card_item RECYCLE,           2
+	card_item PLUSPOWER,         3
 	deck_list_end
 	tx AeroBattleDeckName
 
 KarlosBattleDeck:
 	deck_list_start
-	card_item WATER_ENERGY,           22
+	card_item WATER_ENERGY,            10
+	card_item FIGHTING_ENERGY,         9
 	card_item POLIWAG,                 4
 	card_item POLIWHIRL,               3
-	card_item POLIWRATH,               3
-	card_item PSYDUCK,                 3
-	card_item GOLDUCK,                 2
+	card_item KARLOS_POLIWRATH,        4
+	card_item HITMONCHAN,              4
+	card_item LAPRAS,                  3
+	card_item SURFING_PIKACHU_LV13,    2
 	card_item PROFESSOR_OAK,           3
 	card_item BILL,                    4
 	card_item ENERGY_RETRIEVAL,        2
-	card_item SUPER_ENERGY_RETRIEVAL,  2
-	card_item POKEMON_BREEDER,         3
+	card_item POKEMON_BREEDER,         2
+	card_item POKEMON_TRADER,          2
 	card_item SWITCH,                  2
-	card_item GUST_OF_WIND,            2
+	card_item GUST_OF_WIND,            1
 	card_item COMPUTER_SEARCH,         3
 	card_item ENERGY_SEARCH,           2
 	deck_list_end
@@ -2100,43 +2096,49 @@ KarlosBattleDeck:
 
 ZachBattleDeck:
 	deck_list_start
-	card_item LIGHTNING_ENERGY,        18
-	card_item DOUBLE_COLORLESS_ENERGY,  4
-	card_item EEVEE,                    4
-	card_item JOLTEON_LV24,             3
-	card_item PIKACHU_LV16,             3
-	card_item RAICHU_LV40,              2
+	card_item LIGHTNING_ENERGY,         7
+	card_item FIRE_ENERGY,              7
+	card_item WATER_ENERGY,             7
+	card_item ZACH_EEVEE,               4
+	card_item ELECTABUZZ_LV35,          4
+	card_item MAGMAR_LV31,              4
+	card_item LAPRAS,                   3
+	card_item FLYING_PIKACHU,           1
+	card_item SURFING_PIKACHU_LV13,     1     
 	card_item PROFESSOR_OAK,            3
 	card_item BILL,                     4
-	card_item SWITCH,                   3
+	card_item ENERGY_REMOVAL,           3
 	card_item ENERGY_SEARCH,            3
-	card_item ENERGY_RETRIEVAL,         2
-	card_item PLUSPOWER,                4
-	card_item GUST_OF_WIND,             2
+	card_item SUPER_ENERGY_RETRIEVAL,   2
+	card_item PLUSPOWER,                3
+	card_item GUST_OF_WIND,             1
 	card_item COMPUTER_SEARCH,          3
-	card_item POTION,                   2
 	deck_list_end
 	tx ZachBattleDeckName
 
 DrMasonBattleDeck:
 	deck_list_start
-	card_item PSYCHIC_ENERGY,           16
-	card_item DOUBLE_COLORLESS_ENERGY,   4
-	card_item MEWTWO_LV60,               2
-	card_item ABRA,                     3
-	card_item KADABRA,                  2
-	card_item ALAKAZAM,                 2
-	card_item MR_MIME,                  2
-	card_item CHANSEY,                  2
+	card_item PSYCHIC_ENERGY,           2
+	card_item FIGHTING_ENERGY,          2
+	card_item FIRE_ENERGY,              3
+	card_item LIGHTNING_ENERGY,         2
+	card_item WATER_ENERGY,             3
+	card_item GRASS_ENERGY,             3
+	card_item DOUBLE_COLORLESS_ENERGY,  4
+	card_item PIDGEY,                   4
+	card_item PIDGEOTTO,                2
+	card_item PIDGEOT_LV40,             4
+	card_item CLEFAIRY,                 2
+	card_item CLEFABLE,                 2
+	card_item JIGGLYPUFF_LV14,          2
+	card_item WIGGLYTUFF,               2
 	card_item PROFESSOR_OAK,            3
 	card_item BILL,                     4
-	card_item COMPUTER_SEARCH,          3
-	card_item SWITCH,                   3
+	card_item COMPUTER_SEARCH,          4
+	card_item RECYCLE,                  2
 	card_item ENERGY_REMOVAL,           3
-	card_item DEFENDER,                 2
-	card_item POKEMON_CENTER,           2
-	card_item SCOOP_UP,                 2
-	card_item ITEM_FINDER,              2
-	card_item GUST_OF_WIND,             3
+	card_item POKEMON_BREEDER,          3
+	card_item POKEMON_TRADER,           3
+	card_item ITEM_FINDER,              1
 	deck_list_end
 	tx DrMasonBattleDeckName
