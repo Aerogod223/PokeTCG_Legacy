@@ -117,8 +117,6 @@ AIDoTurn_LegendaryMoltres:
 	call AIProcessHandTrainerCards
 	ld a, AI_TRAINER_CARD_PHASE_08
 	call AIProcessHandTrainerCards
-	ld a, AI_TRAINER_CARD_PHASE_09
-	call AIProcessHandTrainerCards
 	call AIProcessRetreat
 	ld a, AI_TRAINER_CARD_PHASE_10
 	call AIProcessHandTrainerCards
@@ -178,8 +176,6 @@ AIDoTurn_LegendaryMoltres:
 	ld a, AI_TRAINER_CARD_PHASE_07
 	call AIProcessHandTrainerCards
 	ld a, AI_TRAINER_CARD_PHASE_08
-	call AIProcessHandTrainerCards
-	ld a, AI_TRAINER_CARD_PHASE_09
 	call AIProcessHandTrainerCards
 	call AIProcessRetreat
 	ld a, AI_TRAINER_CARD_PHASE_10

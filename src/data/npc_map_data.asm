@@ -191,7 +191,7 @@ LightningClubNPCS:
 	dw NULL
 	db NPC_ISAAC, $0c, $04, NORTH
 	dw Preload_Isaac
-	db NPC_ZACH, $18, $0a, SOUTH
+	db NPC_ZACH, $14, $16, SOUTH
 	dw Preload_PostgameTrainer
 	db $00
 
@@ -404,7 +404,7 @@ PokemonDomeNPCS:
 	dw Preload_Rod
 	db NPC_RONALD1, $1e, $00, SOUTH
 	dw Preload_Ronald1InPokemonDome
-	db NPC_KARLOS, $1a, $0c, SOUTH
+	db NPC_KARLOS, $08, $0e, SOUTH
 	dw Preload_PostgameTrainer
 	db $00
 
@@ -421,6 +421,6 @@ HallOfHonorNPCS:
 	dw NULL
 	db NPC_LEGENDARY_CARD_RIGHT_SPARK, $0e, $0a, SOUTH
 	dw NULL
-	db NPC_AERO, $16, $0a, SOUTH
+	db NPC_AERO, $10, $10, SOUTH
 	dw Preload_PostgameTrainer
 	db $00
