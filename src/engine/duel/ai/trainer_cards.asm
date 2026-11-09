@@ -63,10 +63,6 @@ _AIProcessHandTrainerCards:
 	pop hl
 	jr c, .next_hand_card
 
-; AI can randomly choose not to play any card.
-	call AIChooseRandomlyNotToDoAction
-	jr c, .next_hand_card
-
 ; call routine to decide whether to play the Trainer card
 	push hl
 	call CallIndirect
