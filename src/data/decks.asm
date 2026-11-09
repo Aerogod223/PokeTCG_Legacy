@@ -897,46 +897,47 @@ GrassAndPsychicDeck:
 
 LegendaryMoltresDeck:
 	deck_list_start
-	card_item FIRE_ENERGY,            18
+	card_item FIRE_ENERGY,            17
 	card_item DOUBLE_COLORLESS_ENERGY, 4
 	card_item VULPIX,                  3
 	card_item NINETALES_LV35,          3
-	card_item MAGMAR_LV31,             4
-	card_item JIGGLYPUFF_LV14,         3
-	card_item WIGGLYTUFF,              3
-	card_item MOLTRES_LV35,            1
-	card_item MOLTRES_LV37,            3
+	card_item MAGMAR_LV24,             1
+	card_item MAGMAR_LV31,             3
+	card_item DITTO_LV20,              3
+	card_item FLYING_PIKACHU,          1
+	card_item MOLTRES_LV37,            4
 	card_item BILL,                    4
-	card_item LASS,                    1
-	card_item POKEMON_TRADER,          2
+	card_item MAINTENANCE,             2
+	card_item SUPER_ENERGY_REMOVAL,    1
 	card_item SUPER_ENERGY_RETRIEVAL,  1
-	card_item ENERGY_REMOVAL,          2
-	card_item SWITCH,                  2
-	card_item PROFESSOR_OAK,           2
-	card_item COMPUTER_SEARCH,         3
-	card_item ITEM_FINDER,             1
+	card_item ENERGY_REMOVAL,          4
+	card_item GUST_OF_WIND,            2
+	card_item PROFESSOR_OAK,           3
+	card_item COMPUTER_SEARCH,         2
+	card_item ITEM_FINDER,             2
 	deck_list_end
 	tx LegendaryMoltresDeckName
 
 LegendaryZapdosDeck:
 	deck_list_start
-	card_item LIGHTNING_ENERGY, 19
-	card_item DOUBLE_COLORLESS_ENERGY, 2
-	card_item DODUO,             2
-	card_item DODRIO,            2
+	card_item LIGHTNING_ENERGY, 16
+	card_item DOUBLE_COLORLESS_ENERGY, 4
+	card_item ELECTRODE_LV40,    2
+	card_item ELECTRODE_LV35,    2
 	card_item ELECTABUZZ_LV35,   3
-	card_item CHANSEY,           2
-	card_item ZAPDOS_LV40,       1
-	card_item ZAPDOS_LV68,       3
-	card_item TAUROS,            4
+	card_item VOLTORB,           4
+	card_item ZAPDOS_LV40,       2
+	card_item ZAPDOS_LV68,       2
+	card_item TAUROS,            2
+	card_item PORYGON,           2
 	card_item BILL,              4
 	card_item ENERGY_RETRIEVAL,  1
 	card_item SWITCH,            2
 	card_item PLUSPOWER,         2
 	card_item PROFESSOR_OAK,     4
-	card_item SCOOP_UP,          4
-	card_item POKE_BALL,         3
-	card_item COMPUTER_SEARCH,   2
+	card_item SCOOP_UP,          2
+	card_item GAMBLER,           2
+	card_item COMPUTER_SEARCH,   4
 	deck_list_end
 	tx LegendaryZapdosDeckName
 
@@ -981,7 +982,7 @@ LegendaryDragoniteDeck:
 	card_item GUST_OF_WIND,             3
 	card_item ENERGY_REMOVAL,           4
 	card_item SUPER_ENERGY_REMOVAL,     2
-	card_item SWITCH,                   2
+	card_item ENERGY_SEARCH,            2
 	deck_list_end
 	tx LegendaryDragoniteDeckName
 

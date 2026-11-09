@@ -18,6 +18,7 @@ AIActionTable_LegendaryZapdos:
 	db ELECTABUZZ_LV35
 	db VOLTORB
 	db ZAPDOS_LV40
+	db DITTO
 	db TAUROS
 	db ZAPDOS_LV68
 	db $00
@@ -25,6 +26,7 @@ AIActionTable_LegendaryZapdos:
 .list_bench
 	db ZAPDOS_LV64
 	db ZAPDOS_LV40
+	db DITTO
 	db CHANSEY
 	db VOLTORB
 	db TAUROS
@@ -39,11 +41,11 @@ AIActionTable_LegendaryZapdos:
 .list_energy
 	ai_energy VOLTORB,         1, -1
 	ai_energy ELECTRODE_LV35,  2, +2
-	ai_energy ELECTRODE_LV42,  3, +0
-	ai_energy ELECTABUZZ_LV35, 2, +2
-	ai_energy JOLTEON_LV29,    3, +0
-	ai_energy ZAPDOS_LV40,     4, +1
-	ai_energy TAUROS,          3, +2
+	ai_energy ELECTRODE_LV40,  3, -1
+	ai_energy ELECTABUZZ_LV35, 2, +0
+	ai_energy PORYGON,         3, +0
+	ai_energy ZAPDOS_LV40,     4, +0
+	ai_energy TAUROS,          3, +0
 	ai_energy ZAPDOS_LV68,     3, +0
 	db $00
 

@@ -17,7 +17,8 @@ AIActionTable_LegendaryMoltres:
 .list_arena
 	db MAGMAR_LV31
 	db VULPIX
-	db JIGGLYPUFF_LV14
+	db DITTO_LV20
+	db FLYING_PIKACHU
 	db MAGMAR_LV24
 	db MOLTRES_LV35
 	db MOLTRES_LV37
@@ -29,7 +30,7 @@ AIActionTable_LegendaryMoltres:
 	db GROWLITHE
 	db MAGMAR_LV31
 	db MAGMAR_LV24
-	db JIGGLYPUFF_LV14
+	db DITTO_LV20
 	db $00
 
 .list_play_hand
@@ -48,10 +49,10 @@ AIActionTable_LegendaryMoltres:
 .list_energy
 	ai_energy VULPIX,         3, +0
 	ai_energy NINETALES_LV35, 2, +1
-	ai_energy JIGGLYPUFF_LV14,  3, +0
-	ai_energy WIGGLYTUFF,     3, +2
+	ai_energy DITTO_LV20,     3, +0
+	ai_energy FLYING_PIKACHU, 3, +0
 	ai_energy MAGMAR_LV24,    3, +0
-	ai_energy MAGMAR_LV31,    2, +2
+	ai_energy MAGMAR_LV31,    2, +0
 	ai_energy MOLTRES_LV37,   3, +0
 	ai_energy MOLTRES_LV35,   3, +0
 	db $00

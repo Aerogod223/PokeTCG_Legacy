@@ -2514,6 +2514,20 @@ NinetalesLv35Card:
 	tx VulpixName ; pre-evo name
 
 	; attack 1
+	energy COLORLESS, 2 ; energies
+	tx MysticFireName ; name
+	tx EnergySpikeDescription ; description
+	dw NONE ; description (cont)
+	db 0 ; damage
+	db RESIDUAL ; category
+	dw EnergySpikeEffectCommands ; effect commands
+	db NONE ; flags 1
+	db NONE ; flags 2
+	db SPECIAL_AI_HANDLING ; flags 3
+	db 0
+	db ATK_ANIM_GLOW_EFFECT ; animation
+
+	; attack 2
 	energy FIRE, 2	 ; energies
 	tx DancingEmbersName ; name
 	tx DancingEmbersDescription ; description
@@ -2526,20 +2540,6 @@ NinetalesLv35Card:
 	db NONE ; flags 3
 	db 0
 	db ATK_ANIM_FIRE_SPIN ; animation
-
-	; attack 2
-	energy FIRE, 2 ; energies
-	tx MysticFireName ; name
-	tx EnergySpikeDescription ; description
-	dw NONE ; description (cont)
-	db 0 ; damage
-	db RESIDUAL ; category
-	dw EnergySpikeEffectCommands ; effect commands
-	db NONE ; flags 1
-	db NONE ; flags 2
-	db SPECIAL_AI_HANDLING ; flags 3
-	db 0
-	db ATK_ANIM_GLOW_EFFECT ; animation
 
 	db 2 ; retreat cost
 	db WR_WATER ; weakness

@@ -85,9 +85,23 @@ RematchRockCrusher_StartDuel:
 	jp AIPlayInitialBasicCards
 
 RematchRockCrusher_ArenaList:
-	db LICKITUNG, ONIX, TAUROS, SNORLAX, RHYHORN, CUBONE, $00
+	db LICKITUNG
+	db ONIX
+	db TAUROS
+	db SCYTHER
+	db MYSTERIOUS_FOSSIL
+	db FLYING_PIKACHU
+	db $00
+
 RematchRockCrusher_BenchList:
-	db RHYHORN, SNORLAX, TAUROS, ONIX, LICKITUNG, CUBONE, $00
+	db RHYHORN
+	db SNORLAX
+	db TAUROS
+	db ONIX
+	db LICKITUNG
+	db CUBONE
+	db $00
+
 RematchRockCrusher_RetreatList:
 	ai_retreat CUBONE, +1
 	ai_retreat AERODACTYL, +1
