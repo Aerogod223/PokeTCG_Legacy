@@ -9,7 +9,7 @@ HallOfHonorAfterDuel:
 .after_duel_table
 	db NPC_AERO
 	db NPC_AERO
-	dw Script_BeatMasonChallenge
+	dw Script_BeatAero
 	dw Script_LostToMasonChallenge
 	db $00
 
@@ -25,6 +25,7 @@ Script_fbe1:
 	quit_script_fully
 
 Script_fbf1:
+	farcall UpdateLegendaryCardOwnershipFlags
 	start_script
 	jump_if_event_true EVENT_RECEIVED_LEGENDARY_CARDS, .ows_fc10
 	max_out_event_value EVENT_RECEIVED_LEGENDARY_CARDS

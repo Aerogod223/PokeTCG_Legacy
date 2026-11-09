@@ -78,6 +78,10 @@ DEF NPC_DATA_LENGTH EQU const_value
 	const AARON_PIC     ; $29
 	const LINK_OPP_PIC  ; $2a
 	const MINT_PIC      ; $2b
+	const DR_MASON_PIC
+	const AERO_PIC
+	const KARLOS_PIC
+	const ZACH_PIC
 DEF NUM_PICS EQU const_value
 
 	const_def 1

@@ -179,6 +179,8 @@ DeckSelectionSubMenu:
 	ld a, [wCheckMenuCursorXPosition]
 	or a
 	jp nz, DeckSelectionSubMenu_SelectOrCancel
+	call CheckDeckEditingLocked
+	jp c, DeckSelectionSubMenu_SelectOrCancel.restart_selection
 	ld a, [wCheckMenuCursorYPosition]
 	or a
 	jr nz, .ChangeName
@@ -443,6 +445,8 @@ DeckSelectionSubMenu_SelectOrCancel:
 	jp DeckSelectionMenu.start_selection
 
 .DismantleDeck
+	call CheckDeckEditingLocked
+	jp c, .restart_selection
 	ldtx hl, DismantleThisDeckText
 	call YesOrNoMenuWithText
 	jr c, .restart_selection ; close sub-menu if "No" was selected
@@ -466,6 +470,24 @@ PrintThereIsNoDeckHereText:
 	ldtx hl, ThereIsNoDeckHereText
 	call DrawWideTextBox_WaitForInput
 	ld a, [wCurDeck]
+	ret
+
+
+; carry = set if an active tournament prevents changing the stored decks.
+CheckDeckEditingLocked:
+	ld a, EVENT_POKEMON_DOME_IN_MENU
+	farcall GetEventValue
+	or a
+	jr nz, .locked
+	ld a, EVENT_CHALLENGE_CUP_IN_MENU
+	farcall GetEventValue
+	or a
+	ret z
+.locked
+	call PlaySFX_InvalidChoice
+	ldtx hl, TournamentDecksLockedText
+	call DrawWideTextBox_WaitForInput
+	scf
 	ret
 
 

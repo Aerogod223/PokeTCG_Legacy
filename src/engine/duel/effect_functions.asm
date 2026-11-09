@@ -3258,6 +3258,7 @@ DuelistSelectForcedSwitch:
 ; AI opponent
 	rst SwapTurn
 	call AIDoAction_ForcedSwitch
+	push af
 	rst SwapTurn
 
 	ld a, [wPlayerAttackingAttackIndex]
@@ -3267,6 +3268,8 @@ DuelistSelectForcedSwitch:
 	ld a, [wPlayerAttackingCardID]
 	call CopyAttackDataAndDamage_FromCardID
 	bank1call UpdateArenaCardIDsAndClearTwoTurnDuelVars
+	pop af
+	or a
 	ret
 
 .player

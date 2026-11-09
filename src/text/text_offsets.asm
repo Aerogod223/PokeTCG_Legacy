@@ -3084,3 +3084,5 @@ TextOffsets::
 	textpointer BuzzapChooseEnergyText
 	textpointer BuzzapEnergyDescription
 	textpointer KindlingFireName
+	textpointer TournamentDecksLockedText
+	textpointer MasonBattleQuestionText

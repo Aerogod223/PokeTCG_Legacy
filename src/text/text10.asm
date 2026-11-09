@@ -24,8 +24,8 @@ TwineedleName:
 	done
 
 DoubleAttackX30Description:
-	text "Flip 2 coins. This attack does"
-	line "30 damage times the number of heads."
+	text "Flip 2 coins. Do 30 damage for"
+	line "each heads."
 	done
 
 PoisonBeeName:
@@ -219,11 +219,9 @@ ThrashName:
 	done
 
 ThrashDescription:
-	text "Flip a coin. If heads, this attack"
-	line "does 30 damage plus 10 more damage;"
-	line "if tails, this attack does 30 damage"
-	line "and Nidoking does 10 damage to"
-	line "itself."
+	text "Flip a coin. If heads, do 40 damage."
+	line "If tails, do 30 damage and Nidoking"
+	line "does 10 damage to itself."
 	done
 
 ToxicName:
@@ -362,10 +360,9 @@ PetalDanceName:
 	done
 
 PetalDanceDescription:
-	text "Flip 3 coins. This attack does"
-	line "40 damage times the number of heads."
-	line "Vileplume is now Confused (after"
-	line "doing damage)."
+	text "Flip 3 coins. Do 40 damage for"
+	line "each heads. Vileplume is now"
+	line "Confused (after doing damage)."
 	done
 
 FlowerName:
@@ -1321,7 +1318,8 @@ WaterfallDescription:
 	line "attached, this attack does 10 more"
 	line "damage. If it has extra <FIGHTING>"
 	line "Energy attached, it takes 10 less"
-	line "damage during your opponent's next turn."
+	line "damage during your opponent's"
+	line "next turn."
 	done
 
 PoliwrathsWaterGunDescription:

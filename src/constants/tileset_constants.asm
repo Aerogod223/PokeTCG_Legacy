@@ -87,5 +87,9 @@
 	const TILESET_STEPHANIE                   ; $55
 	const TILESET_AARON                       ; $56
 	const TILESET_MINT                        ; $57
+	const TILESET_DR_MASON
+	const TILESET_AERO
+	const TILESET_KARLOS
+	const TILESET_ZACH
 
 DEF NUM_TILESETS EQU const_value

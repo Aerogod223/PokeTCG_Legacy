@@ -329,11 +329,12 @@ Script_DrMason:
 	print_text_quit_fully Text05e2
 
 .postgame
-	ask_question_jump MasonPostgameIntroText, .battle_mason
+	print_npc_text MasonPostgameIntroText
+	ask_question_jump MasonBattleQuestionText, .battle_mason
 	print_text_quit_fully MasonBattleDeclinedText
 
 .battle_mason
-	start_duel PRIZES_4, DR_MASON_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
+	start_duel PRIZES_6, DR_MASON_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
 	quit_script_fully
 
 Script_Zach:
@@ -341,7 +342,7 @@ Script_Zach:
 	ask_question_jump ZachBattleQuestionText, .duel
 	print_text_quit_fully MasonBattleDeclinedText
 .duel
-	start_duel PRIZES_4, ZACH_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
+	start_duel PRIZES_6, ZACH_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
 	quit_script_fully
 
 Script_Karlos:
@@ -349,7 +350,7 @@ Script_Karlos:
 	ask_question_jump KarlosBattleQuestionText, .duel
 	print_text_quit_fully MasonBattleDeclinedText
 .duel
-	start_duel PRIZES_4, KARLOS_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
+	start_duel PRIZES_6, KARLOS_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
 	quit_script_fully
 
 Script_Aero:
@@ -357,18 +358,11 @@ Script_Aero:
 	ask_question_jump AeroBattleQuestionText, .duel
 	print_text_quit_fully MasonBattleDeclinedText
 .duel
-	start_duel PRIZES_4, AERO_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
+	start_duel PRIZES_6, AERO_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
 	quit_script_fully
 
 Script_BeatMasonChallenge:
 	start_script
-	ld a, [wOpponentDeckID]
-	cp AERO_BATTLE_DECK_ID
-	jr z, .aero_reward
-	cp KARLOS_BATTLE_DECK_ID
-	jr z, .karlos_reward
-	cp ZACH_BATTLE_DECK_ID
-	jr z, .zach_reward
 	jump_if_event_true EVENT_BEAT_DRMASON_POSTGAME, .mason_repeat
 	max_out_event_value EVENT_BEAT_DRMASON_POSTGAME
 	give_card BOSS_CHARIZARD
@@ -382,21 +376,28 @@ Script_BeatMasonChallenge:
 	print_npc_text MasonChallengeWonText
 	quit_script_fully
 
-.aero_reward
+Script_BeatAero:
+	start_script
 	jump_if_event_true EVENT_BEAT_AERO, .won
 	max_out_event_value EVENT_BEAT_AERO
 	give_card AERO_SNORLAX
 	show_card_received_screen AERO_SNORLAX
-	script_jump .won
 
-.karlos_reward
+.won
+	print_text_quit_fully MasonChallengeWonText
+
+Script_BeatKarlos:
+	start_script
 	jump_if_event_true EVENT_BEAT_KARLOS, .won
 	max_out_event_value EVENT_BEAT_KARLOS
 	give_card KARLOS_POLIWRATH
 	show_card_received_screen KARLOS_POLIWRATH
-	script_jump .won
 
-.zach_reward
+.won
+	print_text_quit_fully MasonChallengeWonText
+
+Script_BeatZach:
+	start_script
 	jump_if_event_true EVENT_BEAT_ZACH, .won
 	max_out_event_value EVENT_BEAT_ZACH
 	give_card ZACH_EEVEE

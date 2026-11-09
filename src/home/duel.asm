@@ -1128,6 +1128,10 @@ PutHandPokemonCardInPlayArea::
 	pop af
 	push af
 	call PutHandCardInPlayArea
+	ld a, DUELVARS_ARENA_CARD_FLAGS
+	add e
+	ld l, a
+	ld [hl], $0
 	ld a, e
 	add DUELVARS_ARENA_CARD
 	ld l, a
@@ -1139,10 +1143,6 @@ PutHandPokemonCardInPlayArea::
 	ld l, a
 	ld a, [wLoadedCard2HP]
 	ld [hl], a ; set card's HP
-	ld a, DUELVARS_ARENA_CARD_FLAGS
-	add e
-	ld l, a
-	ld [hl], $0
 	ld a, DUELVARS_ARENA_CARD_CHANGED_TYPE
 	add e
 	ld l, a
@@ -1395,10 +1395,34 @@ GetCardDamageAndMaxHP::
 ;	a & [wTotalAttachedEnergies] = total amount of Energy attached to the Pokemon
 ;	[wAttachedEnergies] = how many Energy of each type is attached to the Pokemon
 GetPlayAreaCardAttachedEnergies::
+	call GetPlayAreaCardAttachedEnergiesForDisplay
 	push hl
 	push de
 	push bc
+	ld a, e
+	add DUELVARS_ARENA_CARD
+	get_turn_duelist_var
+	farcall GetDittoTransformCardID
+	jr nc, .energy_done
+	ld a, [wTotalAttachedEnergies]
+	ld hl, wAttachedEnergies
+	ld c, NUM_COLORED_TYPES
+.ditto_energy
+	ld [hli], a
+	dec c
+	jr nz, .ditto_energy
+.energy_done
+	pop bc
+	pop de
+	pop hl
+	ld a, [wTotalAttachedEnergies]
+	ret
+
+; Same outputs, but keeps printed Energy types instead of applying Transform.
+GetPlayAreaCardAttachedEnergiesForDisplay::
+	push hl
 	push de
+	push bc
 	xor a
 	ld c, NUM_TYPES
 	ld hl, wAttachedEnergies
@@ -1458,20 +1482,6 @@ GetPlayAreaCardAttachedEnergies::
 	dec c
 	jr nz, .sum_attached_energies_loop
 	ld [hl], a ; save to wTotalAttachedEnergies
-	pop de
-	ld a, e
-	add DUELVARS_ARENA_CARD
-	get_turn_duelist_var
-	farcall GetDittoTransformCardID
-	jr nc, .energy_done
-	ld a, [wTotalAttachedEnergies]
-	ld hl, wAttachedEnergies
-	ld c, NUM_COLORED_TYPES
-.ditto_energy
-	ld [hli], a
-	dec c
-	jr nz, .ditto_energy
-.energy_done
 	pop bc
 	pop de
 	pop hl
