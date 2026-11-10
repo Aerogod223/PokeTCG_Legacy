@@ -25,7 +25,7 @@ LightningClubAfterDuel:
 
 	db NPC_ZACH
 	db NPC_ZACH
-	dw Script_BeatMasonChallenge
+	dw Script_BeatZach
 	dw Script_LostToMasonChallenge
 	db $00
 

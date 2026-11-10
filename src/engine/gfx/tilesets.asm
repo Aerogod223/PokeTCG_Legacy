@@ -95,4 +95,8 @@ Tilesets:
 	tileset StephanieGfx,                   36 ; TILESET_STEPHANIE
 	tileset AaronGfx,                       36 ; TILESET_AARON
 	tileset MintGfx,                        36 ; TILESET_MINT
+	tileset DrMasonGfx,                     36 ; TILESET_DR_MASON
+	tileset AeroGfx,                        36 ; TILESET_AERO
+	tileset KarlosGfx,                      36 ; TILESET_KARLOS
+	tileset ZachGfx,                        36 ; TILESET_ZACH
 	assert_table_length NUM_TILESETS

@@ -150,9 +150,9 @@ HydroCannonName:
 	done
 
 GrowingPainsDescription:
-	text "Once per turn, put 3 damage"
-	line "counters on Exeggutor to draw"
-	line "a card. Can't be used if Asleep,"
+	text "Once per turn, put 3 damage counters"
+	line "on Exeggutor to draw a card."
+	line "Can't be used if Asleep,"
 	line "Confused, or Paralyzed."
 	done
 
@@ -173,20 +173,18 @@ SinisterShadowDescription:
 
 CreepyCorridorDescription:
 	text "The Defending Pokémon is now"
-	line "Poisoned. This attack also does"
-	line "10 damage to 1 of your"
-	line "opponent's Benched Pokémon."
-	line "(Don't apply Weakness and"
-	line "Resistance for Benched"
+	line "Poisoned. This attack also does 10"
+	line "damage to 1 of your opponent's"
+	line "Benched Pokémon. (Don't apply"
+	line "Weakness and Resistance for Benched"
 	line "Pokémon.)"
 	done
 
 SuperConductorDescription:
-	text "Once per turn, discard a"
-	line "<LIGHTNING> Energy attached to"
-	line "Magneton to return a Trainer"
-	line "from your discard pile to your"
-	line "hand. Can't be used if Asleep,"
+	text "Once per turn, discard a <LIGHTNING> Energy"
+	line "attached to Magneton to return a"
+	line "Trainer from your discard pile to"
+	line "your hand. Can't be used if Asleep,"
 	line "Confused, or Paralyzed."
 	done
 
@@ -293,11 +291,10 @@ BubblebeamDescription:
 	done
 
 HydroCannonDescription:
-	text "Discard any number of"
-	line "<WATER> Energy cards from your"
-	line "hand. This attack does 20 damage"
-	line "for each Energy card discarded"
-	line "this way."
+	text "Discard any number of <WATER> Energy"
+	line "cards from your hand. This attack"
+	line "does 20 damage for each Energy card"
+	line "discarded this way."
 	done
 
 RematchFirstStrikeDeckName:
@@ -380,7 +377,7 @@ OnixsRageDescription:
 	done
 
 ImakunisMewtwoName:
-	text "Imakuni?'s Mewtwo"
+	text "Mewtwo?"
 	done
 
 ImakuniPowerName:
@@ -388,10 +385,10 @@ ImakuniPowerName:
 	done
 
 ImakuniPowerDescription:
-	text "If this Pokémon is Confused, remove its"
-	line "Confusion and return an Imakuni? card"
-	line "from your discard pile to your hand."
-	line "Then put 10 damage on this Pokémon."
+	text "If Mewtwo? is Confused, remove its"
+	line "Confusion and return an Imakuni?"
+	line "card from your discard pile to your"
+	line "hand. Mewtwo? takes 10 damage."
 	done
 
 NoImakuniInDiscardPileText:
@@ -442,12 +439,13 @@ BuzzapDescription:
 	line "you may Knock Out Electrode and"
 	line "attach it to another Pokemon. Choose"
 	line "an Energy type. Electrode becomes an"
-	line "Energy card providing 2 of that type."
+	line "Energy card giving 2 of that type."
 	done
 
 BuzzapDescriptionCont:
-	text "This Power can't be used if Electrode"
-	line "is Asleep, Confused, or Paralyzed."
+	text "This Power can't be used while"
+	line "Electrode is Asleep, Confused,"
+	line "or Paralyzed."
 	done
 
 ElectricShockName:
@@ -470,6 +468,11 @@ BuzzapChooseEnergyText:
 BuzzapEnergyDescription:
 	text "Provides 2 Energy of the type chosen"
 	line "when Electrode used Buzzap."
+	done
+
+TournamentDecksLockedText:
+	text "You may switch decks, but cannot"
+	line "edit them during this challenge."
 	done
 
 KindlingFireName:
@@ -519,6 +522,10 @@ MasonPostgameIntroText:
 	line "battle against me? I used"
 	line "to be pretty good in my"
 	line "prime."
+	done
+
+MasonBattleQuestionText:
+	text "Would you like to duel me?"
 	done
 
 MasonPostgameWonText:

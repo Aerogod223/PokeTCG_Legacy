@@ -20,10 +20,6 @@ HandleAIPkmnPowers:
 	ccf
 	ret nc ; return no carry if Pokémon Powers can't be used
 
-	call AIChooseRandomlyNotToDoAction
-	ccf
-	ret nc ; return no carry if AI randomly decides to
-
 	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
 	get_turn_duelist_var
 	ld b, a
@@ -894,10 +890,6 @@ HandleAICrystalType:
 HandleAIEnergyTrans:
 	ld [wce06], a
 
-; choose to randomly return
-	call AIChooseRandomlyNotToDoAction
-	ret c
-
 	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
 	get_turn_duelist_var
 	dec a ; cp 1
@@ -1273,9 +1265,6 @@ HandleAIDamageSwap:
 	get_turn_duelist_var
 	dec a ; cp 1
 	ret z ; return if there are no Benched Pokémon
-
-	call AIChooseRandomlyNotToDoAction
-	ret c
 
 	ld a, ALAKAZAM
 	call CountTurnDuelistPokemonWithActivePkmnPower

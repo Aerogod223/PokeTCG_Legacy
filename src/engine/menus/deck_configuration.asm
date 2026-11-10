@@ -422,6 +422,11 @@ DrawDeckBoxTileAtDE:
 ; from the deck, is done in HandleDeckCardSelectionList.
 ; this function is similar to HandlePlayersCardsScreen.
 HandleDeckBuildScreen:
+	call CheckDeckEditingLocked
+	jr nc, .unlocked
+	or a
+	ret
+.unlocked
 	call WriteCardListsTerminatorBytes
 	call CountNumberOfCardsForEachCardType
 .skip_count

@@ -6093,7 +6093,7 @@ CheckPrintCnfSlpPrz:
 ;	bc = screen coordinates at which to begin printing the Energy symbols
 PrintPlayAreaCardAttachedEnergies:
 	push bc
-	call GetPlayAreaCardAttachedEnergies
+	call GetPlayAreaCardAttachedEnergiesForDisplay
 	ld hl, wDefaultText
 	push hl
 	; clear 8 bytes from wDefaultText
@@ -6105,21 +6105,25 @@ PrintPlayAreaCardAttachedEnergies:
 	jr nz, .empty_loop
 	pop hl ; wDefaultText
 	ld de, wAttachedEnergies
-	lb bc, SYM_FIRE, NUM_TYPES - 1
+	lb bc, SYM_FIRE, 8
 .next_color
 	ld a, [de] ; Energy count for the current type/color
 	inc de
-	inc a
-	jr .check_amount
-.has_energy
+.next_symbol
+	or a
+	jr z, .next_type
 	ld [hl], b
 	inc hl
-.check_amount
-	dec a
-	jr nz, .has_energy
-	inc b
 	dec c
-	jr nz, .next_color
+	jr z, .symbols_done
+	dec a
+	jr .next_symbol
+.next_type
+	inc b
+	ld a, b
+	cp SYM_FIRE + NUM_TYPES - 1
+	jr c, .next_color
+.symbols_done
 	ld a, [wTotalAttachedEnergies]
 	cp 9
 	jr c, .place_tiles

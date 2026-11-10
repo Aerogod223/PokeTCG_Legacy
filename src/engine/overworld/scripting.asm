@@ -1812,6 +1812,33 @@ ChallengeCupPrizeCards:
 .end
 
 
+UpdateLegendaryCardOwnershipFlags::
+	push hl
+	push de
+	push bc
+	ld hl, LegendaryCards
+	ld de, LegendaryCardEvents
+	ld b, 4
+.loop
+	ld a, [hli]
+	inc hl
+	inc hl
+	call GetCardCountInCollectionAndDecks
+	ld c, 0
+	cp MAX_NUM_SAME_NAME_CARDS
+	jr c, .set_flag
+	dec c
+.set_flag
+	ld a, [de]
+	call SetEventValue
+	inc de
+	dec b
+	jr nz, .loop
+	pop bc
+	pop de
+	pop hl
+	ret
+
 ScriptCommand_PickLegendaryCard:
 	get_event_value EVENT_LEGENDARY_CARDS_RECEIVED_FLAGS
 	ld e, a
@@ -1830,16 +1857,9 @@ ScriptCommand_PickLegendaryCard:
 	ld a, d
 	and e ; has this legendary been given already?
 	jr nz, .new_random
-	push bc
-	ld b, 0
-	ld hl, LegendaryCardEvents
-	add hl, bc
-	ld a, [hl]
-	call MaxOutEventValue ; also modifies EVENT_LEGENDARY_CARDS_RECEIVED_FLAGS
-	pop bc
 	ld hl, LegendaryCards
 	ld a, c
-	jr ScriptCommand_PickChallengeCupPrizeCard.get_card_from_list
+	jp ScriptCommand_PickChallengeCupPrizeCard.get_card_from_list
 
 LegendaryCards:
 	db ZAPDOS_LV68

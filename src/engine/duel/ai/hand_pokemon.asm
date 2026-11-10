@@ -341,10 +341,10 @@ AIDecideEvolution:
 	ld a, 3
 	call AIDiscourage
 
-; if AI score >= 133 (initial score of 128 plus 5), go through with the evolution.
+; Evolve on a neutral score, but keep tactical reasons to delay evolving.
 .check_score
 	ld a, [wAIScore]
-	cp $85
+	cp $80
 	jr c, .done_bench_pokemon
 	ld a, [wTempAI]
 	ldh [hTempPlayAreaLocation_ffa1], a

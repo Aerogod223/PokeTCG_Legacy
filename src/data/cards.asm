@@ -10165,7 +10165,7 @@ NickExeggutorCard:
 
 RickGengarCard:
 	db TYPE_PKMN_GRASS ; type
-	gfx GengarCardGfx ; gfx
+	gfx RickGengarCardGfx ; gfx
 	tx GengarName ; name
 	db STAR ; rarity
 	db PROMOTIONAL | PRO ; sets
@@ -10215,7 +10215,7 @@ RickGengarCard:
 
 IssacMagnetonCard:
 	db TYPE_PKMN_LIGHTNING ; type
-	gfx MagnetonLv35CardGfx ; gfx
+	gfx IssacMagnetonCardGfx ; gfx
 	tx MagnetonName ; name
 	db STAR ; rarity
 	db PROMOTIONAL | PRO ; sets
@@ -10365,7 +10365,7 @@ MitchPrimeapeCard:
 
 GeneAerodactylCard:
 	db TYPE_PKMN_FIGHTING ; type
-	gfx AerodactylCardGfx ; gfx
+	gfx GeneAerodactylCardGfx ; gfx
 	tx AerodactylName ; name
 	db STAR ; rarity
 	db PROMOTIONAL | PRO ; sets
@@ -10465,7 +10465,7 @@ AmyStarmieCard:
 
 MurrayWeezingCard:
 	db TYPE_PKMN_GRASS ; type
-	gfx WeezingCardGfx ; gfx
+	gfx MurrayWeezingCardGfx ; gfx
 	tx WeezingName ; name
 	db DIAMOND ; rarity
 	db PROMOTIONAL | PRO ; sets
@@ -10515,7 +10515,7 @@ MurrayWeezingCard:
 
 BossCharizardCard:
 	db TYPE_PKMN_FIRE ; type
-	gfx CharizardCardGfx ; gfx
+	gfx BossCharizardCardGfx ; gfx
 	tx CharizardName ; name
 	db STAR ; rarity
 	db PROMOTIONAL | PRO ; sets

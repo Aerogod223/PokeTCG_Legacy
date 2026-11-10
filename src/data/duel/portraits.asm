@@ -50,4 +50,8 @@ PortraitGfxData:
 	portrait TILESET_AARON,     PALETTE_160, SGBData_AaronPortraitPals        ; AARON_PIC
 	portrait TILESET_PLAYER,    PALETTE_120, SGBData_LinkOpponentPortraitPals ; LINK_OPP_PIC
 	portrait TILESET_MINT,      PALETTE_161, SGBData_PlayerPortraitPals       ; MINT_PIC
+	portrait TILESET_DR_MASON,  PALETTE_160, SGBData_AaronPortraitPals        ; DR_MASON_PIC
+	portrait TILESET_AERO,      PALETTE_160, SGBData_AaronPortraitPals        ; AERO_PIC
+	portrait TILESET_KARLOS,    PALETTE_160, SGBData_AaronPortraitPals        ; KARLOS_PIC
+	portrait TILESET_ZACH,      PALETTE_160, SGBData_AaronPortraitPals        ; ZACH_PIC
 	assert_table_length NUM_PICS

@@ -77,8 +77,6 @@ AIDoTurn_LegendaryArticuno:
 	call AIProcessHandTrainerCards
 	ld a, AI_TRAINER_CARD_PHASE_07
 	call AIProcessHandTrainerCards
-	ld a, AI_TRAINER_CARD_PHASE_09
-	call AIProcessHandTrainerCards
 	call AIProcessRetreat
 	ld a, AI_TRAINER_CARD_PHASE_10
 	call AIProcessHandTrainerCards
@@ -115,8 +113,6 @@ AIDoTurn_LegendaryArticuno:
 	ld a, AI_TRAINER_CARD_PHASE_05
 	call AIProcessHandTrainerCards
 	ld a, AI_TRAINER_CARD_PHASE_07
-	call AIProcessHandTrainerCards
-	ld a, AI_TRAINER_CARD_PHASE_09
 	call AIProcessHandTrainerCards
 	call AIProcessRetreat
 	ld a, AI_TRAINER_CARD_PHASE_10

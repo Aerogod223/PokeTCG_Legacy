@@ -132,10 +132,10 @@ DrMasonNPCHeader:
 	db $00
 	dw Script_DrMason
 	tx DrMasonNPCName
-	db $00
-	db $00
-	db $00
-	db $00
+	db DR_MASON_PIC
+	db DR_MASON_BATTLE_DECK_ID
+	db MUSIC_DUEL_THEME_1
+	db MUSIC_MATCH_START_1
 
 Ronald1NPCHeader:
 	db NPC_RONALD1
@@ -1534,7 +1534,7 @@ ZachNPCHeader:
 	db $00
 	dw Script_Zach
 	tx ZachTrainerName
-	db MATTHEW_PIC
+	db ZACH_PIC
 	db ZACH_BATTLE_DECK_ID
 	db MUSIC_DUEL_THEME_1
 	db MUSIC_MATCH_START_1
@@ -1547,7 +1547,7 @@ KarlosNPCHeader:
 	db $00
 	dw Script_Karlos
 	tx KarlosTrainerName
-	db RYAN_PIC
+	db KARLOS_PIC
 	db KARLOS_BATTLE_DECK_ID
 	db MUSIC_DUEL_THEME_1
 	db MUSIC_MATCH_START_1
@@ -1560,7 +1560,7 @@ AeroNPCHeader:
 	db $00
 	dw Script_Aero
 	tx AeroTrainerName
-	db AARON_PIC
+	db AERO_PIC
 	db AERO_BATTLE_DECK_ID
 	db MUSIC_DUEL_THEME_1
 	db MUSIC_MATCH_START_1

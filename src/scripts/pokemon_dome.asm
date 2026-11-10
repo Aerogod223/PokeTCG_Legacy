@@ -44,7 +44,7 @@ PokemonDomeAfterDuel:
 
 	db NPC_KARLOS
 	db NPC_KARLOS
-	dw Script_BeatMasonChallenge
+	dw Script_BeatKarlos
 	dw Script_LostToMasonChallenge
 	db $00
 

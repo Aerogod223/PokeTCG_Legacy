@@ -1372,6 +1372,22 @@ OWMintGfx::
 
 SECTION "Postgame Trainer Sprites", ROMX
 
+DrMasonGfx::
+	dw 36
+	INCBIN "gfx/duelists/dr_mason.2bpp"
+
+AeroGfx::
+	dw 36
+	INCBIN "gfx/duelists/aero.2bpp"
+
+KarlosGfx::
+	dw 36
+	INCBIN "gfx/duelists/karlos.2bpp"
+
+ZachGfx::
+	dw 36
+	INCBIN "gfx/duelists/zach.2bpp"
+
 OWZachGfx::
 	dw $14
 	INCBIN "gfx/overworld_sprites/zach.2bpp"
@@ -2392,3 +2408,23 @@ AmyStarmieCardGfx::
 MitchPrimeapeCardGfx::
 	INCBIN "gfx/cards/primeape2.2bpp"
 	INCBIN "gfx/cards/primeape2.pal"
+
+RickGengarCardGfx::
+	INCBIN "gfx/cards/gengar2.2bpp"
+	INCBIN "gfx/cards/gengar2.pal"
+
+IssacMagnetonCardGfx::
+	INCBIN "gfx/cards/magneton3.2bpp"
+	INCBIN "gfx/cards/magneton3.pal"
+
+GeneAerodactylCardGfx::
+	INCBIN "gfx/cards/aerodactyl2.2bpp"
+	INCBIN "gfx/cards/aerodactyl2.pal"
+
+MurrayWeezingCardGfx::
+	INCBIN "gfx/cards/weezing2.2bpp"
+	INCBIN "gfx/cards/weezing2.pal"
+
+BossCharizardCardGfx::
+	INCBIN "gfx/cards/charizard2.2bpp"
+	INCBIN "gfx/cards/charizard2.pal"

@@ -113,12 +113,8 @@ Script_Imakuni:
 	quit_script_fully
 
 .start_duel
-	get_event_value EVENT_ALL_CARDS_COLLECTED
-	or a
-	jr z, .normal_duel
-	get_event_value EVENT_RONALD_POKEMON_DOME_STATE
-	cp RONALD_DEFEATED
-	jr nc, .rematch_duel
+	jump_if_event_false EVENT_ALL_CARDS_COLLECTED, .normal_duel
+	jump_if_event_greater_or_equal EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .rematch_duel
 .normal_duel
 	print_npc_text ImakuniDuelStartText
 	start_duel PRIZES_6, IMAKUNI_DECK_ID, MUSIC_IMAKUNI
@@ -138,8 +134,6 @@ Script_BeatImakuni:
 .give_boosters
 	print_npc_text ImakuniPlayerWonNormalText
 	give_one_of_each_trainer_booster
-	give_card IMAKUNIS_MEWTWO
-	show_card_received_screen IMAKUNIS_MEWTWO
 	script_jump .done
 
 .three_wins
@@ -153,6 +147,10 @@ Script_BeatImakuni:
 	give_card IMAKUNI_CARD
 	show_card_received_screen IMAKUNI_CARD
 .done
+	jump_if_event_less_than EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .farewell
+	give_card IMAKUNIS_MEWTWO
+	show_card_received_screen IMAKUNIS_MEWTWO
+.farewell
 	print_npc_text ImakuniPlayerWonEndText
 	script_jump Script_LostToImakuni.imakuni_common
 
@@ -161,12 +159,8 @@ Script_LostToImakuni:
 	print_npc_text ImakuniPlayerLostText
 .imakuni_common
 	close_text_box
-	get_event_value EVENT_ALL_CARDS_COLLECTED
-	or a
-	jr z, .club_exit
-	get_event_value EVENT_RONALD_POKEMON_DOME_STATE
-	cp RONALD_DEFEATED
-	jr nc, .house_exit
+	jump_if_event_false EVENT_ALL_CARDS_COLLECTED, .club_exit
+	jump_if_event_greater_or_equal EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .house_exit
 .club_exit
 	jump_if_player_coords_match 18, 4, .ows_dd69
 	script_jump .ows_dd6e

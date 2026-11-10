@@ -834,8 +834,8 @@ SandslashName:
 	done
 
 TripleAttackX20Description:
-	text "Flip 3 coins. This attack does"
-	line "20 damage times the number of heads."
+	text "Flip 3 coins. Do 20 damage for"
+	line "each heads."
 	done
 
 SandslashDescription:
