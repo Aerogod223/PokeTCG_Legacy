@@ -135,15 +135,6 @@ Palette2::
 	rgb  5,  7, 31
 	rgb  0,  0,  5
 
-PaletteDrMasonPortrait::
-	db 0
-	db 1
-
-	rgb 31, 28, 24
-	rgb 28, 15,  8
-	rgb  6, 10, 18
-	rgb  1,  2,  4
-
 	rgb 25, 31, 31
 	rgb  9, 21, 31
 	rgb 31,  0, 31
@@ -154,6 +145,7 @@ PaletteDrMasonPortrait::
 	rgb  4, 21,  1
 	rgb  1, 10,  0
 
+	assert @ - Palette2 == 2 + 8 * 4 * 2
 
 ; palettes that are used for the Ishihara's House map
 Palette3::
@@ -3514,3 +3506,14 @@ PaletteKarlosPortrait::
 	rgb 27, 16,  9
 	rgb  0, 12, 31
 	rgb  0,  0,  5
+
+PaletteDrMasonPortrait::
+	db 0
+	db 1
+
+	rgb 31, 28, 24
+	rgb 28, 15,  8
+	rgb  6, 10, 18
+	rgb  1,  2,  4
+
+	assert @ - PaletteDrMasonPortrait == 2 + 4 * 2
