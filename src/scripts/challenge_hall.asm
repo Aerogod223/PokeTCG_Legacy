@@ -1,4 +1,17 @@
 ChallengeHallAfterDuel:
+	ld a, [wNPCDuelist]
+	cp NPC_KARLOS
+	jr nz, .challenge_cup
+	ld hl, .karlos_after_duel_table
+	jp FindEndOfDuelScript
+.karlos_after_duel_table
+	db NPC_KARLOS
+	db NPC_KARLOS
+	dw Script_BeatKarlos
+	dw Script_LostToKarlos
+	db $00
+
+.challenge_cup
 	ld c, 0
 	ld a, [wDuelResult]
 	or a ; cp DUEL_WIN
@@ -18,6 +31,31 @@ ChallengeHallAfterDuel:
 ChallengeHallAfterDuelTable:
 	dw Script_WonAtChallengeHall
 	dw Script_LostAtChallengeHall
+
+Script_Karlos:
+	start_script
+	print_npc_text KarlosIntroText
+	ask_question_jump KarlosBattleQuestionText, .duel
+	print_text_quit_fully KarlosBattleDeclinedText
+.duel
+	print_npc_text KarlosBattleStartText
+	start_duel PRIZES_6, KARLOS_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
+	quit_script_fully
+
+Script_BeatKarlos:
+	start_script
+	print_npc_text KarlosPlayerWonText
+	jump_if_event_true EVENT_BEAT_KARLOS, .done
+	max_out_event_value EVENT_BEAT_KARLOS
+	print_npc_text KarlosRewardText
+	give_card KARLOS_POLIWRATH
+	show_card_received_screen KARLOS_POLIWRATH
+.done
+	quit_script_fully
+
+Script_LostToKarlos:
+	start_script
+	print_text_quit_fully KarlosPlayerLostText
 
 ChallengeHallLoadMap:
 	get_event_value EVENT_CHALLENGE_CUP_IN_MENU

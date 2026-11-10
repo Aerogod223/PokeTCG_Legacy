@@ -37,7 +37,9 @@ Preload_ImakuniInWaterClubLobby:
 
 Script_Gal1:
 	start_script
+	jump_if_event_true EVENT_RECEIVED_LEGENDARY_CARDS, .offer_trade
 	jump_if_event_equal EVENT_GAL1_TRADE_STATE, GAL1_TRADE_COMPLETED, .ows_e10e
+.offer_trade
 	test_if_event_equal EVENT_GAL1_TRADE_STATE, GAL1_TRADE_NOT_OFFERED
 	print_variable_npc_text Gal1WantToTrade1Text, Gal1WantToTrade2Text
 	set_event EVENT_GAL1_TRADE_STATE, GAL1_TRADE_OFFERED

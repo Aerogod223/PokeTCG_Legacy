@@ -1,3 +1,46 @@
+Preload_PostgameDuelist:
+	get_event_value EVENT_RECEIVED_LEGENDARY_CARDS
+	or a
+	ret z
+	scf
+	ret
+
+PokemonDomeEntranceAfterDuel:
+	ld hl, .after_duel_table
+	jp FindEndOfDuelScript
+
+.after_duel_table
+	db NPC_AERO
+	db NPC_AERO
+	dw Script_BeatAero
+	dw Script_LostToAero
+	db $00
+
+Script_Aero:
+	start_script
+	print_npc_text AeroIntroText
+	ask_question_jump AeroBattleQuestionText, .duel
+	print_text_quit_fully AeroBattleDeclinedText
+.duel
+	print_npc_text AeroBattleStartText
+	start_duel PRIZES_6, AERO_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
+	quit_script_fully
+
+Script_BeatAero:
+	start_script
+	print_npc_text AeroPlayerWonText
+	jump_if_event_true EVENT_BEAT_AERO, .done
+	max_out_event_value EVENT_BEAT_AERO
+	print_npc_text AeroRewardText
+	give_card AERO_SNORLAX
+	show_card_received_screen AERO_SNORLAX
+.done
+	quit_script_fully
+
+Script_LostToAero:
+	start_script
+	print_text_quit_fully AeroPlayerLostText
+
 PokemonDomeEntranceLoadMap:
 	set_event_false EVENT_HALL_OF_HONOR_DOORS_OPEN
 	set_event_zero EVENT_POKEMON_DOME_STATE

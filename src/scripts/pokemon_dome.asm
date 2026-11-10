@@ -42,10 +42,6 @@ PokemonDomeAfterDuel:
 	dw Script_BeatRonald1InPokemonDome
 	dw Script_LostToRonald1InPokemonDome
 
-	db NPC_KARLOS
-	db NPC_KARLOS
-	dw Script_BeatKarlos
-	dw Script_LostToMasonChallenge
 	db $00
 
 PokemonDomeLoadMap:

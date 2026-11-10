@@ -288,19 +288,6 @@ Preload_DrMason:
 	scf
 	ret
 
-Preload_PostgameTrainer:
-	get_event_value EVENT_RONALD_POKEMON_DOME_STATE
-	cp RONALD_DEFEATED
-	jr c, .hidden
-	get_event_value EVENT_BEAT_DRMASON_POSTGAME
-	or a
-	jr z, .hidden
-	scf
-	ret
-.hidden
-	and a
-	ret
-
 Script_DrMason:
 	start_script
 	jump_if_event_true EVENT_RONALD_FIRST_CLUB_ENTRANCE_ENCOUNTER, .ows_d72f
@@ -337,30 +324,6 @@ Script_DrMason:
 	start_duel PRIZES_6, DR_MASON_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
 	quit_script_fully
 
-Script_Zach:
-	start_script
-	ask_question_jump ZachBattleQuestionText, .duel
-	print_text_quit_fully MasonBattleDeclinedText
-.duel
-	start_duel PRIZES_6, ZACH_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
-	quit_script_fully
-
-Script_Karlos:
-	start_script
-	ask_question_jump KarlosBattleQuestionText, .duel
-	print_text_quit_fully MasonBattleDeclinedText
-.duel
-	start_duel PRIZES_6, KARLOS_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
-	quit_script_fully
-
-Script_Aero:
-	start_script
-	ask_question_jump AeroBattleQuestionText, .duel
-	print_text_quit_fully MasonBattleDeclinedText
-.duel
-	start_duel PRIZES_6, AERO_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
-	quit_script_fully
-
 Script_BeatMasonChallenge:
 	start_script
 	jump_if_event_true EVENT_BEAT_DRMASON_POSTGAME, .mason_repeat
@@ -373,36 +336,6 @@ Script_BeatMasonChallenge:
 	quit_script_fully
 
 .mason_repeat
-	print_npc_text MasonChallengeWonText
-	quit_script_fully
-
-Script_BeatAero:
-	start_script
-	jump_if_event_true EVENT_BEAT_AERO, .won
-	max_out_event_value EVENT_BEAT_AERO
-	give_card AERO_SNORLAX
-	show_card_received_screen AERO_SNORLAX
-
-.won
-	print_text_quit_fully MasonChallengeWonText
-
-Script_BeatKarlos:
-	start_script
-	jump_if_event_true EVENT_BEAT_KARLOS, .won
-	max_out_event_value EVENT_BEAT_KARLOS
-	give_card KARLOS_POLIWRATH
-	show_card_received_screen KARLOS_POLIWRATH
-
-.won
-	print_text_quit_fully MasonChallengeWonText
-
-Script_BeatZach:
-	start_script
-	jump_if_event_true EVENT_BEAT_ZACH, .won
-	max_out_event_value EVENT_BEAT_ZACH
-	give_card ZACH_EEVEE
-	show_card_received_screen ZACH_EEVEE
-.won
 	print_npc_text MasonChallengeWonText
 	quit_script_fully
 

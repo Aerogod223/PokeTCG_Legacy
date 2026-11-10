@@ -330,7 +330,7 @@ MapScripts::
 	dw PokemonDomeEntranceObjects
 	dw NULL
 	dw PokemonDomeEntranceLoadMap
-	dw NULL
+	dw PokemonDomeEntranceAfterDuel
 	dw NULL
 	dw PokemonDomeEntranceCloseTextBox
 
@@ -350,7 +350,7 @@ MapScripts::
 	dw HallOfHonorObjects
 	dw NULL
 	dw HallOfHonorLoadMap
-	dw HallOfHonorAfterDuel
+	dw NULL
 	dw NULL
 	dw NULL
 

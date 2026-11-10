@@ -492,15 +492,15 @@ ZachTrainerName:
 	done
 
 AeroBattleQuestionText:
-	text "Challenge Aero?"
+	text "Would you like to duel me?"
 	done
 
 KarlosBattleQuestionText:
-	text "Challenge Karlos?"
+	text "Would you like to duel me?"
 	done
 
 ZachBattleQuestionText:
-	text "Challenge Zach?"
+	text "Would you like to duel me?"
 	done
 
 MasonBattleDeclinedText:
@@ -519,7 +519,7 @@ MasonChallengeLostText:
 MasonPostgameIntroText:
 	text "Wow! You have a ton of"
 	line "cool cards. How about a"
-	line "battle against me? I used"
+	line "duel against me? I used"
 	line "to be pretty good in my"
 	line "prime."
 	done
@@ -530,11 +530,102 @@ MasonBattleQuestionText:
 
 MasonPostgameWonText:
 	text "You've gotten really good,"
-	line "<RAMNAME>! I saw three"
-	line "trainers from far away who"
-	line "have some rare cards. Try"
-	line "battling them to see if"
-	line "they'll give you one!"
+	line "<RAMNAME>! Keep trying"
+	line "new decks and strategies."
+	line "There is always more to learn!"
+	done
+
+AeroIntroText:
+	text "I'm Aero. A good deck needs"
+	line "patience as well as power."
+	line "Can you get past my Snorlax?"
+	done
+
+AeroBattleDeclinedText:
+	text "No rush. I'll be here when"
+	line "you're ready for a duel."
+	done
+
+AeroBattleStartText:
+	text "Let's play with 6 Prizes."
+	line "Try to keep up with my pace!"
+	done
+
+AeroPlayerWonText:
+	text "You got past my defenses!"
+	line "That was a great duel."
+	done
+
+AeroRewardText:
+	text "Take this Snorlax as a prize"
+	line "for your first win against me."
+	done
+
+AeroPlayerLostText:
+	text "My Snorlax held its ground!"
+	line "Come back for another duel."
+	done
+
+KarlosIntroText:
+	text "I'm Karlos. This stage is"
+	line "a great place for a duel!"
+	line "My Poliwrath is ready to go."
+	done
+
+KarlosBattleDeclinedText:
+	text "All right. Come find me"
+	line "when you're ready to battle!"
+	done
+
+KarlosBattleStartText:
+	text "We'll use 6 Prizes."
+	line "Let's put on a good show!"
+	done
+
+KarlosPlayerWonText:
+	text "What a performance!"
+	line "You earned that victory."
+	done
+
+KarlosRewardText:
+	text "Here's a Poliwrath to mark"
+	line "your first victory over me!"
+	done
+
+KarlosPlayerLostText:
+	text "Poliwrath wins this round!"
+	line "Let's have a rematch sometime."
+	done
+
+ZachIntroText:
+	text "I'm Zach. I like to see how"
+	line "far a little Eevee can go."
+	line "Want to test my deck?"
+	done
+
+ZachBattleDeclinedText:
+	text "Maybe next time, then."
+	line "Eevee and I will be waiting!"
+	done
+
+ZachBattleStartText:
+	text "Let's make it a 6-Prize duel!"
+	line "Show me what your deck can do."
+	done
+
+ZachPlayerWonText:
+	text "You beat me fair and square!"
+	line "Your deck works really well."
+	done
+
+ZachRewardText:
+	text "For your first win, take"
+	line "this special Eevee card!"
+	done
+
+ZachPlayerLostText:
+	text "Eevee did it!"
+	line "Come back and try again."
 	done
 
 PsychicName:

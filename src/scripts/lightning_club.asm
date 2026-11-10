@@ -26,8 +26,33 @@ LightningClubAfterDuel:
 	db NPC_ZACH
 	db NPC_ZACH
 	dw Script_BeatZach
-	dw Script_LostToMasonChallenge
+	dw Script_LostToZach
 	db $00
+
+Script_Zach:
+	start_script
+	print_npc_text ZachIntroText
+	ask_question_jump ZachBattleQuestionText, .duel
+	print_text_quit_fully ZachBattleDeclinedText
+.duel
+	print_npc_text ZachBattleStartText
+	start_duel PRIZES_6, ZACH_BATTLE_DECK_ID, MUSIC_DUEL_THEME_1
+	quit_script_fully
+
+Script_BeatZach:
+	start_script
+	print_npc_text ZachPlayerWonText
+	jump_if_event_true EVENT_BEAT_ZACH, .done
+	max_out_event_value EVENT_BEAT_ZACH
+	print_npc_text ZachRewardText
+	give_card ZACH_EEVEE
+	show_card_received_screen ZACH_EEVEE
+.done
+	quit_script_fully
+
+Script_LostToZach:
+	start_script
+	print_text_quit_fully ZachPlayerLostText
 
 Script_Jennifer:
 	start_script

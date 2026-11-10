@@ -101,6 +101,12 @@ NPCMovement_db39:
 	db $fe, -14
 
 Preload_IshiharaInIshiharasHouse:
+	get_event_value EVENT_RECEIVED_LEGENDARY_CARDS
+	or a
+	jr z, .before_postgame
+	scf
+	ret
+.before_postgame
 	get_event_value EVENT_ISHIHARA_MENTIONED
 	or a
 	ret z
@@ -111,12 +117,11 @@ Preload_IshiharaInIshiharasHouse:
 Script_Ishihara:
 	start_script
 	max_out_event_value EVENT_ISHIHARA_MET
+	jump_if_event_true EVENT_RECEIVED_LEGENDARY_CARDS, .postgame
 	jump_if_event_equal EVENT_ISHIHARA_TRADE_STATE, ISHIHARA_INTRODUCTION, .ows_db80
-	jump_if_event_true EVENT_ISHIHARA_CONGRATULATED_PLAYER, .ows_db5a
-	jump_if_event_true EVENT_RECEIVED_LEGENDARY_CARDS, .ows_dc3e
-.ows_db5a
 	jump_if_event_true EVENT_TEMP_TRADED_WITH_ISHIHARA, .ows_db90
 	jump_if_event_false EVENT_ISHIHARA_WANTS_TO_TRADE, .ows_db90
+.select_trade
 	jump_if_event_equal EVENT_ISHIHARA_TRADE_STATE, ISHIHARA_TRADE_1_RUMORED, .ows_db93
 	jump_if_event_equal EVENT_ISHIHARA_TRADE_STATE, ISHIHARA_TRADE_1_OFFERED, .ows_db93
 	jump_if_event_equal EVENT_ISHIHARA_TRADE_STATE, ISHIHARA_TRADE_2_RUMORED, .ows_dbcc
@@ -212,6 +217,14 @@ Script_Ishihara:
 	give_card SURFING_PIKACHU_ALT_LV13
 	show_card_received_screen SURFING_PIKACHU_ALT_LV13
 	print_text_quit_fully Text073d
+
+.postgame
+	jump_if_event_false EVENT_ISHIHARA_CONGRATULATED_PLAYER, .ows_dc3e
+	jump_if_event_equal EVENT_ISHIHARA_TRADE_STATE, ISHIHARA_INTRODUCTION, .restart_trades
+	jump_if_event_less_than EVENT_ISHIHARA_TRADE_STATE, ISHIHARA_TRADES_COMPLETE, .select_trade
+.restart_trades
+	set_event EVENT_ISHIHARA_TRADE_STATE, ISHIHARA_TRADE_1_RUMORED
+	script_jump .select_trade
 
 .ows_dc3e
 	max_out_event_value EVENT_ISHIHARA_CONGRATULATED_PLAYER

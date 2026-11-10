@@ -2,17 +2,6 @@ HallOfHonorLoadMap:
 	ld a, SFX_LEGENDARY_CARDS
 	jp PlaySFX
 
-HallOfHonorAfterDuel:
-	ld hl, .after_duel_table
-	jp FindEndOfDuelScript
-
-.after_duel_table
-	db NPC_AERO
-	db NPC_AERO
-	dw Script_BeatAero
-	dw Script_LostToMasonChallenge
-	db $00
-
 Script_fbe1:
 	start_script
 	print_text Text05b5

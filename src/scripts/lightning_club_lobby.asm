@@ -37,7 +37,9 @@ Preload_ImakuniInLightningClubLobby:
 
 Script_Chap2:
 	start_script
+	jump_if_event_true EVENT_RECEIVED_LEGENDARY_CARDS, .offer_trade
 	jump_if_event_equal EVENT_CHAP2_TRADE_STATE, CHAP2_TRADE_COMPLETED, .ows_e3d6
+.offer_trade
 	test_if_event_equal EVENT_CHAP2_TRADE_STATE, CHAP2_TRADE_NOT_OFFERED
 	print_variable_npc_text Text060f, Text0610
 	set_event EVENT_CHAP2_TRADE_STATE, CHAP2_TRADE_OFFERED

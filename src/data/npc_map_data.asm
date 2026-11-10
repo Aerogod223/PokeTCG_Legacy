@@ -192,7 +192,7 @@ LightningClubNPCS:
 	db NPC_ISAAC, $0c, $04, NORTH
 	dw Preload_Isaac
 	db NPC_ZACH, $14, $16, SOUTH
-	dw Preload_PostgameTrainer
+	dw Preload_PostgameDuelist
 	db $00
 
 GrassClubEntranceNPCS:
@@ -386,11 +386,15 @@ ChallengeHallNPCS:
 	dw Preload_ChallengeHallNPCs1
 	db $ff, $12, $08, WEST ; pre-load function chooses NPC to load
 	dw Preload_ChallengeHallOpponent
+	db NPC_KARLOS, $08, $0c, SOUTH
+	dw Preload_PostgameDuelist
 	db $00
 
 PokemonDomeEntranceNPCS:
 	db NPC_RONALD1, $0e, $12, SOUTH
 	dw NULL
+	db NPC_AERO, $16, $08, SOUTH
+	dw Preload_PostgameDuelist
 	db $00
 
 PokemonDomeNPCS:
@@ -404,8 +408,6 @@ PokemonDomeNPCS:
 	dw Preload_Rod
 	db NPC_RONALD1, $1e, $00, SOUTH
 	dw Preload_Ronald1InPokemonDome
-	db NPC_KARLOS, $08, $0e, SOUTH
-	dw Preload_PostgameTrainer
 	db $00
 
 HallOfHonorNPCS:
@@ -421,6 +423,4 @@ HallOfHonorNPCS:
 	dw NULL
 	db NPC_LEGENDARY_CARD_RIGHT_SPARK, $0e, $0a, SOUTH
 	dw NULL
-	db NPC_AERO, $10, $10, SOUTH
-	dw Preload_PostgameTrainer
 	db $00

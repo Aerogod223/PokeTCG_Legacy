@@ -47,8 +47,10 @@ Script_e61c:
 
 Script_Lass2:
 	start_script
+	jump_if_event_true EVENT_RECEIVED_LEGENDARY_CARDS, .postgame
 	jump_if_event_true EVENT_TEMP_TRADED_WITH_LASS2, Script_e61c
 	jump_if_event_greater_or_equal EVENT_LASS2_TRADE_STATE, LASS2_TRADES_COMPLETE, Script_e61c
+.select_trade
 	jump_if_event_greater_or_equal EVENT_LASS2_TRADE_STATE, LASS2_TRADE_3_AVAILABLE, .ows_e6a1
 	jump_if_event_greater_or_equal EVENT_LASS2_TRADE_STATE, LASS2_TRADE_2_AVAILABLE, .ows_e66a
 	test_if_event_equal EVENT_LASS2_TRADE_STATE, LASS2_TRADE_1_AVAILABLE
@@ -124,6 +126,11 @@ Script_Lass2:
 	give_card BLASTOISE
 	show_card_received_screen BLASTOISE
 	print_text_quit_fully Text06f3
+
+.postgame
+	jump_if_event_less_than EVENT_LASS2_TRADE_STATE, LASS2_TRADES_COMPLETE, .select_trade
+	set_event EVENT_LASS2_TRADE_STATE, LASS2_TRADE_1_AVAILABLE
+	script_jump .select_trade
 
 Script_Granny2:
 	start_script

@@ -3086,3 +3086,21 @@ TextOffsets::
 	textpointer KindlingFireName
 	textpointer TournamentDecksLockedText
 	textpointer MasonBattleQuestionText
+	textpointer AeroIntroText
+	textpointer AeroBattleDeclinedText
+	textpointer AeroBattleStartText
+	textpointer AeroPlayerWonText
+	textpointer AeroRewardText
+	textpointer AeroPlayerLostText
+	textpointer KarlosIntroText
+	textpointer KarlosBattleDeclinedText
+	textpointer KarlosBattleStartText
+	textpointer KarlosPlayerWonText
+	textpointer KarlosRewardText
+	textpointer KarlosPlayerLostText
+	textpointer ZachIntroText
+	textpointer ZachBattleDeclinedText
+	textpointer ZachBattleStartText
+	textpointer ZachPlayerWonText
+	textpointer ZachRewardText
+	textpointer ZachPlayerLostText
