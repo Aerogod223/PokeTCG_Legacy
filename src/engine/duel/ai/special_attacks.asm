@@ -39,6 +39,8 @@ HandleSpecialAIAttacks:
 	jp z, .EnergyAbsorption	
 	cp MEWTWO_ALT_LV60
 	jp z, .EnergyAbsorption
+	cp ZACH_EEVEE
+	jp z, AIHandleUnstableGene
 	cp MEW_LV23
 	jp z, .DevolutionBeam
 	cp KANGASKHAN

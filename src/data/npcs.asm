@@ -1542,8 +1542,8 @@ ZachNPCHeader:
 KarlosNPCHeader:
 	db NPC_KARLOS
 	db SPRITE_OW_KARLOS
-	db SPRITE_ANIM_LIGHT_NPC_UP
-	db SPRITE_ANIM_RED_NPC_UP
+	db SPRITE_ANIM_DARK_NPC_UP
+	db SPRITE_ANIM_BLUE_NPC_UP
 	db $00
 	dw Script_Karlos
 	tx KarlosTrainerName

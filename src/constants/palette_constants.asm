@@ -161,5 +161,8 @@
 	const PALETTE_159               ; $9f
 	const PALETTE_160               ; $a0
 	const PALETTE_161               ; $a1
+	const PALETTE_AERO_PORTRAIT
+	const PALETTE_KARLOS_PORTRAIT
+	const PALETTE_DR_MASON_PORTRAIT
 
 DEF NUM_PALETTES EQU const_value

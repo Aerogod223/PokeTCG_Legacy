@@ -463,10 +463,13 @@ FindZachEeveeEnergy:
 	or a
 	ret
 
-; AI selects the first matching Basic Energy card in its deck.
+; Prefer a missing Tri Attack type, falling back to the first eligible Energy.
 AIFindZachEeveeEnergy:
+	ld e, PLAY_AREA_ARENA
+	call GetPlayAreaCardAttachedEnergies
 	call CreateDeckCardList
 	ld hl, wDuelTempList
+	ld c, $ff
 .loop
 	ld a, [hli]
 	cp $ff
@@ -475,12 +478,33 @@ AIFindZachEeveeEnergy:
 	call _GetCardIDFromDeckIndex
 	call IsZachEeveeEnergy
 	jr nc, .loop
+	ld d, a
+	ld a, c
+	cp $ff
+	jr nz, .check_type
+	ld c, b
+.check_type
+	ld a, d
+	cp FIRE_ENERGY
+	jr z, .fire
+	cp WATER_ENERGY
+	jr z, .water
+	ld a, [wAttachedEnergies + LIGHTNING]
+	jr .check_count
+.fire
+	ld a, [wAttachedEnergies + FIRE]
+	jr .check_count
+.water
+	ld a, [wAttachedEnergies + WATER]
+.check_count
+	or a
+	jr nz, .loop
 	ld a, b
 	ldh [hTemp_ffa0], a
 	or a
 	ret
 .none_found
-	ld a, -1
+	ld a, c
 	ldh [hTemp_ffa0], a
 	or a
 	ret
@@ -513,7 +537,9 @@ IsZachEeveeEnergy:
 	cp WATER_ENERGY
 	jr z, .eligible
 	cp LIGHTNING_ENERGY
-	ret nz
+	jr z, .eligible
+	or a
+	ret
 .eligible
 	scf
 	ret

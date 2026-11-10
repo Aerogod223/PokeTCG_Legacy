@@ -71,8 +71,7 @@ PoliwrathStrangeSpiralEffectCommands:
 	dbw EFFECTCMDTYPE_INITIAL_EFFECT_2, OncePerTurnPokePowerCheck
 	dbw EFFECTCMDTYPE_REQUIRE_SELECTION, PoliwrathStrangeSpiral_PlayerSelection
 	dbw EFFECTCMDTYPE_AI_SELECTION, PoliwrathStrangeSpiral_AISelection
-	dbw EFFECTCMDTYPE_DISCARD_ENERGY, CardDiscardEffect
-	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, ConfusionEffect
+	dbw EFFECTCMDTYPE_BEFORE_DAMAGE, PoliwrathStrangeSpiral_Effect
 	db  $00
 
 EnergySpikeEffectCommands:

@@ -78,6 +78,7 @@ AIDecidePlayPokemonCard:
 
 ; if AI score is >= 180, play this Basic Pokémon from the hand.
 .check_score
+	call AIEncourageMasonBench
 	pop hl
 	ld a, [wAIScore]
 	cp 180

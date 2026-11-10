@@ -74,7 +74,7 @@ HandleAIPkmnPowers:
 	cp VENUSAUR_LV64
 	jr nz, .heal
 	call HandleAISolarPower
-	jr .next_1
+	jp .next_1
 
 .heal
 	cp VILEPLUME
@@ -160,6 +160,11 @@ HandleAIPkmnPowers:
 	jr .next_1
 
 .buzzap
+	cp KARLOS_POLIWRATH
+	jr nz, .electrode
+	call HandleAIStrangeSpiral
+	jr .next_1
+.electrode
 	cp ELECTRODE_LV40
 	call z, HandleAIBuzzap
 ;	fallthrough
@@ -171,6 +176,82 @@ HandleAIPkmnPowers:
 	ld a, c
 	cp b
 	jp nz, .loop_play_area
+	ret
+
+
+HandleAIStrangeSpiral:
+	ld a, c
+	or a
+	ret nz
+	push bc
+	call AIDecideStrangeSpiral
+	jr nc, .done
+	push af
+	ld a, [wce08]
+	ldh [hTempCardIndex_ff9f], a
+	xor a ; PLAY_AREA_ARENA
+	ldh [hTemp_ffa0], a
+	ld a, OPPACTION_USE_PKMN_POWER
+	bank1call AIMakeDecision
+	pop af
+	ldh [hTemp_ffa0], a
+	ld a, OPPACTION_EXECUTE_PKMN_POWER_EFFECT
+	bank1call AIMakeDecision
+	ld a, OPPACTION_DUEL_MAIN_SCENE
+	bank1call AIMakeDecision
+.done
+	pop bc
+	ret
+
+; Confuse only by spending a spare basic Energy, keeping Waterfall usable.
+; output: carry set and a = attached Energy deck index when worthwhile
+AIDecideStrangeSpiral:
+	rst SwapTurn
+	call CheckIfActiveCardCanBeAffectedByStatus
+	rst SwapTurn
+	ret nc
+	ld a, DUELVARS_ARENA_CARD_STATUS
+	call GetNonTurnDuelistVariable
+	and CNF_SLP_PRZ
+	cp CONFUSED
+	jr z, .decline
+	ld e, PLAY_AREA_ARENA
+	call GetPlayAreaCardAttachedEnergies
+	ld a, [wAttachedEnergies + WATER]
+	or a
+	jr z, .decline
+	ld a, [wAttachedEnergies + FIGHTING]
+	or a
+	jr z, .decline
+	cp 2
+	ld b, FIGHTING_ENERGY
+	jr nc, .find_energy
+	ld a, [wAttachedEnergies + WATER]
+	cp 2
+	jr c, .decline
+	ld b, WATER_ENERGY
+.find_energy
+	ld c, 0
+.loop
+	ld a, c
+	get_turn_duelist_var
+	cp CARD_LOCATION_ARENA
+	jr nz, .next
+	ld a, c
+	call _GetCardIDFromDeckIndex
+	cp b
+	jr z, .chosen
+.next
+	inc c
+	ld a, c
+	cp DECK_SIZE
+	jr c, .loop
+.decline
+	or a
+	ret
+.chosen
+	ld a, c
+	scf
 	ret
 
 

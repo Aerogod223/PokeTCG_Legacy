@@ -1374,15 +1374,15 @@ SECTION "Postgame Trainer Sprites", ROMX
 
 DrMasonGfx::
 	dw 36
-	INCBIN "gfx/duelists/dr_mason.2bpp"
+	INCBIN "gfx/duelists/dr_mason_portrait.2bpp"
 
 AeroGfx::
 	dw 36
-	INCBIN "gfx/duelists/aero.2bpp"
+	INCBIN "gfx/duelists/aero_portrait.2bpp"
 
 KarlosGfx::
 	dw 36
-	INCBIN "gfx/duelists/karlos.2bpp"
+	INCBIN "gfx/duelists/karlos_portrait.2bpp"
 
 ZachGfx::
 	dw 36

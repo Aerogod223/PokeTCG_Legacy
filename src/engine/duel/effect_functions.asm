@@ -853,6 +853,30 @@ PoliwrathStrangeSpiral_AISelection:
 	ldh [hTemp_ffa0], a
 	ret
 
+; Powers do not execute DISCARD_ENERGY or resolve the attack status queue.
+PoliwrathStrangeSpiral_Effect:
+	call CardDiscardEffect
+	ld a, DUELVARS_ARENA_CARD_FLAGS
+	get_turn_duelist_var
+	set USED_PKMN_POWER_THIS_TURN_F, [hl]
+	rst SwapTurn
+	call CheckIfActiveCardCanBeAffectedByStatus
+	jr nc, .unaffected
+	ld a, DUELVARS_ARENA_CARD_STATUS
+	get_turn_duelist_var
+	and PSN_DBLPSN
+	or CONFUSED
+	ld [hl], a
+	rst SwapTurn
+	ld a, ATK_ANIM_CONFUSION
+	call PlayTrainerEffectAnimation
+	bank1call DrawDuelHUDs
+	ret
+.unaffected
+	rst SwapTurn
+	ldtx hl, ThereWasNoEffectText
+	jp DrawWideTextBox_WaitForInput
+
 PoliwrathStrangeSpiral_CreateEnergyList:
 	ld a, TYPE_ENERGY_WATER
 	call CreateListOfEnergyAttachedToActive

@@ -1029,6 +1029,18 @@ SGBData_AaronPortraitPals:
 	dw $20 ; length
 	INCBIN "data/sgb_data/aaron_pals.bin.lz"
 
+SGBData_AeroPortraitPals:
+	dw $20 ; length
+	INCBIN "data/sgb_data/aero_pals.bin.lz"
+
+SGBData_KarlosPortraitPals:
+	dw $20 ; length
+	INCBIN "data/sgb_data/karlos_pals.bin.lz"
+
+SGBData_DrMasonPortraitPals:
+	dw $20 ; length
+	INCBIN "data/sgb_data/dr_mason_pals.bin.lz"
+
 SGBData_GameBoyLink:
 	dw $40 ; length
 	INCBIN "data/sgb_data/gameboy_link_pals.bin.lz"

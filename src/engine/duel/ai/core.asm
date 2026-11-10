@@ -1976,7 +1976,7 @@ CheckIfDefendingPokemonCanKnockOutWithThisAttack:
 
 ; preserves all registers except f (flags)
 ; output:
-; carry = set: if AI's deck ID is in the original boss range or rematch range
+; carry = set: if AI uses an original boss, rematch, or postgame challenge deck
 CheckIfOpponentHasBossDeckID:
 	push af
 	ld a, [wOpponentDeckID]
@@ -1987,7 +1987,7 @@ CheckIfOpponentHasBossDeckID:
 .check_rematch_decks
 	cp REMATCH_FIRST_STRIKE_DECK_ID
 	jr c, .no_carry
-	cp REMATCH_IMAKUNI_DECK_ID + 1
+	cp DR_MASON_BATTLE_DECK_ID + 1
 	jr nc, .no_carry
 .boss_deck
 	pop af

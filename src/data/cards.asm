@@ -10489,18 +10489,18 @@ MurrayWeezingCard:
 	db ATK_ANIM_PKMN_POWER_1 ; animation
 
 	; attack 2
-	energy GRASS, 1, COLORLESS, 1 ; energies
-	tx RevoltingGasName ; name
-	tx RevoltingGasDescription ; description
+	energy GRASS, 1, COLORLESS, 2 ; energies
+	tx SelfdestructName ; name
+	tx WeezingsSelfdestructDescription ; description
 	dw NONE ; description (cont)
-	db 10 ; damage
+	db 60 ; damage
 	db DAMAGE_NORMAL ; category
-	dw RevoltingGasEffectCommands ; effect commands
-	db NONE ; flags 1
+	dw Selfdestruct60And10EffectCommands ; effect commands
+	db HIGH_RECOIL ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
-	db 0
-	db ATK_ANIM_SMOG ; animation
+	db 60 ; amount of recoil damage (used to determine the HIGH_RECOIL attack score penalty)
+	db ATK_ANIM_SELFDESTRUCT ; animation
 
 	db 2 ; retreat cost
 	db WR_PSYCHIC ; weakness
@@ -10520,7 +10520,7 @@ BossCharizardCard:
 	db STAR ; rarity
 	db PROMOTIONAL | PRO ; sets
 	db BOSS_CHARIZARD
-	db 110 ; hp
+	db 120 ; hp
 	db STAGE2 ; stage
 	tx CharmeleonName ; pre-evo name
 
@@ -10539,7 +10539,7 @@ BossCharizardCard:
 	db ATK_ANIM_PKMN_POWER_1 ; animation
 
 	; attack 2
-	energy FIRE, 3 ; energies
+	energy FIRE, 2 ; energies
 	tx CharizardFireBlastName ; name
 	tx CharizardFireBlastDescription ; description
 	dw NONE ; description (cont)
@@ -10579,7 +10579,7 @@ BossBlastoiseCard:
 	tx BlastoiseBubblebeamName ; name
 	tx BubblebeamDescription ; description
 	dw NONE ; description (cont)
-	db 30 ; damage
+	db 20 ; damage
 	db DAMAGE_NORMAL ; category
 	dw BubblebeamEffectCommands ; effect commands
 	db NONE ; flags 1
@@ -10620,7 +10620,7 @@ AeroSnorlaxCard:
 	db STAR ; rarity
 	db PROMOTIONAL | PRO ; sets
 	db AERO_SNORLAX
-	db 80 ; hp
+	db 90 ; hp
 	db BASIC ; stage
 	dw NONE ; pre-evo name
 
@@ -10639,11 +10639,11 @@ AeroSnorlaxCard:
 	db ATK_ANIM_HIT ; animation
 
 	; attack 2
-	energy COLORLESS, 5 ; energies
+	energy COLORLESS, 4 ; energies
 	tx ExerciseName ; name
 	tx ExerciseDescription ; description
 	dw NONE ; description (cont)
-	db 50 ; damage
+	db 40 ; damage
 	db DAMAGE_NORMAL ; category
 	dw DrainAllEffectCommands ; effect commands
 	db NONE ; flags 1
@@ -10693,7 +10693,7 @@ KarlosPoliwrathCard:
 	tx WaterfallName ; name
 	tx WaterfallDescription ; description
 	dw NONE ; description (cont)
-	db 20 ; damage
+	db 30 ; damage
 	db DAMAGE_NORMAL ; category
 	dw PoliwrathWaterfallEffectCommands ; effect commands
 	db NONE ; flags 1
@@ -10720,7 +10720,7 @@ ZachEeveeCard:
 	db CIRCLE ; rarity
 	db PROMOTIONAL | PRO ; sets
 	db ZACH_EEVEE
-	db 50 ; hp
+	db 70 ; hp
 	db BASIC ; stage
 	tx EeveeName ; pre-evo name
 
@@ -10734,7 +10734,7 @@ ZachEeveeCard:
 	dw ZachEeveeEnergyEffectCommands ; effect commands
 	db NONE ; flags 1
 	db NONE ; flags 2
-	db NONE ; flags 3
+	db SPECIAL_AI_HANDLING ; flags 3
 	db 0
 	db ATK_ANIM_PKMN_POWER_1 ; animation
 
@@ -10743,7 +10743,7 @@ ZachEeveeCard:
 	tx TriAttackName ; name
 	tx TriAttackDescription ; description
 	dw NONE ; description (cont)
-	db 70 ; damage
+	db 80 ; damage
 	db DAMAGE_NORMAL ; category
 	dw DiscardAllAttachedEnergyEffectCommands ; effect commands
 	db NONE ; flags 1

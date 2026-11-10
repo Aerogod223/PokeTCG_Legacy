@@ -3925,6 +3925,13 @@ AIDecide_ItemFinder:
 ; output:
 ;	carry = set:  if the AI decided to play Imakuni?
 AIDecide_Imakuni:
+	ld a, [wOpponentDeckID]
+	cp REMATCH_IMAKUNI_DECK_ID
+	jr nz, .check_status
+	; Save Imakuni? for Powerful Confusion instead of confusing our own attacker.
+	or a
+	ret
+.check_status
 	ld a, DUELVARS_ARENA_CARD_STATUS
 	get_turn_duelist_var
 	and CNF_SLP_PRZ

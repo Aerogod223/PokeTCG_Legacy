@@ -135,6 +135,15 @@ Palette2::
 	rgb  5,  7, 31
 	rgb  0,  0,  5
 
+PaletteDrMasonPortrait::
+	db 0
+	db 1
+
+	rgb 31, 28, 24
+	rgb 28, 15,  8
+	rgb  6, 10, 18
+	rgb  1,  2,  4
+
 	rgb 25, 31, 31
 	rgb  9, 21, 31
 	rgb 31,  0, 31
@@ -3487,3 +3496,21 @@ Palette161::
 	rgb 27, 16,  9 ; light brown, used for Mint's hair and shading
 	rgb  0, 12, 31 ; blue, used for Mint's clothing and the background
 	rgb  5,  0,  0 ; dark brown, used for shading Mint's hair and outlines
+
+PaletteAeroPortrait::
+	db 0
+	db 1
+
+	rgb 31, 26, 19
+	rgb 27,  0,  0
+	rgb 14,  9,  5
+	rgb  0,  4,  0
+
+PaletteKarlosPortrait::
+	db 0
+	db 1
+
+	rgb 31, 26, 19
+	rgb 27, 16,  9
+	rgb  0, 12, 31
+	rgb  0,  0,  5
