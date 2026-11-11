@@ -7998,6 +7998,8 @@ MoveAllKnockedOutPokemonToDiscardPile:
 MoveAllTurnHolderKnockedOutPokemonToDiscardPile:
 	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
 	get_turn_duelist_var
+	or a
+	ret z
 	ld d, a
 	ld l, DUELVARS_ARENA_CARD_HP
 	ld e, PLAY_AREA_ARENA
@@ -8138,8 +8140,9 @@ ReplaceKnockedOutPokemon:
 CheckForAlivePokemonInBench:
 	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
 	get_turn_duelist_var
+	cp 2
+	jr c, .set_carry ; no Bench if the last Pokemon was returned to hand
 	dec a ; ignore the Active Pokémon
-	jr z, .set_carry ; return carry if there are no Benched Pokémon
 	ld c, a ; number of Benched Pokémon
 	ld b, 0 ; counter for Pokémon with HP > 0
 	ld l, DUELVARS_BENCH1_CARD_HP
@@ -8303,6 +8306,8 @@ TurnDuelistTakePrizes:
 CheckIfTurnDuelistPlayAreaPokemonAreAllKnockedOut:
 	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
 	get_turn_duelist_var
+	or a
+	jr z, .all_knocked_out
 	ld c, a
 	ld l, DUELVARS_ARENA_CARD_HP
 .loop
@@ -8311,6 +8316,7 @@ CheckIfTurnDuelistPlayAreaPokemonAreAllKnockedOut:
 	ret nz ; return no carry if this Pokémon has more than 0 HP
 	dec c
 	jr nz, .loop
+.all_knocked_out
 	scf
 	ret
 

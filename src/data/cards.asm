@@ -9642,7 +9642,7 @@ DragoniteLv45Card:
 	tx SlamName ; name
 	tx DoubleAttackX40Description ; description
 	dw NONE ; description (cont)
-	db 50 ; damage
+	db 40 ; damage
 	db DAMAGE_X ; category
 	dw Flip2For40EffectCommands ; effect commands
 	db NONE ; flags 1

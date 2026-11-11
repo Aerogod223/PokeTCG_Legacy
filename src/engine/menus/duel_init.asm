@@ -253,16 +253,16 @@ OpponentTitlesAndDeckNames:
 	tx StrangeLifeformText
 	tx RematchImakuniDeckName
 
-	tx ClubMemberText
+	tx NullText
 	tx AeroBattleDeckName
 
-	tx ClubMemberText
+	tx NullText
 	tx KarlosBattleDeckName
 
-	tx ClubMemberText
+	tx NullText
 	tx ZachBattleDeckName
 
-	tx ClubMemberText
+	tx NullText
 	tx DrMasonBattleDeckName
 
 	assert_table_length NUM_DECK_IDS

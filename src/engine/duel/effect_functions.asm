@@ -4004,9 +4004,10 @@ ReturnDefendingPokemonToTheHandEffect:
 ; empty the Arena card slot
 	ld l, DUELVARS_ARENA_CARD
 	ld a, [hl]
-	ld [hl], -1 ; empty play area slot
-	ld l, DUELVARS_ARENA_CARD_HP
-	ld [hl], 0
+	push af
+	ld e, PLAY_AREA_ARENA
+	call EmptyPlayAreaSlot
+	pop af
 	call LoadCardDataToBuffer1_FromDeckIndex
 	ld hl, wLoadedCard1Name
 	ld a, [hli]
@@ -4020,6 +4021,11 @@ ReturnDefendingPokemonToTheHandEffect:
 	ld a, TRUE
 	ld [wDefendingWasForcedToSwitch], a
 	bank1call ReplaceKnockedOutPokemon
+	; Keep the old count until replacement has checked the original Bench.
+	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
+	get_turn_duelist_var
+	dec [hl]
+	call ShiftTurnPokemonToFirstPlayAreaSlots
 	jp SwapTurn
 
 
