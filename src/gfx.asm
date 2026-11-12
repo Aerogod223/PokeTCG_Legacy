@@ -2393,6 +2393,14 @@ BossBlastoiseCardGfx::
 	INCBIN "gfx/cards/blastoise2.2bpp"
 	INCBIN "gfx/cards/blastoise2.pal"
 
+AeroSnorlaxCardGfx::
+	INCBIN "gfx/cards/snorlax2.2bpp"
+	INCBIN "gfx/cards/snorlax2.pal"
+
+KarlosPoliwrathCardGfx::
+	INCBIN "gfx/cards/poliwrath2.2bpp"
+	INCBIN "gfx/cards/poliwrath2.pal"
+
 NickExeggutorCardGfx::
 	INCBIN "gfx/cards/exeggutor2.2bpp"
 	INCBIN "gfx/cards/exeggutor2.pal"

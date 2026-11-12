@@ -10615,7 +10615,7 @@ BossBlastoiseCard:
 
 AeroSnorlaxCard:
 	db TYPE_PKMN_COLORLESS ; type
-	gfx SnorlaxCardGfx ; gfx
+	gfx AeroSnorlaxCardGfx ; gfx
 	tx AeroSnorlaxName ; name
 	db STAR ; rarity
 	db PROMOTIONAL | PRO ; sets
@@ -10665,7 +10665,7 @@ AeroSnorlaxCard:
 
 KarlosPoliwrathCard:
 	db TYPE_PKMN_WATER ; type
-	gfx PoliwrathCardGfx ; gfx
+	gfx KarlosPoliwrathCardGfx ; gfx
 	tx KarlosPoliwrathName ; name
 	db STAR ; rarity
 	db PROMOTIONAL | PRO ; sets
