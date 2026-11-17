@@ -10715,7 +10715,7 @@ KarlosPoliwrathCard:
 
 ZachEeveeCard:
 	db TYPE_PKMN_COLORLESS ; type
-	gfx EeveeCardGfx ; gfx
+	gfx ZachEeveeCardGfx ; gfx
 	tx ZachEeveeName ; name
 	db CIRCLE ; rarity
 	db PROMOTIONAL | PRO ; sets
@@ -10765,7 +10765,7 @@ ZachEeveeCard:
 
 ImakunisMewtwoCard:
 	db TYPE_PKMN_PSYCHIC ; type
-	gfx MewtwoLv60CardGfx ; gfx
+	gfx ImakunisMewtwoCardGfx ; gfx
 	tx ImakunisMewtwoName ; name
 	db STAR ; rarity
 	db PROMOTIONAL | PRO ; sets

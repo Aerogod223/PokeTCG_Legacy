@@ -2401,6 +2401,15 @@ KarlosPoliwrathCardGfx::
 	INCBIN "gfx/cards/poliwrath2.2bpp"
 	INCBIN "gfx/cards/poliwrath2.pal"
 
+ZachEeveeCardGfx::
+	INCBIN "gfx/cards/zachs_eevee.2bpp"
+	INCBIN "gfx/cards/zachs_eevee.pal"
+
+ImakuniMewtwoCardGfx::
+	INCBIN "gfx/cards/imakunis_mewtwo.2bpp"
+	INCBIN "gfx/cards/imakunis_mewtwo.pal"
+
+
 NickExeggutorCardGfx::
 	INCBIN "gfx/cards/exeggutor2.2bpp"
 	INCBIN "gfx/cards/exeggutor2.pal"
