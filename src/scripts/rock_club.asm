@@ -111,6 +111,7 @@ Script_LostToGene:
 	start_duel PRIZES_6, ROCK_CRUSHER_DECK_ID, MUSIC_DUEL_THEME_2
 	quit_script_fully
 .rematch_question
+	print_npc_text GeneRematchText
 	ask_question_jump ClubMasterWantARematchText, .rematch_duel
 	quit_script_fully
 .rematch_duel

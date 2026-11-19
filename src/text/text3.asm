@@ -1033,8 +1033,8 @@ UnusedText0393: ; Unused
 	text "????"
 	done
 
-UnusedText0394: ; Unused
-	text "????"
+DrMasonClassText:
+	text "Mister Professor Scientist"
 	done
 
 OpponentTitleAndNameText:
@@ -1157,8 +1157,8 @@ TechNPCName:
 	text "Tech"
 	done
 
-UnusedText03b3: ; Unused
-	text "????"
+TravelerText:
+	text "Traveler"
 	done
 
 ChrisNPCName:

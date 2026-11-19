@@ -628,6 +628,59 @@ ZachPlayerLostText:
 	line "Come back and try again."
 	done
 
+MitchRematchText:
+	text "I've trained even"
+	line "harder. Ready to"
+	line "test my strength?"
+	done
+
+GeneRematchText:
+	text "I dug up a new"
+	line "challenge in the"
+	line "rocks. Ready to"
+	line "unearth it?"
+	done
+
+AmyRematchText:
+	text "The tide is rising"
+	line "again! Can you keep"
+	line "up this time?"
+	done
+
+IsaacRematchText:
+	text "I've tuned my deck"
+	line "for another duel."
+	line "Ready to spark"
+	line "things up?"
+	done
+
+NikkiRematchText:
+	text "My strategy has"
+	line "bloomed with the"
+	line "flowers. Shall we"
+	line "duel again?"
+	done
+
+MurrayRematchText:
+	text "Your mind grows"
+	line "sharper each time."
+	line "Let us test your"
+	line "strategy again."
+	done
+
+RickRematchText:
+	text "My new experiment"
+	line "is ready. Let's see"
+	line "what happens now!"
+	done
+
+KenRematchText:
+	text "The flames are"
+	line "burning bright!"
+	line "Ready to face my"
+	line "fire deck again?"
+	done
+
 PsychicName:
 	text "Psychic"
 	done

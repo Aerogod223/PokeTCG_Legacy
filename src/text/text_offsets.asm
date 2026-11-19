@@ -3104,3 +3104,13 @@ TextOffsets::
 	textpointer ZachPlayerWonText
 	textpointer ZachRewardText
 	textpointer ZachPlayerLostText
+	textpointer MitchRematchText
+	textpointer GeneRematchText
+	textpointer AmyRematchText
+	textpointer IsaacRematchText
+	textpointer NikkiRematchText
+	textpointer MurrayRematchText
+	textpointer RickRematchText
+	textpointer KenRematchText
+	textpointer DrMasonClassText
+	textpointer TravelerText

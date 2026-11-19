@@ -445,7 +445,7 @@ DeckIDDuelConfigurations:
 	tx AeroTrainerName ; name text ID
 	db PRIZES_6 ; number of prize cards
 	db MUSIC_DUEL_THEME_1 ; theme
-	tx ClubMemberText ; rank
+	tx TravelerText ; rank
 	dw NULL ; element
 
 	db KARLOS_BATTLE_DECK_ID ; deck ID
@@ -453,7 +453,7 @@ DeckIDDuelConfigurations:
 	tx KarlosTrainerName ; name text ID
 	db PRIZES_6 ; number of prize cards
 	db MUSIC_DUEL_THEME_1 ; theme
-	tx ClubMemberText ; rank
+	tx TravelerText ; rank
 	tx ChallengeMachineWaterIconText ; element
 
 	db ZACH_BATTLE_DECK_ID ; deck ID
@@ -461,7 +461,7 @@ DeckIDDuelConfigurations:
 	tx ZachTrainerName ; name text ID
 	db PRIZES_6 ; number of prize cards
 	db MUSIC_DUEL_THEME_1 ; theme
-	tx ClubMemberText ; rank
+	tx TravelerText ; rank
 	dw NULL ; element
 
 	db DR_MASON_BATTLE_DECK_ID ; deck ID
@@ -469,7 +469,7 @@ DeckIDDuelConfigurations:
 	tx DrMasonNPCName ; name text ID
 	db PRIZES_6 ; number of prize cards
 	db MUSIC_DUEL_THEME_1 ; theme
-	tx ClubMemberText ; rank
+	tx DrMasonClassText ; rank
 	dw NULL ; element
 
 	assert_table_length NUM_AI_DECK_IDS
