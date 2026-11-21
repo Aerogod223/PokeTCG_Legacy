@@ -2478,11 +2478,11 @@ NinetalesLv32Card:
 	db ATK_ANIM_LURE ; animation
 
 	; attack 2
-	energy FIRE, 4, ; energies
+	energy FIRE, 2, COLORLESS 2 ; energies
 	tx FireBlastName ; name
 	tx FireBlastDescription ; description
 	dw NONE ; description (cont)
-	db 80 ; damage
+	db 70 ; damage
 	db DAMAGE_NORMAL ; category
 	dw DiscardAttachedFireEnergyEffectCommands ; effect commands
 	db NONE ; flags 1
@@ -2609,7 +2609,7 @@ ArcanineLv34Card:
 	db PROMOSTAR ; rarity
 	db PROMOTIONAL | PRO ; sets
 	db ARCANINE_LV34
-	db 80 ; hp
+	db 90 ; hp
 	db STAGE1 ; stage
 	tx GrowlitheName ; pre-evo name
 
@@ -2778,7 +2778,7 @@ RapidashCard:
 	db ATK_ANIM_HIT ; animation
 
 	; attack 2
-	energy FIRE, 3, ; energies
+	energy FIRE, 1, COLORLESS, 2 ; energies
 	tx AgilityName ; name
 	tx RapidashsAgilityDescription ; description
 	dw NONE ; description (cont)
@@ -2914,11 +2914,11 @@ FlareonLv22Card:
 	tx EeveeName ; pre-evo name
 
 	; attack 1
-	energy COLORLESS, 3 ; energies
+	energy COLORLESS, 2 ; energies
 	tx BiteName ; name
 	dw NONE ; description
 	dw NONE ; description (cont)
-	db 30 ; damage
+	db 20 ; damage
 	db DAMAGE_NORMAL ; category
 	dw NONE ; effect commands
 	db NONE ; flags 1
@@ -3859,7 +3859,7 @@ KinglerCard:
 	db DIAMOND ; rarity
 	db EVOLUTION | FOSSIL ; sets
 	db KINGLER
-	db 80 ; hp
+	db 90 ; hp
 	db STAGE1 ; stage
 	tx KrabbyName ; pre-evo name
 
@@ -3959,7 +3959,7 @@ SeadraCard:
 	db DIAMOND ; rarity
 	db LABORATORY | FOSSIL ; sets
 	db SEADRA
-	db 60 ; hp
+	db 70 ; hp
 	db STAGE1 ; stage
 	tx HorseaName ; pre-evo name
 
@@ -3991,7 +3991,7 @@ SeadraCard:
 	db 0
 	db ATK_ANIM_QUICK_ATTACK ; animation
 
-	db 0 ; retreat cost
+	db 1 ; retreat cost
 	db WR_GRASS ; weakness
 	db WR_FIRE ; resistance
 	tx DragonName ; category
@@ -5064,11 +5064,11 @@ RaichuLv45Card:
 	tx PikachuName ; pre-evo name
 
 	; attack 1
-	energy LIGHTNING, 2, COLORLESS, 1 ; energies
+	energy LIGHTNING, 2 ; energies
 	tx GigashockName ; name
 	tx GigashockDescription ; description
 	dw NONE ; description (cont)
-	db 30 ; damage
+	db 20 ; damage
 	db DAMAGE_NORMAL ; category
 	dw Also10DamageTo3BenchedEffectCommands ; effect commands
 	db DAMAGE_TO_OPPONENT_BENCH ; flags 1
@@ -5382,7 +5382,7 @@ ElectrodeLv35Card:
 	tx EnergySpikeName ; name
 	tx EnergySpikeDescription ; description
 	dw NONE ; description (cont)
-	db 10 ; damage
+	db 20 ; damage
 	db DAMAGE_NORMAL ; category
 	dw EnergySpikeEffectCommands ; effect commands
 	db NONE ; flags 1
@@ -5391,7 +5391,7 @@ ElectrodeLv35Card:
 	db 0
 	db ATK_ANIM_GLOW_EFFECT ; animation
 
-	db 1 ; retreat cost
+	db 2 ; retreat cost
 	db WR_FIGHTING ; weakness
 	db NONE ; resistance
 	tx BallName ; category
@@ -5432,7 +5432,7 @@ ElectrodeLv42Card:
 	tx ChainLightningName ; name
 	tx ChainLightningDescription ; description
 	dw NONE ; description (cont)
-	db 20 ; damage
+	db 40 ; damage
 	db DAMAGE_NORMAL ; category
 	dw ChainLightningEffectCommands ; effect commands
 	db NONE ; flags 1
@@ -5659,7 +5659,7 @@ ZapdosLv40Card:
 	db STAR ; rarity
 	db MYSTERY | FOSSIL ; sets
 	db ZAPDOS_LV40
-	db 110 ; hp
+	db 90 ; hp
 	db BASIC ; stage
 	dw NONE ; pre-evo name
 
@@ -5709,7 +5709,7 @@ ZapdosLv64Card:
 	db STAR ; rarity
 	db COLOSSEUM | NONE ; sets
 	db ZAPDOS_LV64
-	db 80 ; hp
+	db 90 ; hp
 	db BASIC ; stage
 	dw NONE ; pre-evo name
 
@@ -5991,7 +5991,7 @@ DugtrioCard:
 	db 0
 	db ATK_ANIM_HIT ; animation
 
-	db 1 ; retreat cost
+	db 0 ; retreat cost
 	db WR_GRASS ; weakness
 	db NONE ; resistance
 	tx MoleName ; category
@@ -6314,7 +6314,7 @@ GravelerCard:
 	tx GeodudeName ; pre-evo name
 
 	; attack 1
-	energy FIGHTING, 2 ; energies
+	energy FIGHTING, 1 ; energies
 	tx HardenName ; name
 	tx GravelersHardenDescription ; description
 	dw NONE ; description (cont)
@@ -6659,7 +6659,7 @@ HitmonchanCard:
 	db STAR ; rarity
 	db COLOSSEUM | NONE ; sets
 	db HITMONCHAN
-	db 60 ; hp
+	db 70 ; hp
 	db BASIC ; stage
 	dw NONE ; pre-evo name
 
@@ -6778,11 +6778,11 @@ RhydonCard:
 	db ATK_ANIM_HIT ; animation
 
 	; attack 2
-	energy FIGHTING, 2, COLORLESS, 1 ; energies
+	energy FIGHTING, 3 ; energies
 	tx RamName ; name
 	tx RamDescription ; description
 	tx RamDescriptionCont ; description (cont)
-	db 60 ; damage
+	db 70 ; damage
 	db DAMAGE_NORMAL ; category
 	dw Recoil20OpponentSwitchesActiveEffectCommands ; effect commands
 	db LOW_RECOIL ; flags 1
@@ -6864,11 +6864,11 @@ KabutopsCard:
 	tx KabutoName ; pre-evo name
 
 	; attack 1
-	energy FIGHTING, 2 ; energies
+	energy FIGHTING, 1 ; energies
 	tx SharpSickleName ; name
 	dw NONE ; description
 	dw NONE ; description (cont)
-	db 40 ; damage
+	db 30 ; damage
 	db DAMAGE_NORMAL ; category
 	dw NONE ; effect commands
 	db NONE ; flags 1
@@ -6878,7 +6878,7 @@ KabutopsCard:
 	db ATK_ANIM_SONICBOOM ; animation
 
 	; attack 2
-	energy FIGHTING, 2, COLORLESS, 1 ; energies
+	energy FIGHTING, 2 ; energies
 	tx AbsorbName ; name
 	tx AbsorbDescription ; description
 	tx AbsorbDescriptionCont ; description (cont)
@@ -6891,7 +6891,7 @@ KabutopsCard:
 	db HEALING_EQUALS_HALF_DAMAGE_DEALT ; used to calculate the HEAL_USER attack score bonus
 	db ATK_ANIM_DRAIN ; animation
 
-	db 1 ; retreat cost
+	db 2 ; retreat cost
 	db WR_GRASS ; weakness
 	db WR_COLORLESS ; resistance
 	tx ShellfishName ; category
@@ -8364,7 +8364,7 @@ FearowCard:
 	tx SpearowName ; pre-evo name
 
 	; attack 1
-	energy COLORLESS, 3 ; energies
+	energy COLORLESS, 2 ; energies
 	tx AgilityName ; name
 	tx FearowsAgilityDescription ; description
 	dw NONE ; description (cont)
@@ -9269,16 +9269,16 @@ DittoCard:
 	db STAR ; rarity
 	db LABORATORY | GB ; sets
 	db DITTO
-	db 50 ; hp
+	db 60 ; hp
 	db BASIC ; stage
 	dw NONE ; pre-evo name
 
 	; attack 1
-	energy COLORLESS, 1 ; energies
+	energy COLORLESS, 2 ; energies
 	tx PoundName ; name
 	dw NONE ; description
 	dw NONE ; description (cont)
-	db 10 ; damage
+	db 20 ; damage
 	db DAMAGE_NORMAL ; category
 	dw NONE ; effect commands
 	db NONE ; flags 1
@@ -9442,7 +9442,7 @@ SnorlaxCard:
 	tx BodySlamName ; name
 	tx MayInflictParalysisDescription ; description
 	dw NONE ; description (cont)
-	db 20 ; damage
+	db 30 ; damage
 	db DAMAGE_NORMAL ; category
 	dw MayInflictParalysisEffectCommands ; effect commands
 	db INFLICT_PARALYSIS ; flags 1
