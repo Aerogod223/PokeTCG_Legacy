@@ -25,15 +25,12 @@ AIActionTable_AeroBattle:
 .list_bench
 	db AERO_SNORLAX, VOLTORB, GROWLITHE, MAGMAR_LV31, $00
 .list_retreat
-	ai_retreat AERO_SNORLAX, +3
-	ai_retreat ARCANINE_LV45, +1
-	ai_retreat MAGMAR_LV31, +1
-	ai_retreat VOLTORB, -3
-	ai_retreat ELECTRODE_LV40, -4
+	ai_retreat VOLTORB, +1
+	ai_retreat ELECTRODE_LV40, +1
 	db $00
 .list_energy
 	ai_energy AERO_SNORLAX, 4, +3
-	ai_energy MAGMAR_LV31, 2, +1
+	ai_energy MAGMAR_LV31, 1, +4
 	ai_energy GROWLITHE, 2, +0
 	ai_energy ARCANINE_LV45, 4, +2
 	ai_energy VOLTORB, 0, -3

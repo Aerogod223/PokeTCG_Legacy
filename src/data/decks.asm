@@ -944,21 +944,21 @@ LegendaryZapdosDeck:
 LegendaryArticunoDeck:
 	deck_list_start
 	card_item WATER_ENERGY,              16
-	card_item DOUBLE_COLORLESS_ENERGY,   4
-	card_item LAPRAS,                     4
+	card_item DOUBLE_COLORLESS_ENERGY,    4
+	card_item LAPRAS,                     3
 	card_item CLEFAIRY,                   3
-	card_item ARTICUNO_LV37,              3
-	card_item ARTICUNO_LV35,              1
+	card_item ARTICUNO_LV37,              4
 	card_item CLEFABLE,                   3
 	card_item LICKITUNG,                  2
+	card_item DITTO_LV20,                 1
 	card_item PROFESSOR_OAK,              2
 	card_item BILL,                       4
-	card_item SCOOP_UP,                   4
-	card_item ENERGY_RETRIEVAL,           2
+	card_item SUPER_ENERGY_REMOVAL,       2
+	card_item SCOOP_UP,                   3
+	card_item ENERGY_RETRIEVAL,           1
 	card_item SWITCH,                     2
 	card_item GUST_OF_WIND,               2
-	card_item DEFENDER,                   1
-	card_item ENERGY_REMOVAL,             3
+	card_item ENERGY_REMOVAL,             4
 	card_item ITEM_FINDER,                1
 	card_item COMPUTER_SEARCH,            3
 	deck_list_end
@@ -1256,11 +1256,12 @@ RematchZappingSelfdestructDeck:
 	card_item MAGNEMITE_LV13,           3
 	card_item LICKITUNG,                2
 	card_item ISSAC_MAGNETON,           3
-	card_item EEVEE,                    4
-	card_item ELECTABUZZ_LV35,          2
-	card_item JOLTEON_LV29,             2
-	card_item FLAREON_LV22,             2
-	card_item DITTO_LV20,               2
+	card_item FARFETCHD,                1
+	card_item PORYGON,                  1
+	card_item ELECTABUZZ_LV35,          3
+	card_item MEOWTH_LV15,              3
+	card_item PERSIAN,                  3
+	card_item DITTO_LV20,               1
 	card_item PROFESSOR_OAK,            3
 	card_item BILL,                     4
 	card_item SWITCH,                   1
@@ -1305,7 +1306,7 @@ RematchStrangePsyshockDeck:
 	card_item GRASS_ENERGY,   6
 	card_item DOUBLE_COLORLESS_ENERGY, 4
 	card_item KOFFING,         4
-	card_item WEEZING,         4
+	card_item MURRAY_WEEZING,         4
 	card_item LICKITUNG,       4
 	card_item MR_MIME,         2
 	card_item MEW_LV8,         2
@@ -1332,12 +1333,12 @@ RematchWondersOfScienceDeck:
 	card_item GENGAR,          1
 	card_item CHANSEY,         1
 	card_item LICKITUNG,       4
-	card_item SCYTHER,         2
+	card_item PORYGON,         2
 	card_item PROFESSOR_OAK,   4
-	card_item SCOOP_UP,        4
-	card_item ENERGY_REMOVAL,  3
+	card_item MR_FUJI,         4
+	card_item ENERGY_REMOVAL,  4
 	card_item GAMBLER,         2
-	card_item MAINTENANCE,     3
+	card_item RECYCLE,         2
 	card_item DEVOLUTION_SPRAY, 4
 	card_item BILL,            4
 	card_item POKEMON_BREEDER, 2

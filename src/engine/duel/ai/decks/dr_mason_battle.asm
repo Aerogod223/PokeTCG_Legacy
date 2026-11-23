@@ -27,9 +27,6 @@ AIActionTable_DrMasonBattle:
 .list_play_hand
 	db JIGGLYPUFF_LV14, PIDGEY, CLEFAIRY, $00
 .list_retreat
-	ai_retreat WIGGLYTUFF, +3
-	ai_retreat PIDGEOT_LV40, +2
-	ai_retreat CLEFABLE, +2
 	ai_retreat PIDGEY, -2
 	ai_retreat CLEFAIRY, -1
 	db $00

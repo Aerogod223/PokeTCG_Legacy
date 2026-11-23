@@ -46,8 +46,8 @@ AIActionTable_FireCharge:
 	ai_energy VULPIX,          2, +0
 	ai_energy NINETALES_LV35,  2, +1
 	ai_energy CHARMANDER,      2, +0
-	ai_energy CHARMELEON,      3, +0
-	ai_energy CHARIZARD,       4, +1
+	ai_energy CHARMELEON,      3, +1
+	ai_energy CHARIZARD,       4, +3
 	ai_energy TAUROS,          3, +0
 	db $00
 
@@ -86,25 +86,29 @@ RematchFireCharge_StartDuel:
 	jp AIPlayInitialBasicCards
 
 RematchFireCharge_ArenaList:
-	db MAGMAR_LV31, ELECTABUZZ_LV35, TAUROS, VULPIX, FLYING_PIKACHU, CHARMANDER, $00
-RematchFireCharge_BenchList:
-	db CHARMANDER, VULPIX, FLYING_PIKACHU, TAUROS, ELECTABUZZ_LV35, MAGMAR_LV31, $00
-RematchFireCharge_RetreatList:
-	ai_retreat CHARMANDER, +1
-	ai_retreat VULPIX, +1
-	ai_retreat MAGMAR_LV31, -1
-	ai_retreat ELECTABUZZ_LV35, -1
+	db PONYTA
+	db PORYGON
+	db DRATINI
 	db $00
+
+
+RematchFireCharge_BenchList:
+	db PONYTA
+	db PORYGON
+	db DRATINI
+	db $00
+
+RematchFireCharge_RetreatList:
+	ai_retreat KEN_RAPIDASH, +3
+	db $00
+
 RematchFireCharge_EnergyList:
-	ai_energy MAGMAR_LV31, 2, +1
-	ai_energy ELECTABUZZ_LV35, 2, +1
-	ai_energy FLYING_PIKACHU, 3, +0
-	ai_energy VULPIX, 2, +0
-	ai_energy NINETALES_LV35, 2, +1
-	ai_energy CHARMANDER, 2, +0
-	ai_energy CHARMELEON, 3, +0
-	ai_energy CHARIZARD, 4, +1
-	ai_energy TAUROS, 3, +0
+	ai_energy PONYTA, 2, +0
+	ai_energy KEN_RAPIDASH, 2, +1
+	ai_energy PORYGON, 3, +0
+	ai_energy DRATINI, 1, +0
+	ai_energy DRAGONAIR, 4, +1
+	ai_energy DRAGONITE_LV45, 3, +1
 	db $00
 RematchFireCharge_PrizeList:
-	db ENERGY_RETRIEVAL, $00
+	db KEN_RAPIDASH, DOUBLE_COLORLESS_ENERGY, SWITCH, $00

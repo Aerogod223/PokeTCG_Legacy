@@ -36,16 +36,16 @@ AIActionTable_GoGoRainDance:
 .list_energy
 	ai_energy SQUIRTLE,        2, +0
 	ai_energy WARTORTLE,       3, +0
-	ai_energy BLASTOISE,       5, +0
+	ai_energy BLASTOISE,       5, +1
 	ai_energy ARTICUNO_LV35,   3, +1
 	ai_energy MAGIKARP,        2, -2
 	ai_energy GYARADOS,        4, +2
 	ai_energy LAPRAS,          3, +1
 	db $00
 
-.list_prize
+.list_prize	
 	db SUPER_POTION
-	db SUPER_ENERGY_RETRIEVAL
+	db PROFESSOR_OAK
 	db SUPER_ENERGY_RETRIEVAL
 	db BLASTOISE
 	db $00
@@ -81,21 +81,32 @@ RematchGoGoRainDance_StartDuel:
 	jp AIPlayInitialBasicCards
 
 RematchGoGoRainDance_ArenaList:
-	db LAPRAS, ARTICUNO_LV35, MAGIKARP, SQUIRTLE, $00
+	db STARYU
+	db MR_MIME
+	db GOLDEEN
+	db MEWTWO_ALT_LV60
+	db LAPRAS
+	db $00
+	
 RematchGoGoRainDance_BenchList:
-	db SQUIRTLE, MAGIKARP, ARTICUNO_LV35, LAPRAS, $00
+	db STARYU
+	db MR_MIME
+	db GOLDEEN
+	db MEWTWO_ALT_LV60
+	db LAPRAS
+	db $00
+
 RematchGoGoRainDance_RetreatList:
-	ai_retreat SQUIRTLE, +1
+	ai_retreat GOLDEEN, +1
 	ai_retreat MAGIKARP, +3
 	db $00
 RematchGoGoRainDance_EnergyList:
-	ai_energy SQUIRTLE, 2, +0
-	ai_energy WARTORTLE, 3, +0
-	ai_energy BLASTOISE, 5, +0
-	ai_energy ARTICUNO_LV35, 3, +1
-	ai_energy MAGIKARP, 2, -2
-	ai_energy GYARADOS, 4, +2
+	ai_energy STARYU, 1, +0
+	ai_energy AMY_STARMIE, 4, +2
+	ai_energy MR_MIME, 2, +1
+	ai_energy MEWTWO_ALT_LV60, 3, +1
+	ai_energy SEAKING, 2, +1
 	ai_energy LAPRAS, 3, +1
 	db $00
 RematchGoGoRainDance_PrizeList:
-	db SUPER_POTION, SUPER_ENERGY_RETRIEVAL, SUPER_ENERGY_RETRIEVAL, BLASTOISE, $00
+	db PROFESSOR_OAK, AMY_STARMIE, $00

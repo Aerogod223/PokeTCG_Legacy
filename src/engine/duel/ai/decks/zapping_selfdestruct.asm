@@ -43,19 +43,19 @@ AIActionTable_ZappingSelfdestruct:
 	db $00
 
 .list_energy
-	ai_energy LICKITUNG,       2, +1
+	ai_energy LICKITUNG,       1, +2
 	ai_energy ELECTABUZZ_LV20, 2, +0
 	ai_energy VOLTORB,         2, +0
-	ai_energy ELECTRODE_LV35,  2, +1
+	ai_energy ELECTRODE_LV35,  2, +3
 	ai_energy ELECTABUZZ_LV35, 2, +2
 	ai_energy FLYING_PIKACHU,  3, +0
-	ai_energy ZAPDOS_LV40,     3, +0
+	ai_energy ZAPDOS_LV40,     3, +1
 	ai_energy ZAPDOS_LV64,     4, +1
 	ai_energy DITTO,           3, -1
 	db $00
 
 .list_prize
-	db LICKITUNG
+	db LICKITUNG, ELECTRODE_LV35, PROFESSOR_OAK
 	db $00
 
 .store_list_pointers
@@ -89,24 +89,43 @@ RematchZappingSelfdestruct_StartDuel:
 	jp AIPlayInitialBasicCards
 
 RematchZappingSelfdestruct_ArenaList:
-	db LICKITUNG, ELECTABUZZ_LV35, VOLTORB, ELECTABUZZ_LV20, FLYING_PIKACHU, ZAPDOS_LV40, ZAPDOS_LV64, DITTO, $00
+	db LICKITUNG
+	db ELECTABUZZ_LV35
+	db MEOWTH_LV15
+	db PORYGON
+	db FARFETCHD
+	db MAGNEMITE_LV13
+	db DITTO_LV20
+	db $00
+
+
 RematchZappingSelfdestruct_BenchList:
-	db LICKITUNG, ELECTABUZZ_LV35, VOLTORB, ELECTABUZZ_LV20, FLYING_PIKACHU, ZAPDOS_LV40, ZAPDOS_LV64, DITTO, $00
+	db LICKITUNG
+	db ELECTABUZZ_LV35
+	db MEOWTH_LV15
+	db PORYGON
+	db FARFETCHD
+	db MAGNEMITE_LV13
+	db DITTO_LV20
+	db $00
+
+
 RematchZappingSelfdestruct_RetreatList:
-	ai_retreat VOLTORB, +1
-	ai_retreat ELECTABUZZ_LV35, -1
 	ai_retreat LICKITUNG, -1
+	ai_retreat PERSIAN, -1
+	ai_retreat PORYGON, +1
 	db $00
+
 RematchZappingSelfdestruct_EnergyList:
-	ai_energy LICKITUNG, 2, +1
-	ai_energy ELECTABUZZ_LV20, 2, +0
-	ai_energy VOLTORB, 2, +0
-	ai_energy ELECTRODE_LV35, 2, +1
+	ai_energy LICKITUNG, 1, +1
+	ai_energy MEOWTH_LV15, 2, +0
+	ai_energy PERSIAN, 3, +3
+	ai_energy PORYGON, 2, +0
 	ai_energy ELECTABUZZ_LV35, 2, +2
-	ai_energy FLYING_PIKACHU, 3, +0
-	ai_energy ZAPDOS_LV40, 3, +0
-	ai_energy ZAPDOS_LV64, 4, +1
-	ai_energy DITTO, 3, -1
+	ai_energy MAGNEMITE_LV13, 1, +0
+	ai_energy ISSAC_MAGNETON, 2, +3
+	ai_energy DITTO_LV20, 3, +1
 	db $00
+
 RematchZappingSelfdestruct_PrizeList:
-	db LICKITUNG, $00
+	db ISSAC_MAGNETON, DOUBLE_COLORLESS_ENERGY, SUPER_ENERGY_REMOVAL, $00

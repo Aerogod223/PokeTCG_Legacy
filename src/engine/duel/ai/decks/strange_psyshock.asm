@@ -41,12 +41,12 @@ AIActionTable_StrangePsyshock:
 .list_energy
 	ai_energy ABRA,       1, +0
 	ai_energy KADABRA,    3, +0
-	ai_energy ALAKAZAM,   3, +0
+	ai_energy ALAKAZAM,   2, +1
 	ai_energy MR_MIME,    2, +2
-	ai_energy TAUROS,     3, +0
+	ai_energy TAUROS,     3, +2
 	ai_energy CHANSEY,    2, -2
 	ai_energy KANGASKHAN, 3, +1
-	ai_energy MEWTWO_ALT_LV60,    3, +2
+	ai_energy MEWTWO_ALT_LV60,    3, +3
 	db $00
 
 .list_prize
@@ -87,23 +87,37 @@ RematchStrangePsyshock_StartDuel:
 	jp AIPlayInitialBasicCards
 
 RematchStrangePsyshock_ArenaList:
-	db KANGASKHAN, MR_MIME, MEWTWO_ALT_LV60, TAUROS, CHANSEY, ABRA, $00
+	db KOFFING
+	db MR_MIME
+	db MEWTWO_LV53
+	db MEW_LV8
+	db CHANSEY
+	db LICKITUNG
+	db $00
+
 RematchStrangePsyshock_BenchList:
-	db ABRA, CHANSEY, MEWTWO_ALT_LV60, MR_MIME, TAUROS, KANGASKHAN, $00
+	db KOFFING
+	db MR_MIME
+	db MEWTWO_LV53
+	db MEW_LV8
+	db CHANSEY
+	db LICKITUNG
+	db $00
+
 RematchStrangePsyshock_RetreatList:
-	ai_retreat ABRA, +3
-	ai_retreat KANGASKHAN, -1
-	ai_retreat TAUROS, -1
+	ai_retreat MURRAY_WEEZING, -3
+	ai_retreat LICKITUNG, -2
 	db $00
+
 RematchStrangePsyshock_EnergyList:
-	ai_energy ABRA, 1, +0
-	ai_energy KADABRA, 3, +0
-	ai_energy ALAKAZAM, 3, +0
+	ai_energy KOFFING, 2, +0
+	ai_energy MURRAY_WEEZING, 3, +2
+	ai_energy LICKITUNG, 1, +3
 	ai_energy MR_MIME, 2, +2
-	ai_energy TAUROS, 3, +0
+	ai_energy MEWTWO_LV53, 2, +0
 	ai_energy CHANSEY, 2, -2
-	ai_energy KANGASKHAN, 3, +1
-	ai_energy MEWTWO_ALT_LV60, 3, +2
+	ai_energy MEW_LV8, 1, +2
 	db $00
+	
 RematchStrangePsyshock_PrizeList:
-	db SCOOP_UP, MR_MIME, ALAKAZAM, SWITCH, $00
+	db MURRAY_WEEZING, ENERGY_REMOVAL, KOFFING, SWITCH, $00

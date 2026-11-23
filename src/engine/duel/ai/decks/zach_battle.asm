@@ -27,15 +27,14 @@ AIActionTable_ZachBattle:
 	db ELECTABUZZ_LV35, MAGMAR_LV31, LAPRAS, ZACH_EEVEE
 	db SURFING_PIKACHU_LV13, FLYING_PIKACHU, $00
 .list_retreat
-	ai_retreat ELECTABUZZ_LV35, +2
-	ai_retreat MAGMAR_LV31, +2
-	ai_retreat LAPRAS, +1
-	ai_retreat ZACH_EEVEE, +1
+	ai_retreat ELECTABUZZ_LV35, -1
+	ai_retreat MAGMAR_LV31, -1
 	db $00
+
 .list_energy
 	ai_energy ZACH_EEVEE, 3, +3
 	ai_energy ELECTABUZZ_LV35, 2, +2
-	ai_energy MAGMAR_LV31, 2, +2
+	ai_energy MAGMAR_LV31, 1, +2
 	ai_energy LAPRAS, 3, +1
 	ai_energy SURFING_PIKACHU_LV13, 2, +0
 	ai_energy FLYING_PIKACHU, 3, +0

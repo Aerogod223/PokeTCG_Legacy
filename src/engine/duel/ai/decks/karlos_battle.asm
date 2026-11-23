@@ -24,9 +24,9 @@ AIActionTable_KarlosBattle:
 .list_bench
 	db POLIWAG, HITMONCHAN, LAPRAS, SURFING_PIKACHU_LV13, $00
 .list_retreat
-	ai_retreat KARLOS_POLIWRATH, +3
-	ai_retreat HITMONCHAN, +1
-	ai_retreat LAPRAS, +1
+	ai_retreat KARLOS_POLIWRATH, -1
+	ai_retreat HITMONCHAN, -1
+	ai_retreat LAPRAS, -1
 	ai_retreat POLIWAG, -2
 	db $00
 ; Extra Energy enables Waterfall's bonuses and a spare Strange Spiral discard.

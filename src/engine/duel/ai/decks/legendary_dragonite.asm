@@ -35,12 +35,12 @@ AIActionTable_LegendaryDragonite:
 
 .list_energy
 	ai_energy SCYTHER,        3, +0
-	ai_energy TANGELA_LV12,   2, +1
+	ai_energy TANGELA_LV12,   2, +2
 	ai_energy DRAGONITE_LV45, 3, +1
 	ai_energy DRATINI,        2, +0
-	ai_energy DRAGONAIR,      4, +1
-	ai_energy DRAGONITE_LV41, 4, +2
-	ai_energy KANGASKHAN,     3, -2
+	ai_energy DRAGONAIR,      4, +2
+	ai_energy DRAGONITE_LV41, 4, +3
+	ai_energy KANGASKHAN,     3, +1
 	db $00
 
 .list_prize

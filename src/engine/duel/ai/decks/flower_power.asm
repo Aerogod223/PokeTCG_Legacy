@@ -32,7 +32,6 @@ AIActionTable_FlowerPower:
 	ai_retreat DODUO,     +2
 	ai_retreat DODRIO, +1
 	ai_retreat BULBASAUR, +2
-	ai_retreat IVYSAUR,   +1
 	ai_retreat EXEGGCUTE, +2
 	db $00
 
@@ -82,25 +81,23 @@ RematchFlowerPower_StartDuel:
 	jp AIPlayInitialBasicCards
 
 RematchFlowerPower_ArenaList:
-	db TANGELA_LV12, EXEGGCUTE, DODUO, BULBASAUR, $00
+	db TANGELA_LV12, EXEGGCUTE, CLEFAIRY, PORYGON, $00
+
 RematchFlowerPower_BenchList:
-	db BULBASAUR, EXEGGCUTE, DODUO, TANGELA_LV12, $00
+	db TANGELA_LV12, EXEGGCUTE, CLEFAIRY, PORYGON, $00
+
 RematchFlowerPower_RetreatList:
-	ai_retreat DODUO, +2
-	ai_retreat DODRIO, +1
-	ai_retreat BULBASAUR, +2
-	ai_retreat IVYSAUR, +1
+	ai_retreat PORYGON, +2
 	ai_retreat EXEGGCUTE, +2
 	db $00
 RematchFlowerPower_EnergyList:
-	ai_energy BULBASAUR, 3, +0
-	ai_energy IVYSAUR, 4, +1
-	ai_energy VENUSAUR_LV67, 4, +2
-	ai_energy DODUO, 2, -1
-	ai_energy DODRIO, 3, -1
+	ai_energy NICK_EXEGGUTOR, 2, +0
+	ai_energy CLEFAIRY, 3, +0
+	ai_energy CLEFABLE, 2, +3
+	ai_energy PORYGON, 3, +0
 	ai_energy TANGELA_LV12, 2, +1
 	ai_energy EXEGGCUTE, 3, +0
 	ai_energy EXEGGUTOR, 22, +2
 	db $00
 RematchFlowerPower_PrizeList:
-	db VENUSAUR_LV67, $00
+	db NICK_EXEGGUTOR, ENERGY_REMOVAL, $00

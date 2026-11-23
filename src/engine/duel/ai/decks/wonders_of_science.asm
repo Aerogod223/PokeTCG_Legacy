@@ -48,7 +48,7 @@ AIActionTable_WondersOfScience:
 	ai_energy MEWTWO_LV53,     2, +2
 	ai_energy MEWTWO_ALT_LV60, 3, +1
 	ai_energy MEWTWO_LV60,     3, +1
-	ai_energy PORYGON,         2, -1
+	ai_energy PORYGON,         3, +0
 	db $00
 
 .list_prize
@@ -86,21 +86,33 @@ RematchWondersOfScience_StartDuel:
 	jp AIPlayInitialBasicCards
 
 RematchWondersOfScience_ArenaList:
-	db MEWTWO_LV53, MEWTWO_ALT_LV60, MEWTWO_LV60, SCYTHER, PINSIR, MR_MIME, GRIMER, PORYGON, $00
+	db GASTLY_LV8
+	db CHANSEY
+	db LICKITUNG
+	db PORYGON
+	db $00
+
 RematchWondersOfScience_BenchList:
-	db GRIMER, PORYGON, SCYTHER, PINSIR, MEWTWO_ALT_LV60, MEWTWO_LV60, MEWTWO_LV53, MR_MIME, $00
+	db GASTLY_LV8
+	db CHANSEY
+	db LICKITUNG
+	db PORYGON
+	db $00
+
 RematchWondersOfScience_RetreatList:
+.list_retreat
+	ai_retreat LICKITUNG,   -2
 	db $00
+
 RematchWondersOfScience_EnergyList:
-	ai_energy GRIMER, 2, -1
-	ai_energy MUK, 2, -1
-	ai_energy SCYTHER, 3, +0
-	ai_energy PINSIR, 4, +0
-	ai_energy MR_MIME, 2, +1
-	ai_energy MEWTWO_LV53, 2, +2
-	ai_energy MEWTWO_ALT_LV60, 3, +1
-	ai_energy MEWTWO_LV60, 3, +1
-	ai_energy PORYGON, 2, -1
+	ai_energy GASTLY_LV8, 2, -1
+	ai_energy HAUNTER_LV17, 2, +0
+	ai_energy RICK_GENGAR, 2, +1
+	ai_energy GENGAR, 2, -2
+	ai_energy CHANSEY, 2, -1
+	ai_energy PORYGON, 3, +2
+	ai_energy LICKITUNG, 1, +3
 	db $00
+
 RematchWondersOfScience_PrizeList:
-	db MUK, $00
+	db DEVOLUTION_SPRAY, RICK_GENGAR, PROFESSOR_OAK, $00

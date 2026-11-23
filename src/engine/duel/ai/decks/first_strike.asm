@@ -16,10 +16,6 @@ AIActionTable_FirstStrike:
 
 .list_arena
 	db HITMONCHAN
-	db KANGASKHAN
-	db MANKEY
-	db HITMONLEE
-	db DODUO
 	db ELECTABUZZ_LV35
 	db SCYTHER
 	db MACHOP
@@ -30,10 +26,6 @@ AIActionTable_FirstStrike:
 	db MACHOP
 	db ELECTABUZZ_LV35
 	db HITMONCHAN
-	db KANGASKHAN
-	db MANKEY
-	db HITMONLEE
-	db DODUO
 	db SCYTHER
 	db FARFETCHD
 	db $00
@@ -44,10 +36,6 @@ AIActionTable_FirstStrike:
 
 .list_energy
 	ai_energy MACHOP,     1, +0
-	ai_energy MITCH_PRIMEAPE,  2, +1
-	ai_energy HITMONLEE,   2, +0
-	ai_energy KANGASKHAN,  3, +0
-	ai_energy DODRIO,     3, +0
 	ai_energy SCYTHER,    3, +0
 	ai_energy ELECTABUZZ_LV35,    2, +1
 	ai_energy HITMONCHAN, 3, +1
@@ -107,11 +95,11 @@ RematchFirstStrike_RetreatList:
 	ai_retreat SCYTHER, +1
 	db $00
 RematchFirstStrike_EnergyList:
-	ai_energy MITCH_PRIMEAPE,  2, +1
-	ai_energy HITMONLEE,   2, +0
+	ai_energy MITCH_PRIMEAPE,  2, +2
+	ai_energy HITMONLEE,   2, +1
 	ai_energy HITMONCHAN, 3, +1
 	ai_energy KANGASKHAN,  3, +0
 	ai_energy DODRIO,     3, +0
 	db $00
 RematchFirstStrike_PrizeList:
-	db PROFESSOR_OAK, HITMONCHAN, $00
+	db PROFESSOR_OAK, HITMONCHAN, MITCH_PRIMEAPE, $00

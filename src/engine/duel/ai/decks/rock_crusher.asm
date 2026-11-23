@@ -94,28 +94,26 @@ RematchRockCrusher_ArenaList:
 	db $00
 
 RematchRockCrusher_BenchList:
-	db RHYHORN
-	db SNORLAX
+	db SCYTHER
+	db FLYING_PIKACHU
 	db TAUROS
 	db ONIX
 	db LICKITUNG
-	db CUBONE
+	db MYSTERIOUS_FOSSIL
 	db $00
 
 RematchRockCrusher_RetreatList:
-	ai_retreat CUBONE, +1
-	ai_retreat AERODACTYL, +1
 	ai_retreat ONIX, -1
 	ai_retreat LICKITUNG, -1
 	db $00
 RematchRockCrusher_EnergyList:
-	ai_energy SNORLAX, 3, +0
-	ai_energy ONIX, 2, +2
+	ai_energy GENE_AERODACTYL, 3, +3
+	ai_energy ONIX, 2, +1
 	ai_energy TAUROS, 3, +1
-	ai_energy AERODACTYL, 3, +0
-	ai_energy LICKITUNG, 2, +1
-	ai_energy RHYHORN, 2, +0
+	ai_energy FLYING_PIKACHU, 3, +0
+	ai_energy LICKITUNG, 1, +2
+	ai_energy SCYTHER, 3, +0
 	ai_energy CUBONE, 3, -1
 	db $00
 RematchRockCrusher_PrizeList:
-	db ENERGY_REMOVAL, RHYHORN, $00
+	db ENERGY_REMOVAL, MYSTERIOUS_FOSSIL, $00

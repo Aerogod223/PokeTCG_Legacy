@@ -18,7 +18,7 @@ AIActionTable_LegendaryArticuno:
 	db LICKITUNG
 	db LAPRAS
 	db CLEFAIRY
-	db ARTICUNO_LV35
+	db DITTO_LV20
 	db ARTICUNO_LV37
 	db $00
 
@@ -26,6 +26,7 @@ AIActionTable_LegendaryArticuno:
 	db ARTICUNO_LV35
 	db ARTICUNO_LV37
 	db CLEFAIRY
+	db DITTO_LV20
 	db LICKITUNG
 	db LAPRAS
 	db $00
@@ -37,9 +38,9 @@ AIActionTable_LegendaryArticuno:
 
 .list_energy
 	ai_energy CLEFAIRY,      3, +0
-	ai_energy CLEFABLE,      2, +1
+	ai_energy CLEFABLE,      2, +2
 	ai_energy LAPRAS,        3, +1
-	ai_energy ARTICUNO_LV35, 4, +1
+	ai_energy DITTO_LV20,    4, +1
 	ai_energy ARTICUNO_LV37, 3, +0
 	ai_energy LICKITUNG,     2, +2
 	db $00

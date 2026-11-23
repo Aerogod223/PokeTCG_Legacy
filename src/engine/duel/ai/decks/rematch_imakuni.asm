@@ -27,13 +27,10 @@ AIActionTable_RematchImakuni:
 	db SLOWPOKE_LV9, SLOWPOKE_LV18, IMAKUNIS_MEWTWO
 	db MEW_LV15, DITTO_LV20, PORYGON, $00
 .list_retreat
-	ai_retreat IMAKUNIS_MEWTWO, +3
-	ai_retreat MEW_LV15, +2
-	ai_retreat DITTO_LV20, +1
-	ai_retreat SLOWBRO, -4
-	ai_retreat SLOWPOKE_LV9, -2
-	ai_retreat SLOWPOKE_LV18, -2
-	ai_retreat PORYGON, -3
+	ai_retreat IMAKUNIS_MEWTWO, -2
+	ai_retreat SLOWBRO, +2
+	ai_retreat SLOWPOKE_LV9, +2
+	ai_retreat SLOWPOKE_LV18, +2
 	db $00
 .list_energy
 	ai_energy IMAKUNIS_MEWTWO, 4, +3
@@ -42,7 +39,7 @@ AIActionTable_RematchImakuni:
 	ai_energy SLOWPOKE_LV9, 1, -2
 	ai_energy SLOWPOKE_LV18, 1, -2
 	ai_energy SLOWBRO, 0, -4
-	ai_energy PORYGON, 1, -3
+	ai_energy PORYGON, 3, +1
 	db $00
 .list_prize
 	db IMAKUNIS_MEWTWO, IMAKUNI_CARD, $00
