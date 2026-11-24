@@ -402,13 +402,16 @@ AIDecideEvolution:
 	jp .next_hand_card
 
 
-; determines the AI score for evolving Charmeleon,
-; Magikarp, Dragonair, and Grimer in certain decks.
+; determines the AI score for evolutions in certain decks.
 ; input:
 ;	[wLoadedCard2ID] = card ID of an evolving Pokémon to score
 AIDecideSpecialEvolutions:
 ; check if deck applies
 	ld a, [wOpponentDeckID]
+	cp FIRE_CHARGE_DECK_ID
+	jr z, .ken
+	cp REMATCH_FIRE_CHARGE_DECK_ID
+	jr z, .ken
 	cp LEGENDARY_DRAGONITE_DECK_ID
 	jr z, .legendary_dragonite
 	cp INVINCIBLE_RONALD_DECK_ID
@@ -416,6 +419,10 @@ AIDecideSpecialEvolutions:
 	cp LEGENDARY_RONALD_DECK_ID
 	jr z, .legendary_ronald
 	ret
+
+.ken
+	ld a, 4
+	jp AIEncourage
 
 .legendary_dragonite
 	ld a, [wLoadedCard2ID]

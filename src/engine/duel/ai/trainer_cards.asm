@@ -4466,16 +4466,17 @@ AIDecide_Pokeball:
 	cp FIRE_CHARGE_DECK_ID
 	jr z, .fire_charge
 	cp REMATCH_FIRE_CHARGE_DECK_ID
-	jr z, .fire_charge
+	jp z, .rematch_fire_charge
 	cp HARD_POKEMON_DECK_ID
-	jr z, .hard_pokemon
+	jp z, .hard_pokemon
 	cp PIKACHU_DECK_ID
-	jr z, .pikachu
+	jp z, .pikachu
 	cp ETCETERA_DECK_ID
 	jp z, .etcetera
 	cp LOVELY_NIDORAN_DECK_ID
 	jp z, .lovely_nidoran
 
+.generic
 ; can't play Poké Ball if there are no cards left in the AI's deck.
 	call CreateDeckCardList
 	ccf
@@ -4552,6 +4553,21 @@ AIDecide_Pokeball:
 	ld e, JIGGLYPUFF_LV12
 	ld a, CARD_LOCATION_DECK
 	jp LookForCardIDInLocation_Bank8
+
+.rematch_fire_charge
+	ld b, PONYTA
+	ld a, KEN_RAPIDASH
+	call LookForCardIDInDeck_GivenCardIDInHandAndPlayArea
+	ret c
+	ld b, DRATINI
+	ld a, DRAGONAIR
+	call LookForCardIDInDeck_GivenCardIDInHandAndPlayArea
+	ret c
+	ld b, DRAGONAIR
+	ld a, DRAGONITE_LV45
+	call LookForCardIDInDeck_GivenCardIDInHandAndPlayArea
+	ret c
+	jp .generic
 
 
 ; this deck runs a deck check for specific
