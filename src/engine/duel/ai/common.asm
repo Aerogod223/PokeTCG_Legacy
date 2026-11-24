@@ -208,6 +208,8 @@ PickAttachedEnergyCardToRemove:
 	jr z, .check_useful
 	call _GetCardIDFromDeckIndex
 	cp DOUBLE_COLORLESS_ENERGY
+	jr z, .found
+	cp ELECTRODE_LV40
 	jr nz, .loop_1
 
 .found
@@ -280,6 +282,8 @@ PickTwoAttachedEnergyCards:
 	call _GetCardIDFromDeckIndex
 	cp DOUBLE_COLORLESS_ENERGY
 	jr z, .found_double_colorless
+	cp ELECTRODE_LV40
+	jr z, .found_double_colorless
 	inc hl
 	jr .loop_1
 .found_double_colorless
@@ -301,6 +305,13 @@ PickTwoAttachedEnergyCards:
 	ld a, [hl]
 	cp $ff
 	jr z, .default
+	ld a, [wTempAI]
+	cp [hl]
+	jr nz, .check_useful_card
+	inc hl
+	jr .loop_2
+.check_useful_card
+	ld a, [hl]
 	call CheckIfEnergyIsUseful
 	jr c, .found_useful
 	inc hl

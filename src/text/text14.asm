@@ -298,35 +298,35 @@ HydroCannonDescription:
 	done
 
 RematchFirstStrikeDeckName:
-	text "First Strike"
+	text "Rage Fist"
 	done
 
 RematchRockCrusherDeckName:
-	text "Rock Crusher"
+	text "Prehistoric Power"
 	done
 
 RematchGoGoRainDanceDeckName:
-	text "Go-Go Rain Dance"
+	text "Crystal Magnificence"
 	done
 
 RematchZappingSelfdestructDeckName:
-	text "Zapping Selfdestruct"
+	text "Power Cycle"
 	done
 
 RematchFlowerPowerDeckName:
-	text "Flower Power"
+	text "Egg Delivery"
 	done
 
 RematchStrangePsyshockDeckName:
-	text "Strange Psyshock"
+	text "Psy-Destruct"
 	done
 
 RematchWondersOfScienceDeckName:
-	text "Wonders of Science"
+	text "Spooky Science"
 	done
 
 RematchFireChargeDeckName:
-	text "Fire Charge"
+	text "Blazing Speed"
 	done
 
 RematchImakuniDeckName:
@@ -334,15 +334,15 @@ RematchImakuniDeckName:
 	done
 
 AeroBattleDeckName:
-	text "Aero's Deck"
+	text "Relaxed Blaze"
 	done
 
 KarlosBattleDeckName:
-	text "Karlos's Deck"
+	text "Spiral Smackdown"
 	done
 
 ZachBattleDeckName:
-	text "Zach's Deck"
+	text "Unstable Element"
 	done
 
 DrMasonBattleDeckName:
@@ -350,7 +350,7 @@ DrMasonBattleDeckName:
 	done
 
 ClubMasterWantARematchText:
-	text "Want a Rematch?"
+	text "Shall I use my new deck?"
 	done
 
 AppetitieName:
@@ -628,37 +628,122 @@ ZachPlayerLostText:
 	line "Come back and try again."
 	done
 
+MurrayWeezingDescription:
+	text "When it inhales poisonous gases"
+	line "from garbage, its body expands,"
+	line "and its insides smell much worse."
+	done
+
+RickGengarDescription:
+	text "Hiding in people's shadows at night,"
+	line "it absorbs their heat. The chill it"
+	line "causes makes the victims shake."
+	done
+
+AmyStarmieDescription:
+	text "This Pokémon's crystal seems to shine"
+	line "a Blue shade. It seems to give it"
+	line "abilities that aren't known to other"
+	line "Starmie."
+	done
+
+KenRapidashDescription:
+	text "When at an all-out gallop, its"
+	line "blazing mane sparkles, enhancing"
+	line "its beautiful appearance."
+	done
+
+NickExeggutorDescription:
+	text "It is called ”The Walking Tropical"
+	line "Rainforest.” Each of the nuts has"
+	line "a face and a will of its own."
+	done
+
+MitchPrimeapeDescription:
+	text "It will beat up anyone who makes it"
+	line "mad, even if it has to chase them"
+	line "until the end of the world."
+	done
+
+GeneAerodactylDescription:
+	text "Restored from DNA found in amber,"
+	line "this Pokémon exhibited ferocity"
+	line "that was greater than expected."
+	line "Some casualties resulted."
+	done
+
+IssacMagnetonDescription:
+	text "A linked cluster formed of several"
+	line "MAGNEMITE. It discharges powerful"
+	line "magnetic waves at high voltage."
+	done
+
+BossCharizardDescription:
+	text "Breathing intense, hot flames, it"
+	line "can melt almost anything. Its"
+	line "breath inflicts terrible pain on"
+	line "enemies."
+	done
+
+BossBlastoiseDescription:
+	text "The rocket cannons on its shell fire"
+	line "jets of water capable of punching"
+	line "holes through thick steel."
+	done
+
+AeroSnorlaxDescription:
+	text "This Pokémon loves to eat. He then"
+	line "will fall asleep and try to exercise"
+	line "till it sees something else tasty."
+	done
+
+ZachEeveeDescription:
+	text "This Pokémon can't seem to evolve"
+	line "like other Eevee. It seems to"
+	line "instead have attributes from every"
+	line "element."
+	done
+
+KarlosPoliwrathDescription:
+	text "This Pokémon causes whirlpools to"
+	line "appear in a spiral pattern whenever"
+	line "it enters the water."
+	done
+
+ImakunisMewtwoDescription:
+	text "The ultimate Pokémon seems to have"
+	line "someone it is willing to serve?"
+	done
+
 MitchRematchText:
 	text "I've trained even"
-	line "harder. Ready to"
-	line "test my strength?"
+	line "harder and built a"
+	line "new deck to match!"
 	done
 
 GeneRematchText:
-	text "I dug up a new"
-	line "challenge in the"
-	line "rocks. Ready to"
-	line "unearth it?"
+	text "I've dug up some"
+	line "old fossils for my"
+	line "new deck."
 	done
 
 AmyRematchText:
 	text "The tide is rising"
-	line "again! Can you keep"
-	line "up this time?"
+	line "again! I've made a"
+	line "new deck to try."
 	done
 
 IsaacRematchText:
 	text "I've tuned my deck"
-	line "for another duel."
-	line "Ready to spark"
-	line "things up?"
+	line "to spark things up"
+	line "in our next duel."
 	done
 
 NikkiRematchText:
 	text "My strategy has"
 	line "bloomed with the"
-	line "flowers. Shall we"
-	line "duel again?"
+	line "flowers, and I have"
+	line "a new deck to try."
 	done
 
 MurrayRematchText:
@@ -677,8 +762,8 @@ RickRematchText:
 KenRematchText:
 	text "The flames are"
 	line "burning bright!"
-	line "Ready to face my"
-	line "fire deck again?"
+	line "My new deck is"
+	line "raring to go!"
 	done
 
 PsychicName:

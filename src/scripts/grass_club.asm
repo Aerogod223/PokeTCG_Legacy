@@ -97,6 +97,9 @@ Script_Nikki:
 	jp z, Script_NikkiInIshiharasHouse
 
 	start_script
+	jump_if_event_false EVENT_BEAT_NIKKI, .ask_for_duel
+	jump_if_event_greater_or_equal EVENT_RONALD_POKEMON_DOME_STATE, RONALD_DEFEATED, .rematch_question
+.ask_for_duel
 	test_if_event_false EVENT_BEAT_NIKKI
 	print_variable_npc_text Text0718, Text0719
 	ask_question_jump Text071a, .ows_e7bf
@@ -118,6 +121,7 @@ Script_Nikki:
 .rematch_question
 	print_npc_text NikkiRematchText
 	ask_question_jump ClubMasterWantARematchText, .rematch_duel
+	start_duel PRIZES_6, FLOWER_POWER_DECK_ID, MUSIC_DUEL_THEME_2
 	quit_script_fully
 .rematch_duel
 	start_duel PRIZES_6, REMATCH_FLOWER_POWER_DECK_ID, MUSIC_DUEL_THEME_2

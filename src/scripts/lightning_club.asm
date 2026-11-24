@@ -206,6 +206,7 @@ Script_LostToIsaac:
 .rematch_question
 	print_npc_text IsaacRematchText
 	ask_question_jump ClubMasterWantARematchText, .rematch_duel
+	start_duel PRIZES_6, ZAPPING_SELFDESTRUCT_DECK_ID, MUSIC_DUEL_THEME_2
 	quit_script_fully
 .rematch_duel
 	start_duel PRIZES_6, REMATCH_ZAPPING_SELFDESTRUCT_DECK_ID, MUSIC_DUEL_THEME_2

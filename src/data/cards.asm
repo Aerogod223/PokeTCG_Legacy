@@ -10157,10 +10157,10 @@ NickExeggutorCard:
 	db WR_FIGHTING ; resistance
 	tx CoconutName ; category
 	dw 103 ; Pokedex number
-	db 39 ; level
+	db 57 ; level
 	db 6, 7 ; length
 	dw 265 * 10 ; weight
-	tx ExeggutorDescription ; description
+	tx NickExeggutorDescription ; description
 	db 0 ; pokemon flags
 
 RickGengarCard:
@@ -10207,10 +10207,10 @@ RickGengarCard:
 	db WR_COLORLESS ; resistance
 	tx ShadowName ; category
 	dw 94 ; Pokedex number
-	db 38 ; level
+	db 55 ; level
 	db 4, 11 ; length
 	dw 89 * 10 ; weight
-	tx GengarDescription ; description
+	tx RickGengarDescription ; description
 	db AI_TRY_TO_KEEP_ON_BENCH ; pokemon flags
 
 IssacMagnetonCard:
@@ -10257,10 +10257,10 @@ IssacMagnetonCard:
 	db NONE ; resistance
 	tx MagnetName ; category
 	dw 82 ; Pokedex number
-	db 35 ; level
+	db 60 ; level
 	db 3, 3 ; length
 	dw 132 * 10 ; weight
-	tx MagnetonLv35Description ; description
+	tx IssacMagnetonDescription ; description
 	db 0 ; pokemon flags
 
 KenRapidashCard:
@@ -10307,10 +10307,10 @@ KenRapidashCard:
 	db WR_GRASS ; resistance
 	tx FireHorseName ; category
 	dw 78 ; Pokedex number
-	db 33 ; level
+	db 43 ; level
 	db 5, 7 ; length
 	dw 209 * 10 ; weight
-	tx RapidashDescription ; description
+	tx KenRapidashDescription ; description
 	db 0 ; pokemon flags
 
 MitchPrimeapeCard:
@@ -10357,10 +10357,10 @@ MitchPrimeapeCard:
 	db WR_GRASS ; resistance
 	tx PigMonkeyName ; category
 	dw 57 ; Pokedex number
-	db 35 ; level
+	db 39 ; level
 	db 3, 3 ; length
 	dw 71 * 10 ; weight
-	tx PrimeapeDescription ; description
+	tx MitchPrimeapeDescription ; description
 	db 0 ; pokemon flags
 
 GeneAerodactylCard:
@@ -10407,10 +10407,10 @@ GeneAerodactylCard:
 	db WR_COLORLESS ; resistance
 	tx FossilName ; category
 	dw 142 ; Pokedex number
-	db 28 ; level
+	db 44 ; level
 	db 5, 11 ; length
 	dw 130 * 10 ; weight
-	tx AerodactylDescription ; description
+	tx GeneAerodactylDescription ; description
 	db AI_TRY_TO_KEEP_ON_BENCH ; pokemon flags
 
 AmyStarmieCard:
@@ -10457,10 +10457,10 @@ AmyStarmieCard:
 	db NONE ; resistance
 	tx MysteriousName ; category
 	dw 121 ; Pokedex number
-	db 28 ; level
+	db 45 ; level
 	db 3, 7 ; length
 	dw 176 * 10 ; weight
-	tx StarmieDescription ; description
+	tx AmyStarmieDescription ; description
 	db 0 ; pokemon flags
 
 MurrayWeezingCard:
@@ -10507,10 +10507,10 @@ MurrayWeezingCard:
 	db NONE ; resistance
 	tx PoisonGasName ; category
 	dw 110 ; Pokedex number
-	db 27 ; level
+	db 48 ; level
 	db 3, 11 ; length
 	dw 21 * 10 ; weight
-	tx WeezingDescription ; description
+	tx MurrayWeezingDescription ; description
 	db 0 ; pokemon flags
 
 BossCharizardCard:
@@ -10557,10 +10557,10 @@ BossCharizardCard:
 	db WR_GRASS ; resistance
 	tx FlameName ; category
 	dw 6 ; Pokedex number
-	db 56 ; level
+	db 64 ; level
 	db 5, 7 ; length
 	dw 200 * 10 ; weight
-	tx CharizardDescription ; description
+	tx BossCharizardDescription ; description
 	db 0 ; pokemon flags
 
 BossBlastoiseCard:
@@ -10607,10 +10607,10 @@ BossBlastoiseCard:
 	db WR_FIRE ; resistance
 	tx ShellfishName ; category
 	dw 9 ; Pokedex number
-	db 52 ; level
+	db 64 ; level
 	db 5, 3 ; length
 	dw 189 * 10 ; weight
-	tx BlastoiseDescription ; description
+	tx BossBlastoiseDescription ; description
 	db 0 ; pokemon flags
 
 AeroSnorlaxCard:
@@ -10657,10 +10657,10 @@ AeroSnorlaxCard:
 	db NONE ; resistance
 	tx SleepingName ; category
 	dw 143 ; Pokedex number
-	db 20 ; level
+	db 85 ; level
 	db 6, 11 ; length
 	dw 1014 * 10 ; weight
-	tx SnorlaxDescription ; description
+	tx AeroSnorlaxDescription ; description
 	db 0 ; pokemon flags
 
 KarlosPoliwrathCard:
@@ -10707,10 +10707,10 @@ KarlosPoliwrathCard:
 	db NONE ; resistance
 	tx TadpoleName ; category
 	dw 62 ; Pokedex number
-	db 48 ; level
+	db 79 ; level
 	db 4, 3 ; length
 	dw 119 * 10 ; weight
-	tx PoliwrathDescription ; description
+	tx KarlosPoliwrathDescription ; description
 	db 0 ; pokemon flags
 
 ZachEeveeCard:
@@ -10757,15 +10757,15 @@ ZachEeveeCard:
 	db NONE ; resistance
 	tx EvolutionName ; category
 	dw 133 ; Pokedex number
-	db 12 ; level
+	db 77 ; level
 	db 1, 0 ; length
 	dw 14 * 10 ; weight
-	tx EeveeDescription ; description
+	tx ZachEeveeDescription ; description
 	db HAS_EVOLUTION ; pokemon flags
 
 ImakunisMewtwoCard:
 	db TYPE_PKMN_PSYCHIC ; type
-	gfx ImakunisMewtwoCardGfx ; gfx
+	gfx ImakuniMewtwoCardGfx ; gfx
 	tx ImakunisMewtwoName ; name
 	db STAR ; rarity
 	db PROMOTIONAL | PRO ; sets
@@ -10807,8 +10807,8 @@ ImakunisMewtwoCard:
 	db WR_FIGHTING ; resistance
 	tx GeneticName ; category
 	dw 150 ; Pokedex number
-	db 60 ; level
+	db 99 ; level
 	db 6, 7 ; length
 	dw 269 * 10 ; weight
-	tx MewtwoLv60Description ; description
+	tx ImakunisMewtwoDescription ; description
 	db 0 ; pokemon flags

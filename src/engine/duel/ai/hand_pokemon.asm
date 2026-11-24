@@ -152,6 +152,34 @@ AIDecideEvolution:
 	ld a, $80
 	ld [wAIScore], a
 	call AIDecideSpecialEvolutions
+	ld a, [wTempAIPokemonCard]
+	call _GetCardIDFromDeckIndex
+	cp NICK_EXEGGUTOR
+	jr z, .encourage_new_evolution
+	cp RICK_GENGAR
+	jr z, .encourage_new_evolution
+	cp ISSAC_MAGNETON
+	jr z, .encourage_new_evolution
+	cp KEN_RAPIDASH
+	jr z, .encourage_new_evolution
+	cp MITCH_PRIMEAPE
+	jr z, .encourage_new_evolution
+	cp GENE_AERODACTYL
+	jr z, .encourage_new_evolution
+	cp AMY_STARMIE
+	jr z, .encourage_new_evolution
+	cp MURRAY_WEEZING
+	jr z, .encourage_new_evolution
+	cp BOSS_CHARIZARD
+	jr z, .encourage_new_evolution
+	cp BOSS_BLASTOISE
+	jr z, .encourage_new_evolution
+	cp KARLOS_POLIWRATH
+	jr nz, .check_current_attacks
+.encourage_new_evolution
+	ld a, 8
+	call AIEncourage
+.check_current_attacks
 
 ; check if the card can use any attacks
 ; and if any of those attacks can KO.

@@ -118,6 +118,7 @@ Script_LostToRick:
 .rematch_question
 	print_npc_text RickRematchText
 	ask_question_jump ClubMasterWantARematchText, .rematch_duel
+	start_duel PRIZES_6, WONDERS_OF_SCIENCE_DECK_ID, MUSIC_DUEL_THEME_2
 	quit_script_fully
 .rematch_duel
 	start_duel PRIZES_6, REMATCH_WONDERS_OF_SCIENCE_DECK_ID, MUSIC_DUEL_THEME_2

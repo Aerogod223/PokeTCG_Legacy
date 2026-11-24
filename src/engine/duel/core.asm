@@ -8031,17 +8031,19 @@ MoveAllTurnHolderKnockedOutPokemonToDiscardPile:
 ; input:
 ;	e = play area location offset of the Knocked Out Pokémon (PLAY_AREA_* constant)
 Aftermath_DiscardOpponentDeckCards:
+	push bc
+	push de
+	push hl
 	ld a, DUELVARS_ARENA_CARD
 	add e
 	get_turn_duelist_var
 	call _GetCardIDFromDeckIndex
 	cp MURRAY_WEEZING
-	ret nz
+	jr nz, .return
 	call CheckIfPkmnPowersAreCurrentlyDisabled
-	ret c
+	jr c, .return
 	ldtx hl, AftermathTriggeredText
 	call DrawWideTextBox_WaitForInput
-	push bc
 	rst SwapTurn
 	ld c, 3
 .discard_loop
@@ -8052,6 +8054,9 @@ Aftermath_DiscardOpponentDeckCards:
 	jr nz, .discard_loop
 .done
 	rst SwapTurn
+.return
+	pop hl
+	pop de
 	pop bc
 	ret
 

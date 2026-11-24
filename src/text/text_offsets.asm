@@ -3112,3 +3112,17 @@ TextOffsets::
 	textpointer KenRematchText
 	textpointer DrMasonClassText
 	textpointer TravelerText
+	textpointer MurrayWeezingDescription
+	textpointer RickGengarDescription
+	textpointer AmyStarmieDescription
+	textpointer KenRapidashDescription
+	textpointer NickExeggutorDescription
+	textpointer MitchPrimeapeDescription
+	textpointer GeneAerodactylDescription
+	textpointer IssacMagnetonDescription
+	textpointer BossCharizardDescription
+	textpointer BossBlastoiseDescription
+	textpointer AeroSnorlaxDescription
+	textpointer ZachEeveeDescription
+	textpointer KarlosPoliwrathDescription
+	textpointer ImakunisMewtwoDescription

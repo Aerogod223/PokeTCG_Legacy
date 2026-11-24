@@ -895,6 +895,8 @@ AIDecide_GustOfWind:
 ; AI's Active Pokémon, then play Gust of Wind targeting that Pokémon.
 	call FindBenchCardToKnockOut
 	ret c
+	call FindBenchCardToTrap
+	ret c
 
 	xor a ; PLAY_AREA_ARENA
 	farcall CheckIfCanDamageDefendingPokemon
@@ -1125,7 +1127,7 @@ FindBenchCardToKnockOut:
 	jr c, .loop_bench
 
 ; Boss Trainers prefer the guaranteed KO target with the most attached Energy.
-	call CheckIfOpponentHasBossDeckID
+	farcall CheckIfOpponentHasBossDeckID
 	jr nc, .return_ko ; preserve the existing target order for other decks
 	push bc
 	push hl
@@ -1136,9 +1138,18 @@ FindBenchCardToKnockOut:
 	pop de
 	pop hl
 	pop bc
+	push af
+	ld a, c
+	or a
+	jr nz, .compare_ko_energy
+	pop af
+	jr .store_ko_target
+.compare_ko_energy
+	pop af
 	cp b
 	jr c, .loop_bench ; keep the earlier target when it has more Energy
 	jr z, .loop_bench ; keep the earlier target on a tie
+.store_ko_target
 	ld b, a
 	ld c, e
 	jr .loop_bench
@@ -1152,6 +1163,73 @@ FindBenchCardToKnockOut:
 
 .return_ko
 	ld a, e
+	scf
+	ret
+
+FindBenchCardToTrap:
+	xor a
+	ld [wce06], a
+	ld [wce08], a
+	ld a, $ff
+	ld [wce0f], a
+	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
+	call GetNonTurnDuelistVariable
+	ld d, a
+	ld e, PLAY_AREA_ARENA
+.loop
+	inc e
+	dec d
+	jr z, .done
+	call CheckIfCanDamageBenchedCard
+	jr nc, .loop
+	rst SwapTurn
+	call GetPlayAreaCardAttachedEnergies
+	ld b, a
+	ld a, e
+	ldh [hTempPlayAreaLocation_ff9d], a
+	call GetPlayAreaCardRetreatCost
+	rst SwapTurn
+	ld c, a
+	ld a, b
+	or a
+	jr nz, .has_energy
+	ld a, c
+	add 8
+	jr .compare
+.has_energy
+	ld a, c
+	cp 2
+	jr c, .loop
+	cp b
+	jr c, .loop
+	jr z, .loop
+.compare
+	ld c, a
+	ld a, [wce06]
+	cp c
+	jr c, .store
+	jr nz, .loop
+	ld a, e
+	add DUELVARS_ARENA_CARD_HP
+	call GetNonTurnDuelistVariable
+	ld b, a
+	ld a, [wce0f]
+	cp b
+	jr c, .loop
+	jr z, .loop
+.store
+	ld a, c
+	ld [wce06], a
+	ld a, e
+	ld [wce08], a
+	add DUELVARS_ARENA_CARD_HP
+	call GetNonTurnDuelistVariable
+	ld [wce0f], a
+	jr .loop
+.done
+	ld a, [wce08]
+	or a
+	ret z
 	scf
 	ret
 
@@ -1257,6 +1335,98 @@ CheckIfCanDamageBenchedCard:
 
 ; Bill uses 'AIPlay_TrainerCard_NoVars'
 
+AIPlay_DevolutionSpray:
+	ld a, [wCurrentAIFlags]
+	or AI_FLAG_MODIFIED_HAND
+	ld [wCurrentAIFlags], a
+	ld a, [wAITrainerCardToPlay]
+	ldh [hTempCardIndex_ff9f], a
+	ld a, [wAITrainerCardParameter]
+	ldh [hTempList], a
+	ld a, [wce1a]
+	ldh [hTempList + 1], a
+	ld a, $ff
+	ldh [hTempList + 2], a
+	ld a, OPPACTION_EXECUTE_TRAINER_EFFECTS
+	bank1call AIMakeDecision
+	ret
+
+AIDecide_DevolutionSpray:
+	call IsPrehistoricPowerActive
+	ret c
+	call CheckIfPkmnPowersAreCurrentlyDisabled
+	ret c
+	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
+	get_turn_duelist_var
+	ld b, a
+	ld c, PLAY_AREA_BENCH_1
+.loop
+	ld a, c
+	cp b
+	jr nc, .none
+	add DUELVARS_ARENA_CARD
+	get_turn_duelist_var
+	call _GetCardIDFromDeckIndex
+	cp RICK_GENGAR
+	jr z, .check_target
+	cp DRAGONITE_LV41
+	jr nz, .next
+	push bc
+	call .has_damage_to_heal
+	pop bc
+	jr z, .next
+.check_target
+	ld a, c
+	ldh [hTempPlayAreaLocation_ff9d], a
+	push bc
+	farcall GetCardOneStageBelow
+	pop bc
+	jr c, .next
+	ld a, d
+	cp $ff
+	jr z, .next
+	ld a, e
+	ld [wce1a], a
+	push bc
+	ld e, c
+	call GetCardDamageAndMaxHP
+	push af
+	ld a, d
+	call LoadCardDataToBuffer2_FromDeckIndex
+	pop bc
+	ld a, [wLoadedCard2HP]
+	sub b
+	pop bc
+	jr c, .next
+	cp 30
+	jr c, .next
+	ld a, c
+	scf
+	ret
+.next
+	inc c
+	jr .loop
+.none
+	or a
+	ret
+.has_damage_to_heal
+	ld a, DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA
+	get_turn_duelist_var
+	ld b, a
+	ld c, PLAY_AREA_ARENA
+.check_damage
+	ld e, c
+	push bc
+	call GetCardDamageAndMaxHP
+	pop bc
+	or a
+	ret nz
+	inc c
+	dec b
+	jr nz, .check_damage
+	xor a
+	ret
+
 
 ; AI will play Bill if it has at least 10 cards in its deck.
 ; preserves bc and de
@@ -1296,6 +1466,41 @@ AIDecide_EnergyRemoval:
 	rst SwapTurn
 	ld a, e
 	ld [wce0f], a ; store default location (Defending Pokémon will also need to be skipped later)
+
+.priority_loop
+	ld a, DUELVARS_ARENA_CARD
+	add e
+	get_turn_duelist_var
+	cp -1
+	jr z, .priority_done
+	push de
+	ld a, e
+	call CreateArenaOrBenchEnergyCardList
+	ld hl, wDuelTempList
+.priority_energy
+	ld a, [hli]
+	cp $ff
+	jr z, .priority_next
+	call _GetCardIDFromDeckIndex
+	cp DOUBLE_COLORLESS_ENERGY
+	jr z, .priority_found
+	cp ELECTRODE_LV40
+	jr nz, .priority_energy
+.priority_found
+	dec hl
+	ld a, [hl]
+	ld [wce1a], a
+	pop de
+	ld a, e
+	scf
+	jp SwapTurn
+.priority_next
+	pop de
+	inc e
+	jr .priority_loop
+.priority_done
+	ld a, [wce0f]
+	ld e, a
 
 .loop_1
 	ld a, DUELVARS_ARENA_CARD

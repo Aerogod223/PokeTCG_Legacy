@@ -329,6 +329,7 @@ Script_Amy_AlreadyHaveMedal:
 .rematch_question
 	print_npc_text AmyRematchText
 	ask_question_jump ClubMasterWantARematchText, .rematch_duel
+	start_duel PRIZES_6, GO_GO_RAIN_DANCE_DECK_ID, MUSIC_DUEL_THEME_2
 	quit_script_fully
 .rematch_duel
 	start_duel PRIZES_6, REMATCH_GO_GO_RAIN_DANCE_DECK_ID, MUSIC_DUEL_THEME_2
