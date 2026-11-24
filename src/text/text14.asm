@@ -259,13 +259,13 @@ StarBlastDescription:
 
 AftermathDescription:
 	text "When Weezing is Knocked Out,"
-	line "discard the top 3 cards of your"
+	line "discard the top 4 cards of your"
 	line "opponent's deck."
 	done
 
 AftermathTriggeredText:
 	text "Aftermath activated!"
-	line "Discard up to 3 cards from"
+	line "Discard up to 4 cards from"
 	line "the opponent's deck."
 	done
 

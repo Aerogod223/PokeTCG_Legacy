@@ -8026,7 +8026,7 @@ MoveAllTurnHolderKnockedOutPokemonToDiscardPile:
 
 
 ; if the Knocked Out Pokémon is Murray's Weezing and Pokémon Powers aren't disabled,
-; discards the top 3 cards of the opponent's deck (Aftermath).
+; discards the top 4 cards of the opponent's deck (Aftermath).
 ; preserves all registers except af
 ; input:
 ;	e = play area location offset of the Knocked Out Pokémon (PLAY_AREA_* constant)
@@ -8045,7 +8045,7 @@ Aftermath_DiscardOpponentDeckCards:
 	ldtx hl, AftermathTriggeredText
 	call DrawWideTextBox_WaitForInput
 	rst SwapTurn
-	ld c, 3
+	ld c, 4
 .discard_loop
 	call DrawCardFromDeck
 	jr c, .done ; deck is empty
