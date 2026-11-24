@@ -2478,7 +2478,7 @@ NinetalesLv32Card:
 	db ATK_ANIM_LURE ; animation
 
 	; attack 2
-	energy FIRE, 2, COLORLESS 2 ; energies
+	energy FIRE, 2, COLORLESS, 2 ; energies
 	tx FireBlastName ; name
 	tx FireBlastDescription ; description
 	dw NONE ; description (cont)
@@ -4943,7 +4943,7 @@ SurfingPikachuLv13Card:
 
 	db 1 ; retreat cost
 	db WR_FIGHTING ; weakness
-	db WR_FIRE ; resistance
+	db NONE ; resistance
 	tx MouseName ; category
 	dw 25 ; Pokedex number
 	db 13 ; level
@@ -5214,7 +5214,7 @@ MagnetonLv28Card:
 	tx MagnemiteName ; pre-evo name
 
 	; attack 1
-	energy LIGHTNING, 2, ; energies
+	energy LIGHTNING, 1, ; energies
 	tx ThunderWaveName ; name
 	tx MayInflictParalysisDescription ; description
 	dw NONE ; description (cont)
@@ -5264,7 +5264,7 @@ MagnetonLv35Card:
 	tx MagnemiteName ; pre-evo name
 
 	; attack 1
-	energy LIGHTNING, 1, COLORLESS, 1 ; energies
+	energy LIGHTNING, 1 ; energies
 	tx SonicboomName ; name
 	tx SonicboomDescription ; description
 	dw NONE ; description (cont)
@@ -5709,7 +5709,7 @@ ZapdosLv64Card:
 	db STAR ; rarity
 	db COLOSSEUM | NONE ; sets
 	db ZAPDOS_LV64
-	db 90 ; hp
+	db 80 ; hp
 	db BASIC ; stage
 	dw NONE ; pre-evo name
 
@@ -8159,7 +8159,7 @@ PidgeotLv40Card:
 	db STAR ; rarity
 	db EVOLUTION | JUNGLE ; sets
 	db PIDGEOT_LV40
-	db 100 ; hp
+	db 90 ; hp
 	db STAGE2 ; stage
 	tx PidgeottoName ; pre-evo name
 
@@ -8191,7 +8191,7 @@ PidgeotLv40Card:
 	db 0
 	db ATK_ANIM_WHIRLWIND ; animation
 
-	db 0 ; retreat cost
+	db 1 ; retreat cost
 	db WR_LIGHTNING ; weakness
 	db WR_FIGHTING ; resistance
 	tx BirdName ; category
@@ -9442,7 +9442,7 @@ SnorlaxCard:
 	tx BodySlamName ; name
 	tx MayInflictParalysisDescription ; description
 	dw NONE ; description (cont)
-	db 30 ; damage
+	db 20 ; damage
 	db DAMAGE_NORMAL ; category
 	dw MayInflictParalysisEffectCommands ; effect commands
 	db INFLICT_PARALYSIS ; flags 1
@@ -9796,7 +9796,7 @@ LassCard:
 
 ImakuniCard:
 	db TYPE_TRAINER ; type
-	gfx ImakuniCardGfx ; gfx
+	gfx MewtwoLv60CardGfx ; gfx
 	tx ImakuniName ; name
 	db PROMOSTAR ; rarity
 	db PROMOTIONAL | PRO ; sets
@@ -10589,7 +10589,7 @@ BossBlastoiseCard:
 	db ATK_ANIM_PKMN_POWER_1 ; animation
 
 	; attack 2
-	energy WATER, 3 ; energies
+	energy WATER, 4 ; energies
 	tx HydroCannonName ; name
 	tx HydroCannonDescription ; description
 	dw NONE ; description (cont)
@@ -10629,7 +10629,7 @@ AeroSnorlaxCard:
 	tx AppetitieName ; name
 	tx AppetitieDescription ; description
 	dw NONE ; description (cont)
-	db 10 ; damage
+	db 0 ; damage
 	db DAMAGE_NORMAL ; category
 	dw SnorlaxAppetitieEffectCommands ; effect commands
 	db NONE ; flags 1
@@ -10725,7 +10725,7 @@ ZachEeveeCard:
 	tx EeveeName ; pre-evo name
 
 	; attack 1
-	energy 0 ; energies
+	energy COLORLESS, 1 ; energies
 	tx UnstableGeneName ; name
 	tx UnstableGeneDescription ; description
 	dw NONE ; description (cont)

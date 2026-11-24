@@ -891,7 +891,6 @@ TextOffsets::
 	textpointer UnusedText0391                                     ; 0x0391
 	textpointer UnusedText0392                                     ; 0x0392
 	textpointer UnusedText0393                                     ; 0x0393
-	textpointer UnusedText0394                                     ; 0x0394
 	textpointer OpponentTitleAndNameText                           ; 0x0395
 	textpointer OpponentDeckNameText                               ; 0x0396
 	textpointer FightingClubMemberText                             ; 0x0397
@@ -922,7 +921,6 @@ TextOffsets::
 	textpointer ClerkNPCName                                       ; 0x03b0
 	textpointer SamNPCName                                         ; 0x03b1
 	textpointer TechNPCName                                        ; 0x03b2
-	textpointer UnusedText03b3                                     ; 0x03b3
 	textpointer ChrisNPCName                                       ; 0x03b4
 	textpointer MichaelNPCName                                     ; 0x03b5
 	textpointer JessicaNPCName                                     ; 0x03b6
