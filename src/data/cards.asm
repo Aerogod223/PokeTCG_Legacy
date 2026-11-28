@@ -3565,24 +3565,10 @@ TentacruelCard:
 
 	; attack 1
 	energy WATER, 1 ; energies
-	tx SupersonicName ; name
-	tx MayInflictConfusionDescription ; description
-	dw NONE ; description (cont)
-	db 20 ; damage
-	db DAMAGE_NORMAL ; category
-	dw MayInflictConfusionNoDamageEffectCommands ; effect commands
-	db INFLICT_CONFUSION ; flags 1
-	db NONE ; flags 2
-	db NONE ; flags 3
-	db 0
-	db ATK_ANIM_SUPERSONIC ; animation
-
-	; attack 2
-	energy WATER, 2 ; energies
 	tx JellyfishStingName ; name
 	tx InflictPoisonDescription ; description
 	dw NONE ; description (cont)
-	db 30 ; damage
+	db 10 ; damage
 	db DAMAGE_NORMAL ; category
 	dw InflictPoisonEffectCommands ; effect commands
 	db INFLICT_POISON ; flags 1
@@ -3591,8 +3577,22 @@ TentacruelCard:
 	db 0
 	db ATK_ANIM_MULTIPLE_SLASH ; animation
 
+	; attack 2
+	energy WATER, 2 ; energies
+	tx SupersonicName ; name
+	tx MayInflictConfusionDescription ; description
+	dw NONE ; description (cont)
+	db 30 ; damage
+	db DAMAGE_NORMAL ; category
+	dw MayInflictConfusionNoDamageEffectCommands ; effect commands
+	db INFLICT_CONFUSION ; flags 1
+	db NONE ; flags 2
+	db NONE ; flags 3
+	db 0
+	db ATK_ANIM_SUPERSONIC ; animation
+
 	db 0 ; retreat cost
-	db WR_LIGHTNING ; weakness
+	db WR_PSYCHIC ; weakness
 	db NONE ; resistance
 	tx JellyfishName ; category
 	dw 73 ; Pokedex number
