@@ -203,8 +203,8 @@ BlazingSpeedDescription:
 	done
 
 FlameChargeDescription:
-	text "This Pokémon does 20 damage to"
-	line "itself."
+	text "Flip a coin. If tails, Rapidash"
+	line "does 30 damage to itself."
 	done
 
 WorkUpDescription:

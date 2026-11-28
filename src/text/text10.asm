@@ -360,7 +360,7 @@ PetalDanceName:
 	done
 
 PetalDanceDescription:
-	text "Flip 3 coins. Do 40 damage for"
+	text "Flip 3 coins. Do 60 damage for"
 	line "each heads. Vileplume is now"
 	line "Confused (after doing damage)."
 	done

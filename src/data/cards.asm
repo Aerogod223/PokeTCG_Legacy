@@ -2682,7 +2682,7 @@ ArcanineLv45Card:
 	tx TakeDownName ; name
 	tx TakeDownDescription ; description
 	dw NONE ; description (cont)
-	db 70 ; damage
+	db 80 ; damage
 	db DAMAGE_NORMAL ; category
 	dw Recoil30EffectCommands ; effect commands
 	db LOW_RECOIL ; flags 1
@@ -4009,7 +4009,7 @@ GoldeenCard:
 	db CIRCLE ; rarity
 	db COLOSSEUM | JUNGLE ; sets
 	db GOLDEEN
-	db 40 ; hp
+	db 50 ; hp
 	db BASIC ; stage
 	dw NONE ; pre-evo name
 
@@ -7315,20 +7315,6 @@ GastlyLv17Card:
 
 	; attack 1
 	energy PSYCHIC, 1 ; energies
-	tx LickName ; name
-	tx MayInflictParalysisDescription ; description
-	dw NONE ; description (cont)
-	db 10 ; damage
-	db DAMAGE_NORMAL ; category
-	dw MayInflictParalysisEffectCommands ; effect commands
-	db INFLICT_PARALYSIS ; flags 1
-	db NONE ; flags 2
-	db NONE ; flags 3
-	db 0
-	db ATK_ANIM_GOO ; animation
-
-	; attack 2
-	energy PSYCHIC, 1 ; energies
 	tx EnergyConversionName ; name
 	tx EnergyConversionDescription ; description
 	dw NONE ; description (cont)
@@ -7340,6 +7326,20 @@ GastlyLv17Card:
 	db SPECIAL_AI_HANDLING ; flags 3
 	db 10 ; amount of recoil damage (used to determine the LOW_RECOIL attack score penalty)
 	db ATK_ANIM_ENERGY_CONVERSION ; animation
+
+	; attack 2
+	energy PSYCHIC, 1 ; energies
+	tx LickName ; name
+	tx MayInflictParalysisDescription ; description
+	dw NONE ; description (cont)
+	db 10 ; damage
+	db DAMAGE_NORMAL ; category
+	dw MayInflictParalysisEffectCommands ; effect commands
+	db INFLICT_PARALYSIS ; flags 1
+	db NONE ; flags 2
+	db NONE ; flags 3
+	db 0
+	db ATK_ANIM_GOO ; animation
 
 	db 0 ; retreat cost
 	db NONE ; weakness
@@ -8191,7 +8191,7 @@ PidgeotLv40Card:
 	db 0
 	db ATK_ANIM_WHIRLWIND ; animation
 
-	db 2 ; retreat cost
+	db 1 ; retreat cost
 	db WR_LIGHTNING ; weakness
 	db WR_FIGHTING ; resistance
 	tx BirdName ; category
