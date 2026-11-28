@@ -578,7 +578,7 @@ ButterfreeCard:
 	db ATK_ANIM_WHIRLWIND ; animation
 
 	; attack 2
-	energy GRASS, 2, COLORLESS, 1 ; energies
+	energy GRASS, 3 ; energies
 	tx MegaDrainName ; name
 	tx ButterfreesMegaDrainDescription ; description
 	tx ButterfreesMegaDrainDescriptionCont ; description (cont)
@@ -2159,7 +2159,7 @@ ScytherCard:
 	db STAR ; rarity
 	db COLOSSEUM | JUNGLE ; sets
 	db SCYTHER
-	db 60 ; hp
+	db 70 ; hp
 	db BASIC ; stage
 	dw NONE ; pre-evo name
 
@@ -2193,7 +2193,7 @@ ScytherCard:
 
 	db 0 ; retreat cost
 	db WR_LIGHTNING ; weakness
-	db NONE ; resistance
+	db WR_FIGHTING ; resistance
 	tx MantisName ; category
 	dw 123 ; Pokedex number
 	db 25 ; level
@@ -2678,11 +2678,11 @@ ArcanineLv45Card:
 	db ATK_ANIM_BIG_FLAME ; animation
 
 	; attack 2
-	energy FIRE, 3, ; energies
+	energy FIRE, 2, COLORLESS, 2 ; energies
 	tx TakeDownName ; name
 	tx TakeDownDescription ; description
 	dw NONE ; description (cont)
-	db 80 ; damage
+	db 70 ; damage
 	db DAMAGE_NORMAL ; category
 	dw Recoil30EffectCommands ; effect commands
 	db LOW_RECOIL ; flags 1
@@ -2691,7 +2691,7 @@ ArcanineLv45Card:
 	db 30 ; amount of recoil damage (used to determine the LOW_RECOIL attack score penalty)
 	db ATK_ANIM_HIT_RECOIL ; animation
 
-	db 2 ; retreat cost
+	db 3 ; retreat cost
 	db WR_WATER ; weakness
 	db NONE ; resistance
 	tx LegendaryName ; category
@@ -3578,11 +3578,11 @@ TentacruelCard:
 	db ATK_ANIM_SUPERSONIC ; animation
 
 	; attack 2
-	energy WATER, 1, COLORLESS, 1 ; energies
+	energy WATER, 2 ; energies
 	tx JellyfishStingName ; name
 	tx InflictPoisonDescription ; description
 	dw NONE ; description (cont)
-	db 20 ; damage
+	db 30 ; damage
 	db DAMAGE_NORMAL ; category
 	dw InflictPoisonEffectCommands ; effect commands
 	db INFLICT_POISON ; flags 1
@@ -3759,7 +3759,7 @@ CloysterCard:
 	db DIAMOND ; rarity
 	db MYSTERY | FOSSIL ; sets
 	db CLOYSTER
-	db 60 ; hp
+	db 70 ; hp
 	db STAGE1 ; stage
 	tx ShellderName ; pre-evo name
 
@@ -3882,7 +3882,7 @@ KinglerCard:
 	tx CrabhammerName ; name
 	dw NONE ; description
 	dw NONE ; description (cont)
-	db 70 ; damage
+	db 80 ; damage
 	db DAMAGE_NORMAL ; category
 	dw NONE ; effect commands
 	db NONE ; flags 1
@@ -3891,7 +3891,7 @@ KinglerCard:
 	db 0
 	db ATK_ANIM_HIT ; animation
 
-	db 3 ; retreat cost
+	db 4 ; retreat cost
 	db WR_LIGHTNING ; weakness
 	db NONE ; resistance
 	tx PincerName ; category
@@ -4059,7 +4059,7 @@ SeakingCard:
 	db DIAMOND ; rarity
 	db COLOSSEUM | JUNGLE ; sets
 	db SEAKING
-	db 50 ; hp
+	db 60 ; hp
 	db STAGE1 ; stage
 	tx GoldeenName ; pre-evo name
 
@@ -5264,11 +5264,11 @@ MagnetonLv35Card:
 	tx MagnemiteName ; pre-evo name
 
 	; attack 1
-	energy LIGHTNING, 1 ; energies
+	energy LIGHTNING, 2 ; energies
 	tx SonicboomName ; name
 	tx SonicboomDescription ; description
 	dw NONE ; description (cont)
-	db 20 ; damage
+	db 30 ; damage
 	db DAMAGE_NORMAL ; category
 	dw DamageUnaffectedByColorEffectCommands ; effect commands
 	db NONE ; flags 1
@@ -6309,7 +6309,7 @@ GravelerCard:
 	db DIAMOND ; rarity
 	db EVOLUTION | FOSSIL ; sets
 	db GRAVELER
-	db 80 ; hp
+	db 90 ; hp
 	db STAGE1 ; stage
 	tx GeodudeName ; pre-evo name
 
@@ -6859,7 +6859,7 @@ KabutopsCard:
 	db DIAMOND ; rarity
 	db MYSTERY | FOSSIL ; sets
 	db KABUTOPS
-	db 110 ; hp
+	db 120 ; hp
 	db STAGE2 ; stage
 	tx KabutoName ; pre-evo name
 
@@ -7328,7 +7328,7 @@ GastlyLv17Card:
 	db ATK_ANIM_GOO ; animation
 
 	; attack 2
-	energy PSYCHIC, 2 ; energies
+	energy PSYCHIC, 1 ; energies
 	tx EnergyConversionName ; name
 	tx EnergyConversionDescription ; description
 	dw NONE ; description (cont)
@@ -8191,7 +8191,7 @@ PidgeotLv40Card:
 	db 0
 	db ATK_ANIM_WHIRLWIND ; animation
 
-	db 1 ; retreat cost
+	db 2 ; retreat cost
 	db WR_LIGHTNING ; weakness
 	db WR_FIGHTING ; resistance
 	tx BirdName ; category
@@ -9059,7 +9059,7 @@ ChanseyCard:
 	db STAR ; rarity
 	db LABORATORY | NONE ; sets
 	db CHANSEY
-	db 110 ; hp
+	db 100 ; hp
 	db BASIC ; stage
 	dw NONE ; pre-evo name
 
@@ -9109,7 +9109,7 @@ KangaskhanCard:
 	db STAR ; rarity
 	db COLOSSEUM | JUNGLE ; sets
 	db KANGASKHAN
-	db 80 ; hp
+	db 70 ; hp
 	db BASIC ; stage
 	dw NONE ; pre-evo name
 
@@ -9469,7 +9469,7 @@ DratiniCard:
 	db DIAMOND ; rarity
 	db MYSTERY | NONE ; sets
 	db DRATINI
-	db 40 ; hp
+	db 50 ; hp
 	db BASIC ; stage
 	dw NONE ; pre-evo name
 
@@ -10193,7 +10193,7 @@ RickGengarCard:
 	tx CreepyCorridorName ; name
 	tx CreepyCorridorDescription ; description
 	dw NONE ; description (cont)
-	db 0 ; damage
+	db 10 ; damage
 	db DAMAGE_NORMAL ; category
 	dw CreepyCorridorEffectCommands ; effect commands
 	db NONE ; flags 1
@@ -10252,7 +10252,7 @@ IssacMagnetonCard:
 	db 3 ; attack score penalty for DISCARD_ENERGY
 	db ATK_ANIM_BIG_SELFDESTRUCTION ; animation
 
-	db 2 ; retreat cost
+	db 3 ; retreat cost
 	db WR_FIGHTING ; weakness
 	db NONE ; resistance
 	tx MagnetName ; category
@@ -10295,7 +10295,7 @@ KenRapidashCard:
 	dw NONE ; description (cont)
 	db 30 ; damage
 	db DAMAGE_NORMAL ; category
-	dw Recoil20EffectCommands ; effect commands
+	dw MayRecoil30EffectCommands ; effect commands
 	db NONE ; flags 1
 	db NONE ; flags 2
 	db NONE ; flags 3
@@ -10525,11 +10525,11 @@ BossCharizardCard:
 	tx CharmeleonName ; pre-evo name
 
 	; attack 1
-	energy COLORLESS, 1 ; energies
+	energy FIRE, 1 ; energies
 	tx NailFlickName ; name
 	dw NONE ; description
 	dw NONE ; description (cont)
-	db 20 ; damage
+	db 30 ; damage
 	db DAMAGE_NORMAL ; category
 	dw NONE ; effect commands
 	db NONE ; flags 1
@@ -10575,7 +10575,7 @@ BossBlastoiseCard:
 	tx WartortleName ; pre-evo name
 
 	; attack 1
-	energy WATER, 2, COLORLESS, 1 ; energies
+	energy WATER, 2 ; energies
 	tx BlastoiseBubblebeamName ; name
 	tx BubblebeamDescription ; description
 	dw NONE ; description (cont)
@@ -10670,7 +10670,7 @@ KarlosPoliwrathCard:
 	db STAR ; rarity
 	db PROMOTIONAL | PRO ; sets
 	db KARLOS_POLIWRATH
-	db 100 ; hp
+	db 120 ; hp
 	db STAGE2 ; stage
 	tx PoliwhirlName ; pre-evo name
 
